@@ -13,16 +13,21 @@ namespace tosafe
 		{
 
 			Console.WriteLine ("Hello World!!");
-			string cmd = "auth";
-			string data = "&login=kostenko&password=123qwe123qwe";
+			string cmd = "chk_login";
+			string data = "&login=dkostenko";
+//			string data = "&login=kostenko&password=123qwe123qwe";
 
 			string respond = Connection.sendRequest("GET", cmd, data);
 //			Console.WriteLine("string respond = " + respond);
-			Json resp = JsonConvert.DeserializeObject<Json>(respond);
+			Json json = JsonConvert.DeserializeObject<Json>(respond);
 			Console.WriteLine("===========");
 
-			Console.WriteLine("error_code = " + resp.error_code);
-			Console.WriteLine("error_msg = " + resp.error_msg);
+
+			Console.WriteLine("success = " + json.response.success);
+			Console.WriteLine("available = " + json.response.success);
+
+			Console.WriteLine("error_code = " + json.error_code);
+			Console.WriteLine("error_msg = " + json.error_msg);
 
 
 			Console.WriteLine("Для завершения программы нажмите ENTER");
