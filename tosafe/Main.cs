@@ -10,16 +10,6 @@ namespace tosafe
 
 			ConsoleInterface ci = new ConsoleInterface();
 			ci.Run();
-
-//			string cmd = "chk_mail";
-//			string data = "&email=pashaisthebest@hotmail.com";
-//
-//			string respond = Connection.sendRequest("GET", cmd, data);
-//			Console.WriteLine(respond);
-//
-//
-//			Console.WriteLine("Для завершения программы нажмите ENTER");
-//			Console.ReadLine();
 		}
 	}
 

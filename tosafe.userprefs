@@ -1,9 +1,9 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="tosafe/Main.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../Documents/Study/F#/Lab1.2/lab1.2.fsx">
     <Files>
-      <File FileName="tosafe/Main.cs" Line="2" Column="17" />
-      <File FileName="tosafe/Connection.cs" Line="4" Column="19" />
+      <File FileName="../../Documents/Study/F#/Lab1.2/igor.fsx" Line="37" Column="1" />
+      <File FileName="../../Documents/Study/F#/Lab1.2/lab1.2.fsx" Line="4" Column="129" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
