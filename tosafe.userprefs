@@ -1,14 +1,11 @@
-﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../Documents/Study/F#/Lab1.2/lab1.2.fsx">
-    <Files>
-      <File FileName="../../Documents/Study/F#/Lab1.2/igor.fsx" Line="37" Column="1" />
-      <File FileName="../../Documents/Study/F#/Lab1.2/lab1.2.fsx" Line="4" Column="129" />
-    </Files>
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="tosafe" expanded="True">
+            <Node name="References" expanded="True" />
             <Node name="Main.cs" selected="True" />
           </Node>
         </State>
@@ -16,7 +13,11 @@
       <Pad Id="ClassPad">
         <State expanded="True">
           <Node name="tosafe" expanded="True">
-            <Node name="tosafe" expanded="True" selected="True" />
+            <Node name="References" expanded="True" />
+            <Node name="tosafe" expanded="True">
+              <Node name="tosafe.Connection" expanded="True" />
+              <Node name="tosafe.MainClass" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
