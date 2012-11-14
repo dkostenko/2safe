@@ -24,7 +24,8 @@ namespace tosafe
 		/// </returns>
 		public static string sendRequest (string type, string cmd, string data)
 		{
-			string url = baseUrl + cmd + data;
+			string url = baseUrl + cmd;
+			Console.WriteLine(url + data);
 			string respond = "";
 
 			if (type == "GET") {
@@ -61,15 +62,28 @@ namespace tosafe
 			return Out;
 		}
 
-		private static string sendGET(string Url, string Data)
+		private static string sendGET(string url, string data)
 		{
-			System.Net.WebRequest req = System.Net.WebRequest.Create(Url + "?" + Data);
-			System.Net.WebResponse resp = req.GetResponse();
-			System.IO.Stream stream = resp.GetResponseStream();
-			System.IO.StreamReader sr = new System.IO.StreamReader(stream);
-			string Out = sr.ReadToEnd();
-			sr.Close();
-			return Out;
+			WebRequest req = WebRequest.Create(url + data);
+			string output = "";
+			try {
+				WebResponse resp = req.GetResponse();
+				Stream stream = resp.GetResponseStream();
+				StreamReader sr = new StreamReader(stream);
+				output = sr.ReadToEnd();
+				sr.Close();
+			}
+			catch (WebException wex){
+				if (wex.Response != null) {
+					using (var errorResponse = (HttpWebResponse)wex.Response) {
+						using (var reader = new StreamReader(errorResponse.GetResponseStream())) {
+							output = reader.ReadToEnd();
+							//TODO: use JSON.net to parse this string and look at the error message
+						}
+					}
+				}
+			}
+			return output;
 		}
 	}
 }

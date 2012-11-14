@@ -38,9 +38,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main.cs" />
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Connection.cs" />
+    <Compile Include="Controller\Connection.cs" />
+    <Compile Include="Model\AssemblyInfo.cs" />
+    <Compile Include="View\Main.cs" />
+    <Compile Include="Model\Json.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Controller\" />
+    <Folder Include="View\" />
+  </ItemGroup>
 </Project>

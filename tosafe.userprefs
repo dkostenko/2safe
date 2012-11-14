@@ -1,22 +1,23 @@
-﻿<Properties GitUserInfo="UsingGIT">
+﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="tosafe/Main.cs">
-    <Files>
-      <File FileName="tosafe/Main.cs" Line="19" Column="23" />
-      <File FileName="tosafe/Connection.cs" Line="4" Column="19" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
+        <State expanded="True">
           <Node name="tosafe" expanded="True">
             <Node name="References" expanded="True" />
+            <Node name="Main.cs" selected="True" />
           </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True">
           <Node name="tosafe" expanded="True">
-            <Node name="tosafe" expanded="True" selected="True" />
+            <Node name="References" expanded="True" />
+            <Node name="tosafe" expanded="True">
+              <Node name="tosafe.Connection" expanded="True" />
+              <Node name="tosafe.MainClass" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
