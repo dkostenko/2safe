@@ -11,14 +11,14 @@ namespace tosafe
 	{
 		public static void Main (string[] args)
 		{
-
-			Console.WriteLine ("Hello World!!");
+//			string cmd = "auth";
 			string cmd = "chk_login";
 			string data = "&login=dkostenko";
+			string token = "408be20692d9e06b4ce84f9e6ec9d5e3";
 //			string data = "&login=kostenko&password=123qwe123qwe";
 
 			string respond = Connection.sendRequest("GET", cmd, data);
-//			Console.WriteLine("string respond = " + respond);
+			Console.WriteLine("string respond = " + respond);
 			Json json = JsonConvert.DeserializeObject<Json>(respond);
 			Console.WriteLine("===========");
 

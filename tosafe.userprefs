@@ -1,23 +1,28 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="tosafe/View/Main.cs">
+    <Files>
+      <File FileName="tosafe/Model/Json.cs" Line="8" Column="26" />
+      <File FileName="tosafe/View/Main.cs" Line="42" Column="3" />
+      <File FileName="tosafe/Controller/Connection.cs" Line="79" Column="27" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="tosafe" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="Main.cs" selected="True" />
+            <Node name="Controller" expanded="True" />
+            <Node name="Model" expanded="True" />
+            <Node name="View" expanded="True">
+              <Node name="Main.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
-        <State expanded="True">
+        <State expanded="True" selected="True">
           <Node name="tosafe" expanded="True">
             <Node name="References" expanded="True" />
-            <Node name="tosafe" expanded="True">
-              <Node name="tosafe.Connection" expanded="True" />
-              <Node name="tosafe.MainClass" expanded="True" />
-            </Node>
+            <Node name="tosafe" expanded="True" />
           </Node>
         </State>
       </Pad>
