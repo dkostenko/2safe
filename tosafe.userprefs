@@ -1,15 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="tosafe/View/Main.cs">
+    <Files>
+      <File FileName="tosafe/View/Main.cs" Line="37" Column="4" />
+      <File FileName="tosafe/Model/Json.cs" Line="24" Column="96" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="tosafe" expanded="True">
-            <Node name="Controller" expanded="True">
-              <Node name="Connection.cs" selected="True" />
-            </Node>
+            <Node name="Controller" expanded="True" />
             <Node name="Model" expanded="True" />
-            <Node name="View" expanded="True" />
+            <Node name="View" expanded="True">
+              <Node name="Main.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>

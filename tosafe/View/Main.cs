@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.Serialization.Json;
 using Newtonsoft.Json;
 
 namespace tosafe
@@ -18,7 +17,15 @@ namespace tosafe
 
 	class ConsoleInterface
 	{
-		string mainMenu = "\nMAIN MENU\n\n1.Авторизоваться\n2.Показать сессию\n3.Выйти\nESC.Выход\n\nНажмите соответствующую клавишу";
+		string mainMenu = "\nMAIN MENU\n\n" +
+			"1.Авторизоваться\n" +
+			"2.Показать сессию\n" +
+			"3.Выйти\n" +
+			"4.Карточка пользователя\n" +
+			"5.Создание директории\n" +
+			"ESC.Выход\n\n" +
+			"Нажмите соответствующую клавишу";
+
 		string loginPrompt = "\nВведите логин :";
 		string passPrompt = "\nВведите пароль :";
 		string cmd, data, respond;
@@ -73,8 +80,8 @@ namespace tosafe
 					data = "&token=" + session.Token;
 					respond = Connection.sendRequest("GET", cmd, data);
 					Console.WriteLine("string respond = " + respond);
+					json = JsonConvert.DeserializeObject<Json>(respond);
 
-						json = JsonConvert.DeserializeObject<Json>(respond);
 					if(json.error_msg != null)
 					{
 						Console.WriteLine("Все очень плохо");
@@ -86,6 +93,26 @@ namespace tosafe
 						Console.WriteLine(session.ToString());
 					}
 
+					Console.ReadLine();
+					break;
+				case (ConsoleKey.D4):
+					Console.Clear();
+					cmd = "get_personal_data";
+					data = "&token=" + session.Token;
+					respond = Connection.sendRequest("GET", cmd, data);
+					Console.WriteLine("string respond = " + respond);
+					json = JsonConvert.DeserializeObject<Json>(respond);
+					Console.WriteLine(json.response.personal.ToString());
+					Console.ReadLine();
+					break;
+				case (ConsoleKey.D5):
+					Console.Clear();
+					cmd = "make_dir";
+					data = "&dir_id=11";
+					data += "&dir_name=newPapka";
+					data += "&token=" + session.Token;
+					respond = Connection.sendRequest("GET", cmd, data);
+					Console.WriteLine("string respond = " + respond);
 					Console.ReadLine();
 					break;
 				}
