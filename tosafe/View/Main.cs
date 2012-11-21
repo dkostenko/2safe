@@ -24,7 +24,7 @@ namespace tosafe
 
 
 			Console.WriteLine("success = " + json.response.success);
-			Console.WriteLine("available = " + json.response.success);
+			Console.WriteLine("available = " + json.response.available);
 
 			Console.WriteLine("error_code = " + json.error_code);
 			Console.WriteLine("error_msg = " + json.error_msg);
