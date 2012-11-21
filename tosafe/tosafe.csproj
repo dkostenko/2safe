@@ -43,6 +43,7 @@
     <Compile Include="View\Main.cs" />
     <Compile Include="Model\Json.cs" />
     <Compile Include="Model\Session.cs" />
+    <Compile Include="Model\Error.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

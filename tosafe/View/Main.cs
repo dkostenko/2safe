@@ -11,44 +11,14 @@ namespace tosafe
 	{
 		public static void Main (string[] args)
 		{
-//			string cmd = "auth";
-			string cmd = "chk_login";
-			string data = "&login=dkostenko";
-			string token = "408be20692d9e06b4ce84f9e6ec9d5e3";
-//			string data = "&login=kostenko&password=123qwe123qwe";
-
-			string respond = Connection.sendRequest("GET", cmd, data);
-			Console.WriteLine("string respond = " + respond);
-			Json json = JsonConvert.DeserializeObject<Json>(respond);
-			Console.WriteLine("===========");
-
-
-			Console.WriteLine("success = " + json.response.success);
-			Console.WriteLine("available = " + json.response.available);
-
-			Console.WriteLine("error_code = " + json.error_code);
-			Console.WriteLine("error_msg = " + json.error_msg);
-
-
-			Console.WriteLine("Для завершения программы нажмите ENTER");
-
-
-
-			Console.ReadLine();
-
-
-//			ConsoleInterface ci = new ConsoleInterface();
-//			ci.Run();
-		
-
+			ConsoleInterface ci = new ConsoleInterface();
+			ci.Run();
 		}
 	}
 
 	class ConsoleInterface
 	{
-		string mainMenu = "\nMAIN MENU\n\n1.     Проверить доступность email\n2.     Проверить доступность login\n3.     Авторизоваться\nESC.   Выход\n\nНажмите соответствующую клавишу";
-		string emailMessage = "\nВведите email который хотите проверить на доступность: ";
-		string loginMessage = "\nВведите login который хотите проверить на доступность: ";
+		string mainMenu = "\nMAIN MENU\n\n1.Авторизоваться\n2.Показать сессию\n3.Выйти\nESC.Выход\n\nНажмите соответствующую клавишу";
 		string loginPrompt = "\nВведите логин :";
 		string passPrompt = "\nВведите пароль :";
 		string cmd, data, respond;
@@ -59,6 +29,8 @@ namespace tosafe
 		public void Run ()
 		{
 
+			Session session = new Session();
+			Json json = null;
 
 			while (flag) 
 			{
@@ -72,32 +44,48 @@ namespace tosafe
 					flag = false;
 					break;
 				case (ConsoleKey.D1):
+					string password;
 					Console.Clear();
-					Console.Write(emailMessage);
-					cmd = "chk_mail";
-					data = "&email=" + Console.ReadLine();
+					Console.Write(loginPrompt);
+					cmd = "auth";
+					session.Login = Console.ReadLine();
+					data = "&login=" + session.Login;
+					Console.Write(passPrompt);
+					password = Console.ReadLine();
+					data += "&password=" + password;
 					respond = Connection.sendRequest("GET", cmd, data);
-					Console.WriteLine(respond);
+
+					Console.WriteLine("string respond = " + respond);
+					json = JsonConvert.DeserializeObject<Json>(respond);
+					Console.WriteLine("===========");
+
+					session.Token = json.response.token;
 					Console.ReadLine();
 					break;
 				case (ConsoleKey.D2):
 					Console.Clear();
-					Console.Write(loginMessage);
-					cmd = "chk_login";
-					data = "&login=" + Console.ReadLine();
-					respond = Connection.sendRequest("GET", cmd, data);
-					Console.WriteLine(respond);
+					Console.WriteLine(session.ToString());
 					Console.ReadLine();
 					break;
 				case (ConsoleKey.D3):
 					Console.Clear();
-					Console.Write(loginPrompt);
-					cmd = "auth";
-					data = "&login=" + Console.ReadLine();
-					Console.Write(passPrompt);
-					data += "&password=" + Console.ReadLine();
+					cmd = "logout";
+					data = "&token=" + session.Token;
 					respond = Connection.sendRequest("GET", cmd, data);
-					Console.WriteLine(respond);
+					Console.WriteLine("string respond = " + respond);
+
+						json = JsonConvert.DeserializeObject<Json>(respond);
+					if(json.error_msg != null)
+					{
+						Console.WriteLine("Все очень плохо");
+					}
+					else 
+					{
+						Console.WriteLine("Вы успешно вышли!");
+						session = new Session();
+						Console.WriteLine(session.ToString());
+					}
+
 					Console.ReadLine();
 					break;
 				}

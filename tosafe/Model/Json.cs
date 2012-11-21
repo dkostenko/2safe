@@ -7,7 +7,7 @@ namespace tosafe
 		public string success { get; set; }
 		public string available { get; set; }
 		public string token { get; set; }
-		public int id { get; set; }
+		public string id { get; set; }
 	}
 
 	public class Json
