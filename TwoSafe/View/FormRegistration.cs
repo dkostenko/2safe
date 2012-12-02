@@ -16,13 +16,13 @@ namespace TwoSafe.View
         public FormRegistration()
         {
             InitializeComponent();
+            pbCaptcha.BackgroundImage = Controller.Connection.getCaptcha();
             string respond = Controller.Connection.sendRequest("GET", "get_captcha", "");
-            MessageBox.Show(respond);
         }
 
         private void buttonRegistration_Click(object sender, EventArgs e)
         {
-            string data = "&login=" + tbAccount.Text + "&password=" + tbPassword.Text + "&email=" + tbEmail.Text;
+            string data = "&login=" + tbAccount.Text + "&password=" + tbPassword.Text + "&email=" + tbEmail.Text + "&captcha=" + tbCaptcha.Text;
             string respond = Controller.Connection.sendRequest("GET", "add_login", data);
             MessageBox.Show(respond);
             Model.Json json = JsonConvert.DeserializeObject<Model.Json>(respond);

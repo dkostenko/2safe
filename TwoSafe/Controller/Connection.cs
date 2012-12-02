@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
+using System.Drawing;
 
 namespace TwoSafe.Controller
 {
@@ -37,6 +38,42 @@ namespace TwoSafe.Controller
             }
 
             return respond;
+        }
+
+
+        /// <summary>
+        /// Получить капчу
+        /// </summary>
+        /// <returns>
+        /// Возвращает BitMap с капчей
+        /// </returns>
+        public static Bitmap getCaptcha()
+        {
+            Bitmap captcha = new Bitmap(100, 100);
+
+            WebRequest req = WebRequest.Create("https://api.2safe.com/?cmd=get_captcha");
+
+            try
+            {
+                WebResponse resp = req.GetResponse();
+                Stream stream = resp.GetResponseStream();
+                captcha = new Bitmap(stream);
+                stream.Close();
+            }
+            catch (WebException wex)
+            {
+                if (wex.Response != null)
+                {
+                    using (var errorResponse = (HttpWebResponse)wex.Response)
+                    {
+                        using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+                        {
+                            //TODO: use JSON.net to parse this string and look at the error message
+                        }
+                    }
+                }
+            }
+            return captcha;
         }
 
         private static string sendPOST(string Url, string Data)
