@@ -26,6 +26,9 @@ namespace TwoSafe
             if (json.response.success)
             {
                 MessageBox.Show("Вы вошли");
+                View.FormPreferences prefs = new View.FormPreferences();
+                this.Close();
+                prefs.Show();
             }
             else
             {

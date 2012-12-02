@@ -11,3 +11,5 @@ c:\users\dmitry\documents\visual studio 2012\Projects\TwoSafe\TwoSafe\bin\Debug\
 \\VBOXSVR\2safe\TwoSafe\bin\Debug\Newtonsoft.Json.dll
 \\VBOXSVR\2safe\TwoSafe\bin\Debug\Newtonsoft.Json.pdb
 \\VBOXSVR\2safe\TwoSafe\bin\Debug\Newtonsoft.Json.xml
+\\VBOXSVR\2safe\TwoSafe\obj\Debug\TwoSafe.View.FormPreferences.resources
+\\VBOXSVR\2safe\TwoSafe\obj\Debug\TwoSafe.View.FormRegistration.resources

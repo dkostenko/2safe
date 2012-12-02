@@ -16,7 +16,14 @@ namespace TwoSafe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());
+
+            //смотрим, атворизован ли пользователь
+
+            //если да, то открываем программу и засовываем в трей
+            //Application.Run(new FormLogin());
+            Application.Run(new View.FormRegistration());
+
+            //если нет, то открываем форму логина
         }
     }
 }
