@@ -12,3 +12,17 @@ E:\TwoSafe\bin\Debug\Newtonsoft.Json.pdb
 E:\TwoSafe\bin\Debug\Newtonsoft.Json.xml
 E:\TwoSafe\obj\Debug\TwoSafe.exe
 E:\TwoSafe\obj\Debug\TwoSafe.pdb
+\\VBOXSVR\2safe\TwoSafe\bin\Debug\TwoSafe.exe.config
+\\VBOXSVR\2safe\TwoSafe\obj\Debug\TwoSafe.exe
+\\VBOXSVR\2safe\TwoSafe\obj\Debug\TwoSafe.pdb
+\\VBOXSVR\2safe\TwoSafe\bin\Debug\TwoSafe.exe
+\\VBOXSVR\2safe\TwoSafe\bin\Debug\TwoSafe.pdb
+\\VBOXSVR\2safe\TwoSafe\bin\Debug\Newtonsoft.Json.dll
+\\VBOXSVR\2safe\TwoSafe\bin\Debug\Newtonsoft.Json.pdb
+\\VBOXSVR\2safe\TwoSafe\bin\Debug\Newtonsoft.Json.xml
+\\VBOXSVR\2safe\TwoSafe\obj\Debug\TwoSafe.csprojResolveAssemblyReference.cache
+\\VBOXSVR\2safe\TwoSafe\obj\Debug\TwoSafe.View.FormLogin.resources
+\\VBOXSVR\2safe\TwoSafe\obj\Debug\TwoSafe.Properties.Resources.resources
+\\VBOXSVR\2safe\TwoSafe\obj\Debug\TwoSafe.View.FormPreferences.resources
+\\VBOXSVR\2safe\TwoSafe\obj\Debug\TwoSafe.View.FormRegistration.resources
+\\VBOXSVR\2safe\TwoSafe\obj\Debug\TwoSafe.csproj.GenerateResource.Cache

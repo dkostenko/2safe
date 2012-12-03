@@ -21,7 +21,7 @@ namespace TwoSafe
 
             //если да, то открываем программу и засовываем в трей
             //Application.Run(new FormLogin());
-            Application.Run(new View.FormRegistration());
+            Application.Run(new View.FormPreferences());
 
             //если нет, то открываем форму логина
         }

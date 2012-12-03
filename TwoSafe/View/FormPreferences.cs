@@ -15,6 +15,7 @@ namespace TwoSafe.View
         public FormPreferences()
         {
             InitializeComponent();
+            trayIcon.Visible = true; // показываем иконку в трее
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -22,6 +23,16 @@ namespace TwoSafe.View
             View.FormRegistration formRegistration = new FormRegistration();
             formRegistration.Show();
             //this.Hide();
+        }
+
+        private void FormPreferences_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+        }
+
+        private void notifyIcon_Click(object sender, EventArgs e)
+        {
         }
     }
 }
