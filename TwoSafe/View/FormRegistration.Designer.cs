@@ -141,6 +141,7 @@
             this.Controls.Add(this.labelPassword);
             this.Name = "FormRegistration";
             this.Text = "FormRegistration";
+            this.Shown += new System.EventHandler(this.FormRegistration_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pbCaptcha)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

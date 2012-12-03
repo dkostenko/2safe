@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 
-namespace TwoSafe
+namespace TwoSafe.View
 {
     public partial class FormLogin : Form
     {
@@ -21,8 +20,7 @@ namespace TwoSafe
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             string data = "&login=" + tbAccount.Text + "&password=" + tbPassword.Text;
-            string respond = Controller.Connection.sendRequest("GET", "auth", data);
-            Model.Json json = JsonConvert.DeserializeObject<Model.Json>(respond);
+            Model.Json json = Controller.Connection.sendRequest("GET", "auth", data);
             if (json.response.success)
             {
                 MessageBox.Show("Вы вошли");

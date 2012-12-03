@@ -16,5 +16,12 @@ namespace TwoSafe.View
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            View.FormRegistration formRegistration = new FormRegistration();
+            formRegistration.Show();
+            //this.Hide();
+        }
     }
 }

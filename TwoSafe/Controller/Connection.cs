@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net;
 using System.Drawing;
+using Newtonsoft.Json;
 
 namespace TwoSafe.Controller
 {
@@ -24,9 +25,9 @@ namespace TwoSafe.Controller
         /// <param name="data">Строка с данными
         /// </param>
         /// <returns>
-        /// Возвращает JSON с ответом
+        /// Возвращает Model.Json с ответом
         /// </returns>
-        public static string sendRequest(string type, string cmd, string data)
+        public static Model.Json sendRequest(string type, string cmd, string data)
         {
             string url = baseUrl + cmd;
             Console.WriteLine(url + data);
@@ -37,7 +38,9 @@ namespace TwoSafe.Controller
                 respond = sendGET(url, data);
             }
 
-            return respond;
+            Model.Json json = JsonConvert.DeserializeObject<Model.Json>(respond);
+
+            return json;
         }
 
 
@@ -45,11 +48,12 @@ namespace TwoSafe.Controller
         /// Получить капчу
         /// </summary>
         /// <returns>
-        /// Возвращает BitMap с капчей
+        /// Возвращает Object[], где [0] - Bitmap captcha, [1] - string CaptchaID
         /// </returns>
-        public static Bitmap getCaptcha()
+        public static Object[] getCaptcha()
         {
-            Bitmap captcha = new Bitmap(100, 100);
+            Object[] captcha = new Object[2];
+            string temp;
 
             WebRequest req = WebRequest.Create("https://api.2safe.com/?cmd=get_captcha");
 
@@ -57,21 +61,15 @@ namespace TwoSafe.Controller
             {
                 WebResponse resp = req.GetResponse();
                 Stream stream = resp.GetResponseStream();
-                captcha = new Bitmap(stream);
+                captcha[0] = new Bitmap(stream);
+                temp = resp.Headers.GetValues(4)[0];
+                temp = temp.Substring(13).Split(';')[0];
+                captcha[1] = temp;
+                
                 stream.Close();
             }
-            catch (WebException wex)
+            catch
             {
-                if (wex.Response != null)
-                {
-                    using (var errorResponse = (HttpWebResponse)wex.Response)
-                    {
-                        using (var reader = new StreamReader(errorResponse.GetResponseStream()))
-                        {
-                            //TODO: use JSON.net to parse this string and look at the error message
-                        }
-                    }
-                }
             }
             return captcha;
         }

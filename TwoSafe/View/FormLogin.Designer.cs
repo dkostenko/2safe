@@ -1,4 +1,4 @@
-﻿namespace TwoSafe
+﻿namespace TwoSafe.View
 {
     partial class FormLogin
     {
