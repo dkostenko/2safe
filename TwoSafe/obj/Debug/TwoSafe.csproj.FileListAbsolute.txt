@@ -1,5 +1,4 @@
 E:\TwoSafe\bin\Debug\TwoSafe.exe.config
-E:\TwoSafe\obj\Debug\TwoSafe.csprojResolveAssemblyReference.cache
 E:\TwoSafe\obj\Debug\TwoSafe.Properties.Resources.resources
 E:\TwoSafe\obj\Debug\TwoSafe.View.FormPreferences.resources
 E:\TwoSafe\obj\Debug\TwoSafe.View.FormRegistration.resources

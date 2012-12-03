@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Connection.cs" />
-    <Compile Include="Model\UserInfo.cs" />
+    <Compile Include="Model\Cookie.cs" />
     <Compile Include="View\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
