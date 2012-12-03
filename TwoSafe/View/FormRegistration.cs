@@ -21,6 +21,7 @@ namespace TwoSafe.View
             captchaId = "";
             InitializeComponent();
             //TODO показать картинку-заглушку на месте капчи, пока капча подгружается
+
         }
 
         private void buttonRegistration_Click(object sender, EventArgs e)
