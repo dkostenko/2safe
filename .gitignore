@@ -1,1 +1,3 @@
-/TwoSafe/bin/Debug/
+bin/
+*.suo
+.DS_Store
