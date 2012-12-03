@@ -24,3 +24,4 @@ E:\TwoSafe\obj\Debug\TwoSafe.pdb
 \\VBOXSVR\2safe\TwoSafe\obj\Debug\TwoSafe.View.FormPreferences.resources
 \\VBOXSVR\2safe\TwoSafe\obj\Debug\TwoSafe.View.FormRegistration.resources
 \\VBOXSVR\2safe\TwoSafe\obj\Debug\TwoSafe.csproj.GenerateResource.Cache
+E:\TwoSafe\obj\Debug\TwoSafe.csprojResolveAssemblyReference.cache

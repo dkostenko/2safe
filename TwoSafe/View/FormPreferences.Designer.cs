@@ -95,6 +95,7 @@
             this.Name = "FormPreferences";
             this.Text = "Preferences";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPreferences_FormClosing);
+            this.Shown += new System.EventHandler(this.FormPreferences_Shown);
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 

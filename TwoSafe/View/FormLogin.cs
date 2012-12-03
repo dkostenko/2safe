@@ -12,9 +12,13 @@ namespace TwoSafe.View
 {
     public partial class FormLogin : Form
     {
-        public FormLogin()
+        private string[] cookie;
+        private View.FormPreferences formPreferences;
+        public FormLogin(string[] cookie, View.FormPreferences formPreferences)
         {
             InitializeComponent();
+            this.cookie = cookie;
+            this.formPreferences = formPreferences;
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -23,10 +27,10 @@ namespace TwoSafe.View
             Model.Json json = Controller.Connection.sendRequest("GET", "auth", data);
             if (json.response.success)
             {
+                this.cookie[3] = json.response.token;
                 MessageBox.Show("Вы вошли");
-                View.FormPreferences prefs = new View.FormPreferences();
+                formPreferences.Show();
                 this.Close();
-                prefs.Show();
             }
             else
             {

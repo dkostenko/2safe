@@ -12,9 +12,13 @@ namespace TwoSafe.View
 {
     public partial class FormPreferences : Form
     {
-        public FormPreferences()
+        private string[] cookie;
+
+        public FormPreferences(string[] cookie)
         {
             InitializeComponent();
+            this.cookie = cookie;
+
             trayIcon.Visible = true; // показываем иконку в трее
         }
 
@@ -27,12 +31,23 @@ namespace TwoSafe.View
 
         private void FormPreferences_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
-            this.Hide();
+            //e.Cancel = true;
+            //this.Hide();
         }
 
         private void notifyIcon_Click(object sender, EventArgs e)
         {
+        }
+
+        private void FormPreferences_Shown(object sender, EventArgs e)
+        {
+            if (this.cookie == null) //если куков не существует, то просим пользователя авторизоваться заного
+            {
+                cookie = new string[5];
+                this.Hide();
+                FormLogin formLogin = new FormLogin(cookie, this);
+                formLogin.Show();
+            }
         }
     }
 }
