@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Globalization;
+using System.Threading;
+using System.Resources;
+
 namespace TwoSafe.View
 {
     public partial class FormPreferences : Form
@@ -16,6 +20,8 @@ namespace TwoSafe.View
 
         public FormPreferences(string[] cookie)
         {
+            
+           Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US"); // эта строка ициниализирует язык ru-RU
             InitializeComponent();
             this.cookie = cookie;
 
@@ -49,5 +55,12 @@ namespace TwoSafe.View
                 formLogin.Show();
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ResourceManager Lan = new ResourceManager("TwoSafe.WinFormStrings", typeof(FormPreferences).Assembly);
+            MessageBox.Show(Lan.GetString("testvar"));
+        }
+
     }
 }
