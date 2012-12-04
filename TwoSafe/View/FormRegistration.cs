@@ -21,15 +21,6 @@ namespace TwoSafe.View
             captchaId = "";
             InitializeComponent();
             //TODO показать картинку-заглушку на месте капчи, пока капча подгружается
-            //НАЧАЛО ТЕСТОВ
-            Model.Cookie.Write(new string[] {"h2k1jh21kh21","whatever thi s s","man fuck you"});
-            string[] temp = Model.Cookie.Read();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                tbAccount.AppendText(temp[i] + " ");
-            }
-            //Конец тестов
-
         }
 
         private void buttonRegistration_Click(object sender, EventArgs e)
