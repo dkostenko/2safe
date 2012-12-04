@@ -8,13 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Globalization;
+using System.Threading;
+using System.Resources;
+
 namespace TwoSafe.View
 {
     public partial class FormLogin : Form
     {
-        public FormLogin()
+        private string[] cookie;
+        private View.FormPreferences formPreferences;
+        public FormLogin(string[] cookie, View.FormPreferences formPreferences)
         {
             InitializeComponent();
+            this.cookie = cookie;
+            this.formPreferences = formPreferences;
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -23,16 +31,25 @@ namespace TwoSafe.View
             Model.Json json = Controller.Connection.sendRequest("GET", "auth", data);
             if (json.response.success)
             {
-                MessageBox.Show("Вы вошли");
-                View.FormPreferences prefs = new View.FormPreferences();
+                this.cookie[3] = json.response.token;
+                Model.Cookie.Write(json.response.token);
+                formPreferences.Show();
                 this.Close();
-                prefs.Show();
             }
             else
             {
                 MessageBox.Show("Вы не вошли");
             }
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //обращаюсь к языковой сборке, какой язык , я определили ещё вначале
+            ResourceManager Lan = new ResourceManager("TwoSafe.View.WinFormStrings", typeof(FormPreferences).Assembly);
+            //беру перменную из сборки
+      
+            MessageBox.Show(Lan.GetString("strMessage"));
         }
     }
 }

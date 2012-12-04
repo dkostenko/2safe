@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>E:\TwoSafe\json_net\Bin\Net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>json_net\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Controller\Connection.cs" />
     <Compile Include="Model\Cookie.cs" />
+    <Compile Include="Model\Session.cs" />
     <Compile Include="View\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +71,11 @@
     <Compile Include="View\FormRegistration.Designer.cs">
       <DependentUpon>FormRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\WinFormStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WinFormStrings.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -82,12 +88,26 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\FormLogin.ru.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormPreferences.resx">
+      <DependentUpon>FormPreferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormPreferences.ru.resx">
       <DependentUpon>FormPreferences.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormRegistration.resx">
       <DependentUpon>FormRegistration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormRegistration.ru.resx">
+      <DependentUpon>FormRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\WinFormStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WinFormStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\WinFormStrings.ru-RU.resx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

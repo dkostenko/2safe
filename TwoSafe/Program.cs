@@ -17,13 +17,12 @@ namespace TwoSafe
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //смотрим, атворизован ли пользователь
+            //посылаем куки в форму настроек (далее Главная форма)
+            //если куки пустые, то отроется форма авторизации
 
-            //если да, то открываем программу и засовываем в трей
-            //Application.Run(new FormLogin());
-            Application.Run(new View.FormRegistration());
-            
-            //если нет, то открываем форму логина
+            string[] cookie = Model.Cookie.Read();
+
+            Application.Run(new View.FormPreferences(cookie));
         }
     }
 }

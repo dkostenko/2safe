@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistration));
             this.labelPassword = new System.Windows.Forms.Label();
             this.tbAccount = new System.Windows.Forms.TextBox();
             this.labelPass = new System.Windows.Forms.Label();
@@ -43,92 +44,61 @@
             // 
             // labelPassword
             // 
-            this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(60, 22);
+            resources.ApplyResources(this.labelPassword, "labelPassword");
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(46, 13);
-            this.labelPassword.TabIndex = 0;
-            this.labelPassword.Text = "account";
             // 
             // tbAccount
             // 
-            this.tbAccount.Location = new System.Drawing.Point(113, 22);
+            resources.ApplyResources(this.tbAccount, "tbAccount");
             this.tbAccount.Name = "tbAccount";
-            this.tbAccount.Size = new System.Drawing.Size(100, 20);
-            this.tbAccount.TabIndex = 1;
             // 
             // labelPass
             // 
-            this.labelPass.AutoSize = true;
-            this.labelPass.Location = new System.Drawing.Point(54, 75);
+            resources.ApplyResources(this.labelPass, "labelPass");
             this.labelPass.Name = "labelPass";
-            this.labelPass.Size = new System.Drawing.Size(52, 13);
-            this.labelPass.TabIndex = 2;
-            this.labelPass.Text = "password";
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(113, 72);
+            resources.ApplyResources(this.tbPassword, "tbPassword");
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(100, 20);
-            this.tbPassword.TabIndex = 3;
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(113, 119);
+            resources.ApplyResources(this.tbEmail, "tbEmail");
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(100, 20);
-            this.tbEmail.TabIndex = 4;
             // 
             // labelEmail
             // 
-            this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(70, 125);
+            resources.ApplyResources(this.labelEmail, "labelEmail");
             this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(31, 13);
-            this.labelEmail.TabIndex = 5;
-            this.labelEmail.Text = "email";
             // 
             // buttonRegistration
             // 
-            this.buttonRegistration.Location = new System.Drawing.Point(126, 288);
+            resources.ApplyResources(this.buttonRegistration, "buttonRegistration");
             this.buttonRegistration.Name = "buttonRegistration";
-            this.buttonRegistration.Size = new System.Drawing.Size(75, 23);
-            this.buttonRegistration.TabIndex = 6;
-            this.buttonRegistration.Text = "registrate";
             this.buttonRegistration.UseVisualStyleBackColor = true;
             this.buttonRegistration.Click += new System.EventHandler(this.buttonRegistration_Click);
             // 
             // pbCaptcha
             // 
-            this.pbCaptcha.Location = new System.Drawing.Point(57, 169);
+            resources.ApplyResources(this.pbCaptcha, "pbCaptcha");
             this.pbCaptcha.Name = "pbCaptcha";
-            this.pbCaptcha.Size = new System.Drawing.Size(169, 50);
-            this.pbCaptcha.TabIndex = 7;
             this.pbCaptcha.TabStop = false;
             // 
             // labelCaptcha
             // 
-            this.labelCaptcha.AutoSize = true;
-            this.labelCaptcha.Location = new System.Drawing.Point(65, 246);
+            resources.ApplyResources(this.labelCaptcha, "labelCaptcha");
             this.labelCaptcha.Name = "labelCaptcha";
-            this.labelCaptcha.Size = new System.Drawing.Size(46, 13);
-            this.labelCaptcha.TabIndex = 8;
-            this.labelCaptcha.Text = "captcha";
             // 
             // tbCaptcha
             // 
-            this.tbCaptcha.Location = new System.Drawing.Point(117, 243);
+            resources.ApplyResources(this.tbCaptcha, "tbCaptcha");
             this.tbCaptcha.Name = "tbCaptcha";
-            this.tbCaptcha.Size = new System.Drawing.Size(100, 20);
-            this.tbCaptcha.TabIndex = 9;
             // 
             // FormRegistration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 333);
             this.Controls.Add(this.tbCaptcha);
             this.Controls.Add(this.labelCaptcha);
             this.Controls.Add(this.pbCaptcha);
@@ -140,7 +110,6 @@
             this.Controls.Add(this.tbAccount);
             this.Controls.Add(this.labelPassword);
             this.Name = "FormRegistration";
-            this.Text = "FormRegistration";
             this.Shown += new System.EventHandler(this.FormRegistration_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pbCaptcha)).EndInit();
             this.ResumeLayout(false);

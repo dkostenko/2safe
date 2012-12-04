@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Threading;
 
+using System.Globalization;
+using System.Resources;
 namespace TwoSafe.View
 {
     public partial class FormRegistration : Form
