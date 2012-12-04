@@ -1,4 +1,4 @@
 bin/
-*.suo
+obj/
 .DS_Store
 TwoSafe.v11.suo
