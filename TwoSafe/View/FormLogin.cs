@@ -28,7 +28,7 @@ namespace TwoSafe.View
             if (json.response.success)
             {
                 this.cookie[3] = json.response.token;
-                MessageBox.Show("Вы вошли");
+                Model.Cookie.Write(json.response.token);
                 formPreferences.Show();
                 this.Close();
             }
