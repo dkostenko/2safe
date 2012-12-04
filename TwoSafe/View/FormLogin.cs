@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Globalization;
+using System.Threading;
+using System.Resources;
+
 namespace TwoSafe.View
 {
     public partial class FormLogin : Form
@@ -37,6 +41,15 @@ namespace TwoSafe.View
                 MessageBox.Show("Вы не вошли");
             }
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //обращаюсь к языковой сборке, какой язык , я определили ещё вначале
+            ResourceManager Lan = new ResourceManager("TwoSafe.View.WinFormStrings", typeof(FormPreferences).Assembly);
+            //беру перменную из сборки
+      
+            MessageBox.Show(Lan.GetString("strMessage"));
         }
     }
 }
