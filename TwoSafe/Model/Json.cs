@@ -32,7 +32,6 @@ namespace TwoSafe.Model
     public class Json
     {
         public Response response { get; set; }
-        public string error_msg { get; set; }
         public string error_code { get; set; }
     }
 }

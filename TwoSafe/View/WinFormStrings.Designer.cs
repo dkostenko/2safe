@@ -61,11 +61,11 @@ namespace TwoSafe.View {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to InEnglish.
+        ///   Looks up a localized string similar to Password is not defined.
         /// </summary>
-        internal static string strMessage {
+        internal static string error011 {
             get {
-                return ResourceManager.GetString("strMessage", resourceCulture);
+                return ResourceManager.GetString("error011", resourceCulture);
             }
         }
     }

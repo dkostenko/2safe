@@ -18,38 +18,32 @@ namespace TwoSafe.View
     {
         private string[] cookie;
         private View.FormPreferences formPreferences;
+        ResourceManager language;
+
         public FormLogin(string[] cookie, View.FormPreferences formPreferences)
         {
             InitializeComponent();
             this.cookie = cookie;
             this.formPreferences = formPreferences;
+            this.language = new ResourceManager("TwoSafe.View.WinFormStrings", typeof(FormPreferences).Assembly);
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             string data = "&login=" + tbAccount.Text + "&password=" + tbPassword.Text;
             Model.Json json = Controller.Connection.sendRequest("GET", "auth", data);
-            if (json.response.success)
+            if (json.error_code != null)
             {
-                this.cookie[3] = json.response.token;
-                Model.Cookie.Write(json.response.token);
+                MessageBox.Show(language.GetString("error" + json.error_code));
+                return;
+            }
+            if (json.response.success != null && json.response.success)
+            {
+                this.cookie[0] = json.response.token;
+                Model.Cookie.Write(cookie);
                 formPreferences.Show();
                 this.Close();
             }
-            else
-            {
-                MessageBox.Show("Вы не вошли");
-            }
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //обращаюсь к языковой сборке, какой язык , я определили ещё вначале
-            ResourceManager Lan = new ResourceManager("TwoSafe.View.WinFormStrings", typeof(FormPreferences).Assembly);
-            //беру перменную из сборки
-      
-            MessageBox.Show(Lan.GetString("strMessage"));
         }
     }
 }

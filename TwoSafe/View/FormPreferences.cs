@@ -18,14 +18,13 @@ namespace TwoSafe.View
     {
         private string[] cookie;
 
-        public FormPreferences(string[] cookie)
+        public FormPreferences()
         {
-            
-           Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US"); // эта строка ициниализирует язык ru-RU
             InitializeComponent();
-            this.cookie = cookie;
-
-            trayIcon.Visible = true; // показываем иконку в трее
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US"); // эта строка ициниализирует язык ru-RU
+            this.cookie = Model.Cookie.Read();
+            
+            //trayIcon.Visible = true; // показываем иконку в трее
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -47,20 +46,37 @@ namespace TwoSafe.View
 
         private void FormPreferences_Shown(object sender, EventArgs e)
         {
+            bool showLoginForm = false;
+            Model.Json json;
+
             if (this.cookie == null) //если куков не существует, то просим пользователя авторизоваться заного
             {
+                showLoginForm = true;
+            }
+            else
+            {
+                cookie = Model.Cookie.Read();
+                json = Controller.Connection.sendRequest("GET", "get_personal_data", "&token=" + cookie[0]);
+                if (json.error_code != null)
+                {
+                    showLoginForm = true;
+                }
+            }
+
+            if(showLoginForm)
+            {
                 cookie = new string[5];
-                this.Hide();
                 FormLogin formLogin = new FormLogin(cookie, this);
+                this.Hide();
                 formLogin.Show();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ResourceManager Lan = new ResourceManager("TwoSafe.WinFormStrings", typeof(FormPreferences).Assembly);
-            MessageBox.Show(Lan.GetString("testvar"));
+            string[] files = new string[1];
+            files[0] = "C:/Users/dmitry/Desktop/text__.txt";
+            Controller.Connection.UploadFilesToRemoteUrl(files);
         }
-
     }
 }

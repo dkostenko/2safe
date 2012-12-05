@@ -34,7 +34,6 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.labelPassowrd = new System.Windows.Forms.Label();
             this.buttonLogin = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbAccount
@@ -64,18 +63,10 @@
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // FormLogin
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.labelPassowrd);
             this.Controls.Add(this.tbPassword);
@@ -94,7 +85,6 @@
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label labelPassowrd;
         private System.Windows.Forms.Button buttonLogin;
-        private System.Windows.Forms.Button button1;
     }
 }
 

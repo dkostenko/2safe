@@ -17,12 +17,7 @@ namespace TwoSafe
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //посылаем куки в форму настроек (далее Главная форма)
-            //если куки пустые, то отроется форма авторизации
-
-            string[] cookie = Model.Cookie.Read();
-
-            Application.Run(new View.FormPreferences(cookie));
+            Application.Run(new View.FormPreferences());
         }
     }
 }
