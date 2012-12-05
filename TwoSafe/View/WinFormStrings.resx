@@ -117,7 +117,256 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="error001" xml:space="preserve">
+    <value>Not Autorize</value>
+  </data>
+  <data name="error002" xml:space="preserve">
+    <value>Incorrect Login</value>
+  </data>
+  <data name="error003" xml:space="preserve">
+    <value>Password Hash not found in DB</value>
+  </data>
+  <data name="error004" xml:space="preserve">
+    <value>Incorrect Password</value>
+  </data>
+  <data name="error005" xml:space="preserve">
+    <value>Command is not defined</value>
+  </data>
+  <data name="error006" xml:space="preserve">
+    <value>Command not found</value>
+  </data>
+  <data name="error007" xml:space="preserve">
+    <value>Param email is not defined</value>
+  </data>
+  <data name="error008" xml:space="preserve">
+    <value>Invalid format email</value>
+  </data>
+  <data name="error009" xml:space="preserve">
+    <value>Param login is not defined</value>
+  </data>
+  <data name="error010" xml:space="preserve">
+    <value>Invalid format login</value>
+  </data>
   <data name="error011" xml:space="preserve">
-    <value>Password is not defined</value>
+    <value>Param password is not defined</value>
+  </data>
+  <data name="error012" xml:space="preserve">
+    <value>Error when accessing DataBase</value>
+  </data>
+  <data name="error013" xml:space="preserve">
+    <value>Email is not available</value>
+  </data>
+  <data name="error014" xml:space="preserve">
+    <value>Login is not available</value>
+  </data>
+  <data name="error015" xml:space="preserve">
+    <value>Invalid Token</value>
+  </data>
+  <data name="error016" xml:space="preserve">
+    <value>File is not defined</value>
+  </data>
+  <data name="error017" xml:space="preserve">
+    <value>Upload file error</value>
+  </data>
+  <data name="error018" xml:space="preserve">
+    <value>Param dir_id is not defined</value>
+  </data>
+  <data name="error019" xml:space="preserve">
+    <value>Invalid dir_id</value>
+  </data>
+  <data name="error020" xml:space="preserve">
+    <value>Invalid container</value>
+  </data>
+  <data name="error021" xml:space="preserve">
+    <value>Root dir not found</value>
+  </data>
+  <data name="error022" xml:space="preserve">
+    <value>Param dir_name is not defined</value>
+  </data>
+  <data name="error023" xml:space="preserve">
+    <value>Recursive dirs detected</value>
+  </data>
+  <data name="error024" xml:space="preserve">
+    <value>Permissions Denied</value>
+  </data>
+  <data name="error025" xml:space="preserve">
+    <value>Excess of quota</value>
+  </data>
+  <data name="error026" xml:space="preserve">
+    <value>Object exists</value>
+  </data>
+  <data name="error027" xml:space="preserve">
+    <value>File name is not defined</value>
+  </data>
+  <data name="error028" xml:space="preserve">
+    <value>File size is not defined</value>
+  </data>
+  <data name="error029" xml:space="preserve">
+    <value>File type is not defined</value>
+  </data>
+  <data name="error030" xml:space="preserve">
+    <value>Invalid format file size</value>
+  </data>
+  <data name="error031" xml:space="preserve">
+    <value>Param is not defined</value>
+  </data>
+  <data name="error032" xml:space="preserve">
+    <value>Invalid id</value>
+  </data>
+  <data name="error033" xml:space="preserve">
+    <value>Param id is not defined</value>
+  </data>
+  <data name="error034" xml:space="preserve">
+    <value>Invalid url</value>
+  </data>
+  <data name="error035" xml:space="preserve">
+    <value>Trash dir not found</value>
+  </data>
+  <data name="error036" xml:space="preserve">
+    <value>Dir not empty</value>
+  </data>
+  <data name="error037" xml:space="preserve">
+    <value>Error when accessing to Storage</value>
+  </data>
+  <data name="error038" xml:space="preserve">
+    <value>Unlink file error</value>
+  </data>
+  <data name="error039" xml:space="preserve">
+    <value>Dir hash is not defined</value>
+  </data>
+  <data name="error040" xml:space="preserve">
+    <value>User hash is not defined</value>
+  </data>
+  <data name="error041" xml:space="preserve">
+    <value>Excess of size</value>
+  </data>
+  <data name="error042" xml:space="preserve">
+    <value>Invalid format offset</value>
+  </data>
+  <data name="error043" xml:space="preserve">
+    <value>Excess of offset</value>
+  </data>
+  <data name="error044" xml:space="preserve">
+    <value>Checksum is not equivalent</value>
+  </data>
+  <data name="error045" xml:space="preserve">
+    <value>Object not found</value>
+  </data>
+  <data name="error046" xml:space="preserve">
+    <value>Invalid name</value>
+  </data>
+  <data name="error047" xml:space="preserve">
+    <value>Root file not found</value>
+  </data>
+  <data name="error048" xml:space="preserve">
+    <value>Props is not defined</value>
+  </data>
+  <data name="error049" xml:space="preserve">
+    <value>Personal is not defined</value>
+  </data>
+  <data name="error050" xml:space="preserve">
+    <value>Passwords equivalent</value>
+  </data>
+  <data name="error051" xml:space="preserve">
+    <value>Auth_string not defined</value>
+  </data>
+  <data name="error052" xml:space="preserve">
+    <value>Param captcha is not defined</value>
+  </data>
+  <data name="error053" xml:space="preserve">
+    <value>Invalid captcha</value>
+  </data>
+  <data name="error054" xml:space="preserve">
+    <value>User not Found</value>
+  </data>
+  <data name="error055" xml:space="preserve">
+    <value>Password is Empty</value>
+  </data>
+  <data name="error056" xml:space="preserve">
+    <value>Already exists</value>
+  </data>
+  <data name="error057" xml:space="preserve">
+    <value>Login is Empty</value>
+  </data>
+  <data name="error058" xml:space="preserve">
+    <value>Path not found</value>
+  </data>
+  <data name="error059" xml:space="preserve">
+    <value>Not a directory</value>
+  </data>
+  <data name="error060" xml:space="preserve">
+    <value>Already locked</value>
+  </data>
+  <data name="error061" xml:space="preserve">
+    <value>Lock_token not defined</value>
+  </data>
+  <data name="error062" xml:space="preserve">
+    <value>Not locked</value>
+  </data>
+  <data name="error063" xml:space="preserve">
+    <value>Not a file</value>
+  </data>
+  <data name="error064" xml:space="preserve">
+    <value>Timeout not defined</value>
+  </data>
+  <data name="error065" xml:space="preserve">
+    <value>Invalid Timeout</value>
+  </data>
+  <data name="error066" xml:space="preserve">
+    <value>Object is not shared</value>
+  </data>
+  <data name="error067" xml:space="preserve">
+    <value>Recursion while moving directory</value>
+  </data>
+  <data name="error068" xml:space="preserve">
+    <value>Shared dir not found</value>
+  </data>
+  <data name="error069" xml:space="preserve">
+    <value>Invalid format time</value>
+  </data>
+  <data name="error070" xml:space="preserve">
+    <value>Invalid format Range</value>
+  </data>
+  <data name="error071" xml:space="preserve">
+    <value>Param like is not defined</value>
+  </data>
+  <data name="error072" xml:space="preserve">
+    <value>Invalid format like</value>
+  </data>
+  <data name="error073" xml:space="preserve">
+    <value>Not a version</value>
+  </data>
+  <data name="error074" xml:space="preserve">
+    <value>Invalid expires</value>
+  </data>
+  <data name="error075" xml:space="preserve">
+    <value>Object is not versioned</value>
+  </data>
+  <data name="error076" xml:space="preserve">
+    <value>Object already versioned</value>
+  </data>
+  <data name="error077" xml:space="preserve">
+    <value>Password mismatch</value>
+  </data>
+  <data name="error078" xml:space="preserve">
+    <value>Promo code is not defined</value>
+  </data>
+  <data name="error079" xml:space="preserve">
+    <value>Promo code already activated</value>
+  </data>
+  <data name="error080" xml:space="preserve">
+    <value>Invalid promo code</value>
+  </data>
+  <data name="error081" xml:space="preserve">
+    <value>Already participated promo name</value>
+  </data>
+  <data name="error082" xml:space="preserve">
+    <value>Timeout fail promo attempts</value>
+  </data>
+  <data name="error083" xml:space="preserve">
+    <value>Param reset code is not defined</value>
+  </data>
+  <data name="error084" xml:space="preserve">
+    <value>Invalid reset code</value>
   </data>
 </root>

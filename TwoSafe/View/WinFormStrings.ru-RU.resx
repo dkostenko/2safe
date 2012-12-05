@@ -117,7 +117,256 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="error001" xml:space="preserve">
+    <value>Не авторизован</value>
+  </data>
+  <data name="error002" xml:space="preserve">
+    <value>Неправильный логин</value>
+  </data>
+  <data name="error003" xml:space="preserve">
+    <value>Hash пароля не найден в БД</value>
+  </data>
+  <data name="error004" xml:space="preserve">
+    <value>Неправильный пароль</value>
+  </data>
+  <data name="error005" xml:space="preserve">
+    <value>Команда не определена</value>
+  </data>
+  <data name="error006" xml:space="preserve">
+    <value>Комманда не найдена</value>
+  </data>
+  <data name="error007" xml:space="preserve">
+    <value>Параметр "email" не задан</value>
+  </data>
+  <data name="error008" xml:space="preserve">
+    <value>Неправильный формат email</value>
+  </data>
+  <data name="error009" xml:space="preserve">
+    <value>Параметр "login" не определен</value>
+  </data>
+  <data name="error010" xml:space="preserve">
+    <value>Неправильный формат login</value>
+  </data>
   <data name="error011" xml:space="preserve">
-    <value>По-Русски</value>
+    <value>Параметр "password" не определен</value>
+  </data>
+  <data name="error012" xml:space="preserve">
+    <value>Ошибка доступа к базе</value>
+  </data>
+  <data name="error013" xml:space="preserve">
+    <value>Email недоступен</value>
+  </data>
+  <data name="error014" xml:space="preserve">
+    <value>Login недоступен</value>
+  </data>
+  <data name="error015" xml:space="preserve">
+    <value>Неправильный токен</value>
+  </data>
+  <data name="error016" xml:space="preserve">
+    <value>Файл не определен</value>
+  </data>
+  <data name="error017" xml:space="preserve">
+    <value>Ошибка загрузки файла</value>
+  </data>
+  <data name="error018" xml:space="preserve">
+    <value>Параметр dir_id не определен</value>
+  </data>
+  <data name="error019" xml:space="preserve">
+    <value>Неправильный параметр dir_id</value>
+  </data>
+  <data name="error020" xml:space="preserve">
+    <value>Неправильный параметр container</value>
+  </data>
+  <data name="error021" xml:space="preserve">
+    <value>Корневая папка не найдена</value>
+  </data>
+  <data name="error022" xml:space="preserve">
+    <value>Параметр dir_name не определен</value>
+  </data>
+  <data name="error023" xml:space="preserve">
+    <value>Обнаружены рекурсивные папки</value>
+  </data>
+  <data name="error024" xml:space="preserve">
+    <value>Отказано в доступе</value>
+  </data>
+  <data name="error025" xml:space="preserve">
+    <value>Превышение квоты</value>
+  </data>
+  <data name="error026" xml:space="preserve">
+    <value>Объект существует</value>
+  </data>
+  <data name="error027" xml:space="preserve">
+    <value>Имя файла не определено</value>
+  </data>
+  <data name="error028" xml:space="preserve">
+    <value>Размер файла не определен</value>
+  </data>
+  <data name="error029" xml:space="preserve">
+    <value>Тип файла не определен</value>
+  </data>
+  <data name="error030" xml:space="preserve">
+    <value>Неправильный формат размера</value>
+  </data>
+  <data name="error031" xml:space="preserve">
+    <value>Параметр не определен</value>
+  </data>
+  <data name="error032" xml:space="preserve">
+    <value>Неправильный id</value>
+  </data>
+  <data name="error033" xml:space="preserve">
+    <value>Параметр id не определен</value>
+  </data>
+  <data name="error034" xml:space="preserve">
+    <value>Плохая url</value>
+  </data>
+  <data name="error035" xml:space="preserve">
+    <value>Папка с мусором не найдена</value>
+  </data>
+  <data name="error036" xml:space="preserve">
+    <value>Папка не пуста</value>
+  </data>
+  <data name="error037" xml:space="preserve">
+    <value>Ошибка доступа к Хранилищу</value>
+  </data>
+  <data name="error038" xml:space="preserve">
+    <value>Unlink file error</value>
+  </data>
+  <data name="error039" xml:space="preserve">
+    <value>Хэш папки не определен</value>
+  </data>
+  <data name="error040" xml:space="preserve">
+    <value>Хэш юзера не определен</value>
+  </data>
+  <data name="error041" xml:space="preserve">
+    <value>Превышение размера</value>
+  </data>
+  <data name="error042" xml:space="preserve">
+    <value>Неправильный сдвиг</value>
+  </data>
+  <data name="error043" xml:space="preserve">
+    <value>Превышение сдвига</value>
+  </data>
+  <data name="error044" xml:space="preserve">
+    <value>Checksum не сходится</value>
+  </data>
+  <data name="error045" xml:space="preserve">
+    <value>Объект не найден</value>
+  </data>
+  <data name="error046" xml:space="preserve">
+    <value>Неправильное имя</value>
+  </data>
+  <data name="error047" xml:space="preserve">
+    <value>Корневой файл не найден</value>
+  </data>
+  <data name="error048" xml:space="preserve">
+    <value>Свойства не определены</value>
+  </data>
+  <data name="error049" xml:space="preserve">
+    <value>Personal не определен</value>
+  </data>
+  <data name="error050" xml:space="preserve">
+    <value>Пароли одинаковые</value>
+  </data>
+  <data name="error051" xml:space="preserve">
+    <value>Auth_string не определена</value>
+  </data>
+  <data name="error052" xml:space="preserve">
+    <value>Параметр captcha не определен</value>
+  </data>
+  <data name="error053" xml:space="preserve">
+    <value>Неправильная капча</value>
+  </data>
+  <data name="error054" xml:space="preserve">
+    <value>Юзер не найден</value>
+  </data>
+  <data name="error055" xml:space="preserve">
+    <value>Пустой пароль</value>
+  </data>
+  <data name="error056" xml:space="preserve">
+    <value>Уже существует</value>
+  </data>
+  <data name="error057" xml:space="preserve">
+    <value>Пустой логин</value>
+  </data>
+  <data name="error058" xml:space="preserve">
+    <value>Путь не найден</value>
+  </data>
+  <data name="error059" xml:space="preserve">
+    <value>Не является папкой</value>
+  </data>
+  <data name="error060" xml:space="preserve">
+    <value>Уже заблокирован</value>
+  </data>
+  <data name="error061" xml:space="preserve">
+    <value>Lock_token не определен</value>
+  </data>
+  <data name="error062" xml:space="preserve">
+    <value>Не заблокировано</value>
+  </data>
+  <data name="error063" xml:space="preserve">
+    <value>Не является файлом</value>
+  </data>
+  <data name="error064" xml:space="preserve">
+    <value>Таймаут не определен</value>
+  </data>
+  <data name="error065" xml:space="preserve">
+    <value>неправильный таймаут</value>
+  </data>
+  <data name="error066" xml:space="preserve">
+    <value>Объект не расшарен</value>
+  </data>
+  <data name="error067" xml:space="preserve">
+    <value>Рекурсия при перемещении папки</value>
+  </data>
+  <data name="error068" xml:space="preserve">
+    <value>Расшаренная папка не найдена</value>
+  </data>
+  <data name="error069" xml:space="preserve">
+    <value>Время в неправильном формате</value>
+  </data>
+  <data name="error070" xml:space="preserve">
+    <value>Range в неправильном формате</value>
+  </data>
+  <data name="error071" xml:space="preserve">
+    <value>Параметр like не определен</value>
+  </data>
+  <data name="error072" xml:space="preserve">
+    <value>like в неправильном формате</value>
+  </data>
+  <data name="error073" xml:space="preserve">
+    <value>Не является версией</value>
+  </data>
+  <data name="error074" xml:space="preserve">
+    <value>Invalid expires</value>
+  </data>
+  <data name="error075" xml:space="preserve">
+    <value>У объекта нет других версий</value>
+  </data>
+  <data name="error076" xml:space="preserve">
+    <value>У объекта уже есть версии</value>
+  </data>
+  <data name="error077" xml:space="preserve">
+    <value>Несовпадение паролей</value>
+  </data>
+  <data name="error078" xml:space="preserve">
+    <value>Промо код не определен</value>
+  </data>
+  <data name="error079" xml:space="preserve">
+    <value>Промо код уже активирован</value>
+  </data>
+  <data name="error080" xml:space="preserve">
+    <value>Неверный промокод</value>
+  </data>
+  <data name="error081" xml:space="preserve">
+    <value>Такое имя Промо уже было</value>
+  </data>
+  <data name="error082" xml:space="preserve">
+    <value>Таймаут промо</value>
+  </data>
+  <data name="error083" xml:space="preserve">
+    <value>Параметр reset code не определен</value>
+  </data>
+  <data name="error084" xml:space="preserve">
+    <value>Неправильный reset code</value>
   </data>
 </root>

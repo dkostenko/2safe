@@ -61,11 +61,758 @@ namespace TwoSafe.View {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password is not defined.
+        ///   Looks up a localized string similar to Not Autorize.
+        /// </summary>
+        internal static string error001 {
+            get {
+                return ResourceManager.GetString("error001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect Login.
+        /// </summary>
+        internal static string error002 {
+            get {
+                return ResourceManager.GetString("error002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password Hash not found in DB.
+        /// </summary>
+        internal static string error003 {
+            get {
+                return ResourceManager.GetString("error003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect Password.
+        /// </summary>
+        internal static string error004 {
+            get {
+                return ResourceManager.GetString("error004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Command is not defined.
+        /// </summary>
+        internal static string error005 {
+            get {
+                return ResourceManager.GetString("error005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Command not found.
+        /// </summary>
+        internal static string error006 {
+            get {
+                return ResourceManager.GetString("error006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Param email is not defined.
+        /// </summary>
+        internal static string error007 {
+            get {
+                return ResourceManager.GetString("error007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid format email.
+        /// </summary>
+        internal static string error008 {
+            get {
+                return ResourceManager.GetString("error008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Param login is not defined.
+        /// </summary>
+        internal static string error009 {
+            get {
+                return ResourceManager.GetString("error009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid format login.
+        /// </summary>
+        internal static string error010 {
+            get {
+                return ResourceManager.GetString("error010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Param password is not defined.
         /// </summary>
         internal static string error011 {
             get {
                 return ResourceManager.GetString("error011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error when accessing DataBase.
+        /// </summary>
+        internal static string error012 {
+            get {
+                return ResourceManager.GetString("error012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email is not available.
+        /// </summary>
+        internal static string error013 {
+            get {
+                return ResourceManager.GetString("error013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login is not available.
+        /// </summary>
+        internal static string error014 {
+            get {
+                return ResourceManager.GetString("error014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Token.
+        /// </summary>
+        internal static string error015 {
+            get {
+                return ResourceManager.GetString("error015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File is not defined.
+        /// </summary>
+        internal static string error016 {
+            get {
+                return ResourceManager.GetString("error016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload file error.
+        /// </summary>
+        internal static string error017 {
+            get {
+                return ResourceManager.GetString("error017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Param dir_id is not defined.
+        /// </summary>
+        internal static string error018 {
+            get {
+                return ResourceManager.GetString("error018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid dir_id.
+        /// </summary>
+        internal static string error019 {
+            get {
+                return ResourceManager.GetString("error019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid container.
+        /// </summary>
+        internal static string error020 {
+            get {
+                return ResourceManager.GetString("error020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root dir not found.
+        /// </summary>
+        internal static string error021 {
+            get {
+                return ResourceManager.GetString("error021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Param dir_name is not defined.
+        /// </summary>
+        internal static string error022 {
+            get {
+                return ResourceManager.GetString("error022", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recursive dirs detected.
+        /// </summary>
+        internal static string error023 {
+            get {
+                return ResourceManager.GetString("error023", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permissions Denied.
+        /// </summary>
+        internal static string error024 {
+            get {
+                return ResourceManager.GetString("error024", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excess of quota.
+        /// </summary>
+        internal static string error025 {
+            get {
+                return ResourceManager.GetString("error025", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object exists.
+        /// </summary>
+        internal static string error026 {
+            get {
+                return ResourceManager.GetString("error026", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File name is not defined.
+        /// </summary>
+        internal static string error027 {
+            get {
+                return ResourceManager.GetString("error027", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File size is not defined.
+        /// </summary>
+        internal static string error028 {
+            get {
+                return ResourceManager.GetString("error028", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File type is not defined.
+        /// </summary>
+        internal static string error029 {
+            get {
+                return ResourceManager.GetString("error029", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid format file size.
+        /// </summary>
+        internal static string error030 {
+            get {
+                return ResourceManager.GetString("error030", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Param is not defined.
+        /// </summary>
+        internal static string error031 {
+            get {
+                return ResourceManager.GetString("error031", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid id.
+        /// </summary>
+        internal static string error032 {
+            get {
+                return ResourceManager.GetString("error032", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Param id is not defined.
+        /// </summary>
+        internal static string error033 {
+            get {
+                return ResourceManager.GetString("error033", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid url.
+        /// </summary>
+        internal static string error034 {
+            get {
+                return ResourceManager.GetString("error034", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trash dir not found.
+        /// </summary>
+        internal static string error035 {
+            get {
+                return ResourceManager.GetString("error035", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dir not empty.
+        /// </summary>
+        internal static string error036 {
+            get {
+                return ResourceManager.GetString("error036", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error when accessing to Storage.
+        /// </summary>
+        internal static string error037 {
+            get {
+                return ResourceManager.GetString("error037", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unlink file error.
+        /// </summary>
+        internal static string error038 {
+            get {
+                return ResourceManager.GetString("error038", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dir hash is not defined.
+        /// </summary>
+        internal static string error039 {
+            get {
+                return ResourceManager.GetString("error039", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User hash is not defined.
+        /// </summary>
+        internal static string error040 {
+            get {
+                return ResourceManager.GetString("error040", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excess of size.
+        /// </summary>
+        internal static string error041 {
+            get {
+                return ResourceManager.GetString("error041", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid format offset.
+        /// </summary>
+        internal static string error042 {
+            get {
+                return ResourceManager.GetString("error042", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excess of offset.
+        /// </summary>
+        internal static string error043 {
+            get {
+                return ResourceManager.GetString("error043", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checksum is not equivalent.
+        /// </summary>
+        internal static string error044 {
+            get {
+                return ResourceManager.GetString("error044", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object not found.
+        /// </summary>
+        internal static string error045 {
+            get {
+                return ResourceManager.GetString("error045", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid name.
+        /// </summary>
+        internal static string error046 {
+            get {
+                return ResourceManager.GetString("error046", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root file not found.
+        /// </summary>
+        internal static string error047 {
+            get {
+                return ResourceManager.GetString("error047", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Props is not defined.
+        /// </summary>
+        internal static string error048 {
+            get {
+                return ResourceManager.GetString("error048", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personal is not defined.
+        /// </summary>
+        internal static string error049 {
+            get {
+                return ResourceManager.GetString("error049", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords equivalent.
+        /// </summary>
+        internal static string error050 {
+            get {
+                return ResourceManager.GetString("error050", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auth_string not defined.
+        /// </summary>
+        internal static string error051 {
+            get {
+                return ResourceManager.GetString("error051", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Param captcha is not defined.
+        /// </summary>
+        internal static string error052 {
+            get {
+                return ResourceManager.GetString("error052", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid captcha.
+        /// </summary>
+        internal static string error053 {
+            get {
+                return ResourceManager.GetString("error053", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User not Found.
+        /// </summary>
+        internal static string error054 {
+            get {
+                return ResourceManager.GetString("error054", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password is Empty.
+        /// </summary>
+        internal static string error055 {
+            get {
+                return ResourceManager.GetString("error055", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Already exists.
+        /// </summary>
+        internal static string error056 {
+            get {
+                return ResourceManager.GetString("error056", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login is Empty.
+        /// </summary>
+        internal static string error057 {
+            get {
+                return ResourceManager.GetString("error057", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path not found.
+        /// </summary>
+        internal static string error058 {
+            get {
+                return ResourceManager.GetString("error058", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not a directory.
+        /// </summary>
+        internal static string error059 {
+            get {
+                return ResourceManager.GetString("error059", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Already locked.
+        /// </summary>
+        internal static string error060 {
+            get {
+                return ResourceManager.GetString("error060", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lock_token not defined.
+        /// </summary>
+        internal static string error061 {
+            get {
+                return ResourceManager.GetString("error061", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not locked.
+        /// </summary>
+        internal static string error062 {
+            get {
+                return ResourceManager.GetString("error062", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not a file.
+        /// </summary>
+        internal static string error063 {
+            get {
+                return ResourceManager.GetString("error063", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timeout not defined.
+        /// </summary>
+        internal static string error064 {
+            get {
+                return ResourceManager.GetString("error064", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Timeout.
+        /// </summary>
+        internal static string error065 {
+            get {
+                return ResourceManager.GetString("error065", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object is not shared.
+        /// </summary>
+        internal static string error066 {
+            get {
+                return ResourceManager.GetString("error066", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recursion while moving directory.
+        /// </summary>
+        internal static string error067 {
+            get {
+                return ResourceManager.GetString("error067", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shared dir not found.
+        /// </summary>
+        internal static string error068 {
+            get {
+                return ResourceManager.GetString("error068", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid format time.
+        /// </summary>
+        internal static string error069 {
+            get {
+                return ResourceManager.GetString("error069", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid format Range.
+        /// </summary>
+        internal static string error070 {
+            get {
+                return ResourceManager.GetString("error070", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Param like is not defined.
+        /// </summary>
+        internal static string error071 {
+            get {
+                return ResourceManager.GetString("error071", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid format like.
+        /// </summary>
+        internal static string error072 {
+            get {
+                return ResourceManager.GetString("error072", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not a version.
+        /// </summary>
+        internal static string error073 {
+            get {
+                return ResourceManager.GetString("error073", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid expires.
+        /// </summary>
+        internal static string error074 {
+            get {
+                return ResourceManager.GetString("error074", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object is not versioned.
+        /// </summary>
+        internal static string error075 {
+            get {
+                return ResourceManager.GetString("error075", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object already versioned.
+        /// </summary>
+        internal static string error076 {
+            get {
+                return ResourceManager.GetString("error076", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password mismatch.
+        /// </summary>
+        internal static string error077 {
+            get {
+                return ResourceManager.GetString("error077", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Promo code is not defined.
+        /// </summary>
+        internal static string error078 {
+            get {
+                return ResourceManager.GetString("error078", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Promo code already activated.
+        /// </summary>
+        internal static string error079 {
+            get {
+                return ResourceManager.GetString("error079", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid promo code.
+        /// </summary>
+        internal static string error080 {
+            get {
+                return ResourceManager.GetString("error080", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Already participated promo name.
+        /// </summary>
+        internal static string error081 {
+            get {
+                return ResourceManager.GetString("error081", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timeout fail promo attempts.
+        /// </summary>
+        internal static string error082 {
+            get {
+                return ResourceManager.GetString("error082", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Param reset code is not defined.
+        /// </summary>
+        internal static string error083 {
+            get {
+                return ResourceManager.GetString("error083", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid reset code.
+        /// </summary>
+        internal static string error084 {
+            get {
+                return ResourceManager.GetString("error084", resourceCulture);
             }
         }
     }
