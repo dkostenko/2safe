@@ -17,21 +17,23 @@ namespace TwoSafe.Controller
     {
         const string baseUrl = "https://api.2safe.com/?cmd=";
 
-        public static dynamic checkEmail(NameValueCollection data)
-        {
-            NameValueCollection postData = new NameValueCollection();
 
-            JavaScriptSerializer json = new JavaScriptSerializer();
-            var dict = json.Deserialize<dynamic>("asd");
-            var dictw = json.Deserialize<dynamic>("asd");
-
-            return dict;
-        }
-
-        public static Dictionary<string, string> checkLogin(string login)
+        /// <summary>
+        /// Проверяет email на доступность
+        /// </summary>
+        public static Dictionary<string, dynamic> checkEmail(string email)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, string>>(sendGET(baseUrl + "chk_login" + "&login=" + login));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "chk_mail" + "&email=" + email));
+        }
+
+        /// <summary>
+        /// Проверяет аккаунт на доступность
+        /// </summary>
+        public static Dictionary<string, dynamic> checkLogin(string login)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "chk_login" + "&login=" + login));
         }
 
         /// <summary>
@@ -64,52 +66,84 @@ namespace TwoSafe.Controller
             return captcha;
         }
 
+        /// <summary>
+        /// Регистрирует пользователя
+        /// </summary>
         public static Dictionary<string, dynamic> addLogin(string login, string password, string email, string captcha, string id)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
             return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "add_login" + "&login=" + login + "&password=" + password + "&email=" + email + "&captcha=" + captcha + "&id=" + id));
         }
 
+        /// <summary>
+        /// Аутентификация
+        /// </summary>
         public static Dictionary<string, dynamic> auth(string login, string password)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
             return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "auth" + "&login=" + login + "&password=" + password));
         }
 
-        public static dynamic removeLogin(NameValueCollection data)
+        /// <summary>
+        /// Удаление пользователя
+        /// </summary>
+        public static Dictionary<string, dynamic> removeLogin(string login, string password)
         {
-            return null;
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "remove_login" + "&login=" + login + "&password=" + password));
         }
 
-        public static dynamic logout(NameValueCollection data)
+        /// <summary>
+        /// Удаление сессии
+        /// </summary>
+        public static Dictionary<string, dynamic> logout(string token)
         {
-            return null;
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "auth" + "&token=" + token));
         }
 
-        public static dynamic getDiskQuota(NameValueCollection data)
+        /// <summary>
+        /// Просмотр квоты
+        /// </summary>
+        public static Dictionary<string, dynamic> getDiskQuota(string token)
         {
-            return null;
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_disk_quota" + "&token=" + token));
         }
 
+        /// <summary>
+        /// Получение карточки юзера
+        /// </summary>
         public static Dictionary<string, dynamic> getPersonalData(string token)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
             return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_personal_data" + "&token=" + token));
         }
 
-        public static dynamic setPersonalData(NameValueCollection data)
+        /// <summary>
+        /// Изменение карточки юзера
+        /// </summary>
+        private static Dictionary<string, dynamic> setPersonalData(NameValueCollection data)
         {
             return null;
         }
 
-        public static dynamic changePassword(NameValueCollection data)
+        /// <summary>
+        /// Смена пароля
+        /// </summary>
+        public static Dictionary<string, dynamic> changePassword(string login, string password, string newPassword)
         {
-            return null;
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "change_password" + "&login=" + login + "&password=" + password + "&new_password=" + newPassword));
         }
 
-        public static dynamic activatePromoCode(NameValueCollection data)
+        /// <summary>
+        /// Активация промо кода
+        /// </summary>
+        public static Dictionary<string, dynamic> activatePromoCode(string token, string code)
         {
-            return null;
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "activate_promo_code" + "&token=" + token + "&code=" + code));
         }
 
         /// <summary>
@@ -262,6 +296,9 @@ namespace TwoSafe.Controller
             return false;
         }
 
+        /// <summary>
+        /// Отправляет GET-запрос на указанный адрес
+        /// </summary>
         private static string sendGET(string url)
         {
             WebRequest req = WebRequest.Create(url);
@@ -283,7 +320,7 @@ namespace TwoSafe.Controller
                         using (var reader = new StreamReader(errorResponse.GetResponseStream()))
                         {
                             output = reader.ReadToEnd();
-                            //TODO: use JSON.net to parse this string and look at the error message
+                            //TODO: Обработать ошибку
                         }
                     }
                 }
