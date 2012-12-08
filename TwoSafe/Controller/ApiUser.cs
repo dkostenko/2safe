@@ -313,6 +313,66 @@ namespace TwoSafe.Controller
             return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "make_dir&token=" + token + "&dir_id=" + dirId + "&dir_name=" + dirName));
         }
 
+        /// <summary>
+        /// Копирование директории
+        /// </summary>
+        /// <param name="id">id папки, которую необходимо скопировать</param>
+        /// <param name="dirId">id папки: в которую будет каопироваться</param>
+        /// <param name="token">токен</param>
+        /// <param name="optional">Опциональные параметры</param>
+        /// <returns></returns>
+        public static Dictionary<string, dynamic> copyDir(string dirId, string id, string token, NameValueCollection optional)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "copy_dir&token=" + token + "&dir_id=" + dirId + "&id=" + id));
+        }
+
+        /// <summary>
+        /// Перемещение директории
+        /// </summary>
+        /// <param name="id">id папки, которую необходимо переместить</param>
+        /// <param name="dirId">id папки: в которую будет перемещаться</param>
+        /// <param name="token">токен</param>
+        /// <param name="optional">Опциональные параметры</param>
+        /// <returns></returns>
+        public static Dictionary<string, dynamic> moveDir(string dirId, string id, string token, NameValueCollection optional)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "move_dir&token=" + token + "&dir_id=" + dirId + "&id=" + id));
+        }
+
+        /// <summary>
+        /// Удаление директории
+        /// </summary>
+        /// <param name="dirId">id корневой папки</param>
+        /// <param name="token">токен</param>
+        /// <param name="optional">Опциональные параметры</param>
+        /// <param name="removeNow">удалить минуя корзину (аналог Shift+Del)</param>
+        /// <returns></returns>
+        public static Dictionary<string, dynamic> removeDir(string dirId, string token, NameValueCollection optional, bool removeNow)
+        {
+            string optionals = "";
+            if (removeNow)
+            {
+                optionals = "&remove_now=true";
+            }
+
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "remove_dir&token=" + token + "&dir_id=" + dirId + optionals));
+        }
+
+        /// <summary>
+        /// Просмотр директории
+        /// </summary>
+        /// <param name="dirId">id каталога, при пустом значении выдает список файлов и папко корневого каталога</param>
+        /// <param name="token">токен</param>
+        /// <returns></returns>
+        public static Dictionary<string, dynamic> listDir(string dirId, string token)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "List_dir&token=" + token + "&dir_id=" + dirId));
+        }
+
 
 
 
