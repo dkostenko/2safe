@@ -79,11 +79,13 @@ namespace TwoSafe.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            NameValueCollection postData = new NameValueCollection();
-            postData.Add("token", "4233308f69da003a7d19cbda751a32f4");
-            postData.Add("dir_id", "1074797033539"); 
+            //NameValueCollection postData = new NameValueCollection();
+            //postData.Add("token", "4233308f69da003a7d19cbda751a32f4");
+            //postData.Add("dir_id", "1074797033539"); 
 
-            Dictionary<string, dynamic> respond = Controller.ApiTwoSafe.putFile(postData, "C:/Users/dmitry/Desktop/text__.txt");
+            //Dictionary<string, dynamic> respond = Controller.ApiTwoSafe.putFile(postData, "C:/Users/dmitry/Desktop/text__.txt");
+
+            Controller.ApiTwoSafe.getFile("1931301033537", "4233308f69da003a7d19cbda751a32f4", null, "C:/Users/dmitry/Desktop/asd.jpg");
         }
     }
 }

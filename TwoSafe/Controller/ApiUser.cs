@@ -147,6 +147,20 @@ namespace TwoSafe.Controller
         }
 
         /// <summary>
+        /// Получение файла
+        /// </summary>
+        /// <param name="id">id файла</param>
+        /// <param name="token">Токен</param>
+        /// <param name="optional">Опциональные параметры</param>
+        /// <param name="localPath">Путь до папки: где будет сохранен файл (с указанием нового имени файла)</param>
+        /// <returns></returns>
+        public static void getFile(string id, string token, NameValueCollection optional, string localPath)
+        {
+            WebClient wc = new WebClient();
+            wc.DownloadFileAsync(new Uri("https://api.2safe.com/?cmd=get_file&id=" + id + "&token=" + token), localPath);
+        }
+
+        /// <summary>
         /// Загружает 1 файл и необходимые строковые данные на сервер методом POST (multipart/form-data)
         /// </summary>
         /// <param name="postData">Данные: необходимые для передачи файла (id папки, токен и другие)</param>
