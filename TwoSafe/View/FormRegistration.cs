@@ -7,11 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using System.Threading;
-
 using System.Globalization;
 using System.Resources;
+
 namespace TwoSafe.View
 {
     public partial class FormRegistration : Form
@@ -27,13 +26,16 @@ namespace TwoSafe.View
 
         private void buttonRegistration_Click(object sender, EventArgs e)
         {
-            string data = "&login=" + tbAccount.Text + 
-                          "&password=" + tbPassword.Text + 
-                          "&email=" + tbEmail.Text + 
-                          "&captcha=" + tbCaptcha.Text + 
-                          "&id=" + captchaId;
-            Model.Json json = Controller.Connection.sendRequest("GET", "add_login", data);
-            MessageBox.Show(json.response.success.ToString());
+            Dictionary<string, dynamic> response = Controller.ApiTwoSafe.addLogin(tbAccount.Text, tbPassword.Text, tbEmail.Text, tbCaptcha.Text, captchaId);
+
+            if (response.ContainsKey("error_code"))
+            {
+                MessageBox.Show(response["error_msg"]);
+            }
+            else
+            {
+                MessageBox.Show(response["response"]["success"]);
+            }
         }
 
         private void FormRegistration_Shown(object sender, EventArgs e)
@@ -45,7 +47,7 @@ namespace TwoSafe.View
 
         private void getCaptchaAndId()
         {
-            Object[] captcha = Controller.Connection.getCaptcha();
+            Object[] captcha = Controller.ApiTwoSafe.getCaptcha();
             pbCaptcha.BackgroundImage = (Bitmap)captcha[0];
             captchaId = (string)captcha[1];
         }

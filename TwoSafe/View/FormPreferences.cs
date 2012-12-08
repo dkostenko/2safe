@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Collections.Specialized;
 using System.Globalization;
 using System.Threading;
 using System.Resources;
@@ -47,7 +47,6 @@ namespace TwoSafe.View
         private void FormPreferences_Shown(object sender, EventArgs e)
         {
             bool showLoginForm = false;
-            Model.Json json;
 
             if (this.cookie == null) //если куков не существует, то просим пользователя авторизоваться заного
             {
@@ -56,10 +55,16 @@ namespace TwoSafe.View
             else
             {
                 cookie = Model.Cookie.Read();
-                json = Controller.Connection.sendRequest("GET", "get_personal_data", "&token=" + cookie[0]);
-                if (json.error_code != null)
+
+                Dictionary<string, dynamic> response = Controller.ApiTwoSafe.getPersonalData(cookie[0]);
+
+                if (response.ContainsKey("error_code"))
                 {
-                    showLoginForm = true;
+                    MessageBox.Show(response["error_msg"]);
+                }
+                else
+                {
+                    MessageBox.Show(response["response"]["success"]);
                 }
             }
 
@@ -74,9 +79,11 @@ namespace TwoSafe.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string[] files = new string[1];
-            files[0] = "C:/Users/dmitry/Desktop/text__.txt";
-            Controller.Connection.UploadFilesToRemoteUrl(files);
+            NameValueCollection postData = new NameValueCollection();
+            postData.Add("token", "4233308f69da003a7d19cbda751a32f4");
+            postData.Add("dir_id", "1074797033539"); 
+
+            Dictionary<string, dynamic> respond = Controller.ApiTwoSafe.putFile(postData, "C:/Users/dmitry/Desktop/text__.txt");
         }
     }
 }
