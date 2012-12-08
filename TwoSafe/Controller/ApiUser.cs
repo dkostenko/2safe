@@ -17,7 +17,6 @@ namespace TwoSafe.Controller
     {
         const string baseUrl = "https://api.2safe.com/?cmd=";
 
-
         /// <summary>
         /// Проверяет email на доступность
         /// </summary>
@@ -263,6 +262,60 @@ namespace TwoSafe.Controller
                 return jss.Deserialize<Dictionary<string, dynamic>>(output);
             }
         }
+
+        /// <summary>
+        /// Копирование файлов
+        /// </summary>
+        public static Dictionary<string, dynamic> copyFile(string id, string dirId, string token, NameValueCollection optional)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "copy_file&token=" + token + "&id=" + id + "&dir_id=" + dirId));
+        }
+
+        /// <summary>
+        /// Перемещение файлов
+        /// </summary>
+        public static Dictionary<string, dynamic> moveFile(string id, string dirId, string token, NameValueCollection optional)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "move_file&token=" + token + "&id=" + id + "&dir_id=" + dirId));
+        }
+
+        /// <summary>
+        /// Удаление файлов
+        /// </summary>
+        /// <param name="id">id файла</param>
+        /// <param name="token">токен</param>
+        /// <param name="removeNow">удалить минуя корзину (аналог Shift+Del)</param>
+        /// <returns></returns>
+        public static Dictionary<string, dynamic> removeFile(string id, string token, bool removeNow)
+        {
+            string optional = "";
+            if (removeNow)
+            {
+                optional = "&remove_now=true";
+            }
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "remove_file&token=" + token + "&id=" + id + optional));
+        }
+
+        /// <summary>
+        /// Создание директории
+        /// </summary>
+        /// <param name="dirId">id корневой папки</param>
+        /// <param name="dirName">Имя папки</param>
+        /// <param name="token">токен</param>
+        /// <param name="optional">Опциональные параметры</param>
+        /// <returns></returns>
+        public static Dictionary<string, dynamic> makeDir(string dirId, string dirName, string token, NameValueCollection optional)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "make_dir&token=" + token + "&dir_id=" + dirId + "&dir_name=" + dirName));
+        }
+
+
+
+
 
         /// <summary>
         /// Пытается посмотреть тип файла (например: картинка, текстовый)

@@ -85,7 +85,9 @@ namespace TwoSafe.View
 
             //Dictionary<string, dynamic> respond = Controller.ApiTwoSafe.putFile(postData, "C:/Users/dmitry/Desktop/text__.txt");
 
-            Controller.ApiTwoSafe.getFile("1931301033537", "4233308f69da003a7d19cbda751a32f4", null, "C:/Users/dmitry/Desktop/asd.jpg");
+            //Controller.ApiTwoSafe.getFile("1931301033537", "4233308f69da003a7d19cbda751a32f4", null, "C:/Users/dmitry/Desktop/asd.jpg");
+
+            //Controller.ApiTwoSafe.removeFile("1931301033537", "4233308f69da003a7d19cbda751a32f4", false);
         }
     }
 }
