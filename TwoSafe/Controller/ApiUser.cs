@@ -183,20 +183,16 @@ namespace TwoSafe.Controller
 
             StringBuilder sbHeader = new StringBuilder();
 
-            // add form fields, if any
-            if (postData != null)
+            // Добавление строковых параметров
+            foreach (string key in postData.AllKeys)
             {
-                foreach (string key in postData.AllKeys)
-                {
-                    string[] values = postData.GetValues(key);
-                    if (values != null)
-                        foreach (string value in values)
-                        {
-                            sbHeader.AppendFormat("--{0}\r\n", boundary);
-                            sbHeader.AppendFormat("Content-Disposition: form-data; name=\"{0}\";\r\n\r\n{1}\r\n", key,
-                                                  value);
-                        }
-                }
+                string[] values = postData.GetValues(key);
+                if (values != null)
+                    foreach (string value in values)
+                    {
+                        sbHeader.AppendFormat("--{0}\r\n", boundary);
+                        sbHeader.AppendFormat("Content-Disposition: form-data; name=\"{0}\";\r\n\r\n{1}\r\n", key, value);
+                    }
             }
 
 
@@ -220,18 +216,15 @@ namespace TwoSafe.Controller
                 requestStream.Write(header, 0, header.Length);
 
 
-                if (fileData != null)
+                // Запись файла
+                byte[] buffer = new Byte[checked((uint)Math.Min(4096, (int)fileData.Length))];
+                int bytesRead;
+                while ((bytesRead = fileData.Read(buffer, 0, buffer.Length)) != 0)
                 {
-                    // write the file data, if any
-                    byte[] buffer = new Byte[checked((uint)Math.Min(4096, (int)fileData.Length))];
-                    int bytesRead;
-                    while ((bytesRead = fileData.Read(buffer, 0, buffer.Length)) != 0)
-                    {
-                        requestStream.Write(buffer, 0, bytesRead);
-                    }
+                    requestStream.Write(buffer, 0, bytesRead);
                 }
 
-                // write footer
+                // Конец записи
                 requestStream.Write(footer, 0, footer.Length);
 
                 string output = "";
