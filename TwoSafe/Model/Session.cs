@@ -6,41 +6,49 @@ using System.Threading.Tasks;
 
 namespace TwoSafe.Model
 {
-    class Session
+    static class Session
     {
         //поля
-        private string email, lang, account, token;
+        private static string email, lang, account, token, mainFolderPath;
 
-        //конструкторы
-        public Session(string email, string lang, string account, string token)
+        /// <summary>
+        /// Начинает сессию
+        /// </summary>
+        public static void startSession(string email, string lang, string account, string token, string mainFolderPath)
         {
-            this.email = email;
-            this.lang = lang;
-            this.account = account;
-            this.token = token;
+            Email = email;
+            Lang = lang;
+            Account = account;
+            Token = token;
+            MainFolderPath = mainFolderPath;
         }
 
 
         //свойства
-        public string Email
+        public static string Email
         {
             get { return email; }
             set { email = value; }
         }
-        public string Lang
+        public static string Lang
         {
             get { return lang; }
             set { lang = value; }
         }
-        public string Account
+        public static string Account
         {
             get { return account; }
             set { account = value; }
         }
-        public string Token
+        public static string Token
         {
             get { return token; }
             set { token = value; }
+        }
+        public static string MainFolderPath
+        {
+            get { return mainFolderPath; }
+            set { mainFolderPath = value; }
         }
     }
 }

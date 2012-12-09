@@ -48,7 +48,6 @@
     <Compile Include="Controller\ApiUser.cs" />
     <Compile Include="Model\Cookie.cs" />
     <Compile Include="Model\Session.cs" />
-    <Compile Include="Model\Upload.cs" />
     <Compile Include="View\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
