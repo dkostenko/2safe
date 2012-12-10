@@ -400,7 +400,6 @@
             this.Controls.Add(this.table);
             this.Name = "FormPreferences";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPreferences_FormClosing);
-            this.Shown += new System.EventHandler(this.FormPreferences_Shown);
             this.table.ResumeLayout(false);
             this.general.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
