@@ -408,10 +408,102 @@ namespace TwoSafe.Controller
         public static Dictionary<string, dynamic> lockObject(string token, string id, Dictionary<string, string> optional)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "activate_promo_code" + "&token=" + token + "&id=" + id + toQueryString(optional)));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "lock_object" + "&token=" + token + "&id=" + id + toQueryString(optional)));
+        }
+
+        /// <summary>
+        /// Разблокировка объекта
+        /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="lockToken">Токен блокированного объекта</param>
+        /// <param name="optional">Опциональные параметры</param>
+        public static Dictionary<string, dynamic> unlockObject(string token, string lockToken)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "unlock_object" + "&token=" + token + "&lock_token=" + lockToken));
+        }
+
+        /// <summary>
+        /// Получение списка всех блокировок
+        /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="id">ID Объекта</param>
+        public static Dictionary<string, dynamic> listObjectLocks(string token, string id)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "list_object_locks" + "&token=" + token + "&id=" + id));
+        }
+
+        /// <summary>
+        /// Обновление таймаута блокировки
+        /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="id">ID Объекта</param>
+        /// <param name="timeout">Новый таймаут</param>
+        public static Dictionary<string, dynamic> refreshLockTimeout(string token, string lockToken, string timeout)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "refresh_lock_timeout" + "&token=" + token + "&lockToken=" + lockToken + "&timeout=" + timeout));
+        }
+
+        /// <summary>
+        /// Публичность объекта
+        /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="id">ID объекта</param>
+        public static Dictionary<string, dynamic> publicObject(string token, string id)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "public_object" + "&token=" + token + "&id=" + id));
+        }
+
+        /// <summary>
+        /// Отменить публичность объекта
+        /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="id">ID объекта</param>
+        public static Dictionary<string, dynamic> unpublicObject(string token, string id)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "inpublic_object" + "&token=" + token + "&id=" + id));
         }
 
 
+        /// <summary>
+        /// Расшаривание объекта
+        /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="login">Акаунт пользователя, для которого необходимо расшарить файл</param>
+        /// <param name="id">ID объекта</param>
+        /// <param name="optional">Опциональные параметры</param>
+        public static Dictionary<string, dynamic> shareObject(string token, string login, string id, Dictionary<string, string> optional)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "share_object" + "&token=" + token + "&login=" + login + "&id=" + id + toQueryString(optional)));
+        }
+
+        /// <summary>
+        /// Отменить расшаривание объекта
+        /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="login">Акаунт пользователя, для которого был расшарен файл</param>
+        /// <param name="id">ID объекта</param>
+        public static Dictionary<string, dynamic> unshareObject(string token, string login, string id)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "unshare_object" + "&token=" + token + "&login=" + login + "&id=" + id));
+        }
+
+        /// <summary>
+        /// Список шар объекта
+        /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="id">ID объекта</param>
+        public static Dictionary<string, dynamic> listShares(string token, string id)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "list_shares" + "&token=" + token + "&id=" + id));
+        }
 
         /// <summary>
         /// Переводит список параметров в JSON для GET-запроса
@@ -539,5 +631,6 @@ namespace TwoSafe.Controller
             }
             return output;
         }
+
     }
 }
