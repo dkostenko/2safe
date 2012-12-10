@@ -7,7 +7,6 @@ using System.IO;
 using System.Net;
 using System.Drawing;
 using System.Globalization;
-using System.Collections.Specialized;
 using System.Web.Script.Serialization;
 using Microsoft.Win32;
 
