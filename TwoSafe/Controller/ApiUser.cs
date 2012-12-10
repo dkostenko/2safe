@@ -122,9 +122,11 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Изменение карточки юзера
         /// </summary>
-        private static Dictionary<string, dynamic> setPersonalData(NameValueCollection data)
+        public static Dictionary<string, dynamic> setPersonalData(string token, Dictionary<string, string> personal, Dictionary<string, string> props, string password)
         {
-            return null;
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            string optional = toJson(props);
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "set_personal_data" + "&token=" + token + "&personal=" + toJson(personal) + "&password=" + password));
         }
 
         /// <summary>
@@ -153,10 +155,10 @@ namespace TwoSafe.Controller
         /// <param name="optional">Опциональные параметры</param>
         /// <param name="localPath">Путь до папки: где будет сохранен файл (с указанием нового имени файла)</param>
         /// <returns></returns>
-        public static void getFile(string id, string token, NameValueCollection optional, string localPath)
+        public static void getFile(string id, string token, Dictionary<string, string> optional, string localPath)
         {
             WebClient wc = new WebClient();
-            wc.DownloadFileAsync(new Uri("https://api.2safe.com/?cmd=get_file&id=" + id + "&token=" + token), localPath);
+            wc.DownloadFileAsync(new Uri("https://api.2safe.com/?cmd=get_file&id=" + id + "&token=" + token + toQueryString(optional)), localPath);
         }
 
         /// <summary>
@@ -165,7 +167,7 @@ namespace TwoSafe.Controller
         /// <param name="postData">Данные: необходимые для передачи файла (id папки, токен и другие)</param>
         /// <param name="fileName">Полный путь до файла</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> putFile(NameValueCollection postData, string fileName)
+        public static Dictionary<string, dynamic> putFile(Dictionary<string, string> postData, string fileName)
         {
             FileStream fileData = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
 
@@ -184,15 +186,10 @@ namespace TwoSafe.Controller
             StringBuilder sbHeader = new StringBuilder();
 
             // Добавление строковых параметров
-            foreach (string key in postData.AllKeys)
+            foreach (var one in postData)
             {
-                string[] values = postData.GetValues(key);
-                if (values != null)
-                    foreach (string value in values)
-                    {
-                        sbHeader.AppendFormat("--{0}\r\n", boundary);
-                        sbHeader.AppendFormat("Content-Disposition: form-data; name=\"{0}\";\r\n\r\n{1}\r\n", key, value);
-                    }
+                sbHeader.AppendFormat("--{0}\r\n", boundary);
+                sbHeader.AppendFormat("Content-Disposition: form-data; name=\"{0}\";\r\n\r\n{1}\r\n", one.Key, one.Value);
             }
 
 
@@ -259,19 +256,19 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Копирование файлов
         /// </summary>
-        public static Dictionary<string, dynamic> copyFile(string id, string dirId, string token, NameValueCollection optional)
+        public static Dictionary<string, dynamic> copyFile(string id, string dirId, string token, Dictionary<string, string> optional)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "copy_file&token=" + token + "&id=" + id + "&dir_id=" + dirId));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "copy_file&token=" + token + "&id=" + id + "&dir_id=" + dirId + toQueryString(optional)));
         }
 
         /// <summary>
         /// Перемещение файлов
         /// </summary>
-        public static Dictionary<string, dynamic> moveFile(string id, string dirId, string token, NameValueCollection optional)
+        public static Dictionary<string, dynamic> moveFile(string id, string dirId, string token, Dictionary<string, string> optional)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "move_file&token=" + token + "&id=" + id + "&dir_id=" + dirId));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "move_file&token=" + token + "&id=" + id + "&dir_id=" + dirId + toQueryString(optional)));
         }
 
         /// <summary>
@@ -300,10 +297,10 @@ namespace TwoSafe.Controller
         /// <param name="token">токен</param>
         /// <param name="optional">Опциональные параметры</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> makeDir(string dirId, string dirName, string token, NameValueCollection optional)
+        public static Dictionary<string, dynamic> makeDir(string dirId, string dirName, string token, Dictionary<string, string> optional)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "make_dir&token=" + token + "&dir_id=" + dirId + "&dir_name=" + dirName));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "make_dir&token=" + token + "&dir_id=" + dirId + "&dir_name=" + dirName + toQueryString(optional)));
         }
 
         /// <summary>
@@ -314,10 +311,10 @@ namespace TwoSafe.Controller
         /// <param name="token">токен</param>
         /// <param name="optional">Опциональные параметры</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> copyDir(string dirId, string id, string token, NameValueCollection optional)
+        public static Dictionary<string, dynamic> copyDir(string dirId, string id, string token, Dictionary<string, string> optional)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "copy_dir&token=" + token + "&dir_id=" + dirId + "&id=" + id));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "copy_dir&token=" + token + "&dir_id=" + dirId + "&id=" + id + toQueryString(optional)));
         }
 
         /// <summary>
@@ -328,10 +325,10 @@ namespace TwoSafe.Controller
         /// <param name="token">токен</param>
         /// <param name="optional">Опциональные параметры</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> moveDir(string dirId, string id, string token, NameValueCollection optional)
+        public static Dictionary<string, dynamic> moveDir(string dirId, string id, string token, Dictionary<string, string> optional)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "move_dir&token=" + token + "&dir_id=" + dirId + "&id=" + id));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "move_dir&token=" + token + "&dir_id=" + dirId + "&id=" + id + toQueryString(optional)));
         }
 
         /// <summary>
@@ -342,9 +339,9 @@ namespace TwoSafe.Controller
         /// <param name="optional">Опциональные параметры</param>
         /// <param name="removeNow">удалить минуя корзину (аналог Shift+Del)</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> removeDir(string dirId, string token, NameValueCollection optional, bool removeNow)
+        public static Dictionary<string, dynamic> removeDir(string dirId, string token, Dictionary<string, string> optional, bool removeNow)
         {
-            string optionals = "";
+            string optionals = toQueryString(optional);
             if (removeNow)
             {
                 optionals = "&remove_now=true";
@@ -366,9 +363,47 @@ namespace TwoSafe.Controller
             return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "List_dir&token=" + token + "&dir_id=" + dirId));
         }
 
+        /// <summary>
+        /// Возвращает список параметров как JSON для GET-запроса
+        /// </summary>
+        /// <param name="parameters">Список параметров</param>
+        /// <returns></returns>
+        private static string toJson(Dictionary<string, string> parameters)
+        {
+            string result = "";
 
+            if (parameters != null)
+            {
+                result += "{";
+                foreach (var parameter in parameters)
+                {
+                    result += String.Concat("\"", parameter.Key, "\":\"", parameter.Value, "\",");
+                }
+                result += "}";
+            }
 
+            return result;
+        }
 
+        /// <summary>
+        /// Возвращает список параметров как строку для GET-запроса
+        /// </summary>
+        /// <param name="parameters">Список параметров</param>
+        /// <returns></returns>
+        private static string toQueryString(Dictionary<string, string> parameters)
+        {
+            string result = "";
+
+            if (parameters != null)
+            {
+                foreach (var parameter in parameters)
+                {
+                    result += String.Concat("&", parameter.Key, "=", parameter.Value);
+                }
+            }
+
+            return result;
+        } 
 
         /// <summary>
         /// Пытается посмотреть тип файла (например: картинка, текстовый)

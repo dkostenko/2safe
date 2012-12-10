@@ -39,7 +39,6 @@ namespace TwoSafe.View
             else
             {
                 this.cookie[0] = response["response"]["token"];
-                Model.Cookie.Write(cookie);
                 formPreferences.Show();
                 this.Close();
             }

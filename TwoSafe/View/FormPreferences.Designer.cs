@@ -30,9 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPreferences));
-            this.button1 = new System.Windows.Forms.Button();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.button2 = new System.Windows.Forms.Button();
             this.table = new System.Windows.Forms.TabControl();
             this.general = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -91,24 +89,10 @@
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // trayIcon
             // 
             resources.ApplyResources(this.trayIcon, "trayIcon");
             this.trayIcon.Click += new System.EventHandler(this.notifyIcon_Click);
-            // 
-            // button2
-            // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // table
             // 
@@ -414,8 +398,6 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.table);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Name = "FormPreferences";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPreferences_FormClosing);
             this.Shown += new System.EventHandler(this.FormPreferences_Shown);
@@ -444,9 +426,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.NotifyIcon trayIcon;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabControl table;
         private System.Windows.Forms.TabPage general;
         private System.Windows.Forms.Panel panel1;

@@ -16,7 +16,6 @@ namespace TwoSafe.View
 {
     public partial class FormPreferences : Form
     {
-        private string[] cookie;
         private NotifyIcon _notifyIcon = new NotifyIcon();
         private ContextMenu contextMenu1;
         // решил их сделать отдельными, чтоыб было понятно, что за что отвечает :)
@@ -34,7 +33,6 @@ namespace TwoSafe.View
         {
             InitializeComponent();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US"); // эта строка ициниализирует язык ru-RU
-            this.cookie = Model.Cookie.Read();
             
             //trayIcon.Visible = true; // показываем иконку в трее
 
@@ -145,14 +143,6 @@ namespace TwoSafe.View
             MessageBox.Show("Hello, It's a nice party isn't it?");
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            View.FormRegistration formRegistration = new FormRegistration();
-            formRegistration.Show();
-            //this.Hide();
-        }
-
         private void proxypassword_CheckedChanged(object sender, EventArgs e)
         {
             // чисто событие для прокси пасворда и пароля, доступны они или нет
@@ -230,48 +220,7 @@ namespace TwoSafe.View
 
         private void FormPreferences_Shown(object sender, EventArgs e)
         {
-            bool showLoginForm = false;
 
-            if (this.cookie == null) //если куков не существует, то просим пользователя авторизоваться заного
-            {
-                showLoginForm = true;
-            }
-            else
-            {
-                cookie = Model.Cookie.Read();
-
-                Dictionary<string, dynamic> response = Controller.ApiTwoSafe.getPersonalData(cookie[0]);
-
-                if (response.ContainsKey("error_code"))
-                {
-                    MessageBox.Show(response["error_msg"]);
-                }
-                else
-                {
-                    MessageBox.Show(response["response"]["success"]);
-                }
-            }
-
-            if(showLoginForm)
-            {
-                cookie = new string[5];
-                FormLogin formLogin = new FormLogin(cookie, this);
-                this.Hide();
-                formLogin.Show();
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //NameValueCollection postData = new NameValueCollection();
-            //postData.Add("token", "4233308f69da003a7d19cbda751a32f4");
-            //postData.Add("dir_id", "1074797033539"); 
-
-            //Dictionary<string, dynamic> respond = Controller.ApiTwoSafe.putFile(postData, "C:/Users/dmitry/Desktop/text__.txt");
-
-            //Controller.ApiTwoSafe.getFile("1931301033537", "4233308f69da003a7d19cbda751a32f4", null, "C:/Users/dmitry/Desktop/asd.jpg");
-
-            //Controller.ApiTwoSafe.removeFile("1931301033537", "4233308f69da003a7d19cbda751a32f4", false);
         }
     }
 }
