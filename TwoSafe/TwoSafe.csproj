@@ -50,6 +50,7 @@
     <Compile Include="Controller\Connection.cs" />
     <Compile Include="Model\Cookie.cs" />
     <Compile Include="Model\Session.cs" />
+    <Compile Include="View\CustomApplicationContext.cs" />
     <Compile Include="View\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +72,9 @@
     <Compile Include="View\FormRegistration.Designer.cs">
       <DependentUpon>FormRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ProgramInfo.cs" />
+    <Compile Include="View\SingleInstance.cs" />
+    <Compile Include="View\WinApi.cs" />
     <Compile Include="View\WinFormStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

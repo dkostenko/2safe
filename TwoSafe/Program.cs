@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TwoSafe.View;
 
 namespace TwoSafe
 {
@@ -14,10 +15,20 @@ namespace TwoSafe
         [STAThread]
         static void Main()
         {
+            if (!SingleInstance.Start()) { return; }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            Application.Run(new View.FormPreferences());
+            try
+            {
+                var applicationContext = new CustomApplicationContext();
+                Application.Run(applicationContext);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Программа не запустилась",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            SingleInstance.Stop();
         }
     }
 }

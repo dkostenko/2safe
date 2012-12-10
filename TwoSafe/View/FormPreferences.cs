@@ -75,7 +75,7 @@ namespace TwoSafe.View
         private void button2_Click(object sender, EventArgs e)
         {
             string[] files = new string[1];
-            files[0] = "C:/Users/dmitry/Desktop/text__.txt";
+            files[0] = @"C:\Users\Paul Gurov\Documents\2Safe\upload.txt";
             Controller.Connection.UploadFilesToRemoteUrl(files);
         }
     }
