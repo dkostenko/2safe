@@ -30,17 +30,15 @@ namespace TwoSafe.View
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            string data = "&login=" + tbAccount.Text + "&password=" + tbPassword.Text;
-            Model.Json json = Controller.Connection.sendRequest("GET", "auth", data);
-            if (json.error_code != null)
+            Dictionary<string, dynamic> response = Controller.ApiTwoSafe.auth(tbAccount.Text, tbPassword.Text);
+
+            if (response.ContainsKey("error_code"))
             {
-                MessageBox.Show(language.GetString("error" + json.error_code));
-                return;
+                MessageBox.Show(language.GetString("error" + response["error_code"]));
             }
-            if (json.response.success != null && json.response.success)
+            else
             {
-                this.cookie[0] = json.response.token;
-                Model.Cookie.Write(cookie);
+                this.cookie[0] = response["response"]["token"];
                 formPreferences.Show();
                 this.Close();
             }
