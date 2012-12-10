@@ -505,6 +505,81 @@ namespace TwoSafe.Controller
             return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "list_shares" + "&token=" + token + "&id=" + id));
         }
 
+
+        /// <summary>
+        /// Получение списка версий файла
+        /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="id">ID файла</param>
+        public static Dictionary<string, dynamic> listVersions(string token, string id)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "list_versions" + "&token=" + token + "&id=" + id));
+        }
+
+        /// <summary>
+        /// Получение текущей версии файла
+        /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="id">ID файла</param>
+        public static Dictionary<string, dynamic> getCurrentVersion(string token, string id)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_current_version" + "&token=" + token + "&id=" + id));
+        }
+
+        /// <summary>
+        /// Установка текущей версии файла
+        /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="id">ID файла</param>
+        /// <param name="v_id">ID версии</param>
+        public static Dictionary<string, dynamic> setCurrentVersion(string token, string id, string v_id)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "set_current_version" + "&token=" + token + "&id=" + id + "&v_id=" + v_id));
+        }
+
+        /// <summary>
+        /// Удаление версии файла
+        /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="id">ID версии</param>
+        public static Dictionary<string, dynamic> removeVersion(string token, string id)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "remove_version" + "&token=" + token + "&id=" + id));
+        }
+
+        /// <summary>
+        /// Установка флага версионности для объекта
+        /// </summary>
+        /// <remark>
+        /// Если флагом помечается каталог, то все файлы в этом и во вложенных каталогах будут версионными
+        /// </remark>
+        /// <param name="token">Токен</param>
+        /// <param name="id">ID файла или каталога</param>
+        public static Dictionary<string, dynamic> setVersioned(string token, string id)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "set_versioned" + "&token=" + token + "&id=" + id));
+        }
+
+        /// <summary>
+        /// Установка флага версионности для объекта
+        /// </summary>
+        /// <remark>
+        /// Команда применима только к тем обхектам, для которых была выполнена команда set_versioned. Если флаг снимается с каталога, то все файлы в этом и во вложенных каталогах больше не будут версионными, за исключением случая, если на вложенный файл не проставлялся этот флаг.
+        /// </remark>
+        /// <param name="token">Токен</param>
+        /// <param name="id">ID файла или каталога</param>
+        public static Dictionary<string, dynamic> unsetVersioned(string token, string id)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "unset_versioned" + "&token=" + token + "&id=" + id));
+        }
+
+
         /// <summary>
         /// Переводит список параметров в JSON для GET-запроса
         /// </summary>
