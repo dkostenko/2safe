@@ -12,6 +12,10 @@ using Microsoft.Win32;
 
 namespace TwoSafe.Controller
 {
+
+    /// <summary>
+    /// API 2safe.ru
+    /// </summary>
     public static class ApiTwoSafe
     {
         const string baseUrl = "https://api.2safe.com/?cmd=";
@@ -19,6 +23,7 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Проверяет email на доступность
         /// </summary>
+        /// <param name="email">email</param>
         public static Dictionary<string, dynamic> checkEmail(string email)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -28,6 +33,7 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Проверяет аккаунт на доступность
         /// </summary>
+        /// <param name="login">Аккаунт, который необходимо проверить</param>
         public static Dictionary<string, dynamic> checkLogin(string login)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -67,6 +73,11 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Регистрирует пользователя
         /// </summary>
+        /// <param name="login">Новый аккаунт</param>
+        /// <param name="password">Пароль</param>
+        /// <param name="email">Email, на который будет зарегистрирован аккаунт</param>
+        /// <param name="captcha">Капча, введенная с картинки</param>
+        /// <param name="id">ID капчи</param>
         public static Dictionary<string, dynamic> addLogin(string login, string password, string email, string captcha, string id)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -76,6 +87,8 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Аутентификация
         /// </summary>
+        /// <param name="login">Акаунт пользователя</param>
+        /// <param name="password">Пароль от аккаунта</param>
         public static Dictionary<string, dynamic> auth(string login, string password)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -85,6 +98,8 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Удаление пользователя
         /// </summary>
+        /// <param name="login">Аккаунт пользователя</param>
+        /// <param name="password">Пароль от аккаунта</param>
         public static Dictionary<string, dynamic> removeLogin(string login, string password)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -94,6 +109,7 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Удаление сессии
         /// </summary>
+        /// <param name="token">Токен</param>
         public static Dictionary<string, dynamic> logout(string token)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -103,6 +119,7 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Просмотр квоты
         /// </summary>
+        /// <param name="token">Токен</param>
         public static Dictionary<string, dynamic> getDiskQuota(string token)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -112,6 +129,7 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Получение карточки юзера
         /// </summary>
+        /// <param name="token">Токен</param>
         public static Dictionary<string, dynamic> getPersonalData(string token)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -121,6 +139,10 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Изменение карточки юзера
         /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="personal">Новые данные пользователя</param>
+        /// <param name="props">Произвольные данные</param>
+        /// <param name="password">Пароль</param>
         public static Dictionary<string, dynamic> setPersonalData(string token, Dictionary<string, string> personal, Dictionary<string, string> props, string password)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -131,6 +153,9 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Смена пароля
         /// </summary>
+        /// <param name="login">Аккаунт</param>
+        /// <param name="password">Пароль</param>
+        /// <param name="newPassword">Новый пароль</param>
         public static Dictionary<string, dynamic> changePassword(string login, string password, string newPassword)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -140,6 +165,8 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Активация промо кода
         /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="code">Промо код</param>
         public static Dictionary<string, dynamic> activatePromoCode(string token, string code)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -255,6 +282,10 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Копирование файлов
         /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="id">ID файла</param>
+        /// <param name="dir_id">ID папки, куда копируется файл</param>
+        /// <param name="optional">Опциональные параметры</param>
         public static Dictionary<string, dynamic> copyFile(string id, string dirId, string token, Dictionary<string, string> optional)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -264,6 +295,10 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Перемещение файлов
         /// </summary>
+        /// <param name="token">Токен</param>
+        /// <param name="id">ID файла</param>
+        /// <param name="dir_id">ID папки, куда перемещается файл</param>
+        /// <param name="optional">Опциональные параметры</param>
         public static Dictionary<string, dynamic> moveFile(string id, string dirId, string token, Dictionary<string, string> optional)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -273,9 +308,9 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Удаление файлов
         /// </summary>
-        /// <param name="id">id файла</param>
-        /// <param name="token">токен</param>
-        /// <param name="removeNow">удалить минуя корзину (аналог Shift+Del)</param>
+        /// <param name="id">ID файла</param>
+        /// <param name="token">Токен</param>
+        /// <param name="removeNow">Удалить, минуя корзину (аналог Shift+Del)</param>
         /// <returns></returns>
         public static Dictionary<string, dynamic> removeFile(string id, string token, bool removeNow)
         {
@@ -305,8 +340,8 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Копирование директории
         /// </summary>
-        /// <param name="id">id папки, которую необходимо скопировать</param>
-        /// <param name="dirId">id папки: в которую будет каопироваться</param>
+        /// <param name="id">ID папки, которую необходимо скопировать</param>
+        /// <param name="dirId">ID папки: в которую будет каопироваться</param>
         /// <param name="token">токен</param>
         /// <param name="optional">Опциональные параметры</param>
         /// <returns></returns>
@@ -319,8 +354,8 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Перемещение директории
         /// </summary>
-        /// <param name="id">id папки, которую необходимо переместить</param>
-        /// <param name="dirId">id папки: в которую будет перемещаться</param>
+        /// <param name="id">ID папки, которую необходимо переместить</param>
+        /// <param name="dirId">ID папки: в которую будет перемещаться</param>
         /// <param name="token">токен</param>
         /// <param name="optional">Опциональные параметры</param>
         /// <returns></returns>
@@ -333,10 +368,10 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Удаление директории
         /// </summary>
-        /// <param name="dirId">id корневой папки</param>
+        /// <param name="dirId">ID корневой папки</param>
         /// <param name="token">токен</param>
         /// <param name="optional">Опциональные параметры</param>
-        /// <param name="removeNow">удалить минуя корзину (аналог Shift+Del)</param>
+        /// <param name="removeNow">Удалить минуя корзину (аналог Shift+Del)</param>
         /// <returns></returns>
         public static Dictionary<string, dynamic> removeDir(string dirId, string token, Dictionary<string, string> optional, bool removeNow)
         {
@@ -353,7 +388,7 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Просмотр директории
         /// </summary>
-        /// <param name="dirId">id каталога, при пустом значении выдает список файлов и папко корневого каталога</param>
+        /// <param name="dirId">ID каталога, при пустом значении выдает список файлов и папко корневого каталога</param>
         /// <param name="token">токен</param>
         /// <returns></returns>
         public static Dictionary<string, dynamic> listDir(string dirId, string token)
@@ -362,11 +397,29 @@ namespace TwoSafe.Controller
             return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "List_dir&token=" + token + "&dir_id=" + dirId));
         }
 
+
+
         /// <summary>
-        /// Возвращает список параметров как JSON для GET-запроса
+        /// Блокировка объекта
+        /// </summary>
+        /// <param name="token">токен</param>
+        /// <param name="id">ID объекта</param>
+        /// <param name="optional">Опциональные параметры</param>
+        public static Dictionary<string, dynamic> lockObject(string token, string id, Dictionary<string, string> optional)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "activate_promo_code" + "&token=" + token + "&id=" + id + toQueryString(optional)));
+        }
+
+
+
+        /// <summary>
+        /// Переводит список параметров в JSON для GET-запроса
         /// </summary>
         /// <param name="parameters">Список параметров</param>
-        /// <returns></returns>
+        /// <returns>
+        /// Возвращает список параметров как JSON для GET-запроса
+        /// </returns>
         private static string toJson(Dictionary<string, string> parameters)
         {
             string result = "";
@@ -385,10 +438,12 @@ namespace TwoSafe.Controller
         }
 
         /// <summary>
-        /// Возвращает список параметров как строку для GET-запроса
+        /// Переводит список параметров в строку для GET-запроса
         /// </summary>
         /// <param name="parameters">Список параметров</param>
-        /// <returns></returns>
+        /// <returns>
+        /// Возвращает список параметров как строку для GET-запроса
+        /// </returns>
         private static string toQueryString(Dictionary<string, string> parameters)
         {
             string result = "";
@@ -409,7 +464,6 @@ namespace TwoSafe.Controller
         /// </summary>
         /// <param name="fileName">Полный путь до файла</param>
         /// <param name="contentType">Тип файла</param>
-        /// <returns></returns>
         private static bool tryGetContentType(string fileName, out string contentType)
         {
             try
@@ -453,6 +507,10 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Отправляет GET-запрос на указанный адрес
         /// </summary>
+        /// <param name="url">Ссылка, на которую необходимо отправить GET-запрос</param>
+        /// <returns>
+        /// Возвращает ответ сервера в виде строки с JSON
+        /// </returns>
         private static string sendGET(string url)
         {
             WebRequest req = WebRequest.Create(url);
