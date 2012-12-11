@@ -97,9 +97,6 @@
     <EmbeddedResource Include="View\FormPreferences.resx">
       <DependentUpon>FormPreferences.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FormPreferences.ru.resx">
-      <DependentUpon>FormPreferences.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\FormRegistration.resx">
       <DependentUpon>FormRegistration.cs</DependentUpon>
     </EmbeddedResource>

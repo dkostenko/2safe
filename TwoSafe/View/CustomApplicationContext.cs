@@ -58,6 +58,7 @@ namespace TwoSafe.View
         public CustomApplicationContext()
         {
             InitializeContext();
+            // TODO: добавить синхронизацию и что то еще
         }
         
         /// <summary>
