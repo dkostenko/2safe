@@ -46,24 +46,37 @@ namespace TwoSafe.View
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия "OK"
+        /// Сохраняет текущие настройки и закрывает форму
+        /// </summary>
         private void buttonOK_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
             this.Close();
         }
-
+        /// <summary>
+        /// Обработчик нажатия "Применить"
+        /// Сохраняет текущие настройки
+        /// </summary>
         private void buttonApply_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
         }
 
+        /// <summary>
+        /// Обработчик нажатия "Отмена"
+        /// Перегружает настройки на те которые были до открытия формы или до нажатия "Применить" или "ОК"
+        /// Закрывает форму
+        /// </summary>
         private void buttonCancel_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Reload();
             this.Close();
         }
         
         /// <summary>
-        /// Метод изменяющий контролы во время исполнения
+        /// Метод изменяющий надписи на контролах во время исполнения
         /// </summary>
         /// <param name="lang"> Язык </param>
         private void ChangeLanguage(string lang)
@@ -97,11 +110,6 @@ namespace TwoSafe.View
             }
             return controlList;
         }
-
-
-
-
-
 
     }
 }
