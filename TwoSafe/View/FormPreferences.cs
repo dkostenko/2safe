@@ -46,11 +46,21 @@ namespace TwoSafe.View
             }
         }
 
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+            this.Close();
+        }
+
         private void buttonApply_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
         }
-        
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         
         /// <summary>
         /// Метод изменяющий контролы во время исполнения
@@ -87,6 +97,10 @@ namespace TwoSafe.View
             }
             return controlList;
         }
+
+
+
+
 
 
     }
