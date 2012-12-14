@@ -5,9 +5,8 @@ namespace TwoSafe.View
 {
     static public class SingleInstance
     {
-        public static readonly int WM_SHOWFIRSTINSTANCE =
-            WinApi.RegisterWindowMessage("WM_SHOWFIRSTINSTANCE|{0}", ProgramInfo.AssemblyGuid);
         private static Mutex mutex;
+        public static Boolean restarting = false;
 
         static public bool Start()
         {
@@ -20,15 +19,6 @@ namespace TwoSafe.View
 
             mutex = new Mutex(true, mutexName, out onlyInstance);
             return onlyInstance;
-        }
-
-        static public void ShowFirstInstance()
-        {
-            WinApi.PostMessage(
-                (IntPtr)WinApi.HWND_BROADCAST,
-                WM_SHOWFIRSTINSTANCE,
-                IntPtr.Zero,
-                IntPtr.Zero);
         }
 
         static public void Stop()

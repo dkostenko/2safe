@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TwoSafe.View;
+using System.Threading;
 
 namespace TwoSafe
 {
@@ -15,7 +16,12 @@ namespace TwoSafe
         [STAThread]
         static void Main()
         {
-            if (!SingleInstance.Start()) { return; }
+            if (!SingleInstance.Start())
+            {
+                 MessageBox.Show("Программа уже запущена");
+                 return;
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             try
@@ -28,6 +34,7 @@ namespace TwoSafe
                 MessageBox.Show(ex.Message, "Программа не запустилась",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             SingleInstance.Stop();
         }
     }

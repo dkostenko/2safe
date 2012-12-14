@@ -104,7 +104,6 @@
     </Compile>
     <Compile Include="View\ProgramInfo.cs" />
     <Compile Include="View\SingleInstance.cs" />
-    <Compile Include="View\WinApi.cs" />
     <Compile Include="View\WinFormStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -127,6 +126,9 @@
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormPreferences.resx">
+      <DependentUpon>FormPreferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormPreferences.ru-RU.resx">
       <DependentUpon>FormPreferences.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormRegistration.resx">

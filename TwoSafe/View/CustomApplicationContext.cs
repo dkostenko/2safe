@@ -23,11 +23,6 @@ namespace TwoSafe.View
         private NotifyIcon notifyIcon;
         
         /// <summary>
-        /// Путь к файлу иконки
-        /// </summary>
-        private static readonly string IconFileName = "green_icon.ico";
-        
-        /// <summary>
         /// Текст всплывающей подсказки по умолчанию
         /// </summary>
         private static readonly string DefaultTooltip = "2safe";
@@ -69,21 +64,34 @@ namespace TwoSafe.View
             // Определение компонентов подлежащих уничтожению при закрытии приложения
             components = new System.ComponentModel.Container();
 
+            Properties.Settings.Default.PropertyChanged += Default_PropertyChanged;
+            
             // Инициализация контекстного меню и управляющих элементов
             this.contextMenu = new System.Windows.Forms.ContextMenu();
             this.menuItemExit = new MenuItem();
             this.menuItemProperties = new MenuItem();
+            
 
             // Инициализация полей управляющего элемента "Настройки". Подписка на обработчик нажатия мыши 
             this.menuItemProperties.Index = 0;
-            this.menuItemProperties.Text = "Настройки";
             this.menuItemProperties.Click += new System.EventHandler(this.propertiesItem_Click);
 
 
             // Инициализация полей управляющего элемента "Выход". Подписка на обработчик нажатия мыши
             this.menuItemExit.Index = 1;
-            this.menuItemExit.Text = "Выход";
             this.menuItemExit.Click += new System.EventHandler(this.exitItem_Click);
+            
+            switch (Properties.Settings.Default.Language)
+            {
+                case "en":
+                    menuItemExit.Text = "Exit";
+                    menuItemProperties.Text = "Preferences";
+                    break;
+                case "ru-RU":
+                    menuItemExit.Text = "Выход";
+                    menuItemProperties.Text = "Настройки";
+                    break;
+            }
 
             // Добавление управляющих элементов в контекстное меню
             this.contextMenu.MenuItems.AddRange(
@@ -102,6 +110,24 @@ namespace TwoSafe.View
             
             // Подписка на обработчик события двойного щелчка мыши на иконке приложения
             notifyIcon.DoubleClick += this.notifyIcon_DoubleClick;
+        }
+
+        
+        
+        private void Default_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            string lang = Properties.Settings.Default.Language;
+            switch (lang)
+            {
+                case "en" :
+                    menuItemExit.Text  = "Exit";
+                    menuItemProperties.Text = "Preferences";
+                    break;
+                case "ru-RU":
+                    menuItemExit.Text  = "Выход";
+                    menuItemProperties.Text = "Настройки";
+                    break;
+            }
         }
 
         /// <summary>
