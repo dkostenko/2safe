@@ -16,5 +16,18 @@ namespace TwoSafe.View
         {
             InitializeComponent();
         }
+
+        private void FormPreferences_Load(object sender, EventArgs e)
+        {
+            comboBoxLanguages.Items.Add("English");
+            comboBoxLanguages.Items.Add("Russian");
+        }
+
+        private void comboBoxLanguages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

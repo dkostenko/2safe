@@ -95,7 +95,7 @@ namespace TwoSafe.View
             notifyIcon = new NotifyIcon(components)
             {
                 ContextMenu = contextMenu,
-                Icon = new Icon(IconFileName),
+                Icon = TwoSafe.Properties.Resources.green_icon,
                 Text = DefaultTooltip,
                 Visible = true
             };
@@ -118,7 +118,7 @@ namespace TwoSafe.View
         /// </summary>
         private void notifyIcon_DoubleClick(object sender, System.EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", @"C:\Users\Paul Gurov\Documents\2Safe");
+            System.Diagnostics.Process.Start("explorer.exe", @"\");
         }
 
         /// <summary>

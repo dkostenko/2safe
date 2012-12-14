@@ -30,22 +30,24 @@
         {
             this.tabControlPreferences = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
+            this.groupBoxGeneral = new System.Windows.Forms.GroupBox();
+            this.checkBoxLanSync = new System.Windows.Forms.CheckBox();
+            this.checkBoxStart = new System.Windows.Forms.CheckBox();
+            this.checkBoxNotifications = new System.Windows.Forms.CheckBox();
             this.tabPageAccount = new System.Windows.Forms.TabPage();
             this.tabPageBandwidth = new System.Windows.Forms.TabPage();
             this.tabPageProxies = new System.Windows.Forms.TabPage();
             this.tabPageAdvanced = new System.Windows.Forms.TabPage();
-            this.groupBoxGeneral = new System.Windows.Forms.GroupBox();
+            this.groupBoxLanguage = new System.Windows.Forms.GroupBox();
+            this.comboBoxLanguages = new System.Windows.Forms.ComboBox();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
-            this.checkBoxNotifications = new System.Windows.Forms.CheckBox();
-            this.checkBoxStart = new System.Windows.Forms.CheckBox();
-            this.checkBoxLanSync = new System.Windows.Forms.CheckBox();
-            this.groupBoxLanguage = new System.Windows.Forms.GroupBox();
             this.tabControlPreferences.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
-            this.tabPageAdvanced.SuspendLayout();
             this.groupBoxGeneral.SuspendLayout();
+            this.tabPageAdvanced.SuspendLayout();
+            this.groupBoxLanguage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlPreferences
@@ -72,12 +74,53 @@
             this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
             // 
+            // groupBoxGeneral
+            // 
+            this.groupBoxGeneral.Controls.Add(this.checkBoxLanSync);
+            this.groupBoxGeneral.Controls.Add(this.checkBoxStart);
+            this.groupBoxGeneral.Controls.Add(this.checkBoxNotifications);
+            this.groupBoxGeneral.Location = new System.Drawing.Point(21, 25);
+            this.groupBoxGeneral.Name = "groupBoxGeneral";
+            this.groupBoxGeneral.Size = new System.Drawing.Size(302, 141);
+            this.groupBoxGeneral.TabIndex = 0;
+            this.groupBoxGeneral.TabStop = false;
+            // 
+            // checkBoxLanSync
+            // 
+            this.checkBoxLanSync.AutoSize = true;
+            this.checkBoxLanSync.Location = new System.Drawing.Point(32, 75);
+            this.checkBoxLanSync.Name = "checkBoxLanSync";
+            this.checkBoxLanSync.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxLanSync.TabIndex = 2;
+            this.checkBoxLanSync.Text = "Enable LAN Sync";
+            this.checkBoxLanSync.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxStart
+            // 
+            this.checkBoxStart.AutoSize = true;
+            this.checkBoxStart.Location = new System.Drawing.Point(32, 52);
+            this.checkBoxStart.Name = "checkBoxStart";
+            this.checkBoxStart.Size = new System.Drawing.Size(162, 17);
+            this.checkBoxStart.TabIndex = 1;
+            this.checkBoxStart.Text = "Start 2safe on system startup";
+            this.checkBoxStart.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxNotifications
+            // 
+            this.checkBoxNotifications.AutoSize = true;
+            this.checkBoxNotifications.Location = new System.Drawing.Point(32, 29);
+            this.checkBoxNotifications.Name = "checkBoxNotifications";
+            this.checkBoxNotifications.Size = new System.Drawing.Size(153, 17);
+            this.checkBoxNotifications.TabIndex = 0;
+            this.checkBoxNotifications.Text = "Show desktop notifications";
+            this.checkBoxNotifications.UseVisualStyleBackColor = true;
+            // 
             // tabPageAccount
             // 
             this.tabPageAccount.Location = new System.Drawing.Point(4, 22);
             this.tabPageAccount.Name = "tabPageAccount";
             this.tabPageAccount.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAccount.Size = new System.Drawing.Size(350, 321);
+            this.tabPageAccount.Size = new System.Drawing.Size(350, 304);
             this.tabPageAccount.TabIndex = 1;
             this.tabPageAccount.Text = "Account";
             this.tabPageAccount.UseVisualStyleBackColor = true;
@@ -87,7 +130,7 @@
             this.tabPageBandwidth.Location = new System.Drawing.Point(4, 22);
             this.tabPageBandwidth.Name = "tabPageBandwidth";
             this.tabPageBandwidth.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBandwidth.Size = new System.Drawing.Size(350, 321);
+            this.tabPageBandwidth.Size = new System.Drawing.Size(350, 304);
             this.tabPageBandwidth.TabIndex = 2;
             this.tabPageBandwidth.Text = "Bandwidth";
             this.tabPageBandwidth.UseVisualStyleBackColor = true;
@@ -97,7 +140,7 @@
             this.tabPageProxies.Location = new System.Drawing.Point(4, 22);
             this.tabPageProxies.Name = "tabPageProxies";
             this.tabPageProxies.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProxies.Size = new System.Drawing.Size(350, 321);
+            this.tabPageProxies.Size = new System.Drawing.Size(350, 304);
             this.tabPageProxies.TabIndex = 3;
             this.tabPageProxies.Text = "Proxies";
             this.tabPageProxies.UseVisualStyleBackColor = true;
@@ -113,16 +156,24 @@
             this.tabPageAdvanced.Text = "Advanced";
             this.tabPageAdvanced.UseVisualStyleBackColor = true;
             // 
-            // groupBoxGeneral
+            // groupBoxLanguage
             // 
-            this.groupBoxGeneral.Controls.Add(this.checkBoxLanSync);
-            this.groupBoxGeneral.Controls.Add(this.checkBoxStart);
-            this.groupBoxGeneral.Controls.Add(this.checkBoxNotifications);
-            this.groupBoxGeneral.Location = new System.Drawing.Point(21, 25);
-            this.groupBoxGeneral.Name = "groupBoxGeneral";
-            this.groupBoxGeneral.Size = new System.Drawing.Size(302, 141);
-            this.groupBoxGeneral.TabIndex = 0;
-            this.groupBoxGeneral.TabStop = false;
+            this.groupBoxLanguage.Controls.Add(this.comboBoxLanguages);
+            this.groupBoxLanguage.Location = new System.Drawing.Point(15, 199);
+            this.groupBoxLanguage.Name = "groupBoxLanguage";
+            this.groupBoxLanguage.Size = new System.Drawing.Size(320, 89);
+            this.groupBoxLanguage.TabIndex = 0;
+            this.groupBoxLanguage.TabStop = false;
+            this.groupBoxLanguage.Text = "Language";
+            // 
+            // comboBoxLanguages
+            // 
+            this.comboBoxLanguages.FormattingEnabled = true;
+            this.comboBoxLanguages.Location = new System.Drawing.Point(34, 38);
+            this.comboBoxLanguages.Name = "comboBoxLanguages";
+            this.comboBoxLanguages.Size = new System.Drawing.Size(251, 21);
+            this.comboBoxLanguages.TabIndex = 0;
+            this.comboBoxLanguages.SelectedIndexChanged += new System.EventHandler(this.comboBoxLanguages_SelectedIndexChanged);
             // 
             // buttonOK
             // 
@@ -151,45 +202,6 @@
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = true;
             // 
-            // checkBoxNotifications
-            // 
-            this.checkBoxNotifications.AutoSize = true;
-            this.checkBoxNotifications.Location = new System.Drawing.Point(32, 29);
-            this.checkBoxNotifications.Name = "checkBoxNotifications";
-            this.checkBoxNotifications.Size = new System.Drawing.Size(153, 17);
-            this.checkBoxNotifications.TabIndex = 0;
-            this.checkBoxNotifications.Text = "Show desktop notifications";
-            this.checkBoxNotifications.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxStart
-            // 
-            this.checkBoxStart.AutoSize = true;
-            this.checkBoxStart.Location = new System.Drawing.Point(32, 52);
-            this.checkBoxStart.Name = "checkBoxStart";
-            this.checkBoxStart.Size = new System.Drawing.Size(162, 17);
-            this.checkBoxStart.TabIndex = 1;
-            this.checkBoxStart.Text = "Start 2safe on system startup";
-            this.checkBoxStart.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxLanSync
-            // 
-            this.checkBoxLanSync.AutoSize = true;
-            this.checkBoxLanSync.Location = new System.Drawing.Point(32, 75);
-            this.checkBoxLanSync.Name = "checkBoxLanSync";
-            this.checkBoxLanSync.Size = new System.Drawing.Size(110, 17);
-            this.checkBoxLanSync.TabIndex = 2;
-            this.checkBoxLanSync.Text = "Enable LAN Sync";
-            this.checkBoxLanSync.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxLanguage
-            // 
-            this.groupBoxLanguage.Location = new System.Drawing.Point(15, 199);
-            this.groupBoxLanguage.Name = "groupBoxLanguage";
-            this.groupBoxLanguage.Size = new System.Drawing.Size(320, 89);
-            this.groupBoxLanguage.TabIndex = 0;
-            this.groupBoxLanguage.TabStop = false;
-            this.groupBoxLanguage.Text = "Language";
-            // 
             // FormPreferences
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,11 +214,13 @@
             this.Name = "FormPreferences";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2safe Preferences";
+            this.Load += new System.EventHandler(this.FormPreferences_Load);
             this.tabControlPreferences.ResumeLayout(false);
             this.tabPageGeneral.ResumeLayout(false);
-            this.tabPageAdvanced.ResumeLayout(false);
             this.groupBoxGeneral.ResumeLayout(false);
             this.groupBoxGeneral.PerformLayout();
+            this.tabPageAdvanced.ResumeLayout(false);
+            this.groupBoxLanguage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -227,5 +241,6 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonApply;
         private System.Windows.Forms.GroupBox groupBoxLanguage;
+        private System.Windows.Forms.ComboBox comboBoxLanguages;
     }
 }
