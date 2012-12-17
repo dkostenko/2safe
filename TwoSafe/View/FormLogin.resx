@@ -122,7 +122,7 @@
     <value>97, 44</value>
   </data>
   <data name="tbAccount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
+    <value>163, 20</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tbAccount.TabIndex" type="System.Int32, mscorlib">
@@ -174,7 +174,7 @@
     <value>*</value>
   </data>
   <data name="tbPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
+    <value>163, 20</value>
   </data>
   <data name="tbPassword.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -219,7 +219,7 @@
     <value>1</value>
   </data>
   <data name="buttonLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 97</value>
+    <value>120, 110</value>
   </data>
   <data name="buttonLogin.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -249,7 +249,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>292, 273</value>
+    <value>306, 154</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Authorization</value>

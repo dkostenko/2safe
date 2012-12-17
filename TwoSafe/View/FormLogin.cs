@@ -16,16 +16,12 @@ namespace TwoSafe.View
 {
     public partial class FormLogin : Form
     {
-        private string[] cookie;
-        private View.FormPreferences formPreferences;
         ResourceManager language;
 
-        public FormLogin(string[] cookie, View.FormPreferences formPreferences)
+        public FormLogin()
         {
             InitializeComponent();
-            this.cookie = cookie;
-            this.formPreferences = formPreferences;
-            this.language = new ResourceManager("TwoSafe.View.WinFormStrings", typeof(FormPreferences).Assembly);
+            language = new ResourceManager(typeof(TwoSafe.View.WinFormStrings));
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -38,8 +34,8 @@ namespace TwoSafe.View
             }
             else
             {
-                this.cookie[0] = response["response"]["token"];
-                formPreferences.Show();
+                Properties.Settings.Default.Token = response["response"]["token"];
+                Properties.Settings.Default.Save();
                 this.Close();
             }
         }

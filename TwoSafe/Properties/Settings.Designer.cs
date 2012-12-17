@@ -46,5 +46,17 @@ namespace TwoSafe.Properties {
                 this["Token"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Paul Gurov\\2safe")]
+        public string UserFolderPath {
+            get {
+                return ((string)(this["UserFolderPath"]));
+            }
+            set {
+                this["UserFolderPath"] = value;
+            }
+        }
     }
 }

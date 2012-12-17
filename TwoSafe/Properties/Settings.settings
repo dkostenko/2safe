@@ -8,5 +8,8 @@
     <Setting Name="Token" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="UserFolderPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\Paul Gurov\2safe</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
