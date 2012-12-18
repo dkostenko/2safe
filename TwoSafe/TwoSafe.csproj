@@ -85,6 +85,12 @@
     <Compile Include="Model\SQLiteDatabase.cs" />
     <Compile Include="Model\TwoSafeDB.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="View\CreateFolderDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CreateFolderDialog.Designer.cs">
+      <DependentUpon>CreateFolderDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CustomApplicationContext.cs" />
     <Compile Include="View\FormLogin.cs">
       <SubType>Form</SubType>
@@ -119,6 +125,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WinFormStrings.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\CreateFolderDialog.resx">
+      <DependentUpon>CreateFolderDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>

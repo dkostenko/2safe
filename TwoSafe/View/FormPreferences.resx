@@ -117,189 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;tabPageGeneral.Name" xml:space="preserve">
-    <value>tabPageGeneral</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.Parent" xml:space="preserve">
-    <value>tabControlPreferences</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabPageAccount.Name" xml:space="preserve">
-    <value>tabPageAccount</value>
-  </data>
-  <data name="&gt;&gt;tabPageAccount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageAccount.Parent" xml:space="preserve">
-    <value>tabControlPreferences</value>
-  </data>
-  <data name="&gt;&gt;tabPageAccount.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabPageBandwidth.Name" xml:space="preserve">
-    <value>tabPageBandwidth</value>
-  </data>
-  <data name="&gt;&gt;tabPageBandwidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageBandwidth.Parent" xml:space="preserve">
-    <value>tabControlPreferences</value>
-  </data>
-  <data name="&gt;&gt;tabPageBandwidth.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tabPageProxies.Name" xml:space="preserve">
-    <value>tabPageProxies</value>
-  </data>
-  <data name="&gt;&gt;tabPageProxies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageProxies.Parent" xml:space="preserve">
-    <value>tabControlPreferences</value>
-  </data>
-  <data name="&gt;&gt;tabPageProxies.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tabPageAdvanced.Name" xml:space="preserve">
-    <value>tabPageAdvanced</value>
-  </data>
-  <data name="&gt;&gt;tabPageAdvanced.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageAdvanced.Parent" xml:space="preserve">
-    <value>tabControlPreferences</value>
-  </data>
-  <data name="&gt;&gt;tabPageAdvanced.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tabControlPreferences.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="tabControlPreferences.Size" type="System.Drawing.Size, System.Drawing">
-    <value>358, 330</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tabControlPreferences.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabControlPreferences.Name" xml:space="preserve">
-    <value>tabControlPreferences</value>
-  </data>
-  <data name="&gt;&gt;tabControlPreferences.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControlPreferences.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControlPreferences.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;groupBoxGeneral.Name" xml:space="preserve">
-    <value>groupBoxGeneral</value>
-  </data>
-  <data name="&gt;&gt;groupBoxGeneral.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxGeneral.Parent" xml:space="preserve">
-    <value>tabPageGeneral</value>
-  </data>
-  <data name="&gt;&gt;groupBoxGeneral.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageGeneral.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tabPageGeneral.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageGeneral.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 304</value>
-  </data>
-  <data name="tabPageGeneral.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPageGeneral.Text" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.Name" xml:space="preserve">
-    <value>tabPageGeneral</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.Parent" xml:space="preserve">
-    <value>tabControlPreferences</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLanSync.Name" xml:space="preserve">
-    <value>checkBoxLanSync</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLanSync.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLanSync.Parent" xml:space="preserve">
-    <value>groupBoxGeneral</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLanSync.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxStart.Name" xml:space="preserve">
-    <value>checkBoxStart</value>
-  </data>
-  <data name="&gt;&gt;checkBoxStart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxStart.Parent" xml:space="preserve">
-    <value>groupBoxGeneral</value>
-  </data>
-  <data name="&gt;&gt;checkBoxStart.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxNotifications.Name" xml:space="preserve">
-    <value>checkBoxNotifications</value>
-  </data>
-  <data name="&gt;&gt;checkBoxNotifications.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxNotifications.Parent" xml:space="preserve">
-    <value>groupBoxGeneral</value>
-  </data>
-  <data name="&gt;&gt;checkBoxNotifications.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="groupBoxGeneral.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 25</value>
-  </data>
-  <data name="groupBoxGeneral.Size" type="System.Drawing.Size, System.Drawing">
-    <value>302, 141</value>
-  </data>
-  <data name="groupBoxGeneral.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;groupBoxGeneral.Name" xml:space="preserve">
-    <value>groupBoxGeneral</value>
-  </data>
-  <data name="&gt;&gt;groupBoxGeneral.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxGeneral.Parent" xml:space="preserve">
-    <value>tabPageGeneral</value>
-  </data>
-  <data name="&gt;&gt;groupBoxGeneral.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="checkBoxLanSync.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="checkBoxLanSync.Location" type="System.Drawing.Point, System.Drawing">
     <value>32, 75</value>
   </data>
@@ -377,6 +199,55 @@
   </data>
   <data name="&gt;&gt;checkBoxNotifications.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="groupBoxGeneral.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 25</value>
+  </data>
+  <data name="groupBoxGeneral.Size" type="System.Drawing.Size, System.Drawing">
+    <value>302, 141</value>
+  </data>
+  <data name="groupBoxGeneral.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBoxGeneral.Name" xml:space="preserve">
+    <value>groupBoxGeneral</value>
+  </data>
+  <data name="&gt;&gt;groupBoxGeneral.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxGeneral.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;groupBoxGeneral.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageGeneral.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabPageGeneral.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageGeneral.Size" type="System.Drawing.Size, System.Drawing">
+    <value>350, 304</value>
+  </data>
+  <data name="tabPageGeneral.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageGeneral.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.Name" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.Parent" xml:space="preserve">
+    <value>tabControlPreferences</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="tabPageAccount.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -459,6 +330,39 @@
   <data name="&gt;&gt;tabPageProxies.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="comboBoxLanguages.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 38</value>
+  </data>
+  <data name="comboBoxLanguages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 21</value>
+  </data>
+  <data name="comboBoxLanguages.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;comboBoxLanguages.Name" xml:space="preserve">
+    <value>comboBoxLanguages</value>
+  </data>
+  <data name="&gt;&gt;comboBoxLanguages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxLanguages.Parent" xml:space="preserve">
+    <value>groupBoxLanguage</value>
+  </data>
+  <data name="&gt;&gt;comboBoxLanguages.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBoxLanguage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 199</value>
+  </data>
+  <data name="groupBoxLanguage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 89</value>
+  </data>
+  <data name="groupBoxLanguage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBoxLanguage.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
   <data name="&gt;&gt;groupBoxLanguage.Name" xml:space="preserve">
     <value>groupBoxLanguage</value>
   </data>
@@ -498,62 +402,26 @@
   <data name="&gt;&gt;tabPageAdvanced.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;comboBoxLanguages.Name" xml:space="preserve">
-    <value>comboBoxLanguages</value>
+  <data name="tabControlPreferences.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
   </data>
-  <data name="&gt;&gt;comboBoxLanguages.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tabControlPreferences.Size" type="System.Drawing.Size, System.Drawing">
+    <value>358, 330</value>
   </data>
-  <data name="&gt;&gt;comboBoxLanguages.Parent" xml:space="preserve">
-    <value>groupBoxLanguage</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLanguages.ZOrder" xml:space="preserve">
+  <data name="tabControlPreferences.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="groupBoxLanguage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 199</value>
+  <data name="&gt;&gt;tabControlPreferences.Name" xml:space="preserve">
+    <value>tabControlPreferences</value>
   </data>
-  <data name="groupBoxLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 89</value>
+  <data name="&gt;&gt;tabControlPreferences.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBoxLanguage.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;tabControlPreferences.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="groupBoxLanguage.Text" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLanguage.Name" xml:space="preserve">
-    <value>groupBoxLanguage</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLanguage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLanguage.Parent" xml:space="preserve">
-    <value>tabPageAdvanced</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLanguage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="comboBoxLanguages.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 38</value>
-  </data>
-  <data name="comboBoxLanguages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 21</value>
-  </data>
-  <data name="comboBoxLanguages.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLanguages.Name" xml:space="preserve">
-    <value>comboBoxLanguages</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLanguages.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLanguages.Parent" xml:space="preserve">
-    <value>groupBoxLanguage</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLanguages.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tabControlPreferences.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
     <value>129, 348</value>
@@ -634,7 +502,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>380, 387</value>
+    <value>381, 387</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

@@ -10,7 +10,7 @@ using System.IO;
 
 namespace TwoSafe.View
 {   
-    class CustomApplicationContext : ApplicationContext
+    public class CustomApplicationContext : ApplicationContext
     {
         /// <summary>
         /// Список компонентов подлежащих уничтожению при закрытии приложения
@@ -45,20 +45,94 @@ namespace TwoSafe.View
         /// <summary>
         /// Форма с настройками
         /// </summary>
-        View.FormPreferences prefs;
+        View.FormPreferences prefsForm;
+        
+        /// <summary>
+        /// Форма логина
+        /// </summary>
+        View.FormLogin loginForm;
 
         /// <summary>
         /// Конструктор CustomApplicationContext без параметров
         /// </summary>
         public CustomApplicationContext()
-        {
+        {            
             InitializeContext();
+
             //УДАЛИТЬ
-            View.Test qwe = new View.Test();
-            qwe.Show();
+            //View.Test qwe = new View.Test();
+            //qwe.Show();
             // TODO: добавить синхронизацию и что то еще
+
+
+            // Проверки
+            runUserChecks();
+            
+
         }
-        
+
+        /// <summary>
+        /// Запуск проверок условий необходимых для запуска программы
+        /// наличие интернета не является одной из них
+        /// при невыполнении условий программа должна предоставлять адекватное решение
+        /// </summary>
+        private void runUserChecks()
+        {
+
+            // Если программа запускается первый раз - в настройках пусто
+            // смотрим - есть ли папка по дефолту 
+            if (Properties.Settings.Default.UserFolderPath == "")
+            {
+                // если до этого существовала дефолтовая папка, то просо используем ее 
+                if (Directory.Exists(@"C:\Users\" + Environment.UserName + @"\2safe"))
+                {
+                    Properties.Settings.Default.UserFolderPath = @"C:\Users\" + Environment.UserName + @"\2safe";
+                    Properties.Settings.Default.Save();
+                }
+                // если дефолтовая папка не существовала, надо предложить пользователю 3 опции
+                // 1. закрыть программу
+                // 2. создать дефолтную папку в дефолтном месте
+                // 3. создать папку со своим именем с которой будет все синхронизироваться
+                else
+                {
+                    CreateFolderDialog folderDialog = new CreateFolderDialog();
+                    folderDialog.ShowDialog();
+                    switch (folderDialog.DialogResult)
+                    {
+                        case DialogResult.Abort:
+                            // close the application
+                            ExitThread();
+                            break;
+                        case DialogResult.OK:
+                            // create default folder
+                            Directory.CreateDirectory(@"C:\Users\" + Environment.UserName + @"\2safe");
+                            break;
+                        case DialogResult.Yes:
+                            // show dialog for choosing a custom destination of the folder
+
+                            break;
+
+                    }
+                }
+            }
+            
+            /*
+            if (Model.User.userFolderExists()) // Существует папка 2safe юзера
+            {
+                if (!Model.User.isAuthorized()) // Если с токеном все плохо - выпадает окно авторизации
+                {
+                    loginForm = new FormLogin();
+                    loginForm.ShowDialog();
+                    runUserChecks();
+                }
+            }
+            else // Нет папки
+            {
+                MessageBox.Show("Папка " + Properties.Settings.Default.UserFolderPath + " не существует");
+                runUserChecks();
+            }*/
+        }
+
         /// <summary>
         /// Инициализатор иконки и контекстного меню
         /// </summary>
@@ -67,35 +141,22 @@ namespace TwoSafe.View
             // Определение компонентов подлежащих уничтожению при закрытии приложения
             components = new System.ComponentModel.Container();
 
-            Properties.Settings.Default.PropertyChanged += Default_PropertyChanged;
-            
             // Инициализация контекстного меню и управляющих элементов
             this.contextMenu = new System.Windows.Forms.ContextMenu();
             this.menuItemExit = new MenuItem();
             this.menuItemProperties = new MenuItem();
             
-
             // Инициализация полей управляющего элемента "Настройки". Подписка на обработчик нажатия мыши 
             this.menuItemProperties.Index = 0;
             this.menuItemProperties.Click += new System.EventHandler(this.propertiesItem_Click);
 
-
             // Инициализация полей управляющего элемента "Выход". Подписка на обработчик нажатия мыши
             this.menuItemExit.Index = 1;
             this.menuItemExit.Click += new System.EventHandler(this.exitItem_Click);
-            
-            switch (Properties.Settings.Default.Language)
-            {
-                case "en":
-                    menuItemExit.Text = "Exit";
-                    menuItemProperties.Text = "Preferences";
-                    break;
-                case "ru-RU":
-                    menuItemExit.Text = "Выход";
-                    menuItemProperties.Text = "Настройки";
-                    break;
-            }
 
+            // Выставление язвка в меню иконки
+            SetMenuItemsLanguage(Properties.Settings.Default.Language);
+            
             // Добавление управляющих элементов в контекстное меню
             this.contextMenu.MenuItems.AddRange(
                     new MenuItem[] { this.menuItemProperties, 
@@ -113,24 +174,37 @@ namespace TwoSafe.View
             
             // Подписка на обработчик события двойного щелчка мыши на иконке приложения
             notifyIcon.DoubleClick += this.notifyIcon_DoubleClick;
+            // Подписка на обработчик события изменения настроек
+            Properties.Settings.Default.PropertyChanged += Default_PropertyChanged;
         }
 
-        
-        
-        private void Default_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+
+
+        /// <summary>
+        /// Метод, изменяющий язык управляющих элементов контекстного меню иконки
+        /// </summary>
+        /// <param name="language"> Язык в формате "ru-RU" или "en" </param>
+        private void SetMenuItemsLanguage(string language)
         {
-            string lang = Properties.Settings.Default.Language;
-            switch (lang)
+            switch (language)
             {
-                case "en" :
-                    menuItemExit.Text  = "Exit";
+                case "en":
+                    menuItemExit.Text = "Exit";
                     menuItemProperties.Text = "Preferences";
                     break;
                 case "ru-RU":
-                    menuItemExit.Text  = "Выход";
+                    menuItemExit.Text = "Выход";
                     menuItemProperties.Text = "Настройки";
                     break;
             }
+        }
+        
+        // Обработчик изменения настроек
+        private void Default_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            SetMenuItemsLanguage(Properties.Settings.Default.Language);
+            Model.User.token = Properties.Settings.Default.Token;
+            Model.User.userFolderPath = Properties.Settings.Default.UserFolderPath;
         }
 
         /// <summary>
@@ -138,8 +212,8 @@ namespace TwoSafe.View
         /// </summary>
         private void propertiesItem_Click(object sender, System.EventArgs e)
         {
-            prefs = new FormPreferences();
-            prefs.Show();
+            prefsForm = new FormPreferences();
+            prefsForm.Show();
         }
 
         /// <summary>
@@ -172,10 +246,12 @@ namespace TwoSafe.View
         protected override void ExitThreadCore()
         {
             // Если показываются какие-то формы, то они закрываются
-            if (prefs != null) { prefs.Close(); }
-            
+            if (prefsForm != null) { prefsForm.Close(); }
+            if (loginForm != null) { loginForm.Close(); }
+
             notifyIcon.Visible = false; // это удалит иконку из трея
             base.ExitThreadCore();
+            //Application.Exit();
         }
     }
 }
