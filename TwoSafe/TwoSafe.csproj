@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <Win32Resource>F:\2safe\TwoSafe\Resources\IconsResource.res</Win32Resource>
+    <Win32Resource>E:\TwoSafe\Resources\IconsResource.res</Win32Resource>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>ED3897F350CA5D20F098467A802E424A7104EB3F</ManifestCertificateThumbprint>
@@ -63,11 +63,11 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>json_net\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>.\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -80,6 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ApiUser.cs" />
+    <Compile Include="Controller\Synchronize.cs" />
+    <Compile Include="Model\Folders.cs" />
+    <Compile Include="Model\SQLiteDatabase.cs" />
+    <Compile Include="Model\TwoSafeDB.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="View\CustomApplicationContext.cs" />
     <Compile Include="View\FormLogin.cs">
@@ -104,6 +108,12 @@
     </Compile>
     <Compile Include="View\ProgramInfo.cs" />
     <Compile Include="View\SingleInstance.cs" />
+    <Compile Include="View\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\WinFormStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -136,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormRegistration.ru.resx">
       <DependentUpon>FormRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\WinFormStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
