@@ -56,39 +56,75 @@ namespace TwoSafe.View
         /// Конструктор CustomApplicationContext без параметров
         /// </summary>
         public CustomApplicationContext()
-        {
+        {            
             InitializeContext();
-            
+
+
             // Проверки
             runUserChecks();
             
         }
 
-
+        /// <summary>
+        /// Запуск проверок условий необходимых для запуска программы
+        /// наличие интернета не является одной из них
+        /// при невыполнении условий программа должна предоставлять адекватное решение
+        /// </summary>
         private void runUserChecks()
         {
-            if (Model.User.isOnline()) // Есть интернет соединение
+
+            // Если программа запускается первый раз - в настройках пусто
+            // смотрим - есть ли папка по дефолту 
+            if (Properties.Settings.Default.UserFolderPath == "")
             {
-                if (Model.User.userFolderExists()) // Существует папка 2safe юзера
+                // если до этого существовала дефолтовая папка, то просо используем ее 
+                if (Directory.Exists(@"C:\Users\" + Environment.UserName + @"\2safe"))
                 {
-                    if (!Model.User.isAuthorized()) // Если с токеном все плохо - выпадает окно авторизации
+                    Properties.Settings.Default.UserFolderPath = @"C:\Users\" + Environment.UserName + @"\2safe";
+                    Properties.Settings.Default.Save();
+                }
+                // если дефолтовая папка не существовала, надо предложить пользователю 3 опции
+                // 1. закрыть программу
+                // 2. создать дефолтную папку в дефолтном месте
+                // 3. создать папку со своим именем с которой будет все синхронизироваться
+                else
+                {
+                    CreateFolderDialog folderDialog = new CreateFolderDialog();
+                    folderDialog.ShowDialog();
+                    switch (folderDialog.DialogResult)
                     {
-                        loginForm = new FormLogin();
-                        loginForm.ShowDialog();
-                        runUserChecks();
+                        case DialogResult.Abort:
+                            // close the application
+                            ExitThread();
+                            break;
+                        case DialogResult.OK:
+                            // create default folder
+                            Directory.CreateDirectory(@"C:\Users\" + Environment.UserName + @"\2safe");
+                            break;
+                        case DialogResult.Yes:
+                            // show dialog for choosing a custom destination of the folder
+
+                            break;
+
                     }
                 }
-                else // Нет папки
+            }
+            
+            /*
+            if (Model.User.userFolderExists()) // Существует папка 2safe юзера
+            {
+                if (!Model.User.isAuthorized()) // Если с токеном все плохо - выпадает окно авторизации
                 {
-                    MessageBox.Show("Папка " + Properties.Settings.Default.UserFolderPath + " не существует");
+                    loginForm = new FormLogin();
+                    loginForm.ShowDialog();
                     runUserChecks();
                 }
             }
-            else // Нет интернет соединения
+            else // Нет папки
             {
-                MessageBox.Show("Нет интернет соединения");
+                MessageBox.Show("Папка " + Properties.Settings.Default.UserFolderPath + " не существует");
                 runUserChecks();
-            }
+            }*/
         }
 
         /// <summary>

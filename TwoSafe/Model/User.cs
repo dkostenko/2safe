@@ -18,7 +18,6 @@ namespace TwoSafe.Model
         {
             token = Properties.Settings.Default.Token;
             userFolderPath = Properties.Settings.Default.UserFolderPath;
-
         }
 
         /// <summary>
