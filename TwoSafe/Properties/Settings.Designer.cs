@@ -58,5 +58,41 @@ namespace TwoSafe.Properties {
                 this["UserFolderPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LanSync {
+            get {
+                return ((bool)(this["LanSync"]));
+            }
+            set {
+                this["LanSync"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DesktopNotifications {
+            get {
+                return ((bool)(this["DesktopNotifications"]));
+            }
+            set {
+                this["DesktopNotifications"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool StartOnSystemStartup {
+            get {
+                return ((bool)(this["StartOnSystemStartup"]));
+            }
+            set {
+                this["StartOnSystemStartup"] = value;
+            }
+        }
     }
 }

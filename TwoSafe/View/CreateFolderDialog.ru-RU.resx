@@ -118,67 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBoxLanSync.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 17</value>
+  <data name="labelMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>263, 13</value>
   </data>
-  <data name="checkBoxLanSync.Text" xml:space="preserve">
-    <value>Синхронизация по LAN</value>
+  <data name="labelMessage.Text" xml:space="preserve">
+    <value>Для запуска приложения необходима папка 2safe</value>
   </data>
-  <data name="checkBoxStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 17</value>
+  <data name="buttonExit.Text" xml:space="preserve">
+    <value>Закрыть приложение</value>
   </data>
-  <data name="checkBoxStart.Text" xml:space="preserve">
-    <value>Запускать 2safe при старте системы</value>
+  <data name="buttonCreateDefault.Text" xml:space="preserve">
+    <value>Создать папку по умолчанию</value>
   </data>
-  <data name="checkBoxNotifications.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 17</value>
-  </data>
-  <data name="checkBoxNotifications.Text" xml:space="preserve">
-    <value>Показывать уведомления на рабочем столе</value>
-  </data>
-  <data name="tabPageGeneral.Text" xml:space="preserve">
-    <value>Основные</value>
-  </data>
-  <data name="buttonLogOut.Text" xml:space="preserve">
-    <value>Выйти</value>
-  </data>
-  <data name="textBoxUserName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 36</value>
-  </data>
-  <data name="textBoxUserName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 20</value>
-  </data>
-  <data name="labelLoggedInAs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 39</value>
-  </data>
-  <data name="labelLoggedInAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 13</value>
-  </data>
-  <data name="labelLoggedInAs.Text" xml:space="preserve">
-    <value>Текущий пользователь</value>
-  </data>
-  <data name="tabPageAccount.Text" xml:space="preserve">
-    <value>Аккаунт</value>
-  </data>
-  <data name="buttonMoveLocation.Text" xml:space="preserve">
-    <value>Изменить...</value>
-  </data>
-  <data name="groupBoxLocation.Text" xml:space="preserve">
-    <value>Путь к папке 2safe</value>
-  </data>
-  <data name="groupBoxLanguage.Text" xml:space="preserve">
-    <value>Язык</value>
-  </data>
-  <data name="tabPageAdvanced.Text" xml:space="preserve">
-    <value>Другие</value>
-  </data>
-  <data name="buttonCancel.Text" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="buttonApply.Text" xml:space="preserve">
-    <value>Применить</value>
+  <data name="buttonCreateCustom.Text" xml:space="preserve">
+    <value>Создать свою папку / указать существующую</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>2safe Настройки</value>
+    <value>Создание папки 2safe</value>
   </data>
 </root>

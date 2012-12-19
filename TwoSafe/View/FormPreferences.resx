@@ -249,6 +249,81 @@
   <data name="&gt;&gt;tabPageGeneral.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="buttonLogOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 78</value>
+  </data>
+  <data name="buttonLogOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 23</value>
+  </data>
+  <data name="buttonLogOut.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonLogOut.Text" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="&gt;&gt;buttonLogOut.Name" xml:space="preserve">
+    <value>buttonLogOut</value>
+  </data>
+  <data name="&gt;&gt;buttonLogOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonLogOut.Parent" xml:space="preserve">
+    <value>tabPageAccount</value>
+  </data>
+  <data name="&gt;&gt;buttonLogOut.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxUserName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 36</value>
+  </data>
+  <data name="textBoxUserName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 20</value>
+  </data>
+  <data name="textBoxUserName.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="textBoxUserName.Text" xml:space="preserve">
+    <value>username</value>
+  </data>
+  <data name="&gt;&gt;textBoxUserName.Name" xml:space="preserve">
+    <value>textBoxUserName</value>
+  </data>
+  <data name="&gt;&gt;textBoxUserName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxUserName.Parent" xml:space="preserve">
+    <value>tabPageAccount</value>
+  </data>
+  <data name="&gt;&gt;textBoxUserName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelLoggedInAs.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLoggedInAs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 39</value>
+  </data>
+  <data name="labelLoggedInAs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 13</value>
+  </data>
+  <data name="labelLoggedInAs.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelLoggedInAs.Text" xml:space="preserve">
+    <value>Logged in as</value>
+  </data>
+  <data name="&gt;&gt;labelLoggedInAs.Name" xml:space="preserve">
+    <value>labelLoggedInAs</value>
+  </data>
+  <data name="&gt;&gt;labelLoggedInAs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLoggedInAs.Parent" xml:space="preserve">
+    <value>tabPageAccount</value>
+  </data>
+  <data name="&gt;&gt;labelLoggedInAs.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="tabPageAccount.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
@@ -276,59 +351,74 @@
   <data name="&gt;&gt;tabPageAccount.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabPageBandwidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="buttonMoveLocation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 63</value>
   </data>
-  <data name="tabPageBandwidth.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="buttonMoveLocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
   </data>
-  <data name="tabPageBandwidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 304</value>
+  <data name="buttonMoveLocation.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="tabPageBandwidth.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="buttonMoveLocation.Text" xml:space="preserve">
+    <value>Move...</value>
   </data>
-  <data name="tabPageBandwidth.Text" xml:space="preserve">
-    <value>Bandwidth</value>
+  <data name="&gt;&gt;buttonMoveLocation.Name" xml:space="preserve">
+    <value>buttonMoveLocation</value>
   </data>
-  <data name="&gt;&gt;tabPageBandwidth.Name" xml:space="preserve">
-    <value>tabPageBandwidth</value>
+  <data name="&gt;&gt;buttonMoveLocation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageBandwidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;buttonMoveLocation.Parent" xml:space="preserve">
+    <value>groupBoxLocation</value>
   </data>
-  <data name="&gt;&gt;tabPageBandwidth.Parent" xml:space="preserve">
-    <value>tabControlPreferences</value>
+  <data name="&gt;&gt;buttonMoveLocation.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;tabPageBandwidth.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="textBoxLocation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 28</value>
   </data>
-  <data name="tabPageProxies.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="textBoxLocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>262, 20</value>
   </data>
-  <data name="tabPageProxies.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="textBoxLocation.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="tabPageProxies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 304</value>
+  <data name="&gt;&gt;textBoxLocation.Name" xml:space="preserve">
+    <value>textBoxLocation</value>
   </data>
-  <data name="tabPageProxies.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;textBoxLocation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPageProxies.Text" xml:space="preserve">
-    <value>Proxies</value>
+  <data name="&gt;&gt;textBoxLocation.Parent" xml:space="preserve">
+    <value>groupBoxLocation</value>
   </data>
-  <data name="&gt;&gt;tabPageProxies.Name" xml:space="preserve">
-    <value>tabPageProxies</value>
+  <data name="&gt;&gt;textBoxLocation.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;tabPageProxies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="groupBoxLocation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 20</value>
   </data>
-  <data name="&gt;&gt;tabPageProxies.Parent" xml:space="preserve">
-    <value>tabControlPreferences</value>
+  <data name="groupBoxLocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 105</value>
   </data>
-  <data name="&gt;&gt;tabPageProxies.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="groupBoxLocation.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="groupBoxLocation.Text" xml:space="preserve">
+    <value>2safe location</value>
+  </data>
+  <data name="&gt;&gt;groupBoxLocation.Name" xml:space="preserve">
+    <value>groupBoxLocation</value>
+  </data>
+  <data name="&gt;&gt;groupBoxLocation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxLocation.Parent" xml:space="preserve">
+    <value>tabPageAdvanced</value>
+  </data>
+  <data name="&gt;&gt;groupBoxLocation.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="comboBoxLanguages.Location" type="System.Drawing.Point, System.Drawing">
     <value>34, 38</value>
@@ -373,7 +463,7 @@
     <value>tabPageAdvanced</value>
   </data>
   <data name="&gt;&gt;groupBoxLanguage.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="tabPageAdvanced.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -400,7 +490,7 @@
     <value>tabControlPreferences</value>
   </data>
   <data name="&gt;&gt;tabPageAdvanced.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="tabControlPreferences.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>

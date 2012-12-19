@@ -1,6 +1,6 @@
 ﻿namespace TwoSafe.View
 {
-    partial class CreateFolderDialog
+    partial class CreateFolderFromSettingsDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateFolderDialog));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateFolderFromSettingsDialog));
             this.labelMessage = new System.Windows.Forms.Label();
             this.buttonExit = new System.Windows.Forms.Button();
-            this.buttonCreateDefault = new System.Windows.Forms.Button();
-            this.buttonCreateCustom = new System.Windows.Forms.Button();
+            this.buttonCreateFolder = new System.Windows.Forms.Button();
+            this.labelFolder = new System.Windows.Forms.Label();
+            this.labelWarning = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelMessage
@@ -46,27 +47,32 @@
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.UseVisualStyleBackColor = true;
             // 
-            // buttonCreateDefault
+            // buttonCreateFolder
             // 
-            resources.ApplyResources(this.buttonCreateDefault, "buttonCreateDefault");
-            this.buttonCreateDefault.Name = "buttonCreateDefault";
-            this.buttonCreateDefault.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonCreateFolder, "buttonCreateFolder");
+            this.buttonCreateFolder.Name = "buttonCreateFolder";
+            this.buttonCreateFolder.UseVisualStyleBackColor = true;
             // 
-            // buttonCreateCustom
+            // labelFolder
             // 
-            resources.ApplyResources(this.buttonCreateCustom, "buttonCreateCustom");
-            this.buttonCreateCustom.Name = "buttonCreateCustom";
-            this.buttonCreateCustom.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.labelFolder, "labelFolder");
+            this.labelFolder.Name = "labelFolder";
             // 
-            // CreateFolderDialog
+            // labelWarning
+            // 
+            resources.ApplyResources(this.labelWarning, "labelWarning");
+            this.labelWarning.Name = "labelWarning";
+            // 
+            // CreateFolderFromSettingsDialog
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonCreateCustom);
-            this.Controls.Add(this.buttonCreateDefault);
+            this.Controls.Add(this.labelWarning);
+            this.Controls.Add(this.labelFolder);
+            this.Controls.Add(this.buttonCreateFolder);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.labelMessage);
-            this.Name = "CreateFolderDialog";
+            this.Name = "CreateFolderFromSettingsDialog";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -76,7 +82,8 @@
 
         private System.Windows.Forms.Label labelMessage;
         private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.Button buttonCreateDefault;
-        private System.Windows.Forms.Button buttonCreateCustom;
+        private System.Windows.Forms.Button buttonCreateFolder;
+        private System.Windows.Forms.Label labelFolder;
+        private System.Windows.Forms.Label labelWarning;
     }
 }
