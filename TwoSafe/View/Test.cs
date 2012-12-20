@@ -42,7 +42,9 @@ namespace TwoSafe.View
             //SQLiteConnection.CreateFile("twoSafe.sqlite"); 
 
 
-            Model.TwoSafeDB.createTable();
+           // Model.TwoSafeDB.createTable();
+
+          
 
         }
 
@@ -55,12 +57,19 @@ namespace TwoSafe.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Controller.Synchronize.start();
+            //Controller.Synchronize.start();
+            Dictionary<string, string> data = new Dictionary<string,string>();
+            data.Add("dir_id","2285033047");
+            data.Add("token",Model.User.token);
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.putFile(data, @"C:\Users\Public\Videos\Sample Videos\Wildlife.wmv");
+            if (1 == 1)
+            {
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Controller.Synchronize.doSync();
+            //Controller.Synchronize.doSync();
         }
     }
 }

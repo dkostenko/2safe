@@ -14,7 +14,7 @@ namespace TwoSafe.Model
             SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=twoSafe.db;Version=3;");
 
             m_dbConnection.Open(); 
-            string sql = "CREATE TABLE folders (id INTEGER, parent_id INT, title TEXT, old_title TEXT)";
+            string sql = "CRE   ATE TABLE folders (id INTEGER, parent_id INT, title TEXT, old_title TEXT)";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection); 
             command.ExecuteNonQuery();
 

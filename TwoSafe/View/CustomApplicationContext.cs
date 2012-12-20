@@ -60,8 +60,8 @@ namespace TwoSafe.View
             InitializeContext();
 
             //УДАЛИТЬ
-            //View.Test qwe = new View.Test();
-            //qwe.Show();
+            View.Test qwe = new View.Test();
+            qwe.Show();
             // TODO: добавить синхронизацию и что то еще
 
 
