@@ -32,10 +32,14 @@ namespace TwoSafe.View
             if (Model.User.isAuthorized())
             {
                 textBoxUserName.Text = Controller.ApiTwoSafe.getPersonalData(Properties.Settings.Default.Token)["response"]["personal"]["email"];
+                buttonLogin.Enabled = false;
+                buttonLogOut.Enabled = true;
             }
             else
             {
                 textBoxUserName.Text = "";
+                buttonLogOut.Enabled = false;
+                buttonLogin.Enabled = true;
             }
             checkBoxLanSync.Checked = Properties.Settings.Default.LanSync;
             checkBoxNotifications.Checked = Properties.Settings.Default.DesktopNotifications;
@@ -169,7 +173,32 @@ namespace TwoSafe.View
         {
             Properties.Settings.Default.Token = "";
             Properties.Settings.Default.Save();
-            this.Refresh();
+            textBoxUserName.Clear();
+            buttonLogOut.Enabled = false;
+            buttonLogin.Enabled = true;
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            FormLogin loginForm = new FormLogin();
+            loginForm.Show();
+        }
+
+
+        private void Default_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (Model.User.isAuthorized())
+            {
+                textBoxUserName.Text = Controller.ApiTwoSafe.getPersonalData(Properties.Settings.Default.Token)["response"]["personal"]["email"];
+                buttonLogin.Enabled = false;
+                buttonLogOut.Enabled = true;
+            }
+            else
+            {
+                textBoxUserName.Text = "";
+                buttonLogOut.Enabled = false;
+                buttonLogin.Enabled = true;
+            }
         }
 
     }

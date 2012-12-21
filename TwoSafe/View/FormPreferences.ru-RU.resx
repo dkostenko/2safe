@@ -139,6 +139,9 @@
   <data name="tabPageGeneral.Text" xml:space="preserve">
     <value>Основные</value>
   </data>
+  <data name="buttonLogin.Text" xml:space="preserve">
+    <value>Войти</value>
+  </data>
   <data name="buttonLogOut.Text" xml:space="preserve">
     <value>Выйти</value>
   </data>

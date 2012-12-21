@@ -65,12 +65,7 @@ namespace TwoSafe.View
         {            
             InitializeContext();
             // Проверки
-            //Properties.Settings.Default.Token = "";
-            //Properties.Settings.Default.Save();
             runUserChecks();
-
-
-
         }
 
         /// <summary>
@@ -164,7 +159,6 @@ namespace TwoSafe.View
                 {
                     loginForm = new FormLogin();
                     loginForm.ShowDialog();
-                    runUserChecks();
                 }
             }
             else

@@ -36,6 +36,7 @@
             this.checkBoxStart = new System.Windows.Forms.CheckBox();
             this.checkBoxNotifications = new System.Windows.Forms.CheckBox();
             this.tabPageAccount = new System.Windows.Forms.TabPage();
+            this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.labelLoggedInAs = new System.Windows.Forms.Label();
@@ -59,26 +60,26 @@
             // 
             // tabControlPreferences
             // 
+            resources.ApplyResources(this.tabControlPreferences, "tabControlPreferences");
             this.tabControlPreferences.Controls.Add(this.tabPageGeneral);
             this.tabControlPreferences.Controls.Add(this.tabPageAccount);
             this.tabControlPreferences.Controls.Add(this.tabPageAdvanced);
-            resources.ApplyResources(this.tabControlPreferences, "tabControlPreferences");
             this.tabControlPreferences.Name = "tabControlPreferences";
             this.tabControlPreferences.SelectedIndex = 0;
             // 
             // tabPageGeneral
             // 
+            resources.ApplyResources(this.tabPageGeneral, "tabPageGeneral");
             this.tabPageGeneral.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageGeneral.Controls.Add(this.groupBoxGeneral);
-            resources.ApplyResources(this.tabPageGeneral, "tabPageGeneral");
             this.tabPageGeneral.Name = "tabPageGeneral";
             // 
             // groupBoxGeneral
             // 
+            resources.ApplyResources(this.groupBoxGeneral, "groupBoxGeneral");
             this.groupBoxGeneral.Controls.Add(this.checkBoxLanSync);
             this.groupBoxGeneral.Controls.Add(this.checkBoxStart);
             this.groupBoxGeneral.Controls.Add(this.checkBoxNotifications);
-            resources.ApplyResources(this.groupBoxGeneral, "groupBoxGeneral");
             this.groupBoxGeneral.Name = "groupBoxGeneral";
             this.groupBoxGeneral.TabStop = false;
             // 
@@ -105,12 +106,20 @@
             // 
             // tabPageAccount
             // 
+            resources.ApplyResources(this.tabPageAccount, "tabPageAccount");
             this.tabPageAccount.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageAccount.Controls.Add(this.buttonLogin);
             this.tabPageAccount.Controls.Add(this.buttonLogOut);
             this.tabPageAccount.Controls.Add(this.textBoxUserName);
             this.tabPageAccount.Controls.Add(this.labelLoggedInAs);
-            resources.ApplyResources(this.tabPageAccount, "tabPageAccount");
             this.tabPageAccount.Name = "tabPageAccount";
+            // 
+            // buttonLogin
+            // 
+            resources.ApplyResources(this.buttonLogin, "buttonLogin");
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // buttonLogOut
             // 
@@ -132,17 +141,17 @@
             // 
             // tabPageAdvanced
             // 
+            resources.ApplyResources(this.tabPageAdvanced, "tabPageAdvanced");
             this.tabPageAdvanced.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageAdvanced.Controls.Add(this.groupBoxLocation);
             this.tabPageAdvanced.Controls.Add(this.groupBoxLanguage);
-            resources.ApplyResources(this.tabPageAdvanced, "tabPageAdvanced");
             this.tabPageAdvanced.Name = "tabPageAdvanced";
             // 
             // groupBoxLocation
             // 
+            resources.ApplyResources(this.groupBoxLocation, "groupBoxLocation");
             this.groupBoxLocation.Controls.Add(this.buttonMoveLocation);
             this.groupBoxLocation.Controls.Add(this.textBoxLocation);
-            resources.ApplyResources(this.groupBoxLocation, "groupBoxLocation");
             this.groupBoxLocation.Name = "groupBoxLocation";
             this.groupBoxLocation.TabStop = false;
             // 
@@ -161,15 +170,15 @@
             // 
             // groupBoxLanguage
             // 
-            this.groupBoxLanguage.Controls.Add(this.comboBoxLanguages);
             resources.ApplyResources(this.groupBoxLanguage, "groupBoxLanguage");
+            this.groupBoxLanguage.Controls.Add(this.comboBoxLanguages);
             this.groupBoxLanguage.Name = "groupBoxLanguage";
             this.groupBoxLanguage.TabStop = false;
             // 
             // comboBoxLanguages
             // 
-            this.comboBoxLanguages.FormattingEnabled = true;
             resources.ApplyResources(this.comboBoxLanguages, "comboBoxLanguages");
+            this.comboBoxLanguages.FormattingEnabled = true;
             this.comboBoxLanguages.Name = "comboBoxLanguages";
             this.comboBoxLanguages.SelectedIndexChanged += new System.EventHandler(this.comboBoxLanguages_SelectedIndexChanged);
             // 
@@ -215,7 +224,7 @@
             this.groupBoxLocation.PerformLayout();
             this.groupBoxLanguage.ResumeLayout(false);
             this.ResumeLayout(false);
-
+            Properties.Settings.Default.PropertyChanged += Default_PropertyChanged;
         }
 
         #endregion
@@ -239,5 +248,6 @@
         private System.Windows.Forms.Button buttonLogOut;
         private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.Label labelLoggedInAs;
+        private System.Windows.Forms.Button buttonLogin;
     }
 }
