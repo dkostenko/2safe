@@ -394,7 +394,7 @@ namespace TwoSafe.Controller
         public static Dictionary<string, dynamic> listDir(string dirId, string token)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "List_dir&token=" + token + "&dir_id=" + dirId));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "list_dir&token=" + token + "&dir_id=" + dirId));
         }
 
 

@@ -69,6 +69,8 @@ namespace TwoSafe.View
             //Properties.Settings.Default.Save();
             runUserChecks();
 
+
+
         }
 
         /// <summary>
