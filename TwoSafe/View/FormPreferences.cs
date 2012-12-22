@@ -27,11 +27,31 @@ namespace TwoSafe.View
 
             comboBoxLanguages.Items.Add("English");
             comboBoxLanguages.Items.Add("Russian");
+
+            textBoxLocation.Text = Properties.Settings.Default.UserFolderPath;
+            if (Model.User.isAuthorized())
+            {
+                textBoxUserName.Text = Controller.ApiTwoSafe.getPersonalData(Properties.Settings.Default.Token)["response"]["personal"]["email"];
+                buttonLogin.Enabled = false;
+                buttonLogOut.Enabled = true;
+            }
+            else
+            {
+                textBoxUserName.Text = "";
+                buttonLogOut.Enabled = false;
+                buttonLogin.Enabled = true;
+            }
+            checkBoxLanSync.Checked = Properties.Settings.Default.LanSync;
+            checkBoxNotifications.Checked = Properties.Settings.Default.DesktopNotifications;
+            checkBoxStart.Checked = Properties.Settings.Default.StartOnSystemStartup;
         }
 
+        /// <summary>
+        /// При выборе языка из комбобокса перерисовываем контролы 
+        /// и пишем в настройки язык, но настройки не сохраняем
+        /// </summary>
         private void comboBoxLanguages_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
             if ((string)comboBoxLanguages.SelectedItem == "Russian")
             {
                 Properties.Settings.Default.Language = "ru-RU";
@@ -109,6 +129,76 @@ namespace TwoSafe.View
                 controlList.Add(c);
             }
             return controlList;
+        }
+
+        /// <summary>
+        /// Обработчик нажатия на кнопку "Поменять расположение папки"
+        /// </summary>
+        private void buttonMoveLocation_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.ShowDialog();
+            if (fbd.SelectedPath != "")
+            {
+                Properties.Settings.Default.UserFolderPath = fbd.SelectedPath;
+                textBoxLocation.Text = fbd.SelectedPath;
+            }
+        }
+        
+        /// <summary>
+        /// Изменение настроек при изменении галки
+        /// </summary>
+        private void checkBoxNotifications_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.DesktopNotifications = checkBoxNotifications.Checked;
+        }
+
+        /// <summary>
+        /// Изменение настроек при изменении галки
+        /// </summary>
+        private void checkBoxStart_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.StartOnSystemStartup = checkBoxStart.Checked;
+        }
+
+        /// <summary>
+        /// Изменение настроек при изменении галки
+        /// </summary>
+        private void checkBoxLanSync_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.LanSync = checkBoxLanSync.Checked;
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Token = "";
+            Properties.Settings.Default.Save();
+            textBoxUserName.Clear();
+            buttonLogOut.Enabled = false;
+            buttonLogin.Enabled = true;
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            FormLogin loginForm = new FormLogin();
+            loginForm.Show();
+        }
+
+
+        private void Default_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (Model.User.isAuthorized())
+            {
+                textBoxUserName.Text = Controller.ApiTwoSafe.getPersonalData(Properties.Settings.Default.Token)["response"]["personal"]["email"];
+                buttonLogin.Enabled = false;
+                buttonLogOut.Enabled = true;
+            }
+            else
+            {
+                textBoxUserName.Text = "";
+                buttonLogOut.Enabled = false;
+                buttonLogin.Enabled = true;
+            }
         }
 
     }

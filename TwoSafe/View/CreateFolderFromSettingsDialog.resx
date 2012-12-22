@@ -117,71 +117,157 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelMessage.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBoxLanSync.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 17</value>
+  <data name="labelMessage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 63</value>
   </data>
-  <data name="checkBoxLanSync.Text" xml:space="preserve">
-    <value>Синхронизация по LAN</value>
+  <data name="labelMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
   </data>
-  <data name="checkBoxStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 17</value>
+  <data name="labelMessage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="checkBoxStart.Text" xml:space="preserve">
-    <value>Запускать 2safe при старте системы</value>
+  <data name="labelMessage.Text" xml:space="preserve">
+    <value>Path</value>
   </data>
-  <data name="checkBoxNotifications.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 17</value>
+  <data name="&gt;&gt;labelMessage.Name" xml:space="preserve">
+    <value>labelMessage</value>
   </data>
-  <data name="checkBoxNotifications.Text" xml:space="preserve">
-    <value>Показывать уведомления на рабочем столе</value>
+  <data name="&gt;&gt;labelMessage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPageGeneral.Text" xml:space="preserve">
-    <value>Основные</value>
+  <data name="&gt;&gt;labelMessage.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="buttonLogin.Text" xml:space="preserve">
-    <value>Войти</value>
+  <data name="&gt;&gt;labelMessage.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="buttonLogOut.Text" xml:space="preserve">
-    <value>Выйти</value>
+  <data name="buttonExit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 130</value>
   </data>
-  <data name="textBoxUserName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 36</value>
+  <data name="buttonExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 26</value>
   </data>
-  <data name="textBoxUserName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 20</value>
+  <data name="buttonExit.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="labelLoggedInAs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 39</value>
+  <data name="buttonExit.Text" xml:space="preserve">
+    <value>Close application</value>
   </data>
-  <data name="labelLoggedInAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 13</value>
+  <data name="&gt;&gt;buttonExit.Name" xml:space="preserve">
+    <value>buttonExit</value>
   </data>
-  <data name="labelLoggedInAs.Text" xml:space="preserve">
-    <value>Текущий пользователь</value>
+  <data name="&gt;&gt;buttonExit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPageAccount.Text" xml:space="preserve">
-    <value>Аккаунт</value>
+  <data name="&gt;&gt;buttonExit.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="buttonMoveLocation.Text" xml:space="preserve">
-    <value>Изменить...</value>
+  <data name="&gt;&gt;buttonExit.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="groupBoxLocation.Text" xml:space="preserve">
-    <value>Путь к папке 2safe</value>
+  <data name="buttonCreateFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>164, 130</value>
   </data>
-  <data name="groupBoxLanguage.Text" xml:space="preserve">
-    <value>Язык</value>
+  <data name="buttonCreateFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 26</value>
   </data>
-  <data name="tabPageAdvanced.Text" xml:space="preserve">
-    <value>Другие</value>
+  <data name="buttonCreateFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="buttonCancel.Text" xml:space="preserve">
-    <value>Отмена</value>
+  <data name="buttonCreateFolder.Text" xml:space="preserve">
+    <value>Create specified folder</value>
   </data>
-  <data name="buttonApply.Text" xml:space="preserve">
-    <value>Применить</value>
+  <data name="&gt;&gt;buttonCreateFolder.Name" xml:space="preserve">
+    <value>buttonCreateFolder</value>
+  </data>
+  <data name="&gt;&gt;buttonCreateFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCreateFolder.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonCreateFolder.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="labelFolder.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 40</value>
+  </data>
+  <data name="labelFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="labelFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelFolder.Text" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="&gt;&gt;labelFolder.Name" xml:space="preserve">
+    <value>labelFolder</value>
+  </data>
+  <data name="&gt;&gt;labelFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelFolder.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelFolder.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelWarning.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelWarning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelWarning.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 86</value>
+  </data>
+  <data name="labelWarning.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 13</value>
+  </data>
+  <data name="labelWarning.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labelWarning.Text" xml:space="preserve">
+    <value>specified in properties does not exist</value>
+  </data>
+  <data name="&gt;&gt;labelWarning.Name" xml:space="preserve">
+    <value>labelWarning</value>
+  </data>
+  <data name="&gt;&gt;labelWarning.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWarning.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelWarning.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>346, 170</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>2safe Настройки</value>
+    <value>Create folder</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>CreateFolderFromSettingsDialog</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

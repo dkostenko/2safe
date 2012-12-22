@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <Win32Resource>E:\TwoSafe\Resources\IconsResource.res</Win32Resource>
+    <Win32Resource>F:\2safe\TwoSafe\Resources\IconsResource.res</Win32Resource>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>ED3897F350CA5D20F098467A802E424A7104EB3F</ManifestCertificateThumbprint>
@@ -92,6 +92,12 @@
     <Compile Include="View\CreateFolderDialog.Designer.cs">
       <DependentUpon>CreateFolderDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\CreateFolderFromSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CreateFolderFromSettingsDialog.Designer.cs">
+      <DependentUpon>CreateFolderFromSettingsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CustomApplicationContext.cs" />
     <Compile Include="View\FormLogin.cs">
       <SubType>Form</SubType>
@@ -128,6 +134,15 @@
     </Compile>
     <EmbeddedResource Include="View\CreateFolderDialog.resx">
       <DependentUpon>CreateFolderDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CreateFolderDialog.ru-RU.resx">
+      <DependentUpon>CreateFolderDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CreateFolderFromSettingsDialog.resx">
+      <DependentUpon>CreateFolderFromSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CreateFolderFromSettingsDialog.ru-RU.resx">
+      <DependentUpon>CreateFolderFromSettingsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>

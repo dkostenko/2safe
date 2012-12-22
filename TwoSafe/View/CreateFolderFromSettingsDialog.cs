@@ -7,22 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
 using System.Globalization;
+using System.Threading;
 
 namespace TwoSafe.View
 {
-    public partial class CreateFolderDialog : Form
+    public partial class CreateFolderFromSettingsDialog : Form
     {
-        public CreateFolderDialog()
+        public CreateFolderFromSettingsDialog()
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
             InitializeComponent();
-            buttonExit.DialogResult           = DialogResult.Cancel;
-            buttonCreateDefault.DialogResult  = DialogResult.OK;
-            buttonCreateCustom.DialogResult   = DialogResult.Yes;
-            
+            labelMessage.Text = Properties.Settings.Default.UserFolderPath;
+            buttonCreateFolder.DialogResult = DialogResult.OK;
+            buttonExit.DialogResult = DialogResult.Abort;
         }
-
     }
 }
