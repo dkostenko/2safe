@@ -8,13 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Data.SQLite;
+using System.Threading;
 
 namespace TwoSafe.View
 {
     public partial class Test : Form
     {
-        SQLiteConnection sqlitConnection;
         public Test()
         {
             InitializeComponent();
@@ -51,25 +50,35 @@ namespace TwoSafe.View
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Model.Db.clearTables();
             Dictionary<string, dynamic> json = Controller.ApiTwoSafe.auth("kostenko", "123qwe123qwe");
             Model.User.token = json["response"]["token"];
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Controller.Synchronize.start();
-            Dictionary<string, string> data = new Dictionary<string,string>();
-            data.Add("dir_id","2285033047");
-            data.Add("token",Model.User.token);
-            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.putFile(data, @"C:\Users\Public\Videos\Sample Videos\Wildlife.wmv");
+            Thread th = new Thread(qwe);
+            th.Start();
+        }
+
+        static void qwe()
+        {
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.putFile("28101033560", @"C:\Users\dmitry\Desktop\qwe.txt", null);
             if (1 == 1)
             {
+                //Properties.Settings.Default.Token;
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //Controller.Synchronize.doSync();
+            Thread th = new Thread(Controller.Synchronize.inception);
+            th.Start();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Model.Db.create();
         }
     }
 }

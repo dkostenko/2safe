@@ -193,7 +193,7 @@ namespace TwoSafe.Controller
         /// <param name="postData">Данные: необходимые для передачи файла (id папки, токен и другие)</param>
         /// <param name="fileName">Полный путь до файла</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> putFile(Dictionary<string, string> postData, string fileName)
+        public static Dictionary<string, dynamic> putFile(string dir_id,  string fileName, Dictionary<string, string> postData)
         {
             FileStream fileData = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
 
@@ -212,10 +212,19 @@ namespace TwoSafe.Controller
             StringBuilder sbHeader = new StringBuilder();
 
             // Добавление строковых параметров
-            foreach (var one in postData)
+            sbHeader.AppendFormat("--{0}\r\n", boundary);
+            sbHeader.AppendFormat("Content-Disposition: form-data; name=\"token\";\r\n\r\n" + Properties.Settings.Default.Token + "\r\n");
+
+            sbHeader.AppendFormat("--{0}\r\n", boundary);
+            sbHeader.AppendFormat("Content-Disposition: form-data; name=\"dir_id\";\r\n\r\n" + dir_id + "\r\n");
+
+            if (postData != null)
             {
-                sbHeader.AppendFormat("--{0}\r\n", boundary);
-                sbHeader.AppendFormat("Content-Disposition: form-data; name=\"{0}\";\r\n\r\n{1}\r\n", one.Key, one.Value);
+                foreach (var one in postData)
+                {
+                    sbHeader.AppendFormat("--{0}\r\n", boundary);
+                    sbHeader.AppendFormat("Content-Disposition: form-data; name=\"{0}\";\r\n\r\n{1}\r\n", one.Key, one.Value);
+                }
             }
 
 

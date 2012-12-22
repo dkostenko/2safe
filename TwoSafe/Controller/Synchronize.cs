@@ -35,14 +35,14 @@ namespace TwoSafe.Controller
                     postData.Add("dir_id", "2285033047");
                     postData.Add("token", Model.User.token);
                     postData.Add("overwrite", "true");
-                    Controller.ApiTwoSafe.putFile(postData, arr[1]);
+                    //Controller.ApiTwoSafe.putFile(postData, arr[1]);
                 }
                 if (arr[0] == "created")
                 {
                     Dictionary<string, string> postData = new Dictionary<string, string>();
                     postData.Add("dir_id", "2285033047");
                     postData.Add("token", Model.User.token);
-                    Controller.ApiTwoSafe.putFile(postData, arr[1]);
+                    //Controller.ApiTwoSafe.putFile(postData, arr[1]);
                 }
                 if (arr[0] == "deleted")
                 {
@@ -68,5 +68,43 @@ namespace TwoSafe.Controller
             }
         }
 
+
+        public static void inception()
+        {
+            string current_id;
+            Dictionary<string, dynamic> json = new Dictionary<string, dynamic>();
+            ArrayList dirs, files, stek;
+
+            stek = new System.Collections.ArrayList();
+            stek.Add("");
+
+            while (stek.Count != 0)
+            {
+                json = Controller.ApiTwoSafe.listDir(stek[0].ToString(), Model.User.token);
+
+                if (json.ContainsKey("error_code"))
+                {
+                    //TODO: Обработать ошибку
+                }
+                else
+                {
+                    current_id = json["response"]["root"]["id"];
+                    dirs = json["response"]["list_dirs"];
+                    for (int i = 0; i < dirs.Count; ++i)
+                    {
+                        Model.Dirs.add(json["response"]["list_dirs"][i]["id"], current_id, json["response"]["list_dirs"][i]["name"]);
+                        stek.Add(json["response"]["list_dirs"][i]["id"]);
+                    }
+
+                    files = json["response"]["list_files"];
+                    for (int i = 0; i < files.Count; ++i)
+                    {
+                        Model.Files.add(json["response"]["list_files"][i]["id"], current_id, json["response"]["list_files"][i]["name"]);
+                    }
+                }
+
+                stek.RemoveAt(0);
+            }
+        }
     }
 }

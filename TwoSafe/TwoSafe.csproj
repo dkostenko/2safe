@@ -81,9 +81,10 @@
   <ItemGroup>
     <Compile Include="Controller\ApiUser.cs" />
     <Compile Include="Controller\Synchronize.cs" />
-    <Compile Include="Model\Folders.cs" />
+    <Compile Include="Model\Dirs.cs" />
+    <Compile Include="Model\Files.cs" />
     <Compile Include="Model\SQLiteDatabase.cs" />
-    <Compile Include="Model\TwoSafeDB.cs" />
+    <Compile Include="Model\Db.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="View\CreateFolderDialog.cs">
       <SubType>Form</SubType>
