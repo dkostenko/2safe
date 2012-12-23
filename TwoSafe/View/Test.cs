@@ -18,30 +18,25 @@ namespace TwoSafe.View
         {
             InitializeComponent();
 
-            FileSystemWatcher watcher = new FileSystemWatcher();
-            watcher.Path = "C:\\Users\\dmitry\\Desktop";
-            //watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
-
-            // Подписка на обработчик события изменения файла или папки
-            watcher.Created += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            watcher.Changed += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            watcher.Deleted += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            watcher.Renamed += new RenamedEventHandler(Controller.Synchronize.eventRaised);
-
-            try
-            {
-                watcher.EnableRaisingEvents = true;
-            }
-            catch (ArgumentException)
-            {
-                //abortAcitivityMonitoring();
-            }
+            //события папки
+            FileSystemWatcher dirWatcher = new FileSystemWatcher();
+            dirWatcher.Path = Properties.Settings.Default.UserFolderPath;
+            dirWatcher.IncludeSubdirectories = true;
+            dirWatcher.NotifyFilter = NotifyFilters.DirectoryName;
+            dirWatcher.Created += new FileSystemEventHandler(Controller.Synchronize.dirEvents);
+            dirWatcher.EnableRaisingEvents = true;
 
 
-            //SQLiteConnection.CreateFile("twoSafe.sqlite"); 
+            //события файла
+            FileSystemWatcher fileWatcher = new FileSystemWatcher();
+            fileWatcher.Path = Properties.Settings.Default.UserFolderPath;
+            fileWatcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName;
+            fileWatcher.Created += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            fileWatcher.Changed += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            fileWatcher.Deleted += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            fileWatcher.Renamed += new RenamedEventHandler(Controller.Synchronize.eventRaised);
+            fileWatcher.EnableRaisingEvents = true;
 
-
-           // Model.TwoSafeDB.createTable();
 
           
 
@@ -50,9 +45,7 @@ namespace TwoSafe.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Model.Db.clearTables();
-            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.auth("kostenko", "123qwe123qwe");
-            Model.User.token = json["response"]["token"];
+            Controller.Db.clearTables();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -78,7 +71,7 @@ namespace TwoSafe.View
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Model.Db.create();
+            Controller.Db.create();
         }
     }
 }

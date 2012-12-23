@@ -258,6 +258,7 @@ namespace TwoSafe.Controller
 
                 // Конец записи
                 requestStream.Write(footer, 0, footer.Length);
+                fileData.Close();
 
                 string output = "";
                 try
@@ -335,15 +336,23 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Создание директории
         /// </summary>
-        /// <param name="dirId">id корневой папки</param>
+        /// <param name="dirId">ID родительской папки</param>
         /// <param name="dirName">Имя папки</param>
         /// <param name="token">токен</param>
         /// <param name="optional">Опциональные параметры</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> makeDir(string dirId, string dirName, string token, Dictionary<string, string> optional)
+        public static bool makeDir(string dirId, string dirName, Dictionary<string, string> optional)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "make_dir&token=" + token + "&dir_id=" + dirId + "&dir_name=" + dirName + toQueryString(optional)));
+            Dictionary<string, dynamic> json = jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "make_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId + "&dir_name=" + dirName + toQueryString(optional)));
+            if (json.ContainsKey("error_code"))
+            {
+            }
+            else
+            {
+                Controller.Dirs.add(new Model.Dir(json["response"]["dir_id"], dirId, dirName));
+            }
+            return true;
         }
 
         /// <summary>

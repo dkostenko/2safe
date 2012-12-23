@@ -162,6 +162,11 @@ namespace TwoSafe.View
                     loginForm = new FormLogin();
                     loginForm.ShowDialog();
                 }
+
+
+                //УДАЛИТЬ
+                View.Test form = new View.Test();
+                form.Show();
             }
             else
             {

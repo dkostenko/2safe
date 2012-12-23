@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <Win32Resource>F:\2safe\TwoSafe\Resources\IconsResource.res</Win32Resource>
+    <Win32Resource>E:\TwoSafe\Resources\IconsResource.res</Win32Resource>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>ED3897F350CA5D20F098467A802E424A7104EB3F</ManifestCertificateThumbprint>
@@ -81,10 +81,11 @@
   <ItemGroup>
     <Compile Include="Controller\ApiUser.cs" />
     <Compile Include="Controller\Synchronize.cs" />
-    <Compile Include="Model\Dirs.cs" />
-    <Compile Include="Model\Files.cs" />
+    <Compile Include="Controller\Dirs.cs" />
+    <Compile Include="Controller\Files.cs" />
+    <Compile Include="Model\Dir.cs" />
     <Compile Include="Model\SQLiteDatabase.cs" />
-    <Compile Include="Model\Db.cs" />
+    <Compile Include="Controller\Db.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="View\CreateFolderDialog.cs">
       <SubType>Form</SubType>

@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Data;
 using System.Data.SQLite;
 
-namespace TwoSafe.Model
+namespace TwoSafe.Controller
 {
     class Db
     {
-        protected static string dbName = "Data Source=twoSafe.db;Version=3;";
+        protected static string dbName;
 
-        public static void sunc()
+        static Db()
         {
-
+            dbName = "Data Source=twoSafe.db;Version=3;";
         }
 
 
-
+        //создание БД УДАЛИТЬ
         public static void create()
         {
             SQLiteConnection.CreateFile("twoSafe.db");
@@ -27,14 +28,14 @@ namespace TwoSafe.Model
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection); 
             command.ExecuteNonQuery();
 
-            sql = "CREATE TABLE files (id INTEGER, parent_id INT, name TEXT)";
+            sql = "CREATE TABLE files (id INTEGER, dir_id INT, name TEXT)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
             
             m_dbConnection.Close();
         }
 
-
+        // очистка таблиц УДАЛИТЬ
         public static bool clearTables()
         {
             SQLiteConnection m_dbConnection = new SQLiteConnection(dbName);
@@ -54,7 +55,6 @@ namespace TwoSafe.Model
                 m_dbConnection.Close();
             }
         }
-
 
 
         protected static int executeNonQuery(string sql)
