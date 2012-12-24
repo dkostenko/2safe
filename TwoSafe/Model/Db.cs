@@ -42,8 +42,8 @@ namespace TwoSafe.Model
             m_dbConnection.Open();
             try
             {
-                executeNonQuery("delete from dirs;");
-                executeNonQuery("delete from files;");
+                ExecuteNonQuery("delete from dirs;");
+                ExecuteNonQuery("delete from files;");
                 return true;
             }
             catch
@@ -57,7 +57,7 @@ namespace TwoSafe.Model
         }
 
 
-        protected static int executeNonQuery(string sql)
+        protected static int ExecuteNonQuery(string sql)
         {
             SQLiteConnection cnn = new SQLiteConnection(dbName);
             cnn.Open();

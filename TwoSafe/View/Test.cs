@@ -32,9 +32,9 @@ namespace TwoSafe.View
             fileWatcher.Path = Properties.Settings.Default.UserFolderPath;
             fileWatcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName;
             fileWatcher.Created += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            fileWatcher.Changed += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            fileWatcher.Deleted += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            fileWatcher.Renamed += new RenamedEventHandler(Controller.Synchronize.eventRaised);
+            //fileWatcher.Changed += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            //fileWatcher.Deleted += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            //fileWatcher.Renamed += new RenamedEventHandler(Controller.Synchronize.eventRaised);
             fileWatcher.EnableRaisingEvents = true;
 
 

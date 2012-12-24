@@ -2,18 +2,36 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
 
 namespace TwoSafe.Controller
 {
     class Dirs
     {
 
-        public static void createOnClient(string where, string name)
+        public static void CreateOnClient(string id, string parent_id, string name)
         {
-            Model.Dir dir = new Model.Dir("", "", "");
+            Model.Dir dir = new Model.Dir(id, parent_id, name);
             dir.Save();
-            System.IO.Directory.CreateDirectory(where);
+
+            string path = Properties.Settings.Default.UserFolderPath;
+
+            if (parent_id != "913989033028")
+            {
+                Model.Dir parent_dir = Model.Dir.FindById(parent_id);
+                path = parent_dir.GetPath();
+            }
+
+            Directory.CreateDirectory(path + "\\" + name);
             return;
+        }
+
+        public static void RemoveOnClient(string id)
+        {
+            Model.Dir dir = Model.Dir.FindById(id);
+            string path = dir.GetPath();
+            Directory.Delete(path);
+            dir.Remove();
         }
 
 

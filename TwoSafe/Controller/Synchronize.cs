@@ -20,7 +20,21 @@ namespace TwoSafe.Controller
         public static void fromServerToClient()
         {
             Dictionary<string, dynamic> json = Controller.ApiTwoSafe.getEvents((Properties.Settings.Default.LastGetEventsTime).ToString());
-            
+            foreach (var one in json["response"]["events"])
+            {
+                if (one["event"] == "dir_created")
+                {
+                    Controller.Dirs.CreateOnClient(one["id"], one["parent_id"], one["name"]);
+                }
+                if (one["event"] == "dir_moved")
+                {
+                    Controller.Dirs.RemoveOnClient(one["id"]);
+                }
+                if (one["event"] == "file_moved")
+                {
+                    Controller.Files.RemoveOnClient(one["old_name"], one["old_parent_id"]);
+                }
+            }
         }
 
 
@@ -33,7 +47,7 @@ namespace TwoSafe.Controller
 
 
 
-        
+
         public static void start()
         {
             Dictionary<string, dynamic> json = Controller.ApiTwoSafe.listDir("");
@@ -45,6 +59,7 @@ namespace TwoSafe.Controller
 
         public static void doSync()
         {
+            Dictionary<string, dynamic> json = null;
             for (int i = 0; i < queue.Count; ++i)
             {
                 string[] item = (string[])queue.Dequeue();
@@ -55,12 +70,22 @@ namespace TwoSafe.Controller
                     case "changed":
                         postData = new Dictionary<string, string>();
                         postData.Add("overwrite", "true");
-                        Controller.ApiTwoSafe.putFile("913989033028", item[1], postData);
+                        Controller.ApiTwoSafe.putFile(Properties.Settings.Default.RootId, item[1], postData);
                         break;
                     case "created":
                         postData = new Dictionary<string, string>();
                         postData.Add("overwrite", "true");
-                        Dictionary<string, dynamic> json = Controller.ApiTwoSafe.putFile("913989033028", item[1], postData);
+
+                        Model.Dir dir = Model.Dir.FindByPath(item[1]);
+                        if (dir == null)
+                        {
+                            json = Controller.ApiTwoSafe.putFile(Properties.Settings.Default.RootId, item[1], postData);
+                        }
+                        else
+                        {
+                            json = Controller.ApiTwoSafe.putFile(dir.Id.ToString(), item[1], postData);
+                        }
+                        
                         if (!json.ContainsKey("error_code"))
                         {
                             new Model.File(json["response"]["file"]["id"], "913989033028", json["response"]["file"]["name"]).Save();

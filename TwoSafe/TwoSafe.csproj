@@ -83,6 +83,7 @@
     <Compile Include="Controller\Synchronize.cs" />
     <Compile Include="Controller\Dirs.cs" />
     <Compile Include="Controller\Files.cs" />
+    <Compile Include="Model\ActiveRecord.cs" />
     <Compile Include="Model\Dir.cs" />
     <Compile Include="Model\File.cs" />
     <Compile Include="Model\SQLiteDatabase.cs" />

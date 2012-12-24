@@ -106,5 +106,17 @@ namespace TwoSafe.Properties {
                 this["LastGetEventsTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("913989033028")]
+        public string RootId {
+            get {
+                return ((string)(this["RootId"]));
+            }
+            set {
+                this["RootId"] = value;
+            }
+        }
     }
 }
