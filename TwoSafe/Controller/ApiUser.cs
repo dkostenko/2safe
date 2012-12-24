@@ -130,10 +130,10 @@ namespace TwoSafe.Controller
         /// Получение карточки юзера
         /// </summary>
         /// <param name="token">Токен</param>
-        public static Dictionary<string, dynamic> getPersonalData(string token)
+        public static Dictionary<string, dynamic> getPersonalData()
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_personal_data" + "&token=" + token));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_personal_data" + "&token=" + Properties.Settings.Default.Token));
         }
 
         /// <summary>
@@ -350,7 +350,7 @@ namespace TwoSafe.Controller
             }
             else
             {
-                Controller.Dirs.add(new Model.Dir(json["response"]["dir_id"], dirId, dirName));
+                new Model.Dir(json["response"]["dir_id"], dirId, dirName);
             }
             return true;
         }
@@ -409,10 +409,28 @@ namespace TwoSafe.Controller
         /// <param name="dirId">ID каталога, при пустом значении выдает список файлов и папко корневого каталога</param>
         /// <param name="token">токен</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> listDir(string dirId, string token)
+        public static Dictionary<string, dynamic> listDir(string dirId)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "list_dir&token=" + token + "&dir_id=" + dirId));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "list_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId));
+        }
+
+        /// <summary>
+        /// Просмотр действий пользователя
+        /// </summary>
+        /// <param name="after">timestamp в формате наносекунд. (без этого параметра выводятся последние 300 событий)</param>
+        /// <returns></returns>
+        public static Dictionary<string, dynamic> getEvents(string after)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            Dictionary<string, dynamic> json = jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_events&token=" + Properties.Settings.Default.Token + "&after=" + after));
+            if (json != null && !json.ContainsKey("error_code"))
+            {
+                TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
+                Properties.Settings.Default.LastGetEventsTime = (uint)span.TotalSeconds;
+                Properties.Settings.Default.Save();
+            }
+            return json;
         }
 
 
@@ -708,19 +726,9 @@ namespace TwoSafe.Controller
                 output = sr.ReadToEnd();
                 sr.Close();
             }
-            catch (WebException wex)
+            catch
             {
-                if (wex.Response != null)
-                {
-                    using (var errorResponse = (HttpWebResponse)wex.Response)
-                    {
-                        using (var reader = new StreamReader(errorResponse.GetResponseStream()))
-                        {
-                            output = reader.ReadToEnd();
-                            //TODO: Обработать ошибку
-                        }
-                    }
-                }
+                output = "";
             }
             return output;
         }

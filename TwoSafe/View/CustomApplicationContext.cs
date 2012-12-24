@@ -250,8 +250,6 @@ namespace TwoSafe.View
         private void Default_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             SetMenuItemsLanguage(Properties.Settings.Default.Language);
-            Model.User.token = Properties.Settings.Default.Token;
-            Model.User.userFolderPath = Properties.Settings.Default.UserFolderPath;
             //runUserChecks();
         }
 

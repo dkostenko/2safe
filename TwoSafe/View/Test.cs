@@ -45,7 +45,7 @@ namespace TwoSafe.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Controller.Db.clearTables();
+            Model.Db.clearTables();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -71,7 +71,12 @@ namespace TwoSafe.View
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Controller.Db.create();
+            Model.Db.create();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Controller.Synchronize.fromServerToClient();
         }
     }
 }

@@ -15,10 +15,28 @@ namespace TwoSafe.Controller
         {
             queue = new Queue();
         }
+
+
+        public static void fromServerToClient()
+        {
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.getEvents((Properties.Settings.Default.LastGetEventsTime).ToString());
+            
+        }
+
+
+
+
+
+
+
+
+
+
+
         
         public static void start()
         {
-            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.listDir("", Model.User.token);
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.listDir("");
             if (json.ContainsKey("error_code"))
             {
                 return;
@@ -45,7 +63,7 @@ namespace TwoSafe.Controller
                         Dictionary<string, dynamic> json = Controller.ApiTwoSafe.putFile("913989033028", item[1], postData);
                         if (!json.ContainsKey("error_code"))
                         {
-                            Controller.Files.add(json["response"]["file"]["id"], "913989033028", json["response"]["file"]["name"]);
+                            new Model.File(json["response"]["file"]["id"], "913989033028", json["response"]["file"]["name"]).Save();
                         }
                         break;
                     case "deleted":
@@ -110,7 +128,7 @@ namespace TwoSafe.Controller
 
             while (stek.Count != 0)
             {
-                json = Controller.ApiTwoSafe.listDir(stek[0].ToString(), Model.User.token);
+                json = Controller.ApiTwoSafe.listDir(stek[0].ToString());
 
                 if (json.ContainsKey("error_code"))
                 {
@@ -123,7 +141,7 @@ namespace TwoSafe.Controller
 
                     for (int i = 0; i < json["response"]["list_dirs"].Count; ++i)
                     {
-                        Controller.Dirs.add(new Model.Dir(json["response"]["list_dirs"][i]["id"], current_id, json["response"]["list_dirs"][i]["name"]));
+                        new Model.Dir(json["response"]["list_dirs"][i]["id"], current_id, json["response"]["list_dirs"][i]["name"]);
                         stek.Add(json["response"]["list_dirs"][i]["id"]);
                     }
 
@@ -132,12 +150,14 @@ namespace TwoSafe.Controller
                     files = json["response"]["list_files"];
                     for (int i = 0; i < files.Count; ++i)
                     {
-                        Controller.Files.add(json["response"]["list_files"][i]["id"], current_id, json["response"]["list_files"][i]["name"]);
+                        new Model.Dir(json["response"]["list_files"][i]["id"], current_id, json["response"]["list_files"][i]["name"]);
                     }
                 }
 
                 stek.RemoveAt(0);
             }
         }
+
+
     }
 }

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Data;
 using System.Data.SQLite;
 
-namespace TwoSafe.Controller
+namespace TwoSafe.Model
 {
     class Db
     {

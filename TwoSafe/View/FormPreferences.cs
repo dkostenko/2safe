@@ -31,7 +31,7 @@ namespace TwoSafe.View
             textBoxLocation.Text = Properties.Settings.Default.UserFolderPath;
             if (Model.User.isAuthorized())
             {
-                textBoxUserName.Text = Controller.ApiTwoSafe.getPersonalData(Properties.Settings.Default.Token)["response"]["personal"]["email"];
+                textBoxUserName.Text = Controller.ApiTwoSafe.getPersonalData()["response"]["personal"]["email"];
                 buttonLogin.Enabled = false;
                 buttonLogOut.Enabled = true;
             }
@@ -189,7 +189,7 @@ namespace TwoSafe.View
         {
             if (Model.User.isAuthorized())
             {
-                textBoxUserName.Text = Controller.ApiTwoSafe.getPersonalData(Properties.Settings.Default.Token)["response"]["personal"]["email"];
+                textBoxUserName.Text = Controller.ApiTwoSafe.getPersonalData()["response"]["personal"]["email"];
                 buttonLogin.Enabled = false;
                 buttonLogOut.Enabled = true;
             }

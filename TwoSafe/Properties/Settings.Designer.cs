@@ -94,5 +94,17 @@ namespace TwoSafe.Properties {
                 this["StartOnSystemStartup"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public long LastGetEventsTime {
+            get {
+                return ((long)(this["LastGetEventsTime"]));
+            }
+            set {
+                this["LastGetEventsTime"] = value;
+            }
+        }
     }
 }

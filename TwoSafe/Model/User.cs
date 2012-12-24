@@ -13,16 +13,6 @@ namespace TwoSafe.Model
 {
     public static class User
     {
-        public static string token;
-        public static string userFolderPath;
-
-        // Статический конструктор вызывается при первом обращении к любому члену класса
-        static User()
-        {
-            token = Properties.Settings.Default.Token;
-            userFolderPath = Properties.Settings.Default.UserFolderPath;
-        }
-
         //Creating the extern function...
         [DllImport("wininet.dll")]
         private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
@@ -42,21 +32,20 @@ namespace TwoSafe.Model
         /// </summary>
         public static bool isAuthorized()
         {
-            
             try
             {
-                Dictionary<string, dynamic> response = Controller.ApiTwoSafe.getPersonalData(token);
+                Dictionary<string, dynamic> json = Controller.ApiTwoSafe.getPersonalData();
 
-                if (response.ContainsKey("error_code"))
+                if (json.ContainsKey("error_code"))
                 {
                     return false;
                 }
-                return true;
             }
             catch
             {
                 return false;
-            } 
+            }
+            return true;
         }
 
 

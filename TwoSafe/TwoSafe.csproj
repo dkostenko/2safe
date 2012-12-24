@@ -84,8 +84,9 @@
     <Compile Include="Controller\Dirs.cs" />
     <Compile Include="Controller\Files.cs" />
     <Compile Include="Model\Dir.cs" />
+    <Compile Include="Model\File.cs" />
     <Compile Include="Model\SQLiteDatabase.cs" />
-    <Compile Include="Controller\Db.cs" />
+    <Compile Include="Model\Db.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="View\CreateFolderDialog.cs">
       <SubType>Form</SubType>
