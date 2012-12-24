@@ -48,7 +48,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <Win32Resource>F:\2safe\TwoSafe\Resources\IconsResource.res</Win32Resource>
+    <Win32Resource>
+    </Win32Resource>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>ED3897F350CA5D20F098467A802E424A7104EB3F</ManifestCertificateThumbprint>
@@ -62,6 +63,11 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -85,19 +91,13 @@
     <Compile Include="Model\SQLiteDatabase.cs" />
     <Compile Include="Model\TwoSafeDB.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="View\CreateFolderDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\CreateFolderDialog.Designer.cs">
-      <DependentUpon>CreateFolderDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\CreateFolderFromSettingsDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\CreateFolderFromSettingsDialog.Designer.cs">
-      <DependentUpon>CreateFolderFromSettingsDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\CustomApplicationContext.cs" />
+    <Compile Include="View\FolderWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FolderWarning.Designer.cs">
+      <DependentUpon>FolderWarning.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,11 +112,11 @@
     <Compile Include="View\FormPreferences.Designer.cs">
       <DependentUpon>FormPreferences.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FormRegistration.cs">
+    <Compile Include="View\FormSetup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FormRegistration.Designer.cs">
-      <DependentUpon>FormRegistration.cs</DependentUpon>
+    <Compile Include="View\FormSetup.Designer.cs">
+      <DependentUpon>FormSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ProgramInfo.cs" />
     <Compile Include="View\SingleInstance.cs" />
@@ -131,23 +131,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WinFormStrings.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\CreateFolderDialog.resx">
-      <DependentUpon>CreateFolderDialog.cs</DependentUpon>
+    <EmbeddedResource Include="View\FolderWarning.resx">
+      <DependentUpon>FolderWarning.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\CreateFolderDialog.ru-RU.resx">
-      <DependentUpon>CreateFolderDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\CreateFolderFromSettingsDialog.resx">
-      <DependentUpon>CreateFolderFromSettingsDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\CreateFolderFromSettingsDialog.ru-RU.resx">
-      <DependentUpon>CreateFolderFromSettingsDialog.cs</DependentUpon>
+    <EmbeddedResource Include="View\FolderWarning.ru-RU.resx">
+      <DependentUpon>FolderWarning.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -165,11 +159,11 @@
     <EmbeddedResource Include="View\FormPreferences.ru-RU.resx">
       <DependentUpon>FormPreferences.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FormRegistration.resx">
-      <DependentUpon>FormRegistration.cs</DependentUpon>
+    <EmbeddedResource Include="View\FormSetup.resx">
+      <DependentUpon>FormSetup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FormRegistration.ru.resx">
-      <DependentUpon>FormRegistration.cs</DependentUpon>
+    <EmbeddedResource Include="View\FormSetup.ru-RU.resx">
+      <DependentUpon>FormSetup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Test.resx">
       <DependentUpon>Test.cs</DependentUpon>
@@ -217,6 +211,21 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\64_close.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\64_refresh.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\64_settings.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="green_icon.ico" />
+    <None Include="Resources\64_download.ico" />
+    <None Include="Resources\refreshCaptcha.png" />
+    <None Include="Resources\2safeLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

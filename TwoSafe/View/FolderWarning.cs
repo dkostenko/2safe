@@ -7,22 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using System.Threading;
 using System.Globalization;
+using System.Resources;
 
 namespace TwoSafe.View
 {
-    public partial class CreateFolderDialog : Form
+    public partial class FolderWarning : Form
     {
-        public CreateFolderDialog()
+        ResourceManager language;
+
+        public FolderWarning()
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+            language = new ResourceManager(typeof(TwoSafe.View.WinFormStrings));
             InitializeComponent();
-            buttonExit.DialogResult           = DialogResult.Cancel;
-            buttonCreateDefault.DialogResult  = DialogResult.OK;
-            buttonCreateCustom.DialogResult   = DialogResult.Yes;
-            
         }
 
+        private void FolderWarning_Load(object sender, EventArgs e)
+        {
+            labelWarning.Text = language.GetString("message005") + @"C:\Users\" + Environment.UserName + @"\2safe" + language.GetString("message006");
+        }
     }
 }

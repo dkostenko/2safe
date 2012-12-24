@@ -51,8 +51,9 @@ namespace TwoSafe.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.auth("kostenko", "123qwe123qwe");
-            Model.User.token = json["response"]["token"];
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.auth("kostenko", "123qwe123qwe", "", "");
+            Properties.Settings.Default.Token = json["response"]["token"];
+            Properties.Settings.Default.Save();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -60,7 +61,7 @@ namespace TwoSafe.View
             //Controller.Synchronize.start();
             Dictionary<string, string> data = new Dictionary<string,string>();
             data.Add("dir_id","2285033047");
-            data.Add("token",Model.User.token);
+            data.Add("token", Properties.Settings.Default.Token);
             Dictionary<string, dynamic> json = Controller.ApiTwoSafe.putFile(data, @"C:\Users\Public\Videos\Sample Videos\Wildlife.wmv");
             if (1 == 1)
             {

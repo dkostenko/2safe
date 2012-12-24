@@ -20,17 +20,18 @@ namespace TwoSafe.View
 
         public FormLogin()
         {
-            InitializeComponent();
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
             language = new ResourceManager(typeof(TwoSafe.View.WinFormStrings));
+            InitializeComponent();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            Dictionary<string, dynamic> response = Controller.ApiTwoSafe.auth(tbAccount.Text, tbPassword.Text);
+            Dictionary<string, dynamic> response = Controller.ApiTwoSafe.auth(tbAccount.Text, tbPassword.Text, "", "");
 
             if (response.ContainsKey("error_code"))
             {
-                MessageBox.Show(language.GetString("error" + response["error_code"]));
+                labelErrorMessage.Text = language.GetString("error" + response["error_code"]);
             }
             else
             {

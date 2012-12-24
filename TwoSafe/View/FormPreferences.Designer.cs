@@ -36,7 +36,7 @@
             this.checkBoxStart = new System.Windows.Forms.CheckBox();
             this.checkBoxNotifications = new System.Windows.Forms.CheckBox();
             this.tabPageAccount = new System.Windows.Forms.TabPage();
-            this.buttonLogin = new System.Windows.Forms.Button();
+            this.groupBoxAccount = new System.Windows.Forms.GroupBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.labelLoggedInAs = new System.Windows.Forms.Label();
@@ -53,6 +53,7 @@
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxGeneral.SuspendLayout();
             this.tabPageAccount.SuspendLayout();
+            this.groupBoxAccount.SuspendLayout();
             this.tabPageAdvanced.SuspendLayout();
             this.groupBoxLocation.SuspendLayout();
             this.groupBoxLanguage.SuspendLayout();
@@ -70,7 +71,7 @@
             // tabPageGeneral
             // 
             resources.ApplyResources(this.tabPageGeneral, "tabPageGeneral");
-            this.tabPageGeneral.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageGeneral.BackColor = System.Drawing.Color.White;
             this.tabPageGeneral.Controls.Add(this.groupBoxGeneral);
             this.tabPageGeneral.Name = "tabPageGeneral";
             // 
@@ -88,38 +89,37 @@
             resources.ApplyResources(this.checkBoxLanSync, "checkBoxLanSync");
             this.checkBoxLanSync.Name = "checkBoxLanSync";
             this.checkBoxLanSync.UseVisualStyleBackColor = true;
-            this.checkBoxLanSync.CheckedChanged += new System.EventHandler(this.checkBoxLanSync_CheckedChanged);
+            this.checkBoxLanSync.CheckStateChanged += new System.EventHandler(this.checkBoxLanSync_CheckStateChanged);
             // 
             // checkBoxStart
             // 
             resources.ApplyResources(this.checkBoxStart, "checkBoxStart");
             this.checkBoxStart.Name = "checkBoxStart";
             this.checkBoxStart.UseVisualStyleBackColor = true;
-            this.checkBoxStart.CheckedChanged += new System.EventHandler(this.checkBoxStart_CheckedChanged);
+            this.checkBoxStart.CheckStateChanged += new System.EventHandler(this.checkBoxStart_CheckStateChanged);
             // 
             // checkBoxNotifications
             // 
             resources.ApplyResources(this.checkBoxNotifications, "checkBoxNotifications");
             this.checkBoxNotifications.Name = "checkBoxNotifications";
             this.checkBoxNotifications.UseVisualStyleBackColor = true;
-            this.checkBoxNotifications.CheckedChanged += new System.EventHandler(this.checkBoxNotifications_CheckedChanged);
+            this.checkBoxNotifications.CheckStateChanged += new System.EventHandler(this.checkBoxNotifications_CheckStateChanged);
             // 
             // tabPageAccount
             // 
             resources.ApplyResources(this.tabPageAccount, "tabPageAccount");
-            this.tabPageAccount.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageAccount.Controls.Add(this.buttonLogin);
-            this.tabPageAccount.Controls.Add(this.buttonLogOut);
-            this.tabPageAccount.Controls.Add(this.textBoxUserName);
-            this.tabPageAccount.Controls.Add(this.labelLoggedInAs);
+            this.tabPageAccount.BackColor = System.Drawing.Color.White;
+            this.tabPageAccount.Controls.Add(this.groupBoxAccount);
             this.tabPageAccount.Name = "tabPageAccount";
             // 
-            // buttonLogin
+            // groupBoxAccount
             // 
-            resources.ApplyResources(this.buttonLogin, "buttonLogin");
-            this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.UseVisualStyleBackColor = true;
-            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            resources.ApplyResources(this.groupBoxAccount, "groupBoxAccount");
+            this.groupBoxAccount.Controls.Add(this.buttonLogOut);
+            this.groupBoxAccount.Controls.Add(this.textBoxUserName);
+            this.groupBoxAccount.Controls.Add(this.labelLoggedInAs);
+            this.groupBoxAccount.Name = "groupBoxAccount";
+            this.groupBoxAccount.TabStop = false;
             // 
             // buttonLogOut
             // 
@@ -131,6 +131,7 @@
             // textBoxUserName
             // 
             resources.ApplyResources(this.textBoxUserName, "textBoxUserName");
+            this.textBoxUserName.BackColor = System.Drawing.Color.White;
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.ReadOnly = true;
             // 
@@ -142,7 +143,7 @@
             // tabPageAdvanced
             // 
             resources.ApplyResources(this.tabPageAdvanced, "tabPageAdvanced");
-            this.tabPageAdvanced.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageAdvanced.BackColor = System.Drawing.Color.White;
             this.tabPageAdvanced.Controls.Add(this.groupBoxLocation);
             this.tabPageAdvanced.Controls.Add(this.groupBoxLanguage);
             this.tabPageAdvanced.Name = "tabPageAdvanced";
@@ -165,6 +166,7 @@
             // textBoxLocation
             // 
             resources.ApplyResources(this.textBoxLocation, "textBoxLocation");
+            this.textBoxLocation.BackColor = System.Drawing.Color.White;
             this.textBoxLocation.Name = "textBoxLocation";
             this.textBoxLocation.ReadOnly = true;
             // 
@@ -205,6 +207,7 @@
             // 
             // FormPreferences
             // 
+            this.AcceptButton = this.buttonOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.buttonApply);
@@ -218,13 +221,14 @@
             this.groupBoxGeneral.ResumeLayout(false);
             this.groupBoxGeneral.PerformLayout();
             this.tabPageAccount.ResumeLayout(false);
-            this.tabPageAccount.PerformLayout();
+            this.groupBoxAccount.ResumeLayout(false);
+            this.groupBoxAccount.PerformLayout();
             this.tabPageAdvanced.ResumeLayout(false);
             this.groupBoxLocation.ResumeLayout(false);
             this.groupBoxLocation.PerformLayout();
             this.groupBoxLanguage.ResumeLayout(false);
             this.ResumeLayout(false);
-            Properties.Settings.Default.PropertyChanged += Default_PropertyChanged;
+
         }
 
         #endregion
@@ -248,6 +252,6 @@
         private System.Windows.Forms.Button buttonLogOut;
         private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.Label labelLoggedInAs;
-        private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.GroupBox groupBoxAccount;
     }
 }

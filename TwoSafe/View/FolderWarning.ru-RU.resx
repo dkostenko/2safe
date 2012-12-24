@@ -117,41 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="labelMessage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 64</value>
+  <data name="buttonMerge.Text" xml:space="preserve">
+    <value>Синхронизировать</value>
   </data>
-  <data name="buttonExit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 126</value>
-  </data>
-  <data name="buttonExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 26</value>
-  </data>
-  <data name="buttonExit.Text" xml:space="preserve">
-    <value>Закрыть приложение</value>
-  </data>
-  <data name="buttonCreateFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 126</value>
-  </data>
-  <data name="buttonCreateFolder.Text" xml:space="preserve">
-    <value>Создать эту папку</value>
-  </data>
-  <data name="labelFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
-  </data>
-  <data name="labelFolder.Text" xml:space="preserve">
-    <value>Папка</value>
-  </data>
-  <data name="labelWarning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 13</value>
-  </data>
-  <data name="labelWarning.Text" xml:space="preserve">
-    <value>указанная в настройках не существует</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>350, 171</value>
+  <data name="buttonChooseAnother.Text" xml:space="preserve">
+    <value>Выбрать другую папку</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Создать папку</value>
+    <value>Предупреждение</value>
   </data>
 </root>

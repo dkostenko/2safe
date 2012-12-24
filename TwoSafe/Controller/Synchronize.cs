@@ -16,7 +16,7 @@ namespace TwoSafe.Controller
         
         public static void start()
         {
-            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.listDir("", Model.User.token);
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.listDir("", Properties.Settings.Default.Token);
             if (json.ContainsKey("error_code"))
             {
                 return;
@@ -33,7 +33,7 @@ namespace TwoSafe.Controller
                 {
                     Dictionary<string, string> postData = new Dictionary<string, string>();
                     postData.Add("dir_id", "2285033047");
-                    postData.Add("token", Model.User.token);
+                    postData.Add("token", Properties.Settings.Default.Token);
                     postData.Add("overwrite", "true");
                     Controller.ApiTwoSafe.putFile(postData, arr[1]);
                 }
@@ -41,7 +41,7 @@ namespace TwoSafe.Controller
                 {
                     Dictionary<string, string> postData = new Dictionary<string, string>();
                     postData.Add("dir_id", "2285033047");
-                    postData.Add("token", Model.User.token);
+                    postData.Add("token", Properties.Settings.Default.Token);
                     Controller.ApiTwoSafe.putFile(postData, arr[1]);
                 }
                 if (arr[0] == "deleted")

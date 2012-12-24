@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonText001" xml:space="preserve">
+    <value>Готово</value>
+  </data>
   <data name="error001" xml:space="preserve">
     <value>Не авторизован</value>
   </data>
@@ -368,5 +371,32 @@
   </data>
   <data name="error084" xml:space="preserve">
     <value>Неправильный reset code</value>
+  </data>
+  <data name="error085" xml:space="preserve">
+    <value>Невозможно соединиться с сервером</value>
+  </data>
+  <data name="message001" xml:space="preserve">
+    <value>Логин прошел успешно</value>
+  </data>
+  <data name="message002" xml:space="preserve">
+    <value>Соединение...</value>
+  </data>
+  <data name="message003" xml:space="preserve">
+    <value>Регистрация прошла успешно</value>
+  </data>
+  <data name="message004" xml:space="preserve">
+    <value>Пароли не совпадают</value>
+  </data>
+  <data name="message005" xml:space="preserve">
+    <value>Папка </value>
+  </data>
+  <data name="message006" xml:space="preserve">
+    <value> уже существует. Синхронизировать ее с облаком?</value>
+  </data>
+  <data name="message007" xml:space="preserve">
+    <value>Вы хотите покинуть установку? Это закроет все приложение.</value>
+  </data>
+  <data name="message008" xml:space="preserve">
+    <value>Подтверждение выхода</value>
   </data>
 </root>

@@ -9,6 +9,7 @@ using System.Reflection;
 using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Threading;
 
 namespace TwoSafe.View
 {   
@@ -54,9 +55,8 @@ namespace TwoSafe.View
         /// </summary>
         View.FormLogin loginForm;
 
-        FolderBrowserDialog fbd;
-        CreateFolderDialog folderDialog;
-        CreateFolderFromSettingsDialog folderFromSettingsDialog;
+        Thread setupThread;
+        FormSetup setupForm;
 
         /// <summary>
         /// Конструктор CustomApplicationContext без параметров
@@ -64,9 +64,12 @@ namespace TwoSafe.View
         public CustomApplicationContext()
         {            
             InitializeContext();
+            Properties.Settings.Default.Token = "";
+            Properties.Settings.Default.Save();
             // Проверки
             runUserChecks();
         }
+
 
         /// <summary>
         /// Запуск проверок условий необходимых для запуска программы
@@ -75,97 +78,25 @@ namespace TwoSafe.View
         /// </summary>
         private void runUserChecks()
         {
-            // Если программа запускается первый раз - в настройках пусто
-            // смотрим - есть ли папка по дефолту в настройках 
-            // если ее там нет
-            if (Properties.Settings.Default.UserFolderPath == "")
+            if (Properties.Settings.Default.Token == "" ||
+                Properties.Settings.Default.UserFolderPath == "" ||
+                Properties.Settings.Default.Account == "") // если хоть что то из настроек отсутствует
             {
-                // если до этого существовала дефолтовая папка, то просо используем ее 
-                if (Directory.Exists(@"C:\Users\" + Environment.UserName + @"\2safe"))
-                {
-                    Properties.Settings.Default.UserFolderPath = @"C:\Users\" + Environment.UserName + @"\2safe";
-                    Properties.Settings.Default.Save();
-                }
-                // если дефолтовая папка не существовала, надо предложить пользователю 3 опции
-                // 1. закрыть программу
-                // 2. создать дефолтную папку в дефолтном месте
-                // 3. создать папку со своим именем с которой будет все синхронизироваться, или выбрать уже существующую
-                else
-                {
-                    folderDialog = new CreateFolderDialog();
-                    folderDialog.ShowDialog();
-                    switch (folderDialog.DialogResult)
-                    {
-                        case DialogResult.Cancel:
-                            // close the application
-                            ExitThread();
-                            break;
-                        case DialogResult.OK:
-                            // create default folder
-                            Directory.CreateDirectory(@"C:\Users\" + Environment.UserName + @"\2safe");
-                            Properties.Settings.Default.UserFolderPath = @"C:\Users\" + Environment.UserName + @"\2safe";
-                            break;
-                        case DialogResult.Yes:
-                            // show dialog for choosing a custom destination of the folder
-                            fbd = new FolderBrowserDialog();
-                            fbd.ShowDialog();
-                            if (fbd.SelectedPath == "")
-                            {
-                                MessageBox.Show("Cancelled", "Cancelled by user!");
-                                ExitThread();
-                            }
-                            else
-                            {
-                                Properties.Settings.Default.UserFolderPath = fbd.SelectedPath;
-                                Properties.Settings.Default.Save();
-                            }
-                            break;
-                    }
-                }
+                // трем все, и запускаем setup
+                Properties.Settings.Default.Token = "";
+                Properties.Settings.Default.UserFolderPath = "";
+                Properties.Settings.Default.Account = "";
+                Properties.Settings.Default.Save();
+                setupForm = new FormSetup();
+                setupForm.Show();
             }
-            // если в настройках все таки прописана папка
-            else
+            else // если настройки на месте, то тогда проверяем рабочий ли токен
             {
-                // проверяем существует ли она на машине пользователя
-                if (!Directory.Exists(Properties.Settings.Default.UserFolderPath))
+                if (Model.User.isAuthorized())
                 {
-                    folderFromSettingsDialog = new CreateFolderFromSettingsDialog();
-                    folderFromSettingsDialog.ShowDialog();
-                    switch (folderFromSettingsDialog.DialogResult)
-                    {
-                        case DialogResult.OK:
-                            try
-                            {
-                                Directory.CreateDirectory(Properties.Settings.Default.UserFolderPath);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
-                            break;
-                        case DialogResult.Abort:
-                            ExitThread();
-                            break;
-                    }
-                }
 
-            }
-            
-            // дальше смотрим есть ли интернет
-            if (Model.User.isOnline())
-            {
-                notifyIcon.Text = "2safe";
-                if (!Model.User.isAuthorized()) // Если с токеном все плохо - выпадает окно авторизации
-                {
-                    loginForm = new FormLogin();
-                    loginForm.ShowDialog();
                 }
             }
-            else
-            {
-                notifyIcon.Text = "No Inernet connection";
-            }
-            
         }
 
         /// <summary>
@@ -217,7 +148,7 @@ namespace TwoSafe.View
 
         private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
         {
-            runUserChecks();
+
         }
 
         /// <summary>
@@ -243,9 +174,6 @@ namespace TwoSafe.View
         private void Default_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             SetMenuItemsLanguage(Properties.Settings.Default.Language);
-            Model.User.token = Properties.Settings.Default.Token;
-            Model.User.userFolderPath = Properties.Settings.Default.UserFolderPath;
-            //runUserChecks();
         }
 
         /// <summary>
@@ -264,6 +192,7 @@ namespace TwoSafe.View
         {
             System.Diagnostics.Process.Start("explorer.exe", Properties.Settings.Default.UserFolderPath);
         }
+
 
         /// <summary>
         /// Обработчик события щелчка мыши на управляющем элементе "Выход"
@@ -289,8 +218,6 @@ namespace TwoSafe.View
             // Если показываются какие-то формы, то они закрываются
             if (prefsForm != null)      { prefsForm.Close(); }
             if (loginForm != null)      { loginForm.Close(); }
-            if (folderDialog != null)   { folderDialog.Close(); }
-            if (fbd != null)            { fbd.Dispose(); }
             
             notifyIcon.Visible = false; // это удалит иконку из трея
             base.ExitThreadCore();

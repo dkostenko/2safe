@@ -139,26 +139,26 @@
   <data name="tabPageGeneral.Text" xml:space="preserve">
     <value>Основные</value>
   </data>
-  <data name="buttonLogin.Text" xml:space="preserve">
-    <value>Войти</value>
-  </data>
   <data name="buttonLogOut.Text" xml:space="preserve">
     <value>Выйти</value>
   </data>
   <data name="textBoxUserName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 36</value>
+    <value>78, 32</value>
   </data>
   <data name="textBoxUserName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 20</value>
+    <value>201, 20</value>
   </data>
   <data name="labelLoggedInAs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 39</value>
+    <value>17, 35</value>
   </data>
   <data name="labelLoggedInAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 13</value>
+    <value>55, 13</value>
   </data>
   <data name="labelLoggedInAs.Text" xml:space="preserve">
-    <value>Текущий пользователь</value>
+    <value>Текущий </value>
+  </data>
+  <data name="groupBoxAccount.Text" xml:space="preserve">
+    <value>Аккаунт</value>
   </data>
   <data name="tabPageAccount.Text" xml:space="preserve">
     <value>Аккаунт</value>

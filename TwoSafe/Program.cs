@@ -26,13 +26,15 @@ namespace TwoSafe
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
+                
+                
                 var applicationContext = new CustomApplicationContext();
                 Application.Run(applicationContext);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Программа не запустилась",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             SingleInstance.Stop();

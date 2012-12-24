@@ -17,11 +17,14 @@ namespace TwoSafe.View
         public FormPreferences()
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+            Properties.Settings.Default.PropertyChanged += Default_PropertyChanged;
             InitializeComponent();
         }
 
         private void FormPreferences_Load(object sender, EventArgs e)
         {
+            this.Icon = Properties.Resources._64_settings;
+            
             if (Properties.Settings.Default.Language == "en") { comboBoxLanguages.Text = "English"; }
             else                                              { comboBoxLanguages.Text = "Russian"; }
 
@@ -32,14 +35,12 @@ namespace TwoSafe.View
             if (Model.User.isAuthorized())
             {
                 textBoxUserName.Text = Controller.ApiTwoSafe.getPersonalData(Properties.Settings.Default.Token)["response"]["personal"]["email"];
-                buttonLogin.Enabled = false;
                 buttonLogOut.Enabled = true;
             }
             else
             {
                 textBoxUserName.Text = "";
                 buttonLogOut.Enabled = false;
-                buttonLogin.Enabled = true;
             }
             checkBoxLanSync.Checked = Properties.Settings.Default.LanSync;
             checkBoxNotifications.Checked = Properties.Settings.Default.DesktopNotifications;
@@ -101,6 +102,7 @@ namespace TwoSafe.View
         /// <param name="lang"> Язык </param>
         private void ChangeLanguage(string lang)
         {
+            textBoxUserName.Text = Properties.Settings.Default.Account;
             ComponentResourceManager resources = new ComponentResourceManager(typeof(FormPreferences));
             CultureInfo cultInformation = new CultureInfo(lang);
             // все контролы формы 
@@ -144,30 +146,6 @@ namespace TwoSafe.View
                 textBoxLocation.Text = fbd.SelectedPath;
             }
         }
-        
-        /// <summary>
-        /// Изменение настроек при изменении галки
-        /// </summary>
-        private void checkBoxNotifications_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.DesktopNotifications = checkBoxNotifications.Checked;
-        }
-
-        /// <summary>
-        /// Изменение настроек при изменении галки
-        /// </summary>
-        private void checkBoxStart_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.StartOnSystemStartup = checkBoxStart.Checked;
-        }
-
-        /// <summary>
-        /// Изменение настроек при изменении галки
-        /// </summary>
-        private void checkBoxLanSync_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.LanSync = checkBoxLanSync.Checked;
-        }
 
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
@@ -175,14 +153,8 @@ namespace TwoSafe.View
             Properties.Settings.Default.Save();
             textBoxUserName.Clear();
             buttonLogOut.Enabled = false;
-            buttonLogin.Enabled = true;
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
-        {
-            FormLogin loginForm = new FormLogin();
-            loginForm.Show();
-        }
 
 
         private void Default_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -190,15 +162,38 @@ namespace TwoSafe.View
             if (Model.User.isAuthorized())
             {
                 textBoxUserName.Text = Controller.ApiTwoSafe.getPersonalData(Properties.Settings.Default.Token)["response"]["personal"]["email"];
-                buttonLogin.Enabled = false;
                 buttonLogOut.Enabled = true;
             }
             else
             {
                 textBoxUserName.Text = "";
                 buttonLogOut.Enabled = false;
-                buttonLogin.Enabled = true;
             }
+        }
+
+
+        /// <summary>
+        /// Изменение настроек при изменении галки
+        /// </summary>
+        private void checkBoxNotifications_CheckStateChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.DesktopNotifications = checkBoxNotifications.Checked;
+        }
+
+        /// <summary>
+        /// Изменение настроек при изменении галки
+        /// </summary>
+        private void checkBoxStart_CheckStateChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.StartOnSystemStartup = checkBoxStart.Checked;
+        }
+
+        /// <summary>
+        /// Изменение настроек при изменении галки
+        /// </summary>
+        private void checkBoxLanSync_CheckStateChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.LanSync = checkBoxLanSync.Checked;
         }
 
     }

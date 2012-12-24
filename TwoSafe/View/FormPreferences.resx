@@ -128,8 +128,9 @@
   <data name="groupBoxGeneral.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;buttonLogin.Name" xml:space="preserve">
-    <value>buttonLogin</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBoxLanguage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
   </data>
   <data name="checkBoxLanSync.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -149,14 +150,17 @@
   <data name="&gt;&gt;groupBoxGeneral.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;buttonCancel.Name" xml:space="preserve">
-    <value>buttonCancel</value>
+  <data name="buttonOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="&gt;&gt;comboBoxLanguages.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="comboBoxLanguages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 21</value>
+  <data name="groupBoxAccount.Text" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="groupBoxAccount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 112</value>
   </data>
   <data name="&gt;&gt;labelLoggedInAs.Name" xml:space="preserve">
     <value>labelLoggedInAs</value>
@@ -165,7 +169,7 @@
     <value>Move...</value>
   </data>
   <data name="textBoxUserName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 36</value>
+    <value>93, 29</value>
   </data>
   <data name="&gt;&gt;checkBoxStart.Parent" xml:space="preserve">
     <value>groupBoxGeneral</value>
@@ -173,29 +177,23 @@
   <data name="comboBoxLanguages.Location" type="System.Drawing.Point, System.Drawing">
     <value>34, 38</value>
   </data>
-  <data name="&gt;&gt;checkBoxStart.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="&gt;&gt;buttonMoveLocation.Name" xml:space="preserve">
     <value>buttonMoveLocation</value>
   </data>
-  <data name="buttonLogOut.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;checkBoxStart.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="buttonLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 23</value>
+  <data name="labelLoggedInAs.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>381, 387</value>
   </data>
   <data name="buttonLogOut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 78</value>
+    <value>165, 66</value>
   </data>
-  <data name="checkBoxNotifications.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 17</value>
-  </data>
-  <data name="buttonApply.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;buttonLogOut.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;tabPageGeneral.Parent" xml:space="preserve">
+    <value>tabControlPreferences</value>
   </data>
   <data name="buttonCancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -206,17 +204,26 @@
   <data name="$this.Text" xml:space="preserve">
     <value>2safe Preferences</value>
   </data>
+  <data name="checkBoxStart.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="&gt;&gt;checkBoxLanSync.Name" xml:space="preserve">
     <value>checkBoxLanSync</value>
   </data>
-  <data name="buttonLogin.Text" xml:space="preserve">
-    <value>Log in</value>
+  <data name="&gt;&gt;groupBoxAccount.Parent" xml:space="preserve">
+    <value>tabPageAccount</value>
+  </data>
+  <data name="groupBoxGeneral.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="&gt;&gt;buttonMoveLocation.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPageAdvanced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 304</value>
+  <data name="tabControlPreferences.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Name" xml:space="preserve">
+    <value>buttonCancel</value>
   </data>
   <data name="tabPageGeneral.Size" type="System.Drawing.Size, System.Drawing">
     <value>350, 304</value>
@@ -227,9 +234,6 @@
   <data name="&gt;&gt;tabPageAccount.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="buttonLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="groupBoxGeneral.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 25</value>
   </data>
@@ -239,11 +243,8 @@
   <data name="groupBoxLocation.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 20</value>
   </data>
-  <data name="&gt;&gt;tabPageGeneral.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="textBoxLocation.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="groupBoxLocation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="&gt;&gt;checkBoxNotifications.Name" xml:space="preserve">
     <value>checkBoxNotifications</value>
@@ -263,9 +264,6 @@
   <data name="&gt;&gt;buttonMoveLocation.Parent" xml:space="preserve">
     <value>groupBoxLocation</value>
   </data>
-  <data name="&gt;&gt;groupBoxGeneral.Parent" xml:space="preserve">
-    <value>tabPageGeneral</value>
-  </data>
   <data name="&gt;&gt;buttonCancel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -276,7 +274,7 @@
     <value>General</value>
   </data>
   <data name="labelLoggedInAs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 39</value>
+    <value>19, 32</value>
   </data>
   <data name="&gt;&gt;groupBoxLanguage.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -284,24 +282,32 @@
   <data name="buttonApply.Text" xml:space="preserve">
     <value>Apply</value>
   </data>
-  <data name="&gt;&gt;tabPageAdvanced.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;textBoxUserName.Name" xml:space="preserve">
+    <value>textBoxUserName</value>
+  </data>
+  <data name="checkBoxStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 52</value>
+  </data>
+  <data name="buttonCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;groupBoxAccount.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;labelLoggedInAs.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tabPageAccount.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;labelLoggedInAs.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="buttonApply.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
   </data>
-  <data name="&gt;&gt;textBoxUserName.Name" xml:space="preserve">
-    <value>textBoxUserName</value>
+  <data name="checkBoxNotifications.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="tabPageAccount.Size" type="System.Drawing.Size, System.Drawing">
     <value>350, 304</value>
@@ -316,10 +322,13 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonLogOut.Parent" xml:space="preserve">
-    <value>tabPageAccount</value>
+    <value>groupBoxAccount</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormPreferences</value>
+  </data>
+  <data name="buttonCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="&gt;&gt;tabPageGeneral.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -334,10 +343,13 @@
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="textBoxUserName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 20</value>
+    <value>186, 20</value>
   </data>
-  <data name="&gt;&gt;buttonLogin.Parent" xml:space="preserve">
-    <value>tabPageAccount</value>
+  <data name="&gt;&gt;groupBoxLanguage.Name" xml:space="preserve">
+    <value>groupBoxLanguage</value>
+  </data>
+  <data name="groupBoxAccount.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="tabPageAdvanced.Text" xml:space="preserve">
     <value>Advanced</value>
@@ -348,8 +360,8 @@
   <data name="&gt;&gt;groupBoxGeneral.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="labelLoggedInAs.Text" xml:space="preserve">
-    <value>Logged in as</value>
+  <data name="textBoxLocation.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;buttonOK.Name" xml:space="preserve">
     <value>buttonOK</value>
@@ -369,29 +381,29 @@
   <data name="checkBoxNotifications.Text" xml:space="preserve">
     <value>Show desktop notifications</value>
   </data>
-  <data name="&gt;&gt;buttonLogin.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="tabControlPreferences.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
-  <data name="&gt;&gt;buttonLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="buttonApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="&gt;&gt;comboBoxLanguages.Parent" xml:space="preserve">
     <value>groupBoxLanguage</value>
   </data>
-  <data name="buttonLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 78</value>
-  </data>
   <data name="&gt;&gt;tabPageAccount.Parent" xml:space="preserve">
     <value>tabControlPreferences</value>
+  </data>
+  <data name="&gt;&gt;groupBoxLocation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tabControlPreferences.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="&gt;&gt;groupBoxLocation.Parent" xml:space="preserve">
     <value>tabPageAdvanced</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>397, 425</value>
   </data>
   <data name="&gt;&gt;groupBoxLanguage.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -405,17 +417,23 @@
   <data name="textBoxLocation.Size" type="System.Drawing.Size, System.Drawing">
     <value>262, 20</value>
   </data>
+  <data name="checkBoxNotifications.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="&gt;&gt;buttonCancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
+  <data name="&gt;&gt;tabPageAdvanced.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;groupBoxGeneral.Name" xml:space="preserve">
     <value>groupBoxGeneral</value>
   </data>
-  <data name="buttonLogin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;tabPageGeneral.Name" xml:space="preserve">
+    <value>tabPageGeneral</value>
   </data>
   <data name="buttonApply.Location" type="System.Drawing.Point, System.Drawing">
     <value>291, 348</value>
@@ -431,9 +449,6 @@
   </data>
   <data name="tabPageAccount.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLanguages.Name" xml:space="preserve">
-    <value>comboBoxLanguages</value>
   </data>
   <data name="groupBoxLocation.Size" type="System.Drawing.Size, System.Drawing">
     <value>320, 105</value>
@@ -453,14 +468,14 @@
   <data name="checkBoxNotifications.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;groupBoxLanguage.Parent" xml:space="preserve">
-    <value>tabPageAdvanced</value>
+  <data name="&gt;&gt;groupBoxGeneral.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checkBoxNotifications.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 17</value>
   </data>
-  <data name="&gt;&gt;tabPageGeneral.Parent" xml:space="preserve">
-    <value>tabControlPreferences</value>
+  <data name="&gt;&gt;buttonLogOut.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;buttonCancel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -480,8 +495,11 @@
   <data name="tabPageGeneral.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPageGeneral.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLoggedInAs.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="checkBoxLanSync.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -501,8 +519,8 @@
   <data name="&gt;&gt;textBoxUserName.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="checkBoxLanSync.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="checkBoxStart.Text" xml:space="preserve">
     <value>Start 2safe on system startup</value>
@@ -553,13 +571,13 @@
     <value>username</value>
   </data>
   <data name="&gt;&gt;textBoxUserName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonLogOut.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;textBoxUserName.Parent" xml:space="preserve">
-    <value>tabPageAccount</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>381, 387</value>
+  <data name="comboBoxLanguages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 21</value>
   </data>
   <data name="&gt;&gt;checkBoxNotifications.Parent" xml:space="preserve">
     <value>groupBoxGeneral</value>
@@ -570,17 +588,17 @@
   <data name="groupBoxLocation.Text" xml:space="preserve">
     <value>2safe location</value>
   </data>
-  <data name="&gt;&gt;groupBoxLocation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonApply.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;groupBoxAccount.Name" xml:space="preserve">
+    <value>groupBoxAccount</value>
   </data>
   <data name="&gt;&gt;tabControlPreferences.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageGeneral.Name" xml:space="preserve">
-    <value>tabPageGeneral</value>
+  <data name="&gt;&gt;groupBoxAccount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxUserName.Parent" xml:space="preserve">
+    <value>groupBoxAccount</value>
   </data>
   <data name="&gt;&gt;tabControlPreferences.Name" xml:space="preserve">
     <value>tabControlPreferences</value>
@@ -591,35 +609,41 @@
   <data name="&gt;&gt;checkBoxNotifications.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="groupBoxAccount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 23</value>
+  </data>
   <data name="&gt;&gt;checkBoxLanSync.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;groupBoxLanguage.Name" xml:space="preserve">
-    <value>groupBoxLanguage</value>
+  <data name="tabPageAdvanced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>350, 304</value>
   </data>
-  <data name="&gt;&gt;checkBoxNotifications.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;groupBoxLanguage.Parent" xml:space="preserve">
+    <value>tabPageAdvanced</value>
   </data>
-  <data name="&gt;&gt;labelLoggedInAs.Parent" xml:space="preserve">
-    <value>tabPageAccount</value>
+  <data name="&gt;&gt;buttonApply.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxStart.Name" xml:space="preserve">
     <value>checkBoxStart</value>
   </data>
-  <data name="labelLoggedInAs.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;checkBoxNotifications.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBoxNotifications.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;comboBoxLanguages.Name" xml:space="preserve">
+    <value>comboBoxLanguages</value>
   </data>
   <data name="buttonOK.Text" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="checkBoxStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 52</value>
+  <data name="&gt;&gt;tabPageGeneral.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="buttonApply.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="labelLoggedInAs.Text" xml:space="preserve">
+    <value>Logged in as</value>
   </data>
   <data name="groupBoxLanguage.Size" type="System.Drawing.Size, System.Drawing">
     <value>320, 89</value>
@@ -627,13 +651,16 @@
   <data name="&gt;&gt;tabPageAccount.Name" xml:space="preserve">
     <value>tabPageAccount</value>
   </data>
+  <data name="&gt;&gt;labelLoggedInAs.Parent" xml:space="preserve">
+    <value>groupBoxAccount</value>
+  </data>
   <data name="&gt;&gt;tabControlPreferences.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="tabPageGeneral.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ru-RU</value>
   </metadata>
 </root>

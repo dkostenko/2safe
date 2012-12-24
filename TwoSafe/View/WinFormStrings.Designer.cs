@@ -61,6 +61,15 @@ namespace TwoSafe.View {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Finish.
+        /// </summary>
+        internal static string buttonText001 {
+            get {
+                return ResourceManager.GetString("buttonText001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not Autorize.
         /// </summary>
         internal static string error001 {
@@ -813,6 +822,87 @@ namespace TwoSafe.View {
         internal static string error084 {
             get {
                 return ResourceManager.GetString("error084", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot connect to server.
+        /// </summary>
+        internal static string error085 {
+            get {
+                return ResourceManager.GetString("error085", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login successful.
+        /// </summary>
+        internal static string message001 {
+            get {
+                return ResourceManager.GetString("message001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connecting....
+        /// </summary>
+        internal static string message002 {
+            get {
+                return ResourceManager.GetString("message002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign up successful.
+        /// </summary>
+        internal static string message003 {
+            get {
+                return ResourceManager.GetString("message003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords do not mach.
+        /// </summary>
+        internal static string message004 {
+            get {
+                return ResourceManager.GetString("message004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folder .
+        /// </summary>
+        internal static string message005 {
+            get {
+                return ResourceManager.GetString("message005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  already exists. Do you want to sync it with the cloud?.
+        /// </summary>
+        internal static string message006 {
+            get {
+                return ResourceManager.GetString("message006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to end setup? This will cause application to quit..
+        /// </summary>
+        internal static string message007 {
+            get {
+                return ResourceManager.GetString("message007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm closing setup.
+        /// </summary>
+        internal static string message008 {
+            get {
+                return ResourceManager.GetString("message008", resourceCulture);
             }
         }
     }

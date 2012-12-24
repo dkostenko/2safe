@@ -84,15 +84,31 @@ namespace TwoSafe.Controller
             return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "add_login" + "&login=" + login + "&password=" + password + "&email=" + email + "&captcha=" + captcha + "&id=" + id));
         }
 
+        
         /// <summary>
         /// Аутентификация
         /// </summary>
         /// <param name="login">Акаунт пользователя</param>
         /// <param name="password">Пароль от аккаунта</param>
-        public static Dictionary<string, dynamic> auth(string login, string password)
+        /// <param name="captcha_id">ID капчи</param>
+        /// <param name="captcha">Сама капча</param>
+        public static Dictionary<string, dynamic> auth(string login, string password, string captcha_id, string captcha)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "auth" + "&login=" + login + "&password=" + password));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "auth" + "&login=" + login + "&password=" + password + "&captcha_id=" + captcha_id + "&captcha=" + captcha));
+        }
+
+        /// <summary>
+        /// Аутентификация
+        /// </summary>
+        /// <param name="login">Акаунт пользователя</param>
+        /// <param name="password">Пароль от аккаунта</param>
+        /// <param name="optional">Опциональные параметры</param>
+        /// <returns></returns>
+        public static Dictionary<string, dynamic> auth(string login, string password, Dictionary<string, string> optional)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "auth" + "&login=" + login + "&password=" + password + toQueryString(optional)));
         }
 
         /// <summary>
