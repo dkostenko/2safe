@@ -118,29 +118,5 @@ namespace TwoSafe.Properties {
                 this["RootId"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Email {
-            get {
-                return ((string)(this["Email"]));
-            }
-            set {
-                this["Email"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Account {
-            get {
-                return ((string)(this["Account"]));
-            }
-            set {
-                this["Account"] = value;
-            }
-        }
     }
 }

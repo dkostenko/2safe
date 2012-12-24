@@ -34,18 +34,18 @@ namespace TwoSafe.Model
         {
             try
             {
-                Dictionary<string, dynamic> response = 
-                    Controller.ApiTwoSafe.getPersonalData(Properties.Settings.Default.Token);
-                if (response.ContainsKey("error_code"))
+                Dictionary<string, dynamic> json = Controller.ApiTwoSafe.getPersonalData();
+
+                if (json.ContainsKey("error_code"))
                 {
                     return false;
                 }
-                return true;
             }
             catch
             {
                 return false;
-            } 
+            }
+            return true;
         }
     }
 }

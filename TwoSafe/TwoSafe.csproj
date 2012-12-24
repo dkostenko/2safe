@@ -87,10 +87,19 @@
   <ItemGroup>
     <Compile Include="Controller\ApiUser.cs" />
     <Compile Include="Controller\Synchronize.cs" />
-    <Compile Include="Model\Folders.cs" />
+    <Compile Include="Controller\Dirs.cs" />
+    <Compile Include="Controller\Files.cs" />
+    <Compile Include="Model\ActiveRecord.cs" />
+    <Compile Include="Model\Dir.cs" />
+    <Compile Include="Model\File.cs" />
     <Compile Include="Model\SQLiteDatabase.cs" />
-    <Compile Include="Model\TwoSafeDB.cs" />
+    <Compile Include="Model\Db.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="View\CustomApplicationContext.cs" />
     <Compile Include="View\FolderWarning.cs">
       <SubType>Form</SubType>
@@ -175,15 +184,6 @@
     <EmbeddedResource Include="View\WinFormStrings.ru-RU.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
     <None Include="TwoSafe_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

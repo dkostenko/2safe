@@ -123,7 +123,7 @@ namespace TwoSafe.Model
             {
                 this.ExecuteNonQuery(String.Format("delete from {0} where {1};", tableName, where));
             }
-            catch (Exception fail)
+            catch
             {
                 
                 returnCode = false;
@@ -153,7 +153,7 @@ namespace TwoSafe.Model
             {
                 this.ExecuteNonQuery(String.Format("insert into {0}({1}) values({2});", tableName, columns, values));
             }
-            catch (Exception fail)
+            catch
             {
                 returnCode = false;
             }

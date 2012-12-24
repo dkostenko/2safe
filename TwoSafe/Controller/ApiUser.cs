@@ -146,10 +146,10 @@ namespace TwoSafe.Controller
         /// Получение карточки юзера
         /// </summary>
         /// <param name="token">Токен</param>
-        public static Dictionary<string, dynamic> getPersonalData(string token)
+        public static Dictionary<string, dynamic> getPersonalData()
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_personal_data" + "&token=" + token));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_personal_data" + "&token=" + Properties.Settings.Default.Token));
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace TwoSafe.Controller
         /// <param name="postData">Данные: необходимые для передачи файла (id папки, токен и другие)</param>
         /// <param name="fileName">Полный путь до файла</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> putFile(Dictionary<string, string> postData, string fileName)
+        public static Dictionary<string, dynamic> putFile(string dir_id,  string fileName, Dictionary<string, string> postData)
         {
             FileStream fileData = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
 
@@ -228,10 +228,19 @@ namespace TwoSafe.Controller
             StringBuilder sbHeader = new StringBuilder();
 
             // Добавление строковых параметров
-            foreach (var one in postData)
+            sbHeader.AppendFormat("--{0}\r\n", boundary);
+            sbHeader.AppendFormat("Content-Disposition: form-data; name=\"token\";\r\n\r\n" + Properties.Settings.Default.Token + "\r\n");
+
+            sbHeader.AppendFormat("--{0}\r\n", boundary);
+            sbHeader.AppendFormat("Content-Disposition: form-data; name=\"dir_id\";\r\n\r\n" + dir_id + "\r\n");
+
+            if (postData != null)
             {
-                sbHeader.AppendFormat("--{0}\r\n", boundary);
-                sbHeader.AppendFormat("Content-Disposition: form-data; name=\"{0}\";\r\n\r\n{1}\r\n", one.Key, one.Value);
+                foreach (var one in postData)
+                {
+                    sbHeader.AppendFormat("--{0}\r\n", boundary);
+                    sbHeader.AppendFormat("Content-Disposition: form-data; name=\"{0}\";\r\n\r\n{1}\r\n", one.Key, one.Value);
+                }
             }
 
 
@@ -265,6 +274,7 @@ namespace TwoSafe.Controller
 
                 // Конец записи
                 requestStream.Write(footer, 0, footer.Length);
+                fileData.Close();
 
                 string output = "";
                 try
@@ -342,15 +352,23 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Создание директории
         /// </summary>
-        /// <param name="dirId">id корневой папки</param>
+        /// <param name="dirId">ID родительской папки</param>
         /// <param name="dirName">Имя папки</param>
         /// <param name="token">токен</param>
         /// <param name="optional">Опциональные параметры</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> makeDir(string dirId, string dirName, string token, Dictionary<string, string> optional)
+        public static bool makeDir(string dirId, string dirName, Dictionary<string, string> optional)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "make_dir&token=" + token + "&dir_id=" + dirId + "&dir_name=" + dirName + toQueryString(optional)));
+            Dictionary<string, dynamic> json = jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "make_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId + "&dir_name=" + dirName + toQueryString(optional)));
+            if (json.ContainsKey("error_code"))
+            {
+            }
+            else
+            {
+                new Model.Dir(json["response"]["dir_id"], dirId, dirName);
+            }
+            return true;
         }
 
         /// <summary>
@@ -407,10 +425,28 @@ namespace TwoSafe.Controller
         /// <param name="dirId">ID каталога, при пустом значении выдает список файлов и папко корневого каталога</param>
         /// <param name="token">токен</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> listDir(string dirId, string token)
+        public static Dictionary<string, dynamic> listDir(string dirId)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "list_dir&token=" + token + "&dir_id=" + dirId));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "list_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId));
+        }
+
+        /// <summary>
+        /// Просмотр действий пользователя
+        /// </summary>
+        /// <param name="after">timestamp в формате наносекунд. (без этого параметра выводятся последние 300 событий)</param>
+        /// <returns></returns>
+        public static Dictionary<string, dynamic> getEvents(string after)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            Dictionary<string, dynamic> json = jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_events&token=" + Properties.Settings.Default.Token + "&after=" + after));
+            if (json != null && !json.ContainsKey("error_code"))
+            {
+                TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
+                Properties.Settings.Default.LastGetEventsTime = (uint)span.TotalSeconds;
+                Properties.Settings.Default.Save();
+            }
+            return json;
         }
 
 
@@ -706,19 +742,9 @@ namespace TwoSafe.Controller
                 output = sr.ReadToEnd();
                 sr.Close();
             }
-            catch (WebException wex)
+            catch
             {
-                if (wex.Response != null)
-                {
-                    using (var errorResponse = (HttpWebResponse)wex.Response)
-                    {
-                        using (var reader = new StreamReader(errorResponse.GetResponseStream()))
-                        {
-                            output = reader.ReadToEnd();
-                            //TODO: Обработать ошибку
-                        }
-                    }
-                }
+                output = "";
             }
             return output;
         }

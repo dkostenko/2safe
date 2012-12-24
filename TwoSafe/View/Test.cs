@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,41 +8,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Data.SQLite;
+using System.Threading;
 
 namespace TwoSafe.View
 {
     public partial class Test : Form
     {
-        SQLiteConnection sqlitConnection;
         public Test()
         {
             InitializeComponent();
 
-            FileSystemWatcher watcher = new FileSystemWatcher();
-            watcher.Path = "C:\\Users\\dmitry\\Desktop";
-            //watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
-
-            // Подписка на обработчик события изменения файла или папки
-            watcher.Created += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            watcher.Changed += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            watcher.Deleted += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            watcher.Renamed += new RenamedEventHandler(Controller.Synchronize.eventRaised);
-
-            try
-            {
-                watcher.EnableRaisingEvents = true;
-            }
-            catch (ArgumentException)
-            {
-                //abortAcitivityMonitoring();
-            }
+            //события папки
+            FileSystemWatcher dirWatcher = new FileSystemWatcher();
+            dirWatcher.Path = Properties.Settings.Default.UserFolderPath;
+            dirWatcher.IncludeSubdirectories = true;
+            dirWatcher.NotifyFilter = NotifyFilters.DirectoryName;
+            dirWatcher.Created += new FileSystemEventHandler(Controller.Synchronize.dirEvents);
+            dirWatcher.EnableRaisingEvents = true;
 
 
-            //SQLiteConnection.CreateFile("twoSafe.sqlite"); 
+            //события файла
+            FileSystemWatcher fileWatcher = new FileSystemWatcher();
+            fileWatcher.Path = Properties.Settings.Default.UserFolderPath;
+            fileWatcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName;
+            fileWatcher.Created += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            //fileWatcher.Changed += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            //fileWatcher.Deleted += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            //fileWatcher.Renamed += new RenamedEventHandler(Controller.Synchronize.eventRaised);
+            fileWatcher.EnableRaisingEvents = true;
 
-
-           // Model.TwoSafeDB.createTable();
 
           
 
@@ -51,26 +45,38 @@ namespace TwoSafe.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.auth("kostenko", "123qwe123qwe", "", "");
-            Properties.Settings.Default.Token = json["response"]["token"];
-            Properties.Settings.Default.Save();
+            Model.Db.clearTables();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Controller.Synchronize.start();
-            Dictionary<string, string> data = new Dictionary<string,string>();
-            data.Add("dir_id","2285033047");
-            data.Add("token", Properties.Settings.Default.Token);
-            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.putFile(data, @"C:\Users\Public\Videos\Sample Videos\Wildlife.wmv");
+            Thread th = new Thread(qwe);
+            th.Start();
+        }
+
+        static void qwe()
+        {
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.putFile("28101033560", @"C:\Users\dmitry\Desktop\qwe.txt", null);
             if (1 == 1)
             {
+                //Properties.Settings.Default.Token;
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //Controller.Synchronize.doSync();
+            Thread th = new Thread(Controller.Synchronize.inception);
+            th.Start();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Model.Db.create();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Controller.Synchronize.fromServerToClient();
         }
     }
 }

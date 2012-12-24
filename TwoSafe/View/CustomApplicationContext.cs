@@ -64,8 +64,6 @@ namespace TwoSafe.View
         public CustomApplicationContext()
         {            
             InitializeContext();
-            Properties.Settings.Default.Token = "";
-            Properties.Settings.Default.Save();
             // Проверки
             runUserChecks();
         }
@@ -96,6 +94,11 @@ namespace TwoSafe.View
                 {
 
                 }
+
+
+                //УДАЛИТЬ
+                //View.Test form = new View.Test();
+                //form.Show();
             }
         }
 
