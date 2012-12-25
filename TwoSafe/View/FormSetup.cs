@@ -468,7 +468,8 @@ namespace TwoSafe.View
             //if (MessageBox.Show(language.GetString("message006"), language.GetString("message007"), MessageBoxButtons.YesNo) == DialogResult.Yes)
             //{
             //    //e.Cancel = false;
-            //    Environment.Exit(0);
+
+            Environment.Exit(0);
             //}
         }
     }

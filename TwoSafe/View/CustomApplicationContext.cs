@@ -55,14 +55,16 @@ namespace TwoSafe.View
         /// </summary>
         View.FormLogin loginForm;
 
-        Thread setupThread;
+        Thread userChecks;
         FormSetup setupForm;
 
         /// <summary>
         /// Конструктор CustomApplicationContext без параметров
         /// </summary>
         public CustomApplicationContext()
-        {            
+        {
+            Properties.Settings.Default.Token = "";
+            Properties.Settings.Default.Save();
             InitializeContext();
             // Проверки
             runUserChecks();
@@ -72,7 +74,7 @@ namespace TwoSafe.View
         /// <summary>
         /// Запуск проверок условий необходимых для запуска программы
         /// наличие интернета не является одной из них
-        /// при невыполнении условий программа должна предоставлять адекватное решение
+        /// 
         /// </summary>
         private void runUserChecks()
         {
@@ -100,6 +102,7 @@ namespace TwoSafe.View
                 //View.Test form = new View.Test();
                 //form.Show();
             }
+            
         }
 
         /// <summary>
@@ -221,10 +224,15 @@ namespace TwoSafe.View
             // Если показываются какие-то формы, то они закрываются
             if (prefsForm != null)      { prefsForm.Close(); }
             if (loginForm != null)      { loginForm.Close(); }
-            
-            notifyIcon.Visible = false; // это удалит иконку из трея
+
+            makeIconInvisible(); // это удалит иконку из трея
             base.ExitThreadCore();
             Environment.Exit(0);
+        }
+
+        public void makeIconInvisible()
+        {
+            notifyIcon.Visible = false;
         }
     }
 }
