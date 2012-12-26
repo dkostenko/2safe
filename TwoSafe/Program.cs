@@ -24,18 +24,19 @@ namespace TwoSafe
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            try
-            {
+            //try
+            //{
                 
                 
                 var applicationContext = new CustomApplicationContext();
                 Application.Run(applicationContext);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Программа не запустилась",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    MessageBox.Show(ex.Message, "Программа не запустилась",
+            //    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
             SingleInstance.Stop();
         }

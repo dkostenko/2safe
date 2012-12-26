@@ -10,11 +10,18 @@ using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Threading;
+using System.Globalization;
+using System.Resources;
 
 namespace TwoSafe.View
 {   
     public class CustomApplicationContext : ApplicationContext
     {
+        /// <summary>
+        /// Менеджер языковых ресурсов
+        /// </summary>
+        ResourceManager language;
+
         /// <summary>
         /// Список компонентов подлежащих уничтожению при закрытии приложения
         /// </summary>
@@ -55,34 +62,36 @@ namespace TwoSafe.View
         /// </summary>
         View.FormLogin loginForm;
 
-        Thread setupThread;
+        Thread userChecks;
         FormSetup setupForm;
 
         /// <summary>
         /// Конструктор CustomApplicationContext без параметров
         /// </summary>
         public CustomApplicationContext()
-        {            
+        {
+            System.Diagnostics.Debug.Write("\n" + Properties.Settings.Default.Token + "\n");
+            System.Diagnostics.Debug.Write("\n" + Properties.Settings.Default.Email + "\n");
             InitializeContext();
             // Проверки
 
-            Properties.Settings.Default.UserFolderPath = @"C:\Users\dmitry\2safe";
+            //Properties.Settings.Default.UserFolderPath = @"C:\Users\dmitry\2safe";
             //Properties.Settings.Default.LastGetEventsTime = long.Parse("1356394469455494");
             //Properties.Settings.Default.Token = "";
-            Properties.Settings.Default.Save();
+            //Properties.Settings.Default.Save();
             //runUserChecks();
 
             //УДАЛИТЬ
             
-            View.Test form = new View.Test();
-            form.Show();
+            //View.Test form = new View.Test();
+            //form.Show();
         }
 
 
         /// <summary>
         /// Запуск проверок условий необходимых для запуска программы
         /// наличие интернета не является одной из них
-        /// при невыполнении условий программа должна предоставлять адекватное решение
+        /// 
         /// </summary>
         private void runUserChecks()
         {
@@ -100,11 +109,13 @@ namespace TwoSafe.View
             }
             else // если настройки на месте, то тогда проверяем рабочий ли токен
             {
-                if (Model.User.isAuthorized())
+                if (!Model.User.isAuthorized()) // если нет - запускаем форму логина
                 {
-
+                    FormLogin loginForm = new FormLogin();
+                    loginForm.Show();
                 }
             }
+            
         }
 
         /// <summary>
@@ -181,6 +192,8 @@ namespace TwoSafe.View
         // Обработчик изменения настроек
         private void Default_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+            language = new ResourceManager(typeof(TwoSafe.View.WinFormStrings));
             SetMenuItemsLanguage(Properties.Settings.Default.Language);
         }
 
@@ -226,10 +239,15 @@ namespace TwoSafe.View
             // Если показываются какие-то формы, то они закрываются
             if (prefsForm != null)      { prefsForm.Close(); }
             if (loginForm != null)      { loginForm.Close(); }
-            
-            notifyIcon.Visible = false; // это удалит иконку из трея
+
+            makeIconInvisible(); // это удалит иконку из трея
             base.ExitThreadCore();
             Environment.Exit(0);
+        }
+
+        public void makeIconInvisible()
+        {
+            notifyIcon.Visible = false;
         }
     }
 }

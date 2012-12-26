@@ -12,29 +12,60 @@ using System.Globalization;
 using System.Resources;
 using System.IO;
 
+
 namespace TwoSafe.View
 {
+    /// <summary>
+    /// Форма первоначальной настройки
+    /// </summary>
     public partial class FormSetup : Form
     {
-        private string captchaId;
-        private string activePanel;
+        /// <summary>
+        /// Менеджер языковых ресурсов
+        /// </summary>
         ResourceManager language;
-        Thread threadCaptcha;
-        Thread logIn;
-        Thread signUp;
+        
+        /// <summary>
+        /// Переменные для дублирования значений из текстбоксов формы
+        /// Используются в параллельном треде, из которого нельзя получить доступ к контролам из основного треда
+        /// </summary>
+        private string captchaId, activePanel, account, password, captcha, email;
+        
+        /// <summary>
+        /// Ответ сервера на запрос капчи
+        /// </summary>
+        Object[] captchaResponse;
+        
+        /// <summary>
+        /// Ответ с сервера на запрос авторизации
+        /// </summary>
+        Dictionary<string, dynamic> logInResponse;
+        
+        /// <summary>
+        /// Ответ с сервера на запрос создания аккаунта
+        /// </summary>
+        Dictionary<string, dynamic> signUpResponse;
 
+        /// <summary>
+        /// Контсруктор по умолчанию
+        /// </summary>
         public FormSetup()
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
             language = new ResourceManager(typeof(TwoSafe.View.WinFormStrings));
-            activePanel = "enter";
-            captchaId = "";
             Properties.Settings.Default.PropertyChanged += Default_PropertyChanged;
+            activePanel = "enter";
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Обработчик события изменения настроек
+        /// Выставляет язык контролов формы Setup
+        /// </summary>
         private void Default_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+            language = new ResourceManager(typeof(TwoSafe.View.WinFormStrings));
             ChangeLanguage(Properties.Settings.Default.Language);
         }
 
@@ -74,13 +105,14 @@ namespace TwoSafe.View
             return controlList;
         }
 
+        /// <summary>
+        /// Обработчик события загрузки формы
+        /// </summary>
         private void FormSetup_Load(object sender, EventArgs e)
         {
             pictureBoxLogo.BackgroundImage = Properties.Resources._2safeLogo;
             buttonPrevious.Visible = false;
-
             loginCaptchaVisible(false);
-
             // делаем невидимыми все панели кроме стартовой
             panelLogin.Visible = false;
             panelCreateAccount.Visible = false;
@@ -96,15 +128,40 @@ namespace TwoSafe.View
             // сначала определяем какая панель была активной
             if (activePanel == "login") // делаем login
             {
-                logIn = new Thread(() => LogIn(textBoxAccountLogin.Text, textBoxPasswordLogin.Text, captchaId, textBoxCaptchaLogin.Text));
-                logIn.Start();
+                //делаем в основном треде неактивными контролы, и ставим сообщение Connecting...
+                this.buttonNext.Enabled = false;
+                this.buttonPrevious.Enabled = false;
+                this.labelErrorMessageLogin.Text = language.GetString("message002");
+                // транслируем значения из текстбоксов в местные поля
+                account = textBoxAccountLogin.Text;
+                password = textBoxPasswordLogin.Text;
+                captcha = textBoxCaptchaLogin.Text;
+                // запускаем loginBW
+                loginBW.RunWorkerAsync();
                 return;
             }
 
             if (activePanel == "signup") // делаем signup
             {
-                signUp = new Thread(() => SignUp(textBoxAccountSignup.Text, textBoxPasswordSignup.Text, textBoxEmailSignup.Text, textBoxCaptchaSignup.Text, captchaId));
-                signUp.Start();
+                //делаем в основном треде неактивными контролы, и ставим сообщение Connecting...
+                this.buttonNext.Enabled = false;
+                this.buttonPrevious.Enabled = false;
+                this.labelErrorMessageSignup.Text = language.GetString("message002");
+                // валидация паролей
+                if (textBoxPasswordSignup.Text != textBoxRepeatPasswordSignup.Text)
+                {
+                    labelErrorMessageSignup.Text = language.GetString("message004");
+                    buttonNext.Enabled = true;
+                    buttonPrevious.Enabled = true;
+                    return;
+                }
+                // транслируем значения из текстбоксов в местные поля
+                account = textBoxAccountSignup.Text;
+                password = textBoxPasswordSignup.Text;
+                captcha = textBoxCaptchaSignup.Text;
+                email = textBoxEmailSignup.Text;
+                // запускаем signUpBW
+                signUpBW.RunWorkerAsync();
                 return;
             }
 
@@ -113,26 +170,18 @@ namespace TwoSafe.View
                 if (radioButtonHasAccount.Checked)
                 {
                     activePanel = "login";
-
                     buttonPrevious.Visible = true;
-                    
                     panelEnter.Visible = false;
                     panelLogin.Visible = true;
-
                     ValidateLoginTextBoxes();
                 }
                 else
                 {
-                    threadCaptcha = new Thread(getCaptchaAndId);
-                    threadCaptcha.Start();
-                    
+                    getCaptchaBW.RunWorkerAsync();
                     activePanel = "signup";
-                    
-                    buttonPrevious.Visible = true;
-                    
+                    buttonPrevious.Visible = true;          
                     panelEnter.Visible = false;
                     panelCreateAccount.Visible = true;
-                    
                     ValidateSignupTextBoxes();
                 }
                 return;
@@ -209,16 +258,21 @@ namespace TwoSafe.View
             }
         }
 
-
-        private void LogIn(string account, string password, string idOfCaptcha, string captcha)
+        /// <summary>
+        /// Отправка запроса на логин в параллельном треде
+        /// </summary>
+        private void loginBW_DoWork(object sender, DoWorkEventArgs e)
         {
-            buttonNext.Enabled = false;
-            buttonPrevious.Enabled = false;
-            labelErrorMessageLogin.Text = language.GetString("message002");
+            logInResponse = Controller.ApiTwoSafe.auth(account, password, captchaId, captcha);
+        }
 
-            Dictionary<string, dynamic> response = Controller.ApiTwoSafe.auth(account, password, idOfCaptcha, captcha);
+        /// <summary>
+        /// Метод выполняющийся в главном треде по окончанию работы loginBW 
+        /// </summary>
+        private void loginBW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
 
-            if (response == null)
+            if (logInResponse == null)
             {
                 labelErrorMessageLogin.Text = language.GetString("error085");
                 buttonPrevious.Enabled = true;
@@ -226,23 +280,16 @@ namespace TwoSafe.View
             }
             else
             {
-                if (response.ContainsKey("error_code"))
+                if (logInResponse.ContainsKey("error_code"))
                 {
                     // если проблемы с капчей - вываливаем ее
-                    if (response["error_code"] == "053")
+                    if (logInResponse["error_code"] == "053")
                     {
                         loginCaptchaVisible(true);
-                        threadCaptcha = new Thread(getCaptchaAndId);
-                        threadCaptcha.Start();
-
                     }
-                    else
-                    {
-                        threadCaptcha = new Thread(getCaptchaAndId);
-                        threadCaptcha.Start();
-                    }
-
-                    labelErrorMessageLogin.Text = language.GetString("error" + response["error_code"]);
+                    // Получаем пока новую параллельно
+                    getCaptchaBW.RunWorkerAsync();
+                    labelErrorMessageLogin.Text = language.GetString("error" + logInResponse["error_code"]);
                     buttonPrevious.Enabled = true;
                     buttonNext.Enabled = true;
                 }
@@ -251,7 +298,7 @@ namespace TwoSafe.View
                     // full setup
                     loginCaptchaVisible(false);
                     labelErrorMessageLogin.Text = language.GetString("message001");
-                    Properties.Settings.Default.Token = response["response"]["token"];
+                    Properties.Settings.Default.Token = logInResponse["response"]["token"];
                     Properties.Settings.Default.Account = account;
                     Properties.Settings.Default.Save();
 
@@ -264,39 +311,31 @@ namespace TwoSafe.View
                     buttonPrevious.Visible = false;
                 }
             }
-            logIn = null;
+        }
+        
+        /// <summary>
+        /// Отправка запроса на создание аккаунта в параллельном треде
+        /// </summary>
+        private void signUpBW_DoWork(object sender, DoWorkEventArgs e)
+        {
+            signUpResponse = Controller.ApiTwoSafe.addLogin(account, password, email, captcha, captchaId);
         }
 
-        private void SignUp(string account, string password, string email, string captcha, string idOfCaptcha)
+        /// <summary>
+        /// Метод выполняющийся в главном треде по окончанию работы signUpBW 
+        /// </summary>
+        private void signUpBW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            buttonNext.Enabled = false;
-            buttonPrevious.Enabled = false;
-            
-            // валидация паролей
-            if (textBoxPasswordSignup.Text != textBoxRepeatPasswordSignup.Text)
-            {
-                labelErrorMessageSignup.Text = language.GetString("message004");
-                buttonNext.Enabled = true;
-                buttonPrevious.Enabled = true;
-                signUp = null;
-                return;
-            }
-
-            labelErrorMessageSignup.Text = language.GetString("message002");
-
-            Dictionary<string, dynamic> response = Controller.ApiTwoSafe.addLogin(account, password, email, captcha, idOfCaptcha);
-            
-            if (response == null) // невозможно соединиться с сервером
+            if (signUpResponse == null) // невозможно соединиться с сервером
             {
                 labelErrorMessageSignup.Text = language.GetString("error085");
             }
             else
             {
-                if (response.ContainsKey("error_code")) // сервер вернул ошибку
+                if (signUpResponse.ContainsKey("error_code")) // сервер вернул ошибку
                 {
-                    labelErrorMessageSignup.Text = language.GetString("error" + response["error_code"]);
-                    threadCaptcha = new Thread(getCaptchaAndId);
-                    threadCaptcha.Start();
+                    labelErrorMessageSignup.Text = language.GetString("error" + signUpResponse["error_code"]);
+                    getCaptchaBW.RunWorkerAsync();
                 }
                 else // ошибки нет - все норм, нужно логиниться данным аккаунтом и далее смотреть настройки
                 {
@@ -312,49 +351,43 @@ namespace TwoSafe.View
 
             buttonNext.Enabled = true;
             buttonPrevious.Enabled = true;
-            signUp = null; 
         }
 
         /// <summary>
-        /// Получение капчи и ее ID
-        /// Запускать в отдельном треде!
+        /// Отправка запроса на капчу в параллельном треде
         /// </summary>
-        private void getCaptchaAndId()
+        private void getCaptchaBW_DoWork(object sender, DoWorkEventArgs e)
         {
-            Object[] captcha = Controller.ApiTwoSafe.getCaptcha();
-            pictureBoxCaptchaSignup.BackgroundImage = (Bitmap)captcha[0];
-            pictureBoxCaptchaLogin.BackgroundImage = (Bitmap)captcha[0];
-            captchaId = (string)captcha[1];
+            captchaResponse = Controller.ApiTwoSafe.getCaptcha();
         }
 
         /// <summary>
-        /// Делает видимым/невидимым группу captcha на панели Login
+        /// Метод выполняющийся в главном треде по окончанию работы getCaptchaBW 
         /// </summary>
-        /// <param name="visible"></param>
+        private void getCaptchaBW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (captchaResponse.Length != 0)
+            {
+                pictureBoxCaptchaSignup.BackgroundImage = (Bitmap)captchaResponse[0];
+                pictureBoxCaptchaLogin.BackgroundImage = (Bitmap)captchaResponse[0];
+                captchaId = (string)captchaResponse[1];
+            }
+        }
+
+        /// <summary>
+        /// Делает видимой/невидимой группу captcha на панели Login
+        /// </summary>
+        /// <param name="visible">TRUE - если надо сделать группу видимой, FALSE - если надо сделать группу невидимой</param>
         private void loginCaptchaVisible(bool visible)
         {
-            if (visible)
-            {
-                pictureBoxCaptchaLogin.BackgroundImage = null;
-                pictureBoxCaptchaSignup.BackgroundImage = null;
-                textBoxCaptchaLogin.Clear();
-
-                pictureBoxCaptchaLogin.Visible = true;
-                labelCaptchaLogin.Visible = true;
-                textBoxCaptchaLogin.Visible = true;
-                buttonRefreshCaptchaLogin.Visible = true;
-            }
-            else
-            {
-                pictureBoxCaptchaLogin.BackgroundImage = null;
-                pictureBoxCaptchaSignup.BackgroundImage = null;
-                textBoxCaptchaLogin.Clear();
-
-                pictureBoxCaptchaLogin.Visible = false;
-                labelCaptchaLogin.Visible = false;
-                textBoxCaptchaLogin.Visible = false;
-                buttonRefreshCaptchaLogin.Visible = false;
-            }
+            pictureBoxCaptchaLogin.BackgroundImage = null;
+            pictureBoxCaptchaSignup.BackgroundImage = null;
+            textBoxCaptchaLogin.Clear();
+            
+            pictureBoxCaptchaLogin.Visible = visible;
+            labelCaptchaLogin.Visible = visible;
+            textBoxCaptchaLogin.Visible = visible;
+            buttonRefreshCaptchaLogin.Visible = visible;
         }
 
         /// <summary>
@@ -362,24 +395,18 @@ namespace TwoSafe.View
         /// </summary>
         private void buttonPrevious_Click(object sender, EventArgs e)
         {
-            
+            activePanel = "enter";
+            buttonNext.Enabled = true;
+            buttonPrevious.Visible = false;
+            panelEnter.Visible = true;
+
             if (activePanel == "login")
             {
-                activePanel = "enter";
-                buttonNext.Enabled = true;
-                buttonPrevious.Visible = false;
-                
                 panelLogin.Visible = false;
-                panelEnter.Visible = true;
             }
             
             if (activePanel == "signup")
             {
-                activePanel = "enter";
-                buttonNext.Enabled = true;
-                buttonPrevious.Visible = false;
-
-                panelEnter.Visible = true;
                 panelCreateAccount.Visible = false;
             }
         }
@@ -391,7 +418,7 @@ namespace TwoSafe.View
         {
             if (pictureBoxCaptchaLogin.Visible == false)
             {
-                if (textBoxAccountLogin.Text != "" && textBoxPasswordLogin.Text != "" && logIn == null)
+                if (textBoxAccountLogin.Text != "" && textBoxPasswordLogin.Text != "" && !loginBW.IsBusy )
                 {
                     buttonNext.Enabled = true;
                 }
@@ -425,7 +452,7 @@ namespace TwoSafe.View
                 textBoxRepeatPasswordSignup.Text != "" &&
                 textBoxEmailSignup.Text != "" &&
                 textBoxCaptchaSignup.Text!= "" &&
-                signUp == null)
+                !signUpBW.IsBusy)
             {
                 buttonNext.Enabled = true;
             }
@@ -452,24 +479,19 @@ namespace TwoSafe.View
         }
 
         /// <summary>
-        /// Нажатие на кнопку обновления капчи на панели login
+        /// Нажатие на кнопку обновления капчи
         /// </summary>
         private void buttonRefreshCaptcha_Click(object sender, EventArgs e)
         {
-            threadCaptcha = new Thread(getCaptchaAndId);
-            threadCaptcha.Start();
+            getCaptchaBW.RunWorkerAsync();
         }
 
         /// <summary>
-        /// При закрытии мы предупреждаем, что закроется все приложение
+        /// При закрытии формы - закрываем приложение
         /// </summary>
         private void FormSetup_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (MessageBox.Show(language.GetString("message006"), language.GetString("message007"), MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //{
-            //    //e.Cancel = false;
-            //    Environment.Exit(0);
-            //}
+            // Добавить корректный выход
         }
     }
 }

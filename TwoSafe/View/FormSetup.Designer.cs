@@ -68,6 +68,9 @@
             this.panelExit = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.loginBW = new System.ComponentModel.BackgroundWorker();
+            this.getCaptchaBW = new System.ComponentModel.BackgroundWorker();
+            this.signUpBW = new System.ComponentModel.BackgroundWorker();
             this.panelEnter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panelLogin.SuspendLayout();
@@ -94,11 +97,11 @@
             // 
             // panelEnter
             // 
-            resources.ApplyResources(this.panelEnter, "panelEnter");
             this.panelEnter.BackColor = System.Drawing.Color.White;
             this.panelEnter.Controls.Add(this.pictureBoxLogo);
             this.panelEnter.Controls.Add(this.radioButtonDoesNotHaveAccount);
             this.panelEnter.Controls.Add(this.radioButtonHasAccount);
+            resources.ApplyResources(this.panelEnter, "panelEnter");
             this.panelEnter.Name = "panelEnter";
             // 
             // pictureBoxLogo
@@ -109,7 +112,6 @@
             // 
             // panelLogin
             // 
-            resources.ApplyResources(this.panelLogin, "panelLogin");
             this.panelLogin.BackColor = System.Drawing.Color.White;
             this.panelLogin.Controls.Add(this.buttonRefreshCaptchaLogin);
             this.panelLogin.Controls.Add(this.labelCaptchaLogin);
@@ -121,12 +123,13 @@
             this.panelLogin.Controls.Add(this.textBoxPasswordLogin);
             this.panelLogin.Controls.Add(this.textBoxAccountLogin);
             this.panelLogin.Controls.Add(this.labelLogin);
+            resources.ApplyResources(this.panelLogin, "panelLogin");
             this.panelLogin.Name = "panelLogin";
             // 
             // buttonRefreshCaptchaLogin
             // 
-            resources.ApplyResources(this.buttonRefreshCaptchaLogin, "buttonRefreshCaptchaLogin");
             this.buttonRefreshCaptchaLogin.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.buttonRefreshCaptchaLogin, "buttonRefreshCaptchaLogin");
             this.buttonRefreshCaptchaLogin.ForeColor = System.Drawing.Color.Transparent;
             this.buttonRefreshCaptchaLogin.Name = "buttonRefreshCaptchaLogin";
             this.buttonRefreshCaptchaLogin.TabStop = false;
@@ -140,8 +143,8 @@
             // 
             // textBoxCaptchaLogin
             // 
-            resources.ApplyResources(this.textBoxCaptchaLogin, "textBoxCaptchaLogin");
             this.textBoxCaptchaLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.textBoxCaptchaLogin, "textBoxCaptchaLogin");
             this.textBoxCaptchaLogin.Name = "textBoxCaptchaLogin";
             this.textBoxCaptchaLogin.TextChanged += new System.EventHandler(this.textBoxesLogin_TextChanged);
             // 
@@ -168,15 +171,15 @@
             // 
             // textBoxPasswordLogin
             // 
-            resources.ApplyResources(this.textBoxPasswordLogin, "textBoxPasswordLogin");
             this.textBoxPasswordLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.textBoxPasswordLogin, "textBoxPasswordLogin");
             this.textBoxPasswordLogin.Name = "textBoxPasswordLogin";
             this.textBoxPasswordLogin.TextChanged += new System.EventHandler(this.textBoxesLogin_TextChanged);
             // 
             // textBoxAccountLogin
             // 
-            resources.ApplyResources(this.textBoxAccountLogin, "textBoxAccountLogin");
             this.textBoxAccountLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.textBoxAccountLogin, "textBoxAccountLogin");
             this.textBoxAccountLogin.Name = "textBoxAccountLogin";
             this.textBoxAccountLogin.TextChanged += new System.EventHandler(this.textBoxesLogin_TextChanged);
             // 
@@ -187,7 +190,6 @@
             // 
             // panelCreateAccount
             // 
-            resources.ApplyResources(this.panelCreateAccount, "panelCreateAccount");
             this.panelCreateAccount.BackColor = System.Drawing.Color.White;
             this.panelCreateAccount.Controls.Add(this.textBoxRepeatPasswordSignup);
             this.panelCreateAccount.Controls.Add(this.labelRepeatPasswordSignup);
@@ -203,12 +205,13 @@
             this.panelCreateAccount.Controls.Add(this.labelPasswordSignup);
             this.panelCreateAccount.Controls.Add(this.textBoxAccountSignup);
             this.panelCreateAccount.Controls.Add(this.labelAccountSignup);
+            resources.ApplyResources(this.panelCreateAccount, "panelCreateAccount");
             this.panelCreateAccount.Name = "panelCreateAccount";
             // 
             // textBoxRepeatPasswordSignup
             // 
-            resources.ApplyResources(this.textBoxRepeatPasswordSignup, "textBoxRepeatPasswordSignup");
             this.textBoxRepeatPasswordSignup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.textBoxRepeatPasswordSignup, "textBoxRepeatPasswordSignup");
             this.textBoxRepeatPasswordSignup.Name = "textBoxRepeatPasswordSignup";
             // 
             // labelRepeatPasswordSignup
@@ -218,8 +221,8 @@
             // 
             // buttonRefreshCaptchaSignup
             // 
-            resources.ApplyResources(this.buttonRefreshCaptchaSignup, "buttonRefreshCaptchaSignup");
             this.buttonRefreshCaptchaSignup.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.buttonRefreshCaptchaSignup, "buttonRefreshCaptchaSignup");
             this.buttonRefreshCaptchaSignup.ForeColor = System.Drawing.Color.Transparent;
             this.buttonRefreshCaptchaSignup.Name = "buttonRefreshCaptchaSignup";
             this.buttonRefreshCaptchaSignup.TabStop = false;
@@ -238,8 +241,8 @@
             // 
             // textBoxCaptchaSignup
             // 
-            resources.ApplyResources(this.textBoxCaptchaSignup, "textBoxCaptchaSignup");
             this.textBoxCaptchaSignup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.textBoxCaptchaSignup, "textBoxCaptchaSignup");
             this.textBoxCaptchaSignup.Name = "textBoxCaptchaSignup";
             this.textBoxCaptchaSignup.TextChanged += new System.EventHandler(this.textBoxesSignup_TextChanged);
             // 
@@ -261,15 +264,15 @@
             // 
             // textBoxEmailSignup
             // 
-            resources.ApplyResources(this.textBoxEmailSignup, "textBoxEmailSignup");
             this.textBoxEmailSignup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.textBoxEmailSignup, "textBoxEmailSignup");
             this.textBoxEmailSignup.Name = "textBoxEmailSignup";
             this.textBoxEmailSignup.TextChanged += new System.EventHandler(this.textBoxesSignup_TextChanged);
             // 
             // textBoxPasswordSignup
             // 
-            resources.ApplyResources(this.textBoxPasswordSignup, "textBoxPasswordSignup");
             this.textBoxPasswordSignup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.textBoxPasswordSignup, "textBoxPasswordSignup");
             this.textBoxPasswordSignup.Name = "textBoxPasswordSignup";
             this.textBoxPasswordSignup.TextChanged += new System.EventHandler(this.textBoxesSignup_TextChanged);
             // 
@@ -280,8 +283,8 @@
             // 
             // textBoxAccountSignup
             // 
-            resources.ApplyResources(this.textBoxAccountSignup, "textBoxAccountSignup");
             this.textBoxAccountSignup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.textBoxAccountSignup, "textBoxAccountSignup");
             this.textBoxAccountSignup.Name = "textBoxAccountSignup";
             this.textBoxAccountSignup.TextChanged += new System.EventHandler(this.textBoxesSignup_TextChanged);
             // 
@@ -306,11 +309,11 @@
             // 
             // panelFullSetup
             // 
-            resources.ApplyResources(this.panelFullSetup, "panelFullSetup");
             this.panelFullSetup.BackColor = System.Drawing.Color.White;
             this.panelFullSetup.Controls.Add(this.radioButtonAdvanced);
             this.panelFullSetup.Controls.Add(this.radioButtonTypical);
             this.panelFullSetup.Controls.Add(this.labelFulSetup);
+            resources.ApplyResources(this.panelFullSetup, "panelFullSetup");
             this.panelFullSetup.Name = "panelFullSetup";
             // 
             // radioButtonAdvanced
@@ -335,10 +338,10 @@
             // 
             // panelExit
             // 
-            resources.ApplyResources(this.panelExit, "panelExit");
             this.panelExit.BackColor = System.Drawing.Color.White;
             this.panelExit.Controls.Add(this.label2);
             this.panelExit.Controls.Add(this.label1);
+            resources.ApplyResources(this.panelExit, "panelExit");
             this.panelExit.Name = "panelExit";
             // 
             // label2
@@ -350,6 +353,21 @@
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            // 
+            // loginBW
+            // 
+            this.loginBW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.loginBW_DoWork);
+            this.loginBW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.loginBW_RunWorkerCompleted);
+            // 
+            // getCaptchaBW
+            // 
+            this.getCaptchaBW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.getCaptchaBW_DoWork);
+            this.getCaptchaBW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.getCaptchaBW_RunWorkerCompleted);
+            // 
+            // signUpBW
+            // 
+            this.signUpBW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.signUpBW_DoWork);
+            this.signUpBW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.signUpBW_RunWorkerCompleted);
             // 
             // FormSetup
             // 
@@ -426,5 +444,8 @@
         private System.Windows.Forms.Panel panelExit;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker loginBW;
+        private System.ComponentModel.BackgroundWorker getCaptchaBW;
+        private System.ComponentModel.BackgroundWorker signUpBW;
     }
 }
