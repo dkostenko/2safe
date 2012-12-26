@@ -10,11 +10,18 @@ using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Threading;
+using System.Globalization;
+using System.Resources;
 
 namespace TwoSafe.View
 {   
     public class CustomApplicationContext : ApplicationContext
     {
+        /// <summary>
+        /// Менеджер языковых ресурсов
+        /// </summary>
+        ResourceManager language;
+
         /// <summary>
         /// Список компонентов подлежащих уничтожению при закрытии приложения
         /// </summary>
@@ -63,8 +70,8 @@ namespace TwoSafe.View
         /// </summary>
         public CustomApplicationContext()
         {
-            Properties.Settings.Default.Token = "";
-            Properties.Settings.Default.Save();
+            System.Diagnostics.Debug.Write("\n" + Properties.Settings.Default.Token + "\n");
+            System.Diagnostics.Debug.Write("\n" + Properties.Settings.Default.Email + "\n");
             InitializeContext();
             // Проверки
             runUserChecks();
@@ -92,9 +99,10 @@ namespace TwoSafe.View
             }
             else // если настройки на месте, то тогда проверяем рабочий ли токен
             {
-                if (Model.User.isAuthorized())
+                if (!Model.User.isAuthorized()) // если нет - запускаем форму логина
                 {
-
+                    FormLogin loginForm = new FormLogin();
+                    loginForm.Show();
                 }
 
 
@@ -179,6 +187,8 @@ namespace TwoSafe.View
         // Обработчик изменения настроек
         private void Default_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+            language = new ResourceManager(typeof(TwoSafe.View.WinFormStrings));
             SetMenuItemsLanguage(Properties.Settings.Default.Language);
         }
 

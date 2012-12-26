@@ -64,6 +64,8 @@ namespace TwoSafe.View
         /// </summary>
         private void Default_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+            language = new ResourceManager(typeof(TwoSafe.View.WinFormStrings));
             ChangeLanguage(Properties.Settings.Default.Language);
         }
 

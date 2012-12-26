@@ -34,8 +34,7 @@ namespace TwoSafe.View
             textBoxLocation.Text = Properties.Settings.Default.UserFolderPath;
             if (Model.User.isAuthorized())
             {
-                textBoxUserName.Text = Controller.ApiTwoSafe.getPersonalData()["response"]["personal"]["email"];
-                //buttonLogin.Enabled = false;
+                textBoxUserName.Text = Properties.Settings.Default.Account;
                 buttonLogOut.Enabled = true;
             }
             else
@@ -103,7 +102,6 @@ namespace TwoSafe.View
         /// <param name="lang"> Язык </param>
         private void ChangeLanguage(string lang)
         {
-            textBoxUserName.Text = Properties.Settings.Default.Account;
             ComponentResourceManager resources = new ComponentResourceManager(typeof(FormPreferences));
             CultureInfo cultInformation = new CultureInfo(lang);
             // все контролы формы 
@@ -116,6 +114,9 @@ namespace TwoSafe.View
                 // затем применяем ресурс ко всем контролам
                 resources.ApplyResources(control, control.Name, cultInformation);
             }
+            
+            textBoxUserName.Text = Properties.Settings.Default.Account;
+            textBoxLocation.Text = Properties.Settings.Default.UserFolderPath;
         }
         
         /// <summary>
@@ -150,6 +151,7 @@ namespace TwoSafe.View
 
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
+            Controller.ApiTwoSafe.logout(Properties.Settings.Default.Token);
             Properties.Settings.Default.Token = "";
             Properties.Settings.Default.Save();
             textBoxUserName.Clear();
@@ -162,8 +164,7 @@ namespace TwoSafe.View
         {
             if (Model.User.isAuthorized())
             {
-                textBoxUserName.Text = Controller.ApiTwoSafe.getPersonalData()["response"]["personal"]["email"];
-
+                textBoxUserName.Text = Properties.Settings.Default.Account;
                 buttonLogOut.Enabled = true;
             }
             else
@@ -171,6 +172,7 @@ namespace TwoSafe.View
                 textBoxUserName.Text = "";
                 buttonLogOut.Enabled = false;
             }
+            textBoxLocation.Text = Properties.Settings.Default.UserFolderPath;
         }
 
 
