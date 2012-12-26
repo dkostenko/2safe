@@ -117,702 +117,200 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="labelEmailSignup.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;labelSignUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="labelFulSetup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="radioButtonHasAccount.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;labelAccountSignup.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;panelFullSetup.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="labelCaptchaSignup.Text" xml:space="preserve">
-    <value>Captcha:</value>
-  </data>
-  <data name="&gt;&gt;textBoxAccountLogin.Name" xml:space="preserve">
-    <value>textBoxAccountLogin</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="radioButtonHasAccount.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="panelCreateAccount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 400</value>
+  <data name="radioButtonHasAccount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 335</value>
   </data>
-  <data name="&gt;&gt;pictureBoxLogo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labelSignUp.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
-  </data>
-  <data name="labelSignUp.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="radioButtonDoesNotHaveAccount.Text" xml:space="preserve">
-    <value>I don't have a 2safe account</value>
-  </data>
-  <data name="radioButtonAdvanced.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;labelCaptchaSignup.Parent" xml:space="preserve">
-    <value>panelCreateAccount</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAdvanced.Parent" xml:space="preserve">
-    <value>panelFullSetup</value>
-  </data>
-  <data name="&gt;&gt;labelSignUp.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;buttonPrevious.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelErrorMessageSignup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="&gt;&gt;labelEmailSignup.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="radioButtonTypical.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 19</value>
-  </data>
-  <data name="buttonPrevious.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;labelCaptchaSignup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelAccountSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pictureBoxLogo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 43</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxCaptchaSignup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelRepeatPasswordSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxCaptchaLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelPasswordLogin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="&gt;&gt;textBoxCaptchaSignup.Parent" xml:space="preserve">
-    <value>panelCreateAccount</value>
-  </data>
-  <data name="buttonNext.Location" type="System.Drawing.Point, System.Drawing">
-    <value>411, 411</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 25</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxCaptchaLogin.Name" xml:space="preserve">
-    <value>pictureBoxCaptchaLogin</value>
-  </data>
-  <data name="&gt;&gt;panelExit.Name" xml:space="preserve">
-    <value>panelExit</value>
-  </data>
-  <data name="&gt;&gt;labelFulSetup.Parent" xml:space="preserve">
-    <value>panelFullSetup</value>
-  </data>
-  <data name="&gt;&gt;radioButtonHasAccount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelErrorMessageSignup.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="labelAccountLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 76</value>
-  </data>
-  <data name="&gt;&gt;textBoxCaptchaLogin.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;textBoxPasswordLogin.Parent" xml:space="preserve">
-    <value>panelLogin</value>
-  </data>
-  <data name="textBoxCaptchaLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 22</value>
-  </data>
-  <data name="radioButtonDoesNotHaveAccount.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonNext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="pictureBoxCaptchaLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 140</value>
-  </data>
-  <data name="panelExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 400</value>
-  </data>
-  <data name="&gt;&gt;labelAccountSignup.Name" xml:space="preserve">
-    <value>labelAccountSignup</value>
-  </data>
-  <data name="&gt;&gt;textBoxCaptchaSignup.Name" xml:space="preserve">
-    <value>textBoxCaptchaSignup</value>
-  </data>
-  <data name="textBoxCaptchaSignup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
-  </data>
-  <data name="&gt;&gt;textBoxRepeatPasswordSignup.Parent" xml:space="preserve">
-    <value>panelCreateAccount</value>
-  </data>
-  <data name="radioButtonTypical.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="radioButtonHasAccount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 17</value>
   </data>
   <data name="radioButtonHasAccount.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="buttonRefreshCaptchaLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="radioButtonHasAccount.Text" xml:space="preserve">
+    <value>I already have a 2safe account</value>
   </data>
-  <data name="labelErrorMessageLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 29</value>
+  <data name="&gt;&gt;radioButtonHasAccount.Name" xml:space="preserve">
+    <value>radioButtonHasAccount</value>
   </data>
-  <data name="radioButtonDoesNotHaveAccount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 312</value>
-  </data>
-  <data name="labelPasswordSignup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 15</value>
-  </data>
-  <data name="labelRepeatPasswordSignup.Text" xml:space="preserve">
-    <value>Repeat password:</value>
-  </data>
-  <data name="&gt;&gt;labelPasswordSignup.Parent" xml:space="preserve">
-    <value>panelCreateAccount</value>
-  </data>
-  <data name="labelLogin.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;textBoxRepeatPasswordSignup.Name" xml:space="preserve">
-    <value>textBoxRepeatPasswordSignup</value>
-  </data>
-  <data name="panelEnter.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="labelPasswordSignup.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="labelErrorMessageLogin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="buttonRefreshCaptchaSignup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="labelFulSetup.Text" xml:space="preserve">
-    <value>Choose folder setup</value>
-  </data>
-  <data name="labelLogin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
-  </data>
-  <data name="labelAccountLogin.Text" xml:space="preserve">
-    <value>Account:</value>
-  </data>
-  <data name="textBoxAccountLogin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
+  <data name="&gt;&gt;radioButtonHasAccount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonHasAccount.Parent" xml:space="preserve">
     <value>panelEnter</value>
   </data>
-  <data name="labelEmailSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelAccountLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
-  </data>
-  <data name="panelExit.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>376, 68</value>
-  </data>
-  <data name="labelCaptchaSignup.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxEmailSignup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 160</value>
-  </data>
-  <data name="panelEnter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 400</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;buttonNext.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDoesNotHaveAccount.Name" xml:space="preserve">
-    <value>radioButtonDoesNotHaveAccount</value>
-  </data>
-  <data name="&gt;&gt;labelErrorMessageSignup.Name" xml:space="preserve">
-    <value>labelErrorMessageSignup</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="&gt;&gt;panelLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="textBoxAccountSignup.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="labelSignUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>498, 40</value>
-  </data>
-  <data name="labelRepeatPasswordSignup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 15</value>
-  </data>
-  <data name="labelCaptchaLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;textBoxCaptchaLogin.Parent" xml:space="preserve">
-    <value>panelLogin</value>
-  </data>
-  <data name="labelEmailSignup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 15</value>
-  </data>
-  <data name="labelCaptchaLogin.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="&gt;&gt;radioButtonHasAccount.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="labelCaptchaLogin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="labelAccountSignup.Text" xml:space="preserve">
-    <value>Account:</value>
-  </data>
-  <data name="textBoxPasswordLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 22</value>
-  </data>
-  <data name="&gt;&gt;labelRepeatPasswordSignup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 76</value>
-  </data>
-  <data name="buttonRefreshCaptchaSignup.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;labelAccountSignup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelErrorMessageSignup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="textBoxCaptchaLogin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="labelFulSetup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 25</value>
-  </data>
-  <data name="labelSignUp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 20</value>
-  </data>
-  <data name="&gt;&gt;labelPasswordSignup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelLogin.Text" xml:space="preserve">
-    <value>Log in to 2Safe</value>
-  </data>
-  <data name="textBoxAccountSignup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 76</value>
-  </data>
-  <data name="labelErrorMessageLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="labelAccountSignup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="radioButtonTypical.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 109</value>
-  </data>
-  <data name="panelEnter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 5</value>
-  </data>
-  <data name="&gt;&gt;panelCreateAccount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="textBoxCaptchaLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 211</value>
-  </data>
-  <data name="&gt;&gt;labelCaptchaSignup.Name" xml:space="preserve">
-    <value>labelCaptchaSignup</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDoesNotHaveAccount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonRefreshCaptchaLogin.Name" xml:space="preserve">
-    <value>buttonRefreshCaptchaLogin</value>
-  </data>
-  <data name="&gt;&gt;textBoxRepeatPasswordSignup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelAccountSignup.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxCaptchaSignup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxCaptchaLogin.Parent" xml:space="preserve">
-    <value>panelLogin</value>
-  </data>
-  <data name="textBoxRepeatPasswordSignup.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;labelPasswordLogin.Parent" xml:space="preserve">
-    <value>panelLogin</value>
-  </data>
-  <data name="labelAccountSignup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
-  </data>
-  <data name="textBoxPasswordLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 102</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>panelExit</value>
-  </data>
-  <data name="textBoxEmailSignup.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="buttonPrevious.Location" type="System.Drawing.Point, System.Drawing">
-    <value>330, 411</value>
-  </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="textBoxCaptchaSignup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 276</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 30</value>
-  </data>
-  <data name="labelSignUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAdvanced.Name" xml:space="preserve">
-    <value>radioButtonAdvanced</value>
-  </data>
-  <data name="&gt;&gt;textBoxAccountLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxLogo.Parent" xml:space="preserve">
-    <value>panelEnter</value>
-  </data>
-  <data name="labelEmailSignup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="&gt;&gt;textBoxEmailSignup.Name" xml:space="preserve">
-    <value>textBoxEmailSignup</value>
-  </data>
-  <data name="&gt;&gt;textBoxPasswordSignup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonRefreshCaptchaSignup.Name" xml:space="preserve">
-    <value>buttonRefreshCaptchaSignup</value>
-  </data>
-  <data name="pictureBoxLogo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>379, 250</value>
-  </data>
-  <data name="textBoxAccountSignup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;labelCaptchaLogin.Name" xml:space="preserve">
-    <value>labelCaptchaLogin</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxLogo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="textBoxAccountLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 74</value>
-  </data>
-  <data name="&gt;&gt;textBoxEmailSignup.Parent" xml:space="preserve">
-    <value>panelCreateAccount</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="pictureBoxCaptchaSignup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 206</value>
-  </data>
-  <data name="radioButtonHasAccount.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="textBoxEmailSignup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
-  </data>
-  <data name="&gt;&gt;labelRepeatPasswordSignup.Parent" xml:space="preserve">
-    <value>panelCreateAccount</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>That's it!</value>
-  </data>
-  <data name="labelPasswordLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>122, 105</value>
-  </data>
-  <data name="&gt;&gt;panelFullSetup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panelLogin.Name" xml:space="preserve">
-    <value>panelLogin</value>
-  </data>
-  <data name="labelErrorMessageSignup.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="labelAccountSignup.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="buttonRefreshCaptchaSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;labelAccountSignup.Parent" xml:space="preserve">
-    <value>panelCreateAccount</value>
-  </data>
-  <data name="labelPasswordLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 15</value>
-  </data>
-  <data name="&gt;&gt;labelSignUp.Parent" xml:space="preserve">
-    <value>panelCreateAccount</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTypical.Name" xml:space="preserve">
-    <value>radioButtonTypical</value>
-  </data>
-  <data name="labelRepeatPasswordSignup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="labelAccountLogin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="buttonRefreshCaptchaLogin.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="&gt;&gt;panelLogin.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="labelRepeatPasswordSignup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 134</value>
-  </data>
-  <data name="pictureBoxCaptchaLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 50</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="textBoxEmailSignup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;labelLogin.Name" xml:space="preserve">
-    <value>labelLogin</value>
-  </data>
-  <data name="&gt;&gt;panelCreateAccount.Name" xml:space="preserve">
-    <value>panelCreateAccount</value>
-  </data>
-  <data name="labelErrorMessageSignup.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="radioButtonDoesNotHaveAccount.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;textBoxPasswordLogin.Name" xml:space="preserve">
-    <value>textBoxPasswordLogin</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelSignUp.Text" xml:space="preserve">
-    <value>Sign up for 2safe</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>2safe has finished installing, and you are good to go. Thank you for using 2safe. We hope you enjoy it.</value>
-  </data>
-  <data name="&gt;&gt;buttonPrevious.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="radioButtonHasAccount.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTypical.Parent" xml:space="preserve">
-    <value>panelFullSetup</value>
-  </data>
-  <data name="&gt;&gt;labelLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelSignUp.Name" xml:space="preserve">
-    <value>labelSignUp</value>
-  </data>
-  <data name="&gt;&gt;panelCreateAccount.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;labelPasswordLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonRefreshCaptchaLogin.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonNext.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="buttonRefreshCaptchaSignup.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAJiSURBVDhPrZXPS1RRFMdfZWFKFEILkQIXLmTsF9NmYOY5v38sZgRlhAyNNNpEKCK6KDdWaG7c
-        RNZGkHDdJugfaBUk6KJNmyBIrCBHRaVoXp/v4/mY0XF4iovDnXfvOZ/zveeee8ewLMs4bjsQGA6HayOR
-        yLVEItEbi8XGsYloNPoIuxWPx1urCdkH9fv9dYZhnCAwnEqlvmUyGSudTlv8dsdkMvmL9QUSX68EL4Oi
-        rB0lcwScz+fzpxiHsDlUPsBuo3pQ64xflQj4d8B3JKIUbkM1qUCcfzL+Nk3zUrXtsd5Msimgf7Edgcug
-        qg+wV9g/HCy+t3G66eXw8H1IWXaIWyXejTHYcg+LH7EiC9qSxVy3F6h82NkzlYLxLWJq7J2rdkBiZNwE
-        vMa4AnzMK5QaN+H/BTFrQNtsqJNtWKdMtmnAV7AbXqHyw39W8Yz9zhkZJzWplkFx52Fgu77E31cJUD1p
-        Q+nL00ifx4oojRwR2iVRxL9wlfLx+ihKs9lsndPP/Y7SKbemyB5zavL0MErZdg87fMn4DlFFxr5SqMni
-        H05xMRAINHgFcwYd2qHaUH0O9AkXo8U+fSbrUfvBqcugV6juPrAtYDYY+wHnsXv3WWQuuYkVvHaBehTg
-        iqP2E7Gmu/2S1hih4Lqu6yQZDYVCjZVUM39R70UulzsHdBn/hWAweHnXt+yV0jXTy0Tmgk4T8GcCZtTU
-        WBff91Cnnl6iY0Z9Pt8ZPZGcw9l9r9ReNepXnN8D3BC89D11fhdI8AYRFyrtpNrLX0Nt/SQYwJ6rsUk0
-        id3l91X150EHeuz/T0r0HwBz6ySEhl1VAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="textBoxCaptchaLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAdvanced.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonDoesNotHaveAccount.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="panelCreateAccount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 5</value>
+  <data name="radioButtonDoesNotHaveAccount.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;panelFullSetup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="radioButtonDoesNotHaveAccount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 312</value>
   </data>
-  <data name="&gt;&gt;panelExit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="radioButtonDoesNotHaveAccount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 17</value>
   </data>
-  <data name="radioButtonTypical.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="textBoxPasswordLogin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="textBoxAccountSignup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
-  </data>
-  <data name="buttonRefreshCaptchaSignup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>371, 215</value>
-  </data>
-  <data name="textBoxPasswordLogin.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
-    <value>*</value>
-  </data>
-  <data name="labelLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 25</value>
-  </data>
-  <data name="&gt;&gt;labelErrorMessageLogin.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelAccountSignup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 81</value>
-  </data>
-  <data name="textBoxPasswordSignup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 104</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxCaptchaLogin.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;labelEmailSignup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelFulSetup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="textBoxAccountLogin.TabIndex" type="System.Int32, mscorlib">
+  <data name="radioButtonDoesNotHaveAccount.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;radioButtonTypical.Type" xml:space="preserve">
+  <data name="radioButtonDoesNotHaveAccount.Text" xml:space="preserve">
+    <value>I don't have a 2safe account</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDoesNotHaveAccount.Name" xml:space="preserve">
+    <value>radioButtonDoesNotHaveAccount</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDoesNotHaveAccount.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="labelErrorMessageLogin.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="&gt;&gt;radioButtonDoesNotHaveAccount.Parent" xml:space="preserve">
+    <value>panelEnter</value>
   </data>
-  <data name="radioButtonAdvanced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 19</value>
+  <data name="&gt;&gt;radioButtonDoesNotHaveAccount.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;labelErrorMessageSignup.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;pictureBoxLogo.Name" xml:space="preserve">
+    <value>pictureBoxLogo</value>
   </data>
-  <data name="&gt;&gt;labelPasswordSignup.ZOrder" xml:space="preserve">
-    <value>11</value>
+  <data name="&gt;&gt;pictureBoxLogo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="labelCaptchaSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;pictureBoxLogo.Parent" xml:space="preserve">
+    <value>panelEnter</value>
   </data>
-  <data name="&gt;&gt;labelPasswordLogin.Name" xml:space="preserve">
-    <value>labelPasswordLogin</value>
+  <data name="&gt;&gt;pictureBoxLogo.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;labelErrorMessageLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="panelEnter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
   </data>
-  <data name="labelFulSetup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 30</value>
+  <data name="panelEnter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 400</value>
   </data>
-  <data name="&gt;&gt;labelCaptchaLogin.Parent" xml:space="preserve">
-    <value>panelLogin</value>
+  <data name="panelEnter.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panelEnter.Name" xml:space="preserve">
+    <value>panelEnter</value>
   </data>
   <data name="&gt;&gt;panelEnter.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="textBoxRepeatPasswordSignup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
+  <data name="&gt;&gt;panelEnter.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;labelCaptchaLogin.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>panelExit</value>
-  </data>
-  <data name="labelFulSetup.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="pictureBoxCaptchaSignup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 50</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormSetup</value>
-  </data>
-  <data name="buttonPrevious.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="textBoxPasswordSignup.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="panelFullSetup.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;panelEnter.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="pictureBoxLogo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 43</value>
+  </data>
+  <data name="pictureBoxLogo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>379, 250</value>
+  </data>
+  <data name="pictureBoxLogo.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxLogo.Name" xml:space="preserve">
+    <value>pictureBoxLogo</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxLogo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxLogo.Parent" xml:space="preserve">
+    <value>panelEnter</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxLogo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;buttonRefreshCaptchaLogin.Name" xml:space="preserve">
+    <value>buttonRefreshCaptchaLogin</value>
+  </data>
+  <data name="&gt;&gt;buttonRefreshCaptchaLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonRefreshCaptchaLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;buttonRefreshCaptchaLogin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labelCaptchaLogin.Name" xml:space="preserve">
+    <value>labelCaptchaLogin</value>
   </data>
   <data name="&gt;&gt;labelCaptchaLogin.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  <data name="&gt;&gt;labelCaptchaLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelCaptchaLogin.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBoxCaptchaLogin.Name" xml:space="preserve">
+    <value>textBoxCaptchaLogin</value>
+  </data>
+  <data name="&gt;&gt;textBoxCaptchaLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxCaptchaLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;textBoxCaptchaLogin.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaLogin.Name" xml:space="preserve">
+    <value>pictureBoxCaptchaLogin</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaLogin.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;labelErrorMessageLogin.Name" xml:space="preserve">
+    <value>labelErrorMessageLogin</value>
+  </data>
+  <data name="&gt;&gt;labelErrorMessageLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelErrorMessageLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelErrorMessageLogin.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordLogin.Name" xml:space="preserve">
+    <value>labelPasswordLogin</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordLogin.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;labelAccountLogin.Name" xml:space="preserve">
+    <value>labelAccountLogin</value>
+  </data>
+  <data name="&gt;&gt;labelAccountLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelAccountLogin.Parent" xml:space="preserve">
     <value>panelLogin</value>
@@ -820,35 +318,65 @@
   <data name="&gt;&gt;labelAccountLogin.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="labelCaptchaSignup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 15</value>
+  <data name="&gt;&gt;textBoxPasswordLogin.Name" xml:space="preserve">
+    <value>textBoxPasswordLogin</value>
   </data>
-  <data name="labelAccountLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;textBoxPasswordLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButtonDoesNotHaveAccount.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="labelCaptchaSignup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="&gt;&gt;labelErrorMessageLogin.Parent" xml:space="preserve">
+  <data name="&gt;&gt;textBoxPasswordLogin.Parent" xml:space="preserve">
     <value>panelLogin</value>
   </data>
-  <data name="&gt;&gt;labelCaptchaSignup.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;textBoxPasswordLogin.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
-  <data name="textBoxRepeatPasswordSignup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
+  <data name="&gt;&gt;textBoxAccountLogin.Name" xml:space="preserve">
+    <value>textBoxAccountLogin</value>
   </data>
-  <data name="panelFullSetup.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="&gt;&gt;textBoxAccountLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountLogin.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;labelLogin.Name" xml:space="preserve">
+    <value>labelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelLogin.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="panelLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="panelLogin.Size" type="System.Drawing.Size, System.Drawing">
     <value>500, 400</value>
   </data>
-  <data name="&gt;&gt;textBoxAccountSignup.ZOrder" xml:space="preserve">
-    <value>12</value>
+  <data name="panelLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;textBoxAccountSignup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panelLogin.Name" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;panelLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelLogin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelLogin.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonRefreshCaptchaLogin.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonRefreshCaptchaLogin.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -866,379 +394,1238 @@
         id3l91X150EHeuz/T0r0HwBz6ySEhl1VAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="radioButtonDoesNotHaveAccount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 17</value>
-  </data>
-  <data name="&gt;&gt;textBoxCaptchaLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonHasAccount.Text" xml:space="preserve">
-    <value>I already have a 2safe account</value>
-  </data>
-  <data name="&gt;&gt;textBoxRepeatPasswordSignup.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="panelFullSetup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 5</value>
-  </data>
-  <data name="&gt;&gt;buttonRefreshCaptchaSignup.Parent" xml:space="preserve">
-    <value>panelCreateAccount</value>
-  </data>
-  <data name="radioButtonTypical.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="&gt;&gt;labelPasswordSignup.Name" xml:space="preserve">
-    <value>labelPasswordSignup</value>
-  </data>
-  <data name="&gt;&gt;labelFulSetup.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;textBoxAccountSignup.Parent" xml:space="preserve">
-    <value>panelCreateAccount</value>
-  </data>
-  <data name="&gt;&gt;textBoxAccountLogin.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="buttonPrevious.Text" xml:space="preserve">
-    <value>Previous</value>
-  </data>
-  <data name="labelPasswordSignup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="&gt;&gt;labelLogin.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;panelEnter.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="labelPasswordLogin.Text" xml:space="preserve">
-    <value>Password:</value>
-  </data>
-  <data name="labelRepeatPasswordSignup.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="labelCaptchaLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 213</value>
-  </data>
-  <data name="buttonNext.Text" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="labelPasswordSignup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 109</value>
-  </data>
-  <data name="&gt;&gt;labelAccountLogin.Name" xml:space="preserve">
-    <value>labelAccountLogin</value>
-  </data>
-  <data name="pictureBoxCaptchaSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonAdvanced.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 155</value>
-  </data>
-  <data name="&gt;&gt;panelFullSetup.Name" xml:space="preserve">
-    <value>panelFullSetup</value>
-  </data>
-  <data name="radioButtonAdvanced.Text" xml:space="preserve">
-    <value>Custom</value>
-  </data>
-  <data name="labelFulSetup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  <data name="buttonRefreshCaptchaLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>370, 151</value>
   </data>
   <data name="buttonRefreshCaptchaLogin.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
-  <data name="radioButtonTypical.Text" xml:space="preserve">
-    <value>Typical (recommended)</value>
+  <data name="buttonRefreshCaptchaLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
-  <data name="&gt;&gt;pictureBoxCaptchaSignup.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;buttonRefreshCaptchaLogin.Name" xml:space="preserve">
+    <value>buttonRefreshCaptchaLogin</value>
   </data>
-  <data name="&gt;&gt;labelPasswordLogin.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;panelLogin.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labelEmailSignup.Text" xml:space="preserve">
-    <value>E-mail:</value>
-  </data>
-  <data name="labelLogin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;buttonRefreshCaptchaSignup.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonRefreshCaptchaLogin.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelRepeatPasswordSignup.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonRefreshCaptchaLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;buttonRefreshCaptchaLogin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelCaptchaLogin.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelCaptchaLogin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="labelCaptchaLogin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelCaptchaLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 213</value>
+  </data>
+  <data name="labelCaptchaLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 15</value>
+  </data>
+  <data name="labelCaptchaLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="labelCaptchaLogin.Text" xml:space="preserve">
+    <value>Captcha:</value>
+  </data>
+  <data name="&gt;&gt;labelCaptchaLogin.Name" xml:space="preserve">
+    <value>labelCaptchaLogin</value>
+  </data>
+  <data name="&gt;&gt;labelCaptchaLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelCaptchaLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelCaptchaLogin.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="textBoxCaptchaLogin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="textBoxCaptchaLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 211</value>
+  </data>
+  <data name="textBoxCaptchaLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 22</value>
+  </data>
+  <data name="textBoxCaptchaLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;textBoxCaptchaLogin.Name" xml:space="preserve">
+    <value>textBoxCaptchaLogin</value>
+  </data>
+  <data name="&gt;&gt;textBoxCaptchaLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxCaptchaLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;textBoxCaptchaLogin.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pictureBoxCaptchaLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 140</value>
+  </data>
+  <data name="pictureBoxCaptchaLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 50</value>
+  </data>
+  <data name="pictureBoxCaptchaLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaLogin.Name" xml:space="preserve">
+    <value>pictureBoxCaptchaLogin</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaLogin.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelErrorMessageLogin.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="labelErrorMessageLogin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="labelErrorMessageLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 371</value>
+  </data>
+  <data name="labelErrorMessageLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 29</value>
+  </data>
+  <data name="labelErrorMessageLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelErrorMessageLogin.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelErrorMessageLogin.Name" xml:space="preserve">
+    <value>labelErrorMessageLogin</value>
+  </data>
+  <data name="&gt;&gt;labelErrorMessageLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelErrorMessageLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelErrorMessageLogin.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="labelPasswordLogin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="labelCaptchaSignup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>135, 279</value>
+  <data name="labelPasswordLogin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <data name="textBoxRepeatPasswordSignup.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+  <data name="labelPasswordLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 105</value>
+  </data>
+  <data name="labelPasswordLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 15</value>
+  </data>
+  <data name="labelPasswordLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labelPasswordLogin.Text" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordLogin.Name" xml:space="preserve">
+    <value>labelPasswordLogin</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordLogin.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labelAccountLogin.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelAccountLogin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="labelAccountLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>133, 76</value>
+  </data>
+  <data name="labelAccountLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 15</value>
+  </data>
+  <data name="labelAccountLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelAccountLogin.Text" xml:space="preserve">
+    <value>Account:</value>
+  </data>
+  <data name="&gt;&gt;labelAccountLogin.Name" xml:space="preserve">
+    <value>labelAccountLogin</value>
+  </data>
+  <data name="&gt;&gt;labelAccountLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelAccountLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelAccountLogin.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="textBoxPasswordLogin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="textBoxPasswordLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 102</value>
+  </data>
+  <data name="textBoxPasswordLogin.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>*</value>
+  </data>
+  <data name="textBoxPasswordLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 22</value>
   </data>
   <data name="textBoxPasswordLogin.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;labelEmailSignup.Parent" xml:space="preserve">
+  <data name="&gt;&gt;textBoxPasswordLogin.Name" xml:space="preserve">
+    <value>textBoxPasswordLogin</value>
+  </data>
+  <data name="&gt;&gt;textBoxPasswordLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxPasswordLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;textBoxPasswordLogin.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="textBoxAccountLogin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="textBoxAccountLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 74</value>
+  </data>
+  <data name="textBoxAccountLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 22</value>
+  </data>
+  <data name="textBoxAccountLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountLogin.Name" xml:space="preserve">
+    <value>textBoxAccountLogin</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountLogin.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="labelLogin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="labelLogin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 25</value>
+  </data>
+  <data name="labelLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>492, 30</value>
+  </data>
+  <data name="labelLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelLogin.Text" xml:space="preserve">
+    <value>Log in to 2Safe</value>
+  </data>
+  <data name="labelLogin.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelLogin.Name" xml:space="preserve">
+    <value>labelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLogin.Parent" xml:space="preserve">
+    <value>panelLogin</value>
+  </data>
+  <data name="&gt;&gt;labelLogin.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;textBoxRepeatPasswordSignup.Name" xml:space="preserve">
+    <value>textBoxRepeatPasswordSignup</value>
+  </data>
+  <data name="&gt;&gt;textBoxRepeatPasswordSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxRepeatPasswordSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;textBoxRepeatPasswordSignup.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labelRepeatPasswordSignup.Name" xml:space="preserve">
+    <value>labelRepeatPasswordSignup</value>
+  </data>
+  <data name="&gt;&gt;labelRepeatPasswordSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRepeatPasswordSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;labelRepeatPasswordSignup.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;buttonRefreshCaptchaSignup.Name" xml:space="preserve">
+    <value>buttonRefreshCaptchaSignup</value>
+  </data>
+  <data name="&gt;&gt;buttonRefreshCaptchaSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonRefreshCaptchaSignup.Parent" xml:space="preserve">
     <value>panelCreateAccount</value>
   </data>
   <data name="&gt;&gt;buttonRefreshCaptchaSignup.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;labelLogin.Parent" xml:space="preserve">
-    <value>panelLogin</value>
+  <data name="&gt;&gt;labelErrorMessageSignup.Name" xml:space="preserve">
+    <value>labelErrorMessageSignup</value>
   </data>
-  <data name="textBoxRepeatPasswordSignup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 132</value>
-  </data>
-  <data name="&gt;&gt;labelRepeatPasswordSignup.Name" xml:space="preserve">
-    <value>labelRepeatPasswordSignup</value>
-  </data>
-  <data name="labelCaptchaLogin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="pictureBoxLogo.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="pictureBoxCaptchaLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;panelCreateAccount.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;buttonRefreshCaptchaLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxLogo.Name" xml:space="preserve">
-    <value>pictureBoxLogo</value>
-  </data>
-  <data name="&gt;&gt;buttonNext.Name" xml:space="preserve">
-    <value>buttonNext</value>
-  </data>
-  <data name="&gt;&gt;textBoxPasswordLogin.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="panelLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="labelCaptchaLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 15</value>
-  </data>
-  <data name="textBoxAccountLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 22</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxCaptchaSignup.Name" xml:space="preserve">
-    <value>pictureBoxCaptchaSignup</value>
-  </data>
-  <data name="&gt;&gt;textBoxCaptchaSignup.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;panelEnter.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxAccountLogin.Parent" xml:space="preserve">
-    <value>panelLogin</value>
-  </data>
-  <data name="radioButtonAdvanced.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;textBoxEmailSignup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelErrorMessageLogin.Name" xml:space="preserve">
-    <value>labelErrorMessageLogin</value>
-  </data>
-  <data name="&gt;&gt;textBoxPasswordSignup.Parent" xml:space="preserve">
-    <value>panelCreateAccount</value>
-  </data>
-  <data name="textBoxPasswordSignup.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
-    <value>*</value>
-  </data>
-  <data name="pictureBoxCaptchaSignup.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;buttonPrevious.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="labelLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 30</value>
-  </data>
-  <data name="textBoxCaptchaSignup.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;textBoxPasswordLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelErrorMessageSignup.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelAccountLogin.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panelCreateAccount.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="panelLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 400</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxCaptchaSignup.Parent" xml:space="preserve">
-    <value>panelCreateAccount</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>514, 442</value>
-  </data>
-  <data name="labelRepeatPasswordSignup.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelFulSetup.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="labelErrorMessageSignup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 29</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>2safe Setup</value>
-  </data>
-  <data name="panelExit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 5</value>
-  </data>
-  <data name="buttonRefreshCaptchaLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>370, 151</value>
-  </data>
-  <data name="&gt;&gt;textBoxAccountSignup.Name" xml:space="preserve">
-    <value>textBoxAccountSignup</value>
-  </data>
-  <data name="&gt;&gt;panelEnter.Name" xml:space="preserve">
-    <value>panelEnter</value>
-  </data>
-  <data name="&gt;&gt;radioButtonHasAccount.Name" xml:space="preserve">
-    <value>radioButtonHasAccount</value>
-  </data>
-  <data name="&gt;&gt;labelEmailSignup.Name" xml:space="preserve">
-    <value>labelEmailSignup</value>
-  </data>
-  <data name="labelEmailSignup.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;buttonPrevious.Name" xml:space="preserve">
-    <value>buttonPrevious</value>
-  </data>
-  <data name="&gt;&gt;labelAccountLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelEmailSignup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 163</value>
-  </data>
-  <data name="&gt;&gt;panelExit.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="radioButtonAdvanced.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="&gt;&gt;textBoxEmailSignup.ZOrder" xml:space="preserve">
-    <value>9</value>
   </data>
   <data name="&gt;&gt;labelErrorMessageSignup.Parent" xml:space="preserve">
     <value>panelCreateAccount</value>
   </data>
-  <data name="textBoxPasswordSignup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
+  <data name="&gt;&gt;labelErrorMessageSignup.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;textBoxPasswordSignup.ZOrder" xml:space="preserve">
-    <value>10</value>
+  <data name="&gt;&gt;labelCaptchaSignup.Name" xml:space="preserve">
+    <value>labelCaptchaSignup</value>
   </data>
-  <data name="radioButtonTypical.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;labelCaptchaSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="labelPasswordLogin.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;labelCaptchaSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;labelCaptchaSignup.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="labelErrorMessageLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 371</value>
-  </data>
-  <data name="&gt;&gt;textBoxPasswordSignup.Name" xml:space="preserve">
-    <value>textBoxPasswordSignup</value>
-  </data>
-  <data name="&gt;&gt;panelExit.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="buttonRefreshCaptchaSignup.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="&gt;&gt;labelFulSetup.Name" xml:space="preserve">
-    <value>labelFulSetup</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDoesNotHaveAccount.Parent" xml:space="preserve">
-    <value>panelEnter</value>
-  </data>
-  <data name="labelCaptchaSignup.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="radioButtonHasAccount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 335</value>
-  </data>
-  <data name="labelErrorMessageLogin.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="labelPasswordSignup.Text" xml:space="preserve">
-    <value>Password:</value>
-  </data>
-  <data name="radioButtonHasAccount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 17</value>
-  </data>
-  <data name="&gt;&gt;buttonRefreshCaptchaLogin.Parent" xml:space="preserve">
-    <value>panelLogin</value>
-  </data>
-  <data name="labelSignUp.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTypical.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="textBoxPasswordSignup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="labelPasswordSignup.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;buttonNext.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panelLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 5</value>
-  </data>
-  <data name="&gt;&gt;textBoxCaptchaLogin.Name" xml:space="preserve">
-    <value>textBoxCaptchaLogin</value>
-  </data>
-  <data name="labelErrorMessageSignup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 371</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAdvanced.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labelCaptchaLogin.Text" xml:space="preserve">
-    <value>Captcha:</value>
-  </data>
-  <data name="labelPasswordSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;buttonNext.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;textBoxCaptchaSignup.Name" xml:space="preserve">
+    <value>textBoxCaptchaSignup</value>
   </data>
   <data name="&gt;&gt;textBoxCaptchaSignup.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;textBoxCaptchaSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;textBoxCaptchaSignup.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;labelSignUp.Name" xml:space="preserve">
+    <value>labelSignUp</value>
+  </data>
+  <data name="&gt;&gt;labelSignUp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSignUp.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;labelSignUp.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;labelEmailSignup.Name" xml:space="preserve">
+    <value>labelEmailSignup</value>
+  </data>
+  <data name="&gt;&gt;labelEmailSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelEmailSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;labelEmailSignup.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaSignup.Name" xml:space="preserve">
+    <value>pictureBoxCaptchaSignup</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaSignup.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;textBoxEmailSignup.Name" xml:space="preserve">
+    <value>textBoxEmailSignup</value>
+  </data>
+  <data name="&gt;&gt;textBoxEmailSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxEmailSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;textBoxEmailSignup.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;textBoxPasswordSignup.Name" xml:space="preserve">
+    <value>textBoxPasswordSignup</value>
+  </data>
+  <data name="&gt;&gt;textBoxPasswordSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxPasswordSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;textBoxPasswordSignup.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordSignup.Name" xml:space="preserve">
+    <value>labelPasswordSignup</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordSignup.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountSignup.Name" xml:space="preserve">
+    <value>textBoxAccountSignup</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountSignup.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;labelAccountSignup.Name" xml:space="preserve">
+    <value>labelAccountSignup</value>
+  </data>
+  <data name="&gt;&gt;labelAccountSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelAccountSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;labelAccountSignup.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="panelCreateAccount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="panelCreateAccount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 400</value>
+  </data>
+  <data name="panelCreateAccount.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;panelCreateAccount.Name" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;panelCreateAccount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelCreateAccount.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelCreateAccount.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="textBoxRepeatPasswordSignup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="textBoxRepeatPasswordSignup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 132</value>
+  </data>
+  <data name="textBoxRepeatPasswordSignup.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="textBoxRepeatPasswordSignup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="textBoxRepeatPasswordSignup.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;textBoxRepeatPasswordSignup.Name" xml:space="preserve">
+    <value>textBoxRepeatPasswordSignup</value>
+  </data>
+  <data name="&gt;&gt;textBoxRepeatPasswordSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxRepeatPasswordSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;textBoxRepeatPasswordSignup.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelRepeatPasswordSignup.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelRepeatPasswordSignup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="labelRepeatPasswordSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelRepeatPasswordSignup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 134</value>
+  </data>
+  <data name="labelRepeatPasswordSignup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 15</value>
+  </data>
+  <data name="labelRepeatPasswordSignup.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="labelRepeatPasswordSignup.Text" xml:space="preserve">
+    <value>Repeat password:</value>
+  </data>
+  <data name="&gt;&gt;labelRepeatPasswordSignup.Name" xml:space="preserve">
+    <value>labelRepeatPasswordSignup</value>
+  </data>
+  <data name="&gt;&gt;labelRepeatPasswordSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRepeatPasswordSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;labelRepeatPasswordSignup.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonRefreshCaptchaSignup.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonRefreshCaptchaSignup.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAJiSURBVDhPrZXPS1RRFMdfZWFKFEILkQIXLmTsF9NmYOY5v38sZgRlhAyNNNpEKCK6KDdWaG7c
+        RNZGkHDdJugfaBUk6KJNmyBIrCBHRaVoXp/v4/mY0XF4iovDnXfvOZ/zveeee8ewLMs4bjsQGA6HayOR
+        yLVEItEbi8XGsYloNPoIuxWPx1urCdkH9fv9dYZhnCAwnEqlvmUyGSudTlv8dsdkMvmL9QUSX68EL4Oi
+        rB0lcwScz+fzpxiHsDlUPsBuo3pQ64xflQj4d8B3JKIUbkM1qUCcfzL+Nk3zUrXtsd5Msimgf7Edgcug
+        qg+wV9g/HCy+t3G66eXw8H1IWXaIWyXejTHYcg+LH7EiC9qSxVy3F6h82NkzlYLxLWJq7J2rdkBiZNwE
+        vMa4AnzMK5QaN+H/BTFrQNtsqJNtWKdMtmnAV7AbXqHyw39W8Yz9zhkZJzWplkFx52Fgu77E31cJUD1p
+        Q+nL00ifx4oojRwR2iVRxL9wlfLx+ihKs9lsndPP/Y7SKbemyB5zavL0MErZdg87fMn4DlFFxr5SqMni
+        H05xMRAINHgFcwYd2qHaUH0O9AkXo8U+fSbrUfvBqcugV6juPrAtYDYY+wHnsXv3WWQuuYkVvHaBehTg
+        iqP2E7Gmu/2S1hih4Lqu6yQZDYVCjZVUM39R70UulzsHdBn/hWAweHnXt+yV0jXTy0Tmgk4T8GcCZtTU
+        WBff91Cnnl6iY0Z9Pt8ZPZGcw9l9r9ReNepXnN8D3BC89D11fhdI8AYRFyrtpNrLX0Nt/SQYwJ6rsUk0
+        id3l91X150EHeuz/T0r0HwBz6ySEhl1VAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="buttonRefreshCaptchaSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonRefreshCaptchaSignup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>371, 215</value>
+  </data>
+  <data name="buttonRefreshCaptchaSignup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="buttonRefreshCaptchaSignup.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;buttonRefreshCaptchaSignup.Name" xml:space="preserve">
+    <value>buttonRefreshCaptchaSignup</value>
+  </data>
+  <data name="&gt;&gt;buttonRefreshCaptchaSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonRefreshCaptchaSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;buttonRefreshCaptchaSignup.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="labelErrorMessageSignup.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="labelErrorMessageSignup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="labelErrorMessageSignup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 371</value>
+  </data>
+  <data name="labelErrorMessageSignup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 29</value>
+  </data>
+  <data name="labelErrorMessageSignup.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="labelErrorMessageSignup.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelErrorMessageSignup.Name" xml:space="preserve">
+    <value>labelErrorMessageSignup</value>
+  </data>
+  <data name="&gt;&gt;labelErrorMessageSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelErrorMessageSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;labelErrorMessageSignup.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelCaptchaSignup.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelCaptchaSignup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="labelCaptchaSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelCaptchaSignup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 279</value>
+  </data>
+  <data name="labelCaptchaSignup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 15</value>
+  </data>
+  <data name="labelCaptchaSignup.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="labelCaptchaSignup.Text" xml:space="preserve">
+    <value>Captcha:</value>
+  </data>
+  <data name="&gt;&gt;labelCaptchaSignup.Name" xml:space="preserve">
+    <value>labelCaptchaSignup</value>
+  </data>
+  <data name="&gt;&gt;labelCaptchaSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelCaptchaSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;labelCaptchaSignup.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="textBoxCaptchaSignup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="textBoxCaptchaSignup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 276</value>
+  </data>
+  <data name="textBoxCaptchaSignup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="textBoxCaptchaSignup.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;textBoxCaptchaSignup.Name" xml:space="preserve">
+    <value>textBoxCaptchaSignup</value>
+  </data>
+  <data name="&gt;&gt;textBoxCaptchaSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxCaptchaSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;textBoxCaptchaSignup.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labelSignUp.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="labelSignUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelSignUp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 20</value>
+  </data>
+  <data name="labelSignUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>498, 40</value>
+  </data>
+  <data name="labelSignUp.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="labelSignUp.Text" xml:space="preserve">
+    <value>Sign up for 2safe</value>
+  </data>
+  <data name="labelSignUp.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelSignUp.Name" xml:space="preserve">
+    <value>labelSignUp</value>
+  </data>
+  <data name="&gt;&gt;labelSignUp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSignUp.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;labelSignUp.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="labelEmailSignup.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelEmailSignup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="labelEmailSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelEmailSignup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 163</value>
+  </data>
+  <data name="labelEmailSignup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 15</value>
+  </data>
+  <data name="labelEmailSignup.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="labelEmailSignup.Text" xml:space="preserve">
+    <value>E-mail:</value>
+  </data>
+  <data name="&gt;&gt;labelEmailSignup.Name" xml:space="preserve">
+    <value>labelEmailSignup</value>
+  </data>
+  <data name="&gt;&gt;labelEmailSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelEmailSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;labelEmailSignup.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="pictureBoxCaptchaSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBoxCaptchaSignup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 206</value>
+  </data>
+  <data name="pictureBoxCaptchaSignup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 50</value>
+  </data>
+  <data name="pictureBoxCaptchaSignup.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaSignup.Name" xml:space="preserve">
+    <value>pictureBoxCaptchaSignup</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxCaptchaSignup.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="textBoxEmailSignup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="textBoxEmailSignup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 160</value>
+  </data>
+  <data name="textBoxEmailSignup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="textBoxEmailSignup.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;textBoxEmailSignup.Name" xml:space="preserve">
+    <value>textBoxEmailSignup</value>
+  </data>
+  <data name="&gt;&gt;textBoxEmailSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxEmailSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;textBoxEmailSignup.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="textBoxPasswordSignup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="textBoxPasswordSignup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 104</value>
+  </data>
+  <data name="textBoxPasswordSignup.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="textBoxPasswordSignup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="textBoxPasswordSignup.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;textBoxPasswordSignup.Name" xml:space="preserve">
+    <value>textBoxPasswordSignup</value>
+  </data>
+  <data name="&gt;&gt;textBoxPasswordSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxPasswordSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;textBoxPasswordSignup.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="labelPasswordSignup.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelPasswordSignup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="labelPasswordSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelPasswordSignup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 109</value>
+  </data>
+  <data name="labelPasswordSignup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 15</value>
+  </data>
+  <data name="labelPasswordSignup.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="labelPasswordSignup.Text" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordSignup.Name" xml:space="preserve">
+    <value>labelPasswordSignup</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;labelPasswordSignup.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="textBoxAccountSignup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="textBoxAccountSignup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 76</value>
+  </data>
+  <data name="textBoxAccountSignup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="textBoxAccountSignup.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountSignup.Name" xml:space="preserve">
+    <value>textBoxAccountSignup</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;textBoxAccountSignup.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="labelAccountSignup.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelAccountSignup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="labelAccountSignup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelAccountSignup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 81</value>
+  </data>
+  <data name="labelAccountSignup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 15</value>
+  </data>
+  <data name="labelAccountSignup.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="labelAccountSignup.Text" xml:space="preserve">
+    <value>Account:</value>
+  </data>
+  <data name="&gt;&gt;labelAccountSignup.Name" xml:space="preserve">
+    <value>labelAccountSignup</value>
+  </data>
+  <data name="&gt;&gt;labelAccountSignup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelAccountSignup.Parent" xml:space="preserve">
+    <value>panelCreateAccount</value>
+  </data>
+  <data name="&gt;&gt;labelAccountSignup.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="buttonNext.Location" type="System.Drawing.Point, System.Drawing">
+    <value>411, 411</value>
+  </data>
+  <data name="buttonNext.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonNext.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="buttonNext.Text" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="&gt;&gt;buttonNext.Name" xml:space="preserve">
+    <value>buttonNext</value>
+  </data>
+  <data name="&gt;&gt;buttonNext.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonNext.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonNext.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="buttonPrevious.Location" type="System.Drawing.Point, System.Drawing">
+    <value>330, 411</value>
+  </data>
+  <data name="buttonPrevious.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonPrevious.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="buttonPrevious.Text" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="&gt;&gt;buttonPrevious.Name" xml:space="preserve">
+    <value>buttonPrevious</value>
+  </data>
+  <data name="&gt;&gt;buttonPrevious.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonPrevious.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonPrevious.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdvanced.Name" xml:space="preserve">
+    <value>radioButtonAdvanced</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdvanced.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdvanced.Parent" xml:space="preserve">
+    <value>panelFullSetup</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdvanced.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTypical.Name" xml:space="preserve">
+    <value>radioButtonTypical</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTypical.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTypical.Parent" xml:space="preserve">
+    <value>panelFullSetup</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTypical.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;labelFulSetup.Name" xml:space="preserve">
+    <value>labelFulSetup</value>
+  </data>
+  <data name="&gt;&gt;labelFulSetup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelFulSetup.Parent" xml:space="preserve">
+    <value>panelFullSetup</value>
+  </data>
+  <data name="&gt;&gt;labelFulSetup.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panelFullSetup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="panelFullSetup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 400</value>
+  </data>
+  <data name="panelFullSetup.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;panelFullSetup.Name" xml:space="preserve">
+    <value>panelFullSetup</value>
+  </data>
+  <data name="&gt;&gt;panelFullSetup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelFullSetup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelFullSetup.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="radioButtonAdvanced.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonAdvanced.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="radioButtonAdvanced.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 155</value>
+  </data>
+  <data name="radioButtonAdvanced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 19</value>
+  </data>
+  <data name="radioButtonAdvanced.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="radioButtonAdvanced.Text" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdvanced.Name" xml:space="preserve">
+    <value>radioButtonAdvanced</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdvanced.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdvanced.Parent" xml:space="preserve">
+    <value>panelFullSetup</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdvanced.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioButtonTypical.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonTypical.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="radioButtonTypical.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="radioButtonTypical.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 109</value>
+  </data>
+  <data name="radioButtonTypical.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 19</value>
+  </data>
+  <data name="radioButtonTypical.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButtonTypical.Text" xml:space="preserve">
+    <value>Typical (recommended)</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTypical.Name" xml:space="preserve">
+    <value>radioButtonTypical</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTypical.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTypical.Parent" xml:space="preserve">
+    <value>panelFullSetup</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTypical.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelFulSetup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="labelFulSetup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelFulSetup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 25</value>
+  </data>
+  <data name="labelFulSetup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>492, 30</value>
+  </data>
+  <data name="labelFulSetup.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelFulSetup.Text" xml:space="preserve">
+    <value>Choose folder setup</value>
+  </data>
+  <data name="labelFulSetup.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelFulSetup.Name" xml:space="preserve">
+    <value>labelFulSetup</value>
+  </data>
+  <data name="&gt;&gt;labelFulSetup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelFulSetup.Parent" xml:space="preserve">
+    <value>panelFullSetup</value>
+  </data>
+  <data name="&gt;&gt;labelFulSetup.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>panelExit</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>panelExit</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panelExit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="panelExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 400</value>
+  </data>
+  <data name="panelExit.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;panelExit.Name" xml:space="preserve">
+    <value>panelExit</value>
+  </data>
+  <data name="&gt;&gt;panelExit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelExit.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelExit.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 76</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>376, 68</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>2safe has finished installing, and you are good to go. Thank you for using 2safe. We hope you enjoy it.</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>panelExit</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 25</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>492, 30</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>That's it!</value>
+  </data>
+  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>panelExit</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="loginBW.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="getCaptchaBW.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>115, 17</value>
+  </metadata>
+  <metadata name="signUpBW.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>247, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>511, 443</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>2safe Setup</value>
+  </data>
+  <data name="&gt;&gt;loginBW.Name" xml:space="preserve">
+    <value>loginBW</value>
+  </data>
+  <data name="&gt;&gt;loginBW.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;getCaptchaBW.Name" xml:space="preserve">
+    <value>getCaptchaBW</value>
+  </data>
+  <data name="&gt;&gt;getCaptchaBW.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;signUpBW.Name" xml:space="preserve">
+    <value>signUpBW</value>
+  </data>
+  <data name="&gt;&gt;signUpBW.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormSetup</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
