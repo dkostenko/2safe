@@ -361,13 +361,6 @@ namespace TwoSafe.Controller
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
             Dictionary<string, dynamic> json = jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "make_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId + "&dir_name=" + dirName + toQueryString(optional)));
-            if (json.ContainsKey("error_code"))
-            {
-            }
-            else
-            {
-                new Model.Dir(json["response"]["dir_id"], dirId, dirName);
-            }
             return true;
         }
 
@@ -403,11 +396,10 @@ namespace TwoSafe.Controller
         /// Удаление директории
         /// </summary>
         /// <param name="dirId">ID корневой папки</param>
-        /// <param name="token">токен</param>
         /// <param name="optional">Опциональные параметры</param>
         /// <param name="removeNow">Удалить минуя корзину (аналог Shift+Del)</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> removeDir(string dirId, string token, Dictionary<string, string> optional, bool removeNow)
+        public static Dictionary<string, dynamic> removeDir(string dirId, Dictionary<string, string> optional, bool removeNow)
         {
             string optionals = toQueryString(optional);
             if (removeNow)
@@ -416,7 +408,7 @@ namespace TwoSafe.Controller
             }
 
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "remove_dir&token=" + token + "&dir_id=" + dirId + optionals));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "remove_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId + optionals));
         }
 
         /// <summary>
@@ -429,6 +421,17 @@ namespace TwoSafe.Controller
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
             return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "list_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId));
+        }
+
+        /// <summary>
+        /// Получение родительского дерева каталогов
+        /// </summary>
+        /// <param name="dir_id">ID папки</param>
+        /// <returns></returns>
+        public static Dictionary<string, dynamic> getTreeParent(string dir_id)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_tree_parent&token=" + Properties.Settings.Default.Token + "&dir_id=" + dir_id));
         }
 
         /// <summary>

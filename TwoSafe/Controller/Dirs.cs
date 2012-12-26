@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SQLite;
 using System.IO;
 
@@ -11,7 +10,7 @@ namespace TwoSafe.Controller
 
         public static void CreateOnClient(string id, string parent_id, string name)
         {
-            Model.Dir dir = new Model.Dir(id, parent_id, name);
+            Model.Dir dir = new Model.Dir(id, parent_id, name, 0);
             dir.Save();
 
             string path = Properties.Settings.Default.UserFolderPath;
@@ -30,7 +29,7 @@ namespace TwoSafe.Controller
         {
             Model.Dir dir = Model.Dir.FindById(id);
             string path = dir.GetPath();
-            Directory.Delete(path);
+            Directory.Delete(path, true);
             dir.Remove();
         }
 
@@ -53,7 +52,53 @@ namespace TwoSafe.Controller
             return parent_id;
         }
 
+        public static void syncDirsWithDb()
+        {
+            string path;
+            Model.Dir.All();
+            List<Model.Dir> dirs = Model.Dir.All();
+            foreach (var one in dirs)
+            {
+                path = one.GetPath();
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+            }
+        }
 
+        public static void eventHendler(object sender, FileSystemEventArgs e)
+        {
+            int i;
+            string[] dirs;
+            Queue<string> queue = new Queue<string>();
+            
+            switch (e.ChangeType.ToString())
+            {
+                case "Created":
+                    queue.Enqueue(e.FullPath);
+                    do
+                    {
+                        Controller.ApiTwoSafe.makeDir(Controller.Dirs.getParentDirId(queue.Peek()), Path.GetFileName(queue.Peek()), null);
+                        dirs = Directory.GetDirectories(queue.Peek());
+                        for (i = 0; i < dirs.Length; ++i)
+                        {
+                            queue.Enqueue(dirs[i]);
+                        }
+                        queue.Dequeue();
+                    }
+                    while (queue.Count != 0);
+                    break;
+
+                case "Deleted":
+                    Model.Dir dir = Model.Dir.FindByPath(e.FullPath);
+                    Controller.ApiTwoSafe.removeDir(dir.Id.ToString(), null, false);
+                    dir.Remove();
+                    break;
+                default:
+                    break;
+            }
+        }
 
     }
 }

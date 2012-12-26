@@ -120,26 +120,6 @@ namespace TwoSafe.Controller
             doSync();
         }
 
-        public static void dirEvents(object sender, FileSystemEventArgs e)
-        {
-            int i;
-            string[] dirs;
-            Queue<string> queue = new Queue<string>();
-            queue.Enqueue(e.FullPath);
-
-            do
-            {
-                Controller.ApiTwoSafe.makeDir(Controller.Dirs.getParentDirId(queue.Peek()), Path.GetFileName(queue.Peek()), null);
-                dirs = Directory.GetDirectories(queue.Peek());
-                for (i = 0; i < dirs.Length; ++i)
-                {
-                    queue.Enqueue(dirs[i]);
-                }
-                queue.Dequeue();
-            }
-            while (queue.Count != 0);
-        }
-
 
 
         public static void inception()
@@ -166,7 +146,7 @@ namespace TwoSafe.Controller
 
                     for (int i = 0; i < json["response"]["list_dirs"].Count; ++i)
                     {
-                        new Model.Dir(json["response"]["list_dirs"][i]["id"], current_id, json["response"]["list_dirs"][i]["name"]);
+                        new Model.Dir(json["response"]["list_dirs"][i]["id"], current_id, json["response"]["list_dirs"][i]["name"], 0);
                         stek.Add(json["response"]["list_dirs"][i]["id"]);
                     }
 
@@ -175,7 +155,7 @@ namespace TwoSafe.Controller
                     files = json["response"]["list_files"];
                     for (int i = 0; i < files.Count; ++i)
                     {
-                        new Model.Dir(json["response"]["list_files"][i]["id"], current_id, json["response"]["list_files"][i]["name"]);
+                        new Model.Dir(json["response"]["list_files"][i]["id"], current_id, json["response"]["list_files"][i]["name"], 0);
                     }
                 }
 

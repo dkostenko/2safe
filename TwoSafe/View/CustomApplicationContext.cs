@@ -65,7 +65,17 @@ namespace TwoSafe.View
         {            
             InitializeContext();
             // Проверки
-            runUserChecks();
+
+            Properties.Settings.Default.UserFolderPath = @"C:\Users\dmitry\2safe";
+            //Properties.Settings.Default.LastGetEventsTime = long.Parse("1356394469455494");
+            //Properties.Settings.Default.Token = "";
+            Properties.Settings.Default.Save();
+            //runUserChecks();
+
+            //УДАЛИТЬ
+            
+            View.Test form = new View.Test();
+            form.Show();
         }
 
 
@@ -94,11 +104,6 @@ namespace TwoSafe.View
                 {
 
                 }
-
-
-                //УДАЛИТЬ
-                //View.Test form = new View.Test();
-                //form.Show();
             }
         }
 

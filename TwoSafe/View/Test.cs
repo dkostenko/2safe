@@ -17,29 +17,6 @@ namespace TwoSafe.View
         public Test()
         {
             InitializeComponent();
-
-            //события папки
-            FileSystemWatcher dirWatcher = new FileSystemWatcher();
-            dirWatcher.Path = Properties.Settings.Default.UserFolderPath;
-            dirWatcher.IncludeSubdirectories = true;
-            dirWatcher.NotifyFilter = NotifyFilters.DirectoryName;
-            dirWatcher.Created += new FileSystemEventHandler(Controller.Synchronize.dirEvents);
-            dirWatcher.EnableRaisingEvents = true;
-
-
-            //события файла
-            FileSystemWatcher fileWatcher = new FileSystemWatcher();
-            fileWatcher.Path = Properties.Settings.Default.UserFolderPath;
-            fileWatcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName;
-            fileWatcher.Created += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            //fileWatcher.Changed += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            //fileWatcher.Deleted += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            //fileWatcher.Renamed += new RenamedEventHandler(Controller.Synchronize.eventRaised);
-            fileWatcher.EnableRaisingEvents = true;
-
-
-          
-
         }
 
 
@@ -50,18 +27,9 @@ namespace TwoSafe.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Thread th = new Thread(qwe);
-            th.Start();
+            Controller.Dirs.syncDirsWithDb();
         }
 
-        static void qwe()
-        {
-            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.putFile("28101033560", @"C:\Users\dmitry\Desktop\qwe.txt", null);
-            if (1 == 1)
-            {
-                //Properties.Settings.Default.Token;
-            }
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -77,6 +45,36 @@ namespace TwoSafe.View
         private void button5_Click(object sender, EventArgs e)
         {
             Controller.Synchronize.fromServerToClient();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.auth("kostenko", "123qwe123qwe", null);
+            Properties.Settings.Default.Token = json["response"]["token"];
+            Properties.Settings.Default.Save();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            //события папки
+            FileSystemWatcher dirWatcher = new FileSystemWatcher();
+            dirWatcher.Path = Properties.Settings.Default.UserFolderPath;
+            dirWatcher.IncludeSubdirectories = true;
+            dirWatcher.NotifyFilter = NotifyFilters.DirectoryName;
+            dirWatcher.Created += new FileSystemEventHandler(Controller.Dirs.eventHendler);
+            dirWatcher.Deleted += new FileSystemEventHandler(Controller.Dirs.eventHendler);
+            dirWatcher.EnableRaisingEvents = true;
+
+
+            //события файла
+            FileSystemWatcher fileWatcher = new FileSystemWatcher();
+            fileWatcher.Path = Properties.Settings.Default.UserFolderPath;
+            fileWatcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName;
+            fileWatcher.Created += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            //fileWatcher.Changed += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            //fileWatcher.Deleted += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            //fileWatcher.Renamed += new RenamedEventHandler(Controller.Synchronize.eventRaised);
+            //fileWatcher.EnableRaisingEvents = true;
         }
     }
 }

@@ -23,8 +23,8 @@ namespace TwoSafe.Model
 
             SQLiteConnection m_dbConnection = new SQLiteConnection(dbName);
 
-            m_dbConnection.Open(); 
-            string sql = "CREATE TABLE dirs (id INTEGER, parent_id INT, name TEXT)";
+            m_dbConnection.Open();
+            string sql = "CREATE TABLE dirs (id INTEGER, parent_id INTEGER, name TEXT, level INTEGER)";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection); 
             command.ExecuteNonQuery();
 
