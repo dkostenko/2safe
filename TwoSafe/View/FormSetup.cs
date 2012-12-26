@@ -285,9 +285,8 @@ namespace TwoSafe.View
                     {
                         loginCaptchaVisible(true);
                     }
-
+                    // Получаем пока новую параллельно
                     getCaptchaBW.RunWorkerAsync();
-
                     labelErrorMessageLogin.Text = language.GetString("error" + logInResponse["error_code"]);
                     buttonPrevious.Enabled = true;
                     buttonNext.Enabled = true;
@@ -298,7 +297,7 @@ namespace TwoSafe.View
                     loginCaptchaVisible(false);
                     labelErrorMessageLogin.Text = language.GetString("message001");
                     Properties.Settings.Default.Token = logInResponse["response"]["token"];
-                    //Properties.Settings.Default.Account = account;
+                    Properties.Settings.Default.Account = account;
                     Properties.Settings.Default.Save();
 
                     activePanel = "fullSetup";
@@ -492,13 +491,5 @@ namespace TwoSafe.View
         {
             // Добавить корректный выход
         }
-
-
-
-
-
-
-
-
     }
 }
