@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data.SQLite;
 
 namespace TwoSafe.Model
@@ -8,19 +9,22 @@ namespace TwoSafe.Model
     {
         private string _name;
         private long _id, _parent_id;
+        private int _level;
 
-        public Dir(long id, long parent_id, string name)
+        public Dir(long id, long parent_id, string name, int level)
         {
             this._id = id;
             this._parent_id = parent_id;
             this._name = name;
+            this._level = level;
         }
 
-        public Dir(string id, string parent_id, string name)
+        public Dir(string id, string parent_id, string name, int level)
         {
             this._id = long.Parse(id);
             this._parent_id = long.Parse(parent_id);
             this._name = name;
+            this._level = level;
         }
 
         /// <summary>
@@ -29,14 +33,24 @@ namespace TwoSafe.Model
         /// <returns>Возвращает TRUE, если операция прошла успешно, иначе - FALSE</returns>
         public bool Save()
         {
-            bool result = true;
-            string values = "'" + this.Id + "', '" + this.Parent_id + "', '" + this.Name + "'";
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.getTreeParent(this._id.ToString());
 
-            try
+            bool result = true;
+            if (!json.ContainsKey("error_code"))
             {
-                ExecuteNonQuery("INSERT into dirs(id, parent_id, name) values(" + values + ");");
+                this._level = json["response"]["tree"][json["response"]["tree"].Count - 1]["level"];
+                string values = "'" + this.Id + "', '" + this.Parent_id + "', '" + this.Name + "', '" + this.Level + "'";
+
+                try
+                {
+                    ExecuteNonQuery("INSERT into dirs(id, parent_id, name, level) values(" + values + ");");
+                }
+                catch
+                {
+                    result = false;
+                }
             }
-            catch
+            else
             {
                 result = false;
             }
@@ -103,7 +117,7 @@ namespace TwoSafe.Model
                 SQLiteDataReader reader = command.ExecuteReader();
                 reader.Read();
 
-                dir = new Model.Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2));
+                dir = new Model.Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2), reader.GetInt32(3));
 
                 reader.Close();
                 connection.Close();
@@ -125,7 +139,7 @@ namespace TwoSafe.Model
             SQLiteCommand command = new SQLiteCommand("SELECT * FROM dirs WHERE name='" + name + "' AND parent_id='" + parent_id + "'", connection);
             SQLiteDataReader reader = command.ExecuteReader();
             reader.Read();
-            Dir dir = new Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2));
+            Dir dir = new Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2), reader.GetInt32(3));
 
             reader.Close();
             connection.Close();
@@ -149,7 +163,41 @@ namespace TwoSafe.Model
                     dir = FindByNameAndParentId(parts[i], dir.Id.ToString());
                 }
             }
+            else
+            {
+                dir = FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId);
+            }
             return dir;
+        }
+
+        /// <summary>
+        /// Возвращает все папки из базы данных
+        /// </summary>
+        /// <returns>Возвращает список папок: упорядоченных по возрастанию level.</returns>
+        public static List<Dir> All()
+        {
+            List<Dir> dirs = new List<Dir>();
+
+            SQLiteConnection connection = new SQLiteConnection(dbName);
+            connection.Open();
+            SQLiteCommand command = new SQLiteCommand("SELECT * FROM dirs ORDER BY level", connection); // ORDER BY parent_id ASC
+            SQLiteDataReader reader = command.ExecuteReader();
+
+
+            while (reader.Read())
+            {
+                dirs.Add(new Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2), reader.GetInt32(3)));
+            }
+
+            reader.Close();
+            connection.Close();
+
+            return dirs;
+        }
+
+        public int Level
+        {
+            get { return _level; }
         }
 
         public long Id
