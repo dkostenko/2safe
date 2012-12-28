@@ -374,6 +374,7 @@
             this.AcceptButton = this.buttonNext;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.Controls.Add(this.panelExit);
             this.Controls.Add(this.panelFullSetup);
             this.Controls.Add(this.panelLogin);
@@ -385,6 +386,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormSetup";
+            this.Activated += new System.EventHandler(this.FormSetup_Activated);
+            this.Deactivate += new System.EventHandler(this.FormSetup_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSetup_FormClosing);
             this.Load += new System.EventHandler(this.FormSetup_Load);
             this.panelEnter.ResumeLayout(false);

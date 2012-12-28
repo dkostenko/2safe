@@ -156,13 +156,15 @@
             this.AcceptButton = this.buttonLogin;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormLogin";
+            this.Activated += new System.EventHandler(this.FormLogin_Activated);
+            this.Deactivate += new System.EventHandler(this.FormLogin_Deactivate);
             this.Load += new System.EventHandler(this.FormLogin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

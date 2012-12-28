@@ -742,7 +742,7 @@ namespace TwoSafe.Controller
                 output = sr.ReadToEnd();
                 sr.Close();
             }
-            catch
+            catch(Exception ex)
             {
                 output = "";
             }

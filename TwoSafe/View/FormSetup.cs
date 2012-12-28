@@ -395,20 +395,19 @@ namespace TwoSafe.View
         /// </summary>
         private void buttonPrevious_Click(object sender, EventArgs e)
         {
-            activePanel = "enter";
-            buttonNext.Enabled = true;
-            buttonPrevious.Visible = false;
-            panelEnter.Visible = true;
-
             if (activePanel == "login")
             {
                 panelLogin.Visible = false;
             }
-            
+
             if (activePanel == "signup")
             {
                 panelCreateAccount.Visible = false;
             }
+            activePanel = "enter";
+            buttonNext.Enabled = true;
+            buttonPrevious.Visible = false;
+            panelEnter.Visible = true;
         }
 
         /// <summary>
@@ -492,6 +491,16 @@ namespace TwoSafe.View
         private void FormSetup_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Добавить корректный выход
+        }
+
+        private void FormSetup_Activated(object sender, EventArgs e)
+        {
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+        }
+
+        private void FormSetup_Deactivate(object sender, EventArgs e)
+        {
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
         }
     }
 }

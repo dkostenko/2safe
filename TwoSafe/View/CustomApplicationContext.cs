@@ -70,8 +70,6 @@ namespace TwoSafe.View
         /// </summary>
         public CustomApplicationContext()
         {
-            System.Diagnostics.Debug.Write("\n" + Properties.Settings.Default.Token + "\n");
-            System.Diagnostics.Debug.Write("\n" + Properties.Settings.Default.Email + "\n");
             InitializeContext();
             // Проверки
             runUserChecks();

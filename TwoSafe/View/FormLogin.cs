@@ -217,5 +217,15 @@ namespace TwoSafe.View
             return controlList;
         }
 
+        private void FormLogin_Activated(object sender, EventArgs e)
+        {
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+        }
+
+        private void FormLogin_Deactivate(object sender, EventArgs e)
+        {
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+        }
+
     }
 }
