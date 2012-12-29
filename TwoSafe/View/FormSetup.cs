@@ -177,7 +177,10 @@ namespace TwoSafe.View
                 }
                 else
                 {
-                    getCaptchaBW.RunWorkerAsync();
+                    if (!getCaptchaBW.IsBusy)
+                    {
+                        getCaptchaBW.RunWorkerAsync();    
+                    }
                     activePanel = "signup";
                     buttonPrevious.Visible = true;          
                     panelEnter.Visible = false;
@@ -275,8 +278,7 @@ namespace TwoSafe.View
             if (logInResponse == null)
             {
                 labelErrorMessageLogin.Text = language.GetString("error085");
-                buttonPrevious.Enabled = true;
-                buttonNext.Enabled = true;
+                ValidateLoginTextBoxes();
             }
             else
             {
@@ -288,10 +290,12 @@ namespace TwoSafe.View
                         loginCaptchaVisible(true);
                     }
                     // Получаем пока новую параллельно
-                    getCaptchaBW.RunWorkerAsync();
+                    if (!getCaptchaBW.IsBusy)
+                    {
+                        getCaptchaBW.RunWorkerAsync();
+                    }
                     labelErrorMessageLogin.Text = language.GetString("error" + logInResponse["error_code"]);
-                    buttonPrevious.Enabled = true;
-                    buttonNext.Enabled = true;
+                    ValidateLoginTextBoxes();
                 }
                 else
                 {
@@ -335,22 +339,23 @@ namespace TwoSafe.View
                 if (signUpResponse.ContainsKey("error_code")) // сервер вернул ошибку
                 {
                     labelErrorMessageSignup.Text = language.GetString("error" + signUpResponse["error_code"]);
-                    getCaptchaBW.RunWorkerAsync();
+                    if (!getCaptchaBW.IsBusy)
+                    {
+                        getCaptchaBW.RunWorkerAsync();    
+                    }
                 }
-                else // ошибки нет - все норм, нужно логиниться данным аккаунтом и далее смотреть настройки
+                else // ошибки нет - все норм, нужно логиниться данным аккаунтом
                 {
                     panelCreateAccount.Visible = false;
                     panelLogin.Visible = true;
-                    textBoxAccountLogin.Text = account;
                     activePanel = "login";
+                    textBoxAccountLogin.Text = account;
                     labelErrorMessageLogin.Text = language.GetString("message003");
                     labelErrorMessageSignup.Text = "";
                     buttonPrevious.Enabled = true;
                 }
             }
-
-            buttonNext.Enabled = true;
-            buttonPrevious.Enabled = true;
+            ValidateSignupTextBoxes();
         }
 
         /// <summary>
@@ -371,6 +376,8 @@ namespace TwoSafe.View
                 pictureBoxCaptchaSignup.BackgroundImage = (Bitmap)captchaResponse[0];
                 pictureBoxCaptchaLogin.BackgroundImage = (Bitmap)captchaResponse[0];
                 captchaId = (string)captchaResponse[1];
+                textBoxCaptchaLogin.Clear();
+                textBoxCaptchaSignup.Clear();
             }
         }
 
@@ -482,7 +489,10 @@ namespace TwoSafe.View
         /// </summary>
         private void buttonRefreshCaptcha_Click(object sender, EventArgs e)
         {
-            getCaptchaBW.RunWorkerAsync();
+            if (!getCaptchaBW.IsBusy)
+            {
+                getCaptchaBW.RunWorkerAsync();    
+            }
         }
 
         /// <summary>

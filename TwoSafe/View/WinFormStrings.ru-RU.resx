@@ -364,7 +364,7 @@
     <value>Такое имя Промо уже было</value>
   </data>
   <data name="error082" xml:space="preserve">
-    <value>Таймаут промо</value>
+    <value>Слишком много одновременных запросов</value>
   </data>
   <data name="error083" xml:space="preserve">
     <value>Параметр reset code не определен</value>

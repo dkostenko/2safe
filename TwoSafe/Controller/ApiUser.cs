@@ -735,17 +735,24 @@ namespace TwoSafe.Controller
         /// </returns>
         private static string sendGET(string url)
         {
-            WebRequest req = WebRequest.Create(url);
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
             string output = "";
             try
             {
-                WebResponse resp = req.GetResponse();
+                HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
                 Stream stream = resp.GetResponseStream();
                 StreamReader sr = new StreamReader(stream);
                 output = sr.ReadToEnd();
                 sr.Close();
             }
-            catch(Exception ex)
+            catch (WebException exception)
+            {
+                using (var reader = new StreamReader(exception.Response.GetResponseStream()))
+                {
+                    output = reader.ReadToEnd();
+                }
+            }
+            catch (Exception ex)
             {
                 output = "";
             }

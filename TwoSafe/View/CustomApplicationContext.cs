@@ -69,20 +69,19 @@ namespace TwoSafe.View
         /// Конструктор CustomApplicationContext без параметров
         /// </summary>
         public CustomApplicationContext()
-
         {
             InitializeContext();
-
             // Проверки
 
             //Properties.Settings.Default.UserFolderPath = @"C:\Users\dmitry\2safe";
             //Properties.Settings.Default.LastGetEventsTime = long.Parse("1356394469455494");
-            //Properties.Settings.Default.Token = "";
+            //Properties.Settings.Default.Token = "hkjh";
             //Properties.Settings.Default.Save();
             runUserChecks();
 
+            System.Diagnostics.Debug.Write(Properties.Settings.Default.Token);
             //УДАЛИТЬ
-            
+
             //View.Test form = new View.Test();
             //form.Show();
         }

@@ -200,5 +200,16 @@ namespace TwoSafe.View
             Properties.Settings.Default.LanSync = checkBoxLanSync.Checked;
         }
 
+        private void FormPreferences_Activated(object sender, EventArgs e)
+        {
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+        }
+
+        private void FormPreferences_Deactivate(object sender, EventArgs e)
+        {
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+        }
+
+
     }
 }
