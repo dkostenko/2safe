@@ -9,22 +9,20 @@ namespace TwoSafe.Model
     {
         private string _name;
         private long _id, _parent_id;
-        private int _level;
+        private string _path;
 
-        public Dir(long id, long parent_id, string name, int level)
+        public Dir(long id, long parent_id, string name)
         {
             this._id = id;
             this._parent_id = parent_id;
             this._name = name;
-            this._level = level;
         }
 
-        public Dir(string id, string parent_id, string name, int level)
+        public Dir(string id, string parent_id, string name)
         {
             this._id = long.Parse(id);
             this._parent_id = long.Parse(parent_id);
             this._name = name;
-            this._level = level;
         }
 
         /// <summary>
@@ -33,27 +31,20 @@ namespace TwoSafe.Model
         /// <returns>Возвращает TRUE, если операция прошла успешно, иначе - FALSE</returns>
         public bool Save()
         {
-            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.getTreeParent(this._id.ToString());
-
             bool result = true;
-            if (!json.ContainsKey("error_code"))
-            {
-                this._level = json["response"]["tree"][json["response"]["tree"].Count - 1]["level"];
-                string values = "'" + this.Id + "', '" + this.Parent_id + "', '" + this.Name + "', '" + this.Level + "'";
 
-                try
-                {
-                    ExecuteNonQuery("INSERT into dirs(id, parent_id, name, level) values(" + values + ");");
-                }
-                catch
-                {
-                    result = false;
-                }
+            string values = "'" + this.Id + "', '" + this.Parent_id + "', '" + this.Name + "'";
+
+            try
+            {
+                ExecuteNonQuery("INSERT into dirs(id, parent_id, name) values(" + values + ");");
+                this.SetPath();
             }
-            else
+            catch
             {
                 result = false;
             }
+
             return result;
         }
 
@@ -77,9 +68,9 @@ namespace TwoSafe.Model
         }
 
         /// <summary>
-        /// Находит полный путь до папки в синхронизируемой папке
+        /// Устанавливает полный путь до папки в синхронизируемой папке
         /// </summary>
-        public string GetPath()
+        private void SetPath()
         {
             string result = "";
             ArrayList path = new ArrayList();
@@ -98,7 +89,16 @@ namespace TwoSafe.Model
                 result += "\\" + path[i].ToString();
             }
 
-            return Properties.Settings.Default.UserFolderPath + result;
+            this._path = Properties.Settings.Default.UserFolderPath + result;
+        }
+
+        /// <summary>
+        /// Устанавливает полный путь до папки в синхронизируемой папке
+        /// </summary>
+        /// <param name="path">Полный путь до папки в синхронизируемой папке</param>
+        private void SetPath(string path)
+        {
+            this._path = path;
         }
 
         /// <summary>
@@ -117,7 +117,8 @@ namespace TwoSafe.Model
                 SQLiteDataReader reader = command.ExecuteReader();
                 reader.Read();
 
-                dir = new Model.Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2), reader.GetInt32(3));
+                dir = new Model.Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2));
+                dir.SetPath();
 
                 reader.Close();
                 connection.Close();
@@ -132,18 +133,29 @@ namespace TwoSafe.Model
         /// <param name="name">Имя папки</param>
         /// <param name="parent_id">ID родительской папки</param>
         /// <returns>Возвращает объект папки</returns>
-        public static Dir FindByNameAndParentId(string name, string parent_id)
+        public static Dir FindByNameAndParentId(string name, string parent_id, bool setPath)
         {
+            Dir result = null;
             SQLiteConnection connection = new SQLiteConnection(dbName);
             connection.Open();
             SQLiteCommand command = new SQLiteCommand("SELECT * FROM dirs WHERE name='" + name + "' AND parent_id='" + parent_id + "'", connection);
             SQLiteDataReader reader = command.ExecuteReader();
-            reader.Read();
-            Dir dir = new Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2), reader.GetInt32(3));
+            try
+            {
+                reader.Read();
+                result = new Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2));
+                if (setPath)
+                {
+                    result.SetPath();
+                }
+            }
+            catch
+            {
+            }
 
             reader.Close();
             connection.Close();
-            return dir;
+            return result;
         }
 
         /// <summary>
@@ -157,16 +169,17 @@ namespace TwoSafe.Model
             string[] parts = path.Substring(Properties.Settings.Default.UserFolderPath.Length + 1).Split('\\');
             if (parts.Length != 1)
             {
-                dir = FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId);
+                dir = FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId, false);
                 for (int i = 1; i < parts.Length - 1; ++i)
                 {
-                    dir = FindByNameAndParentId(parts[i], dir.Id.ToString());
+                    dir = FindByNameAndParentId(parts[i], dir.Id.ToString(), false);
                 }
             }
             else
             {
-                dir = FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId);
+                dir = FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId, false);
             }
+            dir.SetPath(path);
             return dir;
         }
 
@@ -177,27 +190,25 @@ namespace TwoSafe.Model
         public static List<Dir> All()
         {
             List<Dir> dirs = new List<Dir>();
+            Dir temp;
 
             SQLiteConnection connection = new SQLiteConnection(dbName);
             connection.Open();
-            SQLiteCommand command = new SQLiteCommand("SELECT * FROM dirs ORDER BY level", connection); // ORDER BY parent_id ASC
+            SQLiteCommand command = new SQLiteCommand("SELECT * FROM dirs", connection); // ORDER BY parent_id ASC
             SQLiteDataReader reader = command.ExecuteReader();
 
 
             while (reader.Read())
             {
-                dirs.Add(new Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2), reader.GetInt32(3)));
+                temp = new Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2));
+                temp.SetPath();
+                dirs.Add(temp);
             }
 
             reader.Close();
             connection.Close();
 
             return dirs;
-        }
-
-        public int Level
-        {
-            get { return _level; }
         }
 
         public long Id
@@ -213,6 +224,11 @@ namespace TwoSafe.Model
         public string Name
         {
             get { return _name; }
+        }
+
+        public string Path
+        {
+            get { return _path; }
         }
     }
 }

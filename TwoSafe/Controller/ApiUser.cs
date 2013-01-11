@@ -357,11 +357,11 @@ namespace TwoSafe.Controller
         /// <param name="token">токен</param>
         /// <param name="optional">Опциональные параметры</param>
         /// <returns></returns>
-        public static bool makeDir(string dirId, string dirName, Dictionary<string, string> optional)
+        public static Dictionary<string, dynamic> makeDir(string dirId, string dirName, Dictionary<string, string> optional)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            Dictionary<string, dynamic> json = jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "make_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId + "&dir_name=" + dirName + toQueryString(optional)));
-            return true;
+            Dictionary<string, dynamic> result = jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "make_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId + "&dir_name=" + dirName + toQueryString(optional)));
+            return result;
         }
 
         /// <summary>
@@ -408,19 +408,34 @@ namespace TwoSafe.Controller
             }
 
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "remove_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId + optionals));
+            Dictionary<string, dynamic> json = jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "remove_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId + optionals));
+            if (!json.ContainsKey("error_code"))
+            {
+                Helpers.ApplicationHelper.SetCurrentTimeToSettings();
+            }
+            return json;
         }
 
         /// <summary>
         /// Просмотр директории
         /// </summary>
         /// <param name="dirId">ID каталога, при пустом значении выдает список файлов и папко корневого каталога</param>
-        /// <param name="token">токен</param>
         /// <returns></returns>
         public static Dictionary<string, dynamic> listDir(string dirId)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
             return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "list_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId));
+        }
+
+        /// <summary>
+        /// Получение свойств объекта
+        /// </summary>
+        /// <param name="id">ID объекта</param>
+        /// <returns></returns>
+        public static Dictionary<string, dynamic> getProps(string id)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_props&token=" + Properties.Settings.Default.Token + "&id=" + id));
         }
 
         /// <summary>
@@ -445,9 +460,7 @@ namespace TwoSafe.Controller
             Dictionary<string, dynamic> json = jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_events&token=" + Properties.Settings.Default.Token + "&after=" + after));
             if (json != null && !json.ContainsKey("error_code"))
             {
-                TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
-                Properties.Settings.Default.LastGetEventsTime = (uint)span.TotalSeconds;
-                Properties.Settings.Default.Save();
+                Helpers.ApplicationHelper.SetCurrentTimeToSettings();
             }
             return json;
         }

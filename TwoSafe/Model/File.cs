@@ -5,21 +5,28 @@ namespace TwoSafe.Model
 {
     class File : ActiveRecord
     {
-        private string _name;
-        private long _id, _dir_id;
+        private string _name, _chksum;
+        private long _id, _parent_id, _version_id;
+        private int _size;
 
-        public File(long id, long dir_id, string name)
+        public File(long id, long parent_id, string name, long version_id, string chksum, int size)
         {
             this._id = id;
-            this._dir_id = dir_id;
+            this._parent_id = parent_id;
             this._name = name;
+            this._version_id = version_id;
+            this._chksum = chksum;
+            this._size = size;
         }
 
-        public File(string id, string dir_id, string name)
+        public File(string id, string parent_id, string name, string version_id, string chksum, string size)
         {
             this._id = long.Parse(id);
-            this._dir_id = long.Parse(dir_id);
+            this._parent_id = long.Parse(parent_id);
             this._name = name;
+            this._version_id = long.Parse(version_id);
+            this._chksum = chksum;
+            this._size = int.Parse(size);
         }
 
 
@@ -30,11 +37,16 @@ namespace TwoSafe.Model
         public bool Save()
         {
             bool result = true;
-            string values = "'" + this.Id + "', '" + this.Dir_id + "', '" + this.Name + "'"; ;
+            string values = "'" + this.Id + "', '" + 
+                                  this.Parent_id + "', '" +
+                                  this.Name + "', '" +
+                                  this.Version_id + "', '" +
+                                  this.Chksum + "', '" +
+                                  this.Size + "'"; ;
 
             try
             {
-                ExecuteNonQuery("insert into files(id, dir_id, name) values(" + values + ");");
+                ExecuteNonQuery("insert into files(id, parent_id, name, version_id, chksum, size) values(" + values + ");");
             }
             catch
             {
@@ -70,7 +82,7 @@ namespace TwoSafe.Model
             string result = "";
             ArrayList path = new ArrayList();
 
-            Dir parentDir = Model.Dir.FindById(this._dir_id.ToString());
+            Dir parentDir = Model.Dir.FindById(this._parent_id.ToString());
 
             while (parentDir != null)
             {
@@ -100,7 +112,7 @@ namespace TwoSafe.Model
             SQLiteDataReader reader = command.ExecuteReader();
             reader.Read();
 
-            Model.File file = new Model.File(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2));
+            Model.File file = new Model.File(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2), reader.GetInt64(3), reader.GetString(4), reader.GetInt32(5));
 
             reader.Close();
             connection.Close();
@@ -121,7 +133,7 @@ namespace TwoSafe.Model
             SQLiteCommand command = new SQLiteCommand("SELECT * FROM files WHERE name='" + name + "' AND dir_id='" + dir_id + "'", connection);
             SQLiteDataReader reader = command.ExecuteReader();
             reader.Read();
-            File file = new File(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2));
+            File file = new Model.File(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2), reader.GetInt64(3), reader.GetString(4), reader.GetInt32(5));
 
             reader.Close();
             connection.Close();
@@ -133,14 +145,29 @@ namespace TwoSafe.Model
             get { return _id; }
         }
 
-        public long Dir_id
+        public long Parent_id
         {
-            get { return _dir_id; }
+            get { return _parent_id; }
         }
 
         public string Name
         {
             get { return _name; }
+        }
+
+        public string Chksum
+        {
+            get { return _chksum; }
+        }
+
+        public long Version_id
+        {
+            get { return _version_id; }
+        }
+
+        public int Size
+        {
+            get { return _size; }
         }
     }
 }

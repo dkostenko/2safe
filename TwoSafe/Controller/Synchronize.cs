@@ -88,7 +88,7 @@ namespace TwoSafe.Controller
                         
                         if (!json.ContainsKey("error_code"))
                         {
-                            new Model.File(json["response"]["file"]["id"], "913989033028", json["response"]["file"]["name"]).Save();
+                            new Model.File(json["response"]["file"]["id"], "913989033028", json["response"]["file"]["name"], json["response"]["file"]["version_id"], json["response"]["file"]["chksum"], json["response"]["file"]["size"]).Save();
                         }
                         break;
                     case "deleted":
@@ -146,7 +146,7 @@ namespace TwoSafe.Controller
 
                     for (int i = 0; i < json["response"]["list_dirs"].Count; ++i)
                     {
-                        new Model.Dir(json["response"]["list_dirs"][i]["id"], current_id, json["response"]["list_dirs"][i]["name"], 0);
+                        new Model.Dir(json["response"]["list_dirs"][i]["id"], current_id, json["response"]["list_dirs"][i]["name"]);
                         stek.Add(json["response"]["list_dirs"][i]["id"]);
                     }
 
@@ -155,7 +155,7 @@ namespace TwoSafe.Controller
                     files = json["response"]["list_files"];
                     for (int i = 0; i < files.Count; ++i)
                     {
-                        new Model.Dir(json["response"]["list_files"][i]["id"], current_id, json["response"]["list_files"][i]["name"], 0);
+                        new Model.Dir(json["response"]["list_files"][i]["id"], current_id, json["response"]["list_files"][i]["name"]);
                     }
                 }
 

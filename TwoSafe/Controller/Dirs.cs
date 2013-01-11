@@ -10,7 +10,7 @@ namespace TwoSafe.Controller
 
         public static void CreateOnClient(string id, string parent_id, string name)
         {
-            Model.Dir dir = new Model.Dir(id, parent_id, name, 0);
+            Model.Dir dir = new Model.Dir(id, parent_id, name);
             dir.Save();
 
             string path = Properties.Settings.Default.UserFolderPath;
@@ -18,7 +18,6 @@ namespace TwoSafe.Controller
             if (parent_id != "913989033028")
             {
                 Model.Dir parent_dir = Model.Dir.FindById(parent_id);
-                path = parent_dir.GetPath();
             }
 
             Directory.CreateDirectory(path + "\\" + name);
@@ -28,8 +27,7 @@ namespace TwoSafe.Controller
         public static void RemoveOnClient(string id)
         {
             Model.Dir dir = Model.Dir.FindById(id);
-            string path = dir.GetPath();
-            Directory.Delete(path, true);
+            Directory.Delete(dir.Path, true);
             dir.Remove();
         }
 
@@ -45,26 +43,44 @@ namespace TwoSafe.Controller
                 Model.Dir current_dir;
                 for (int i = 0; i < nestedFolders.Length-1; ++i)
                 {
-                    current_dir = Model.Dir.FindByNameAndParentId(nestedFolders[i], parent_id);
+                    current_dir = Model.Dir.FindByNameAndParentId(nestedFolders[i], parent_id, false);
                     parent_id = current_dir.Id.ToString();
                 }
             }
             return parent_id;
         }
 
-        public static void syncDirsWithDb()
+        //получаем список удаленных папок
+        public static List<Model.Dir> syncDirsWithDb()
         {
-            string path;
-            Model.Dir.All();
+            List<Model.Dir> result = new List<Model.Dir>();
             List<Model.Dir> dirs = Model.Dir.All();
             foreach (var one in dirs)
             {
-                path = one.GetPath();
-                if (!Directory.Exists(path))
+                if (!Directory.Exists(one.Path))
                 {
-                    Directory.CreateDirectory(path);
+                    result.Add(one);
+                    //Directory.CreateDirectory(path);
                 }
             }
+            return result;
+        }
+
+        public static List<string> getNewOfflineDirs()
+        {
+            List<string> result = new List<string>();
+            List<Model.Dir> dirs = Model.Dir.All();
+
+            foreach (var one in dirs)
+            {
+                if (!Directory.Exists(one.Path))
+                {
+                    //result.Add(one);
+                    //Directory.CreateDirectory(path);
+                }
+            }
+
+            return result;
         }
 
         public static void eventHendler(object sender, FileSystemEventArgs e)

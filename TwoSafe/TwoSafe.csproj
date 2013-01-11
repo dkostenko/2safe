@@ -89,11 +89,11 @@
     <Compile Include="Controller\Synchronize.cs" />
     <Compile Include="Controller\Dirs.cs" />
     <Compile Include="Controller\Files.cs" />
+    <Compile Include="Helpers\ApplicationHelper.cs" />
     <Compile Include="Helpers\ParallelExecutionHelper.cs" />
     <Compile Include="Model\ActiveRecord.cs" />
     <Compile Include="Model\Dir.cs" />
     <Compile Include="Model\File.cs" />
-    <Compile Include="Model\SQLiteDatabase.cs" />
     <Compile Include="Model\Db.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
