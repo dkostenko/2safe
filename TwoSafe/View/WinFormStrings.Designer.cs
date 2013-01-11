@@ -799,7 +799,7 @@ namespace TwoSafe.View {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Timeout fail promo attempts.
+        ///   Looks up a localized string similar to Too many requests at once.
         /// </summary>
         internal static string error082 {
             get {

@@ -61,18 +61,18 @@
             // 
             // tabControlPreferences
             // 
-            resources.ApplyResources(this.tabControlPreferences, "tabControlPreferences");
             this.tabControlPreferences.Controls.Add(this.tabPageGeneral);
             this.tabControlPreferences.Controls.Add(this.tabPageAccount);
             this.tabControlPreferences.Controls.Add(this.tabPageAdvanced);
+            resources.ApplyResources(this.tabControlPreferences, "tabControlPreferences");
             this.tabControlPreferences.Name = "tabControlPreferences";
             this.tabControlPreferences.SelectedIndex = 0;
             // 
             // tabPageGeneral
             // 
-            resources.ApplyResources(this.tabPageGeneral, "tabPageGeneral");
             this.tabPageGeneral.BackColor = System.Drawing.Color.White;
             this.tabPageGeneral.Controls.Add(this.groupBoxGeneral);
+            resources.ApplyResources(this.tabPageGeneral, "tabPageGeneral");
             this.tabPageGeneral.Name = "tabPageGeneral";
             // 
             // groupBoxGeneral
@@ -107,17 +107,17 @@
             // 
             // tabPageAccount
             // 
-            resources.ApplyResources(this.tabPageAccount, "tabPageAccount");
             this.tabPageAccount.BackColor = System.Drawing.Color.White;
             this.tabPageAccount.Controls.Add(this.groupBoxAccount);
+            resources.ApplyResources(this.tabPageAccount, "tabPageAccount");
             this.tabPageAccount.Name = "tabPageAccount";
             // 
             // groupBoxAccount
             // 
-            resources.ApplyResources(this.groupBoxAccount, "groupBoxAccount");
             this.groupBoxAccount.Controls.Add(this.buttonLogOut);
             this.groupBoxAccount.Controls.Add(this.textBoxUserName);
             this.groupBoxAccount.Controls.Add(this.labelLoggedInAs);
+            resources.ApplyResources(this.groupBoxAccount, "groupBoxAccount");
             this.groupBoxAccount.Name = "groupBoxAccount";
             this.groupBoxAccount.TabStop = false;
             // 
@@ -130,8 +130,8 @@
             // 
             // textBoxUserName
             // 
-            resources.ApplyResources(this.textBoxUserName, "textBoxUserName");
             this.textBoxUserName.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.textBoxUserName, "textBoxUserName");
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.ReadOnly = true;
             // 
@@ -142,10 +142,10 @@
             // 
             // tabPageAdvanced
             // 
-            resources.ApplyResources(this.tabPageAdvanced, "tabPageAdvanced");
             this.tabPageAdvanced.BackColor = System.Drawing.Color.White;
             this.tabPageAdvanced.Controls.Add(this.groupBoxLocation);
             this.tabPageAdvanced.Controls.Add(this.groupBoxLanguage);
+            resources.ApplyResources(this.tabPageAdvanced, "tabPageAdvanced");
             this.tabPageAdvanced.Name = "tabPageAdvanced";
             // 
             // groupBoxLocation
@@ -165,8 +165,8 @@
             // 
             // textBoxLocation
             // 
-            resources.ApplyResources(this.textBoxLocation, "textBoxLocation");
             this.textBoxLocation.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.textBoxLocation, "textBoxLocation");
             this.textBoxLocation.Name = "textBoxLocation";
             this.textBoxLocation.ReadOnly = true;
             // 
@@ -179,8 +179,8 @@
             // 
             // comboBoxLanguages
             // 
-            resources.ApplyResources(this.comboBoxLanguages, "comboBoxLanguages");
             this.comboBoxLanguages.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBoxLanguages, "comboBoxLanguages");
             this.comboBoxLanguages.Name = "comboBoxLanguages";
             this.comboBoxLanguages.SelectedIndexChanged += new System.EventHandler(this.comboBoxLanguages_SelectedIndexChanged);
             // 
@@ -210,11 +210,16 @@
             this.AcceptButton = this.buttonOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.CancelButton = this.buttonCancel;
             this.Controls.Add(this.buttonApply);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.tabControlPreferences);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormPreferences";
+            this.Activated += new System.EventHandler(this.FormPreferences_Activated);
+            this.Deactivate += new System.EventHandler(this.FormPreferences_Deactivate);
             this.Load += new System.EventHandler(this.FormPreferences_Load);
             this.tabControlPreferences.ResumeLayout(false);
             this.tabPageGeneral.ResumeLayout(false);

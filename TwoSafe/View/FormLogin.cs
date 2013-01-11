@@ -43,14 +43,14 @@ namespace TwoSafe.View
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            buttonLogin.Enabled = false;
-            this.labelErrorMessageLogin.Text = language.GetString("message002");
+                buttonLogin.Enabled = false;
+                this.labelErrorMessageLogin.Text = language.GetString("message002");
 
-            account = tbAccount.Text;
-            password = tbPassword.Text;
-            captcha = textBoxCaptchaLogin.Text;
-            
-            loginBW.RunWorkerAsync();
+                account = tbAccount.Text;
+                password = tbPassword.Text;
+                captcha = textBoxCaptchaLogin.Text;
+
+                loginBW.RunWorkerAsync();
         }
 
         private void loginBW_DoWork(object sender, DoWorkEventArgs e)
@@ -63,7 +63,6 @@ namespace TwoSafe.View
             if (logInResponse == null)
             {
                 labelErrorMessageLogin.Text = language.GetString("error085");
-                buttonLogin.Enabled = true;
             }
             else
             {
@@ -75,9 +74,11 @@ namespace TwoSafe.View
                         loginCaptchaVisible(true);
                     }
                     // Получаем пока новую параллельно
-                    getCaptchaBW.RunWorkerAsync();
+                    if (!getCaptchaBW.IsBusy)
+                    {
+                        getCaptchaBW.RunWorkerAsync();
+                    }
                     labelErrorMessageLogin.Text = language.GetString("error" + logInResponse["error_code"]);
-                    buttonLogin.Enabled = false;
                 }
                 else
                 {
@@ -85,10 +86,9 @@ namespace TwoSafe.View
                     labelErrorMessageLogin.Text = language.GetString("message001");
                     Properties.Settings.Default.Token = logInResponse["response"]["token"];
                     Properties.Settings.Default.Save();
-
-                    buttonLogin.Enabled = true;
                 }
             }
+            ValidateLoginTextBoxes();
         }
         
         /// <summary>
@@ -123,6 +123,7 @@ namespace TwoSafe.View
             {
                 pictureBoxCaptchaLogin.BackgroundImage = (Bitmap)captchaResponse[0];
                 captchaId = (string)captchaResponse[1];
+                textBoxCaptchaLogin.Clear();
             }
         }
 
@@ -131,7 +132,10 @@ namespace TwoSafe.View
         /// </summary>
         private void buttonRefreshCaptcha_Click(object sender, EventArgs e)
         {
-            getCaptchaBW.RunWorkerAsync();
+            if (!getCaptchaBW.IsBusy)
+            {
+                getCaptchaBW.RunWorkerAsync();
+            }
         }
 
         /// <summary>
@@ -215,6 +219,16 @@ namespace TwoSafe.View
                 controlList.Add(c);
             }
             return controlList;
+        }
+
+        private void FormLogin_Activated(object sender, EventArgs e)
+        {
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+        }
+
+        private void FormLogin_Deactivate(object sender, EventArgs e)
+        {
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
         }
 
     }

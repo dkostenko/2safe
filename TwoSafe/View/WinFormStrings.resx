@@ -364,7 +364,7 @@
     <value>Already participated promo name</value>
   </data>
   <data name="error082" xml:space="preserve">
-    <value>Timeout fail promo attempts</value>
+    <value>Too many requests at once</value>
   </data>
   <data name="error083" xml:space="preserve">
     <value>Param reset code is not defined</value>

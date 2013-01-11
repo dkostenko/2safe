@@ -70,20 +70,16 @@ namespace TwoSafe.View
         /// </summary>
         public CustomApplicationContext()
         {
-            System.Diagnostics.Debug.Write("\n" + Properties.Settings.Default.Token + "\n");
-            System.Diagnostics.Debug.Write("\n" + Properties.Settings.Default.Email + "\n");
             InitializeContext();
             // Проверки
 
-            Properties.Settings.Default.UserFolderPath = @"C:\Users\dmitry\2safe";
-            //Properties.Settings.Default.Token = "";
+            //Properties.Settings.Default.UserFolderPath = @"C:\Users\dmitry\2safe";
             Properties.Settings.Default.Save();
             //runUserChecks();
 
             //УДАЛИТЬ
-            
-            View.Test form = new View.Test();
-            form.Show();
+            //View.Test form = new View.Test();
+            //form.Show();
         }
 
 
