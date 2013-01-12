@@ -142,5 +142,17 @@ namespace TwoSafe.Properties {
                 this["Account"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("913990033028")]
+        public long TrashId {
+            get {
+                return ((long)(this["TrashId"]));
+            }
+            set {
+                this["TrashId"] = value;
+            }
+        }
     }
 }

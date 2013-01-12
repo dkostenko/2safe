@@ -75,8 +75,7 @@ namespace TwoSafe.View
             //runUserChecks();
 
             //УДАЛИТЬ
-            //Properties.Settings.Default.RootId = 913989033028;
-            //Properties.Settings.Default.Save();
+            Properties.Settings.Default.Save();
             //View.Test form = new View.Test();
             //form.Show();
         }

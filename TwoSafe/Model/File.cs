@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
 
 namespace TwoSafe.Model
 {
     class File : ActiveRecord
     {
-        private string _name, _chksum;
-        private long _id, _parent_id, _version_id, _mtime;
+        private string _name, _chksum, _oldName;
+        private long _id, _parent_id, _version_id, _mtime, _old_parent_id;
         private int _size;
 
         public File(long id, long parent_id, string name)
@@ -29,6 +31,15 @@ namespace TwoSafe.Model
             this._id = long.Parse(id);
             this._parent_id = long.Parse(parent_id);
             this._name = name;
+        }
+
+        public File(string id, string parent_id, string name, string oldName, string oldParentId)
+        {
+            this._id = long.Parse(id);
+            this._parent_id = long.Parse(parent_id);
+            this._name = name;
+            this._oldName = oldName;
+            this._old_parent_id = long.Parse(oldParentId);
         }
 
         public File(long id, long parent_id, string name, long version_id, string chksum, int size, long mtime)
@@ -113,6 +124,20 @@ namespace TwoSafe.Model
             file.Save();
         }
 
+        public void RenameOnServer(string newName)
+        {
+            if (this._oldName != null)
+            {
+                SQLiteConnection connection = new SQLiteConnection(dbName);
+                connection.Open();
+                SQLiteCommand command = new SQLiteCommand("UPDATE files SET name='" + this._name + "' WHERE id='" + this._id.ToString() + "'", connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+
+                Controller.ApiTwoSafe.moveFile(this.Id, this.Parent_id, this.Name, null);
+            }
+        }
+
         /// <summary>
         /// Находит полный путь до файла в синхронизируемой папке
         /// </summary>
@@ -137,6 +162,34 @@ namespace TwoSafe.Model
 
             return Properties.Settings.Default.UserFolderPath + result + "\\" + this.Name;
         }
+
+        /// <summary>
+        /// Находит файл в базе данных по полному пути к файлу
+        /// </summary>
+        /// <param name="path">Путь к файлу</param>
+        /// <returns>Возвращает объект файла или NULL, если файл не найден.</returns>
+        public static File FindByPath(String path)
+        {
+            File file = null;
+            Dir dir = null;
+            string[] parts = path.Substring(Properties.Settings.Default.UserFolderPath.Length + 1).Split('\\');
+            if (parts.Length != 1)
+            {
+                dir = Dir.FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId, false);
+                for (int i = 1; i < parts.Length - 1; ++i)
+                {
+                    dir = Dir.FindByNameAndParentId(parts[i], file.Id, false);
+                }
+                file = FindByNameAndParentId(parts[parts.Length - 1], dir.Id);
+            }
+            else
+            {
+                file = FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId);
+            }
+
+            return file;
+        }
+
 
         /// <summary>
         /// Находит файл в базе данных по ID

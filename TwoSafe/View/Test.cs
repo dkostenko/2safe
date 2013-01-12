@@ -27,7 +27,6 @@ namespace TwoSafe.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Controller.Dirs.syncDirsWithDb();
         }
 
 
@@ -57,25 +56,7 @@ namespace TwoSafe.View
 
         private void button7_Click(object sender, EventArgs e)
         {
-            //события папки
-            FileSystemWatcher dirWatcher = new FileSystemWatcher();
-            dirWatcher.Path = Properties.Settings.Default.UserFolderPath;
-            dirWatcher.IncludeSubdirectories = true;
-            dirWatcher.NotifyFilter = NotifyFilters.DirectoryName;
-            dirWatcher.Created += new FileSystemEventHandler(Controller.Dirs.eventHendler);
-            dirWatcher.Deleted += new FileSystemEventHandler(Controller.Dirs.eventHendler);
-            dirWatcher.EnableRaisingEvents = true;
-
-
-            //события файла
-            FileSystemWatcher fileWatcher = new FileSystemWatcher();
-            fileWatcher.Path = Properties.Settings.Default.UserFolderPath;
-            fileWatcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName;
-            fileWatcher.Created += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            //fileWatcher.Changed += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            //fileWatcher.Deleted += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            //fileWatcher.Renamed += new RenamedEventHandler(Controller.Synchronize.eventRaised);
-            //fileWatcher.EnableRaisingEvents = true;
+            Controller.Synchronize.MonitorChanges();
         }
 
         private void button8_Click(object sender, EventArgs e)

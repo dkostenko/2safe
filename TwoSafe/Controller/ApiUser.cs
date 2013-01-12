@@ -324,14 +324,18 @@ namespace TwoSafe.Controller
         /// <summary>
         /// Перемещение файлов
         /// </summary>
-        /// <param name="token">Токен</param>
         /// <param name="id">ID файла</param>
         /// <param name="dir_id">ID папки, куда перемещается файл</param>
+        /// <param name="newName">Новое имя файла (или null или имя)</param>
         /// <param name="optional">Опциональные параметры</param>
-        public static Dictionary<string, dynamic> moveFile(string id, string dirId, string token, Dictionary<string, string> optional)
+        public static Dictionary<string, dynamic> moveFile(long id, long dirId, string newName, Dictionary<string, string> optional)
         {
+            if (newName != null)
+                newName = "&file_name=" + newName;
+            else
+                newName = "";
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "move_file&token=" + token + "&id=" + id + "&dir_id=" + dirId + toQueryString(optional)));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "move_file&token=" + Properties.Settings.Default.Token + "&id=" + id.ToString() + "&dir_id=" + dirId.ToString() + newName + toQueryString(optional)));
         }
 
         /// <summary>
@@ -399,24 +403,11 @@ namespace TwoSafe.Controller
         /// Удаление директории
         /// </summary>
         /// <param name="dirId">ID корневой папки</param>
-        /// <param name="optional">Опциональные параметры</param>
-        /// <param name="removeNow">Удалить минуя корзину (аналог Shift+Del)</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> removeDir(string dirId, Dictionary<string, string> optional, bool removeNow)
+        public static Dictionary<string, dynamic> removeDir(long dirId)
         {
-            string optionals = toQueryString(optional);
-            if (removeNow)
-            {
-                optionals = "&remove_now=true";
-            }
-
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            Dictionary<string, dynamic> json = jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "remove_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId + optionals));
-            if (!json.ContainsKey("error_code"))
-            {
-                Helpers.ApplicationHelper.SetCurrentTimeToSettings();
-            }
-            return json;
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "remove_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId.ToString() + "&recursive=true"));
         }
 
         /// <summary>

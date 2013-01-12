@@ -32,5 +32,8 @@
     <Setting Name="Account" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="TrashId" Type="System.Int64" Scope="User">
+      <Value Profile="(Default)">913990033028</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

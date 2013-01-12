@@ -9,100 +9,51 @@ namespace TwoSafe.Controller
 {
     class Synchronize
     {
-        private static Queue queue;
+        private static FileSystemWatcher dirWatcher = new FileSystemWatcher();
+        private static FileSystemWatcher fileWatcher = new FileSystemWatcher();
 
         static Synchronize()
         {
-            queue = new Queue();
+            dirWatcher.Path = Properties.Settings.Default.UserFolderPath;
+            dirWatcher.IncludeSubdirectories = true;
+            dirWatcher.NotifyFilter = NotifyFilters.DirectoryName;
+            dirWatcher.Created += new FileSystemEventHandler(Controller.Dirs.Create);
+            dirWatcher.Deleted += new FileSystemEventHandler(Controller.Dirs.Delete);
+            dirWatcher.Renamed += new RenamedEventHandler(Controller.Dirs.Rename);
+
+            fileWatcher.Path = Properties.Settings.Default.UserFolderPath;
+            fileWatcher.IncludeSubdirectories = true;
+            fileWatcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName;
+            fileWatcher.Created += new FileSystemEventHandler(Controller.Files.Create);
+            //fileWatcher.Changed += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            //fileWatcher.Deleted += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            fileWatcher.Renamed += new RenamedEventHandler(Controller.Files.Rename);
         }
 
-
-        public static void fromServerToClient()
+        /// <summary>
+        /// Начинает следить за изменениями в локальной папке
+        /// </summary>
+        public static void MonitorChanges()
         {
-            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.getEvents();
-            foreach (var one in json["response"]["events"])
-            {
-                if (one["event"] == "dir_created")
-                {
-                    Controller.Dirs.CreateOnClient(one["id"], one["parent_id"], one["name"]);
-                }
-                if (one["event"] == "dir_moved")
-                {
-                    Controller.Dirs.RemoveOnClient(one["id"]);
-                }
-                if (one["event"] == "file_moved")
-                {
-                    Controller.Files.RemoveOnClient(one["old_name"], one["old_parent_id"]);
-                }
-            }
+            dirWatcher.EnableRaisingEvents = true;
+            fileWatcher.EnableRaisingEvents = true;
         }
 
-        public static void doSync()
+        /// <summary>
+        /// Прекращает следить за изменениями в локальной папке
+        /// </summary>
+        public static void DoNotMonitorChanges()
         {
-            Dictionary<string, dynamic> json = null;
-            for (int i = 0; i < queue.Count; ++i)
-            {
-                string[] item = (string[])queue.Dequeue();
-                Dictionary<string, string> postData;
-
-                switch (item[0])
-                {
-                    case "changed":
-                        postData = new Dictionary<string, string>();
-                        postData.Add("overwrite", "true");
-                        //Controller.ApiTwoSafe.putFile(Properties.Settings.Default.RootId, item[1], postData);
-                        break;
-                    case "created":
-                        postData = new Dictionary<string, string>();
-                        postData.Add("overwrite", "true");
-
-                        Model.Dir dir = Model.Dir.FindByPath(item[1]);
-                        if (dir == null)
-                        {
-                            //json = Controller.ApiTwoSafe.putFile(Properties.Settings.Default.RootId, item[1], postData);
-                        }
-                        else
-                        {
-                            //json = Controller.ApiTwoSafe.putFile(dir.Id.ToString(), item[1], postData);
-                        }
-                        
-                        if (!json.ContainsKey("error_code"))
-                        {
-                            //new Model.File(json["response"]["file"]["id"], "913989033028", json["response"]["file"]["name"], json["response"]["file"]["version_id"], json["response"]["file"]["chksum"], json["response"]["file"]["size"]).Save();
-                        }
-                        break;
-                    case "deleted":
-                        break;
-                    default:
-                        break;
-                }
-            }
+            dirWatcher.EnableRaisingEvents = false;
+            fileWatcher.EnableRaisingEvents = false;
         }
 
-
-
-        public static void eventRaised(object sender, FileSystemEventArgs e)
-        {
-            switch (e.ChangeType)
-            {
-                case WatcherChangeTypes.Changed:
-                    queue.Enqueue(new string[] { "changed", e.FullPath });
-                    break;
-                case WatcherChangeTypes.Created:
-                    queue.Enqueue(new string[] { "created", e.FullPath });
-                    break;
-                case WatcherChangeTypes.Deleted:
-                    queue.Enqueue(new string[] { "deleted", e.FullPath });
-                    break;
-                default: // Another action
-                    break;
-            }
-            doSync();
-        }
-
-
+        /// <summary>
+        /// Полная синхронизация локальной папки с сервером при включении программы или при одиночном запросе на изменения
+        /// </summary>
         public static void Start()
         {
+            DoNotMonitorChanges();
             int i, j;
             Dictionary<string, dynamic> json = Controller.ApiTwoSafe.getEvents();
             System.Collections.ArrayList tempArray;
@@ -117,10 +68,13 @@ namespace TwoSafe.Controller
             List<Model.File> s_file_del = new List<Model.File>();
             List<Model.Dir> s_dir_add = new List<Model.Dir>();
             List<Model.Dir> s_dir_del = new List<Model.Dir>();
+            List<Model.Dir> s_dir_ren = new List<Model.Dir>();
+            List<Model.Dir> s_dir_mov = new List<Model.Dir>();
 
             List<Model.File> LD_file_add = new List<Model.File>();
             List<Model.Dir> LD_dir_add = new List<Model.Dir>();
             List<Model.Dir> LD_dir_del = new List<Model.Dir>();
+            List<Model.File> LD_file_del = new List<Model.File>();
 
             foreach (var one in json["response"]["events"])
             {
@@ -129,9 +83,19 @@ namespace TwoSafe.Controller
                     s_dir_add.Add(new Model.Dir(one["id"], one["parent_id"], one["name"]));
                     continue;
                 }
-                if (one["event"] == "dir_moved" && one["new_parent_id"] == "913990033028")
+                if (one["event"] == "dir_moved")
                 {
-                    s_dir_del.Add(new Model.Dir(one["id"], one["old_parent_id"], one["old_name"]));
+                    if (one["new_parent_id"] == Properties.Settings.Default.TrashId.ToString())
+                    {
+                        s_dir_del.Add(new Model.Dir(one["id"], one["old_parent_id"], one["old_name"]));
+                        continue;
+                    }
+                    if (one["old_parent_id"] == one["new_parent_id"])
+                    {
+                        s_dir_ren.Add(new Model.Dir(one["id"], one["old_parent_id"], one["new_name"], one["old_name"], null));
+                        continue;
+                    }
+                    s_dir_mov.Add(new Model.Dir(one["id"], one["new_parent_id"], one["old_name"], null, one["old_parent_id"]));
                     continue;
                 }
                 if (one["event"] == "file_uploaded" && one.ContainsKey("size"))
@@ -139,7 +103,7 @@ namespace TwoSafe.Controller
                     s_file_add.Add(new Model.File(one["id"], one["parent_id"], one["name"]));
                     continue;
                 }
-                if (one["event"] == "file_moved" && one["new_parent_id"] == "913990033028")
+                if (one["event"] == "file_moved" && one["new_parent_id"] == Properties.Settings.Default.TrashId.ToString())
                 {
                     //s_file_del.Add(new Model.File(one["id"], one["new_parent_id"], one["new_name"], "0", "0", 0));
                     continue;
@@ -207,8 +171,10 @@ namespace TwoSafe.Controller
                     s_dir_add.RemoveAt(i);
                 }
             }
+
+
             //создаем чистый список удалений папок на сервере
-            //Удаляем каждую папку из s_file_del, которая содержится в ImmuneDirs
+            //Удаляем каждую папку из s_dir_del, которая содержится в ImmuneDirs
             for (i = 0; i < s_dir_del.Count; ++i)
             {
                 for (j = 0; j < ImmuneDirs.Count; ++j)
@@ -237,14 +203,25 @@ namespace TwoSafe.Controller
 
 
             //3) получить список изменений в LD
-
+            LD_dir_del.InsertRange(0, Model.Dir.All(Properties.Settings.Default.RootId));
             subDirs = Directory.GetDirectories(Properties.Settings.Default.UserFolderPath);
-            for (i = 0; i < subDirs.Length; ++i)
+            foreach (string path in subDirs)
             {
-                dir = Model.Dir.FindByNameAndParentId(Path.GetFileName(subDirs[i]), Properties.Settings.Default.RootId, true);
+                dir = Model.Dir.FindByNameAndParentId(Path.GetFileName(path), Properties.Settings.Default.RootId, true);
                 if (dir == null)
                 {
-                    Model.Dir.Upload(Properties.Settings.Default.RootId, subDirs[i]);
+                    dir = Model.Dir.Upload(Properties.Settings.Default.RootId, path);
+                }
+                else
+                {
+                    foreach (Model.Dir one in LD_dir_del)
+                    {
+                        if (one.Id == dir.Id)
+                        {
+                            LD_dir_del.Remove(one);
+                            break;
+                        }
+                    }
                 }
                 que.Add(dir);
             }
@@ -265,6 +242,7 @@ namespace TwoSafe.Controller
                 if (Directory.Exists(que[0].Path))
                 {
                     subDirs = Directory.GetDirectories(que[0].Path);
+                    LD_dir_del.InsertRange(0, Model.Dir.All(que[0].Id));
                     for (i = 0; i < subDirs.Length; ++i)
                     {
                         dir = Model.Dir.FindByNameAndParentId(Path.GetFileName(subDirs[i]), que[0].Id, true);
@@ -272,6 +250,17 @@ namespace TwoSafe.Controller
                         {
                             dir = Model.Dir.Upload(que[0].Id, subDirs[i]);
                             LD_dir_add.Add(dir);
+                        }
+                        else
+                        {
+                            foreach (Model.Dir one in LD_dir_del)
+                            {
+                                if (one.Id == dir.Id)
+                                {
+                                    LD_dir_del.Remove(one);
+                                    break;
+                                }
+                            }
                         }
                         que.Add(dir);
                     }
@@ -287,18 +276,38 @@ namespace TwoSafe.Controller
                         }
                     }
                 }
-                else
-                {
-                    LD_dir_del.Add(que[0]);
-                }
+                que.RemoveAt(0);
+            }
 
-                que.Remove(que[0]);
+            //4) применим чистый список переименований на сервере
+            foreach (var one in s_dir_ren)
+            {
+                one.RenameOnClient();
+            }
+
+            //5) применим чистый список перемещений на сервере
+            foreach (var one in s_dir_mov)
+            {
+                one.MoveOnClient();
+            }
+
+            //6) применим чистый список удалений на сервере и в папке
+            foreach (var one in LD_dir_del)
+            {
+                one.RemoveOnServer();
+            }
+            foreach (var one in s_dir_del)
+            {
+                one.RemoveOnClient();
             }
 
             Helpers.ApplicationHelper.SetCurrentTimeToSettings();
+            MonitorChanges();
         }
         
-
+        /// <summary>
+        /// Полностью клонирует сервер в локальную папку
+        /// </summary>
         public static void CloneServer()
         {
             Dictionary<string, dynamic> json;
@@ -346,6 +355,8 @@ namespace TwoSafe.Controller
 
 
             Helpers.ApplicationHelper.SetCurrentTimeToSettings();
+
+            Start();
         }
     }
 }
