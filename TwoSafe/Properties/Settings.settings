@@ -23,7 +23,7 @@
     <Setting Name="LastGetEventsTime" Type="System.Int64" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="RootId" Type="System.String" Scope="User">
+    <Setting Name="RootId" Type="System.Int64" Scope="User">
       <Value Profile="(Default)">913989033028</Value>
     </Setting>
     <Setting Name="Email" Type="System.String" Scope="User">

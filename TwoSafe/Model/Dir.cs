@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.SQLite;
 
@@ -18,6 +17,13 @@ namespace TwoSafe.Model
             this._name = name;
         }
 
+        public Dir(string id, long parent_id, string name)
+        {
+            this._id = long.Parse(id);
+            this._parent_id = parent_id;
+            this._name = name;
+        }
+
         public Dir(string id, string parent_id, string name)
         {
             this._id = long.Parse(id);
@@ -29,7 +35,7 @@ namespace TwoSafe.Model
         /// Сохраняет папку в базу данных
         /// </summary>
         /// <returns>Возвращает TRUE, если операция прошла успешно, иначе - FALSE</returns>
-        public bool Save()
+        private bool Save()
         {
             bool result = true;
 
@@ -73,20 +79,20 @@ namespace TwoSafe.Model
         private void SetPath()
         {
             string result = "";
-            ArrayList path = new ArrayList();
+            List<string> path = new List<string>();
 
             Dir parentDir = this;
 
             while (parentDir != null)
             {
                 path.Add(parentDir.Name);
-                parentDir = FindById(parentDir.Parent_id.ToString());
+                parentDir = FindById(parentDir.Parent_id);
                 if (parentDir == null) break;
             }
 
             for (int i = path.Count - 1; i >= 0; --i)
             {
-                result += "\\" + path[i].ToString();
+                result += "\\" + path[i];
             }
 
             this._path = Properties.Settings.Default.UserFolderPath + result;
@@ -106,14 +112,14 @@ namespace TwoSafe.Model
         /// </summary>
         /// <param name="id">ID папки на сайте 2safe</param>
         /// <returns>Возвращает объект папки</returns>
-        public static Dir FindById(string id)
+        public static Dir FindById(long id)
         {
             Model.Dir dir = null;
-            if (id != "913989033028")
+            if (id != 913989033028)
             {
                 SQLiteConnection connection = new SQLiteConnection(dbName);
                 connection.Open();
-                SQLiteCommand command = new SQLiteCommand("SELECT * FROM dirs WHERE id='" + id + "'", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT * FROM dirs WHERE id='" + id.ToString() + "'", connection);
                 SQLiteDataReader reader = command.ExecuteReader();
                 reader.Read();
 
@@ -133,12 +139,12 @@ namespace TwoSafe.Model
         /// <param name="name">Имя папки</param>
         /// <param name="parent_id">ID родительской папки</param>
         /// <returns>Возвращает объект папки</returns>
-        public static Dir FindByNameAndParentId(string name, string parent_id, bool setPath)
+        public static Dir FindByNameAndParentId(string name, long parent_id, bool setPath)
         {
             Dir result = null;
             SQLiteConnection connection = new SQLiteConnection(dbName);
             connection.Open();
-            SQLiteCommand command = new SQLiteCommand("SELECT * FROM dirs WHERE name='" + name + "' AND parent_id='" + parent_id + "'", connection);
+            SQLiteCommand command = new SQLiteCommand("SELECT * FROM dirs WHERE name='" + name + "' AND parent_id='" + parent_id.ToString() + "'", connection);
             SQLiteDataReader reader = command.ExecuteReader();
             try
             {
@@ -172,7 +178,7 @@ namespace TwoSafe.Model
                 dir = FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId, false);
                 for (int i = 1; i < parts.Length - 1; ++i)
                 {
-                    dir = FindByNameAndParentId(parts[i], dir.Id.ToString(), false);
+                    dir = FindByNameAndParentId(parts[i], dir.Id, false);
                 }
             }
             else
@@ -184,10 +190,35 @@ namespace TwoSafe.Model
         }
 
         /// <summary>
+        /// Создает папку на сервере и сохраняет ее в БД
+        /// </summary>
+        /// <param name="parent_id">ID родительской папки</param>
+        /// <param name="fullPath">Полный путь данной папки</param>
+        /// <returns></returns>
+        public static Dir Upload(long parent_id, string fullPath)
+        {
+            fullPath = System.IO.Path.GetFileName(fullPath);
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.makeDir(parent_id, fullPath, null)["response"];
+            Dir dir = new Model.Dir(json["dir_id"], parent_id, fullPath);
+            dir.Save();
+            return dir;
+        }
+
+        /// <summary>
+        /// Создает папку в локальной папке и сохраняет ее в БД
+        /// </summary>
+        public void Download()
+        {
+            this.SetPath();
+            System.IO.Directory.CreateDirectory(this.Path);
+            this.Save();
+        }
+
+        /// <summary>
         /// Возвращает все папки из базы данных
         /// </summary>
         /// <returns>Возвращает список папок: упорядоченных по возрастанию level.</returns>
-        public static List<Dir> All()
+        /*public static List<Dir> All()
         {
             List<Dir> dirs = new List<Dir>();
             Dir temp;
@@ -209,7 +240,7 @@ namespace TwoSafe.Model
             connection.Close();
 
             return dirs;
-        }
+        }*/
 
         public long Id
         {

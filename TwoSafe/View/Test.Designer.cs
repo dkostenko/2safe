@@ -36,7 +36,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -61,11 +60,11 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(104, 113);
+            this.button3.Location = new System.Drawing.Point(12, 113);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(90, 23);
+            this.button3.Size = new System.Drawing.Size(268, 23);
             this.button3.TabIndex = 2;
-            this.button3.Text = "синхр папки";
+            this.button3.Text = "Программа установлена или изменена папка";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -85,7 +84,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(240, 23);
             this.button5.TabIndex = 4;
-            this.button5.Text = "2) получить события с сервера";
+            this.button5.Text = "получить дату изменеия файла";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -115,26 +114,15 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(239, 23);
             this.button8.TabIndex = 7;
-            this.button8.Text = "получить список изменений";
+            this.button8.Text = "синхронизация при включении программы";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(13, 158);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(267, 23);
-            this.button9.TabIndex = 8;
-            this.button9.Text = "Программа установлена или изменена папка";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 419);
-            this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -159,6 +147,5 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
     }
 }

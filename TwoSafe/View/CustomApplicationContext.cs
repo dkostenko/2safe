@@ -72,12 +72,11 @@ namespace TwoSafe.View
         {
             InitializeContext();
             // Проверки
-
-            //Properties.Settings.Default.UserFolderPath = @"C:\Users\dmitry\2safe";
-            Properties.Settings.Default.Save();
             //runUserChecks();
 
             //УДАЛИТЬ
+            //Properties.Settings.Default.RootId = 913989033028;
+            //Properties.Settings.Default.Save();
             //View.Test form = new View.Test();
             //form.Show();
         }

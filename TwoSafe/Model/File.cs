@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Data.SQLite;
 
 namespace TwoSafe.Model
@@ -6,10 +7,31 @@ namespace TwoSafe.Model
     class File : ActiveRecord
     {
         private string _name, _chksum;
-        private long _id, _parent_id, _version_id;
+        private long _id, _parent_id, _version_id, _mtime;
         private int _size;
 
-        public File(long id, long parent_id, string name, long version_id, string chksum, int size)
+        public File(long id, long parent_id, string name)
+        {
+            this._id = id;
+            this._parent_id = parent_id;
+            this._name = name;
+        }
+
+        public File(string id, long parent_id, string name)
+        {
+            this._id = long.Parse(id);
+            this._parent_id = parent_id;
+            this._name = name;
+        }
+
+        public File(string id, string parent_id, string name)
+        {
+            this._id = long.Parse(id);
+            this._parent_id = long.Parse(parent_id);
+            this._name = name;
+        }
+
+        public File(long id, long parent_id, string name, long version_id, string chksum, int size, long mtime)
         {
             this._id = id;
             this._parent_id = parent_id;
@@ -17,24 +39,14 @@ namespace TwoSafe.Model
             this._version_id = version_id;
             this._chksum = chksum;
             this._size = size;
+            this._mtime = mtime;
         }
-
-        public File(string id, string parent_id, string name, string version_id, string chksum, string size)
-        {
-            this._id = long.Parse(id);
-            this._parent_id = long.Parse(parent_id);
-            this._name = name;
-            this._version_id = long.Parse(version_id);
-            this._chksum = chksum;
-            this._size = int.Parse(size);
-        }
-
 
         /// <summary>
         /// Сохраняет файл в базу данных
         /// </summary>
         /// <returns>Возвращает TRUE, если операция прошла успешно</returns>
-        public bool Save()
+        private bool Save()
         {
             bool result = true;
             string values = "'" + this.Id + "', '" + 
@@ -42,11 +54,12 @@ namespace TwoSafe.Model
                                   this.Name + "', '" +
                                   this.Version_id + "', '" +
                                   this.Chksum + "', '" +
-                                  this.Size + "'"; ;
+                                  this.Size + "', '" +
+                                  this.Mtime + "'"; ;
 
             try
             {
-                ExecuteNonQuery("insert into files(id, parent_id, name, version_id, chksum, size) values(" + values + ");");
+                ExecuteNonQuery("insert into files(id, parent_id, name, version_id, chksum, size, mtime) values(" + values + ");");
             }
             catch
             {
@@ -75,25 +88,51 @@ namespace TwoSafe.Model
         }
 
         /// <summary>
+        /// Скачивает файл с сервера в локальную папку и сохраняет его в БД
+        /// </summary>
+        public void Download()
+        {
+            Controller.ApiTwoSafe.getFile(this.Id.ToString(), null, this.GetPath());
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.getProps(this.Id)["response"]["object"];
+            this._chksum = json["chksum"];
+            this._version_id = long.Parse(json["current_version"]);
+            this._mtime = json["mtime"];
+            this._size = json["size"];
+            this.Save();
+        }
+
+        /// <summary>
+        /// Загружает файл на сервер и сохраняет его в БД
+        /// </summary>
+        /// <param name="fullPath">Полный путь файла</param>
+        /// <param name="parent_id">ID папки, в которой лежит файл</param>
+        public static void Upload(long parent_id, string fullPath)
+        {
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.putFile(parent_id, fullPath, null)["response"]["file"];
+            File file = new Model.File(long.Parse(json["id"]), Properties.Settings.Default.RootId, json["name"], long.Parse(json["version_id"]), json["chksum"], json["size"], json["mtime"]);
+            file.Save();
+        }
+
+        /// <summary>
         /// Находит полный путь до файла в синхронизируемой папке
         /// </summary>
         public string GetPath()
         {
             string result = "";
-            ArrayList path = new ArrayList();
+            List<string> path = new List<string>();
 
-            Dir parentDir = Model.Dir.FindById(this._parent_id.ToString());
+            Dir parentDir = Model.Dir.FindById(this._parent_id);
 
             while (parentDir != null)
             {
                 path.Add(parentDir.Name);
-                parentDir = Model.Dir.FindById(parentDir.Parent_id.ToString());
+                parentDir = Model.Dir.FindById(parentDir.Parent_id);
                 if (parentDir == null) break;
             }
 
             for (int i = path.Count - 1; i >= 0; --i)
             {
-                result += "\\" + path[i].ToString();
+                result += "\\" + path[i];
             }
 
             return Properties.Settings.Default.UserFolderPath + result + "\\" + this.Name;
@@ -112,7 +151,7 @@ namespace TwoSafe.Model
             SQLiteDataReader reader = command.ExecuteReader();
             reader.Read();
 
-            Model.File file = new Model.File(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2), reader.GetInt64(3), reader.GetString(4), reader.GetInt32(5));
+            Model.File file = new Model.File(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2), reader.GetInt64(3), reader.GetString(4), reader.GetInt32(5), reader.GetInt64(6));
 
             reader.Close();
             connection.Close();
@@ -124,20 +163,24 @@ namespace TwoSafe.Model
         /// Находит файл в базе данных по названию и ID родительской папки
         /// </summary>
         /// <param name="name">Имя файла</param>
-        /// <param name="dir_id">ID родительской папки</param>
+        /// <param name="parent_id">ID родительской папки</param>
         /// <returns>Возвращает объект файла</returns>
-        public static File FindByNameAndParentId(string name, string dir_id)
+        public static File FindByNameAndParentId(string name, long parent_id)
         {
+            File result = null;
             SQLiteConnection connection = new SQLiteConnection(dbName);
             connection.Open();
-            SQLiteCommand command = new SQLiteCommand("SELECT * FROM files WHERE name='" + name + "' AND dir_id='" + dir_id + "'", connection);
+            SQLiteCommand command = new SQLiteCommand("SELECT * FROM files WHERE name='" + name + "' AND parent_id='" + parent_id.ToString() + "'", connection);
             SQLiteDataReader reader = command.ExecuteReader();
-            reader.Read();
-            File file = new Model.File(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2), reader.GetInt64(3), reader.GetString(4), reader.GetInt32(5));
-
+            try
+            {
+                reader.Read();
+                result = new Model.File(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2), reader.GetInt64(3), reader.GetString(4), reader.GetInt32(5), reader.GetInt64(6));
+            }
+            catch { }
             reader.Close();
             connection.Close();
-            return file;
+            return result;
         }
 
         public long Id
@@ -163,6 +206,11 @@ namespace TwoSafe.Model
         public long Version_id
         {
             get { return _version_id; }
+        }
+
+        public long Mtime
+        {
+            get { return _mtime; }
         }
 
         public int Size

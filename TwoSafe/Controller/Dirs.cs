@@ -10,15 +10,15 @@ namespace TwoSafe.Controller
 
         public static void CreateOnClient(string id, string parent_id, string name)
         {
-            Model.Dir dir = new Model.Dir(id, parent_id, name);
-            dir.Save();
+            //Model.Dir dir = new Model.Dir(id, parent_id, name);
+            //dir.Save();
 
             string path = Properties.Settings.Default.UserFolderPath;
 
-            if (parent_id != "913989033028")
-            {
-                Model.Dir parent_dir = Model.Dir.FindById(parent_id);
-            }
+            //if (parent_id != "913989033028")
+            //{
+            //    Model.Dir parent_dir = Model.Dir.FindById(parent_id);
+            //}
 
             Directory.CreateDirectory(path + "\\" + name);
             return;
@@ -26,17 +26,17 @@ namespace TwoSafe.Controller
 
         public static void RemoveOnClient(string id)
         {
-            Model.Dir dir = Model.Dir.FindById(id);
+            Model.Dir dir = null;//Model.Dir.FindById(id);
             Directory.Delete(dir.Path, true);
             dir.Remove();
         }
 
 
-        public static string getParentDirId(String path)
+        public static long getParentDirId(String path)
         {
             path = path.Substring(Properties.Settings.Default.UserFolderPath.Length + 1);
             string[] nestedFolders = path.Split('\\');
-            string parent_id = "913989033028";
+            long parent_id = 913989033028;
 
             if (nestedFolders.Length != 1)
             {
@@ -44,7 +44,7 @@ namespace TwoSafe.Controller
                 for (int i = 0; i < nestedFolders.Length-1; ++i)
                 {
                     current_dir = Model.Dir.FindByNameAndParentId(nestedFolders[i], parent_id, false);
-                    parent_id = current_dir.Id.ToString();
+                    parent_id = current_dir.Id;
                 }
             }
             return parent_id;
@@ -53,21 +53,12 @@ namespace TwoSafe.Controller
         //получаем список удаленных папок
         public static List<Model.Dir> syncDirsWithDb()
         {
-            List<Model.Dir> result = new List<Model.Dir>();
-            List<Model.Dir> dirs = Model.Dir.All();
-            foreach (var one in dirs)
-            {
-                if (!Directory.Exists(one.Path))
-                {
-                    result.Add(one);
-                    //Directory.CreateDirectory(path);
-                }
-            }
-            return result;
+            return null;
         }
 
         public static List<string> getNewOfflineDirs()
         {
+            /*
             List<string> result = new List<string>();
             List<Model.Dir> dirs = Model.Dir.All();
 
@@ -78,9 +69,9 @@ namespace TwoSafe.Controller
                     //result.Add(one);
                     //Directory.CreateDirectory(path);
                 }
-            }
+            }*/
 
-            return result;
+            return null;
         }
 
         public static void eventHendler(object sender, FileSystemEventArgs e)
@@ -95,7 +86,7 @@ namespace TwoSafe.Controller
                     queue.Enqueue(e.FullPath);
                     do
                     {
-                        Controller.ApiTwoSafe.makeDir(Controller.Dirs.getParentDirId(queue.Peek()), Path.GetFileName(queue.Peek()), null);
+                        //Controller.ApiTwoSafe.makeDir(Controller.Dirs.getParentDirId(queue.Peek()), Path.GetFileName(queue.Peek()), null);
                         dirs = Directory.GetDirectories(queue.Peek());
                         for (i = 0; i < dirs.Length; ++i)
                         {

@@ -197,21 +197,21 @@ namespace TwoSafe.Controller
         /// <param name="optional">Опциональные параметры</param>
         /// <param name="localPath">Путь до папки: где будет сохранен файл (с указанием нового имени файла)</param>
         /// <returns></returns>
-        public static void getFile(string id, string token, Dictionary<string, string> optional, string localPath)
+        public static void getFile(string id, Dictionary<string, string> optional, string localPath)
         {
             WebClient wc = new WebClient();
-            wc.DownloadFileAsync(new Uri("https://api.2safe.com/?cmd=get_file&id=" + id + "&token=" + token + toQueryString(optional)), localPath);
+            wc.DownloadFileAsync(new Uri("https://api.2safe.com/?cmd=get_file&id=" + id + "&token=" + Properties.Settings.Default.Token + toQueryString(optional)), localPath);
         }
 
         /// <summary>
         /// Загружает 1 файл и необходимые строковые данные на сервер методом POST (multipart/form-data)
         /// </summary>
         /// <param name="postData">Данные: необходимые для передачи файла (id папки, токен и другие)</param>
-        /// <param name="fileName">Полный путь до файла</param>
+        /// <param name="fullPath">Полный путь до файла</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> putFile(string dir_id,  string fileName, Dictionary<string, string> postData)
+        public static Dictionary<string, dynamic> putFile(long dir_id, string fullPath, Dictionary<string, string> postData)
         {
-            FileStream fileData = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+            FileStream fileData = File.Open(fullPath, FileMode.Open, FileAccess.Read, FileShare.Read);
 
             HttpWebRequest webrequest = (HttpWebRequest)WebRequest.Create("https://api.2safe.com/?cmd=put_file");
 
@@ -219,7 +219,7 @@ namespace TwoSafe.Controller
 
             string ctype;
 
-            string fileContentType = tryGetContentType(fileName, out ctype) ? ctype : "application/octet-stream";
+            string fileContentType = tryGetContentType(fullPath, out ctype) ? ctype : "application/octet-stream";
 
             string boundary = "----------" + DateTime.Now.Ticks.ToString("x", CultureInfo.InvariantCulture);
 
@@ -232,23 +232,26 @@ namespace TwoSafe.Controller
             sbHeader.AppendFormat("Content-Disposition: form-data; name=\"token\";\r\n\r\n" + Properties.Settings.Default.Token + "\r\n");
 
             sbHeader.AppendFormat("--{0}\r\n", boundary);
-            sbHeader.AppendFormat("Content-Disposition: form-data; name=\"dir_id\";\r\n\r\n" + dir_id + "\r\n");
+            sbHeader.AppendFormat("Content-Disposition: form-data; name=\"dir_id\";\r\n\r\n" + dir_id.ToString() + "\r\n");
 
-            if (postData != null)
+            if (postData == null)
             {
-                foreach (var one in postData)
-                {
-                    sbHeader.AppendFormat("--{0}\r\n", boundary);
-                    sbHeader.AppendFormat("Content-Disposition: form-data; name=\"{0}\";\r\n\r\n{1}\r\n", one.Key, one.Value);
-                }
+                postData = new Dictionary<string, string>();
+            }
+            postData.Add("token", Properties.Settings.Default.Token);
+
+            foreach (var one in postData)
+            {
+                sbHeader.AppendFormat("--{0}\r\n", boundary);
+                sbHeader.AppendFormat("Content-Disposition: form-data; name=\"{0}\";\r\n\r\n{1}\r\n", one.Key, one.Value);
             }
 
 
             if (fileData != null)
             {
                 sbHeader.AppendFormat("--{0}\r\n", boundary);
-                sbHeader.AppendFormat("Content-Disposition: form-data; name=\"file\"; {0}\r\n", string.IsNullOrEmpty(fileName) ?
-                                      "" : string.Format(CultureInfo.InvariantCulture, "filename=\"{0}\";", Path.GetFileName(fileName)));
+                sbHeader.AppendFormat("Content-Disposition: form-data; name=\"file\"; {0}\r\n", string.IsNullOrEmpty(fullPath) ?
+                                      "" : string.Format(CultureInfo.InvariantCulture, "filename=\"{0}\";", Path.GetFileName(fullPath)));
 
                 sbHeader.AppendFormat("Content-Type: {0}\r\n\r\n", fileContentType);
             }
@@ -357,10 +360,10 @@ namespace TwoSafe.Controller
         /// <param name="token">токен</param>
         /// <param name="optional">Опциональные параметры</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> makeDir(string dirId, string dirName, Dictionary<string, string> optional)
+        public static Dictionary<string, dynamic> makeDir(long dirId, string dirName, Dictionary<string, string> optional)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            Dictionary<string, dynamic> result = jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "make_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId + "&dir_name=" + dirName + toQueryString(optional)));
+            Dictionary<string, dynamic> result = jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "make_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId.ToString() + "&dir_name=" + dirName + toQueryString(optional)));
             return result;
         }
 
@@ -432,10 +435,10 @@ namespace TwoSafe.Controller
         /// </summary>
         /// <param name="id">ID объекта</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> getProps(string id)
+        public static Dictionary<string, dynamic> getProps(long id)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_props&token=" + Properties.Settings.Default.Token + "&id=" + id));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_props&token=" + Properties.Settings.Default.Token + "&id=" + id.ToString()));
         }
 
         /// <summary>
@@ -454,15 +457,10 @@ namespace TwoSafe.Controller
         /// </summary>
         /// <param name="after">timestamp в формате наносекунд. (без этого параметра выводятся последние 300 событий)</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> getEvents(string after)
+        public static Dictionary<string, dynamic> getEvents()
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            Dictionary<string, dynamic> json = jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_events&token=" + Properties.Settings.Default.Token + "&after=" + after));
-            if (json != null && !json.ContainsKey("error_code"))
-            {
-                Helpers.ApplicationHelper.SetCurrentTimeToSettings();
-            }
-            return json;
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_events&token=" + Properties.Settings.Default.Token + "&after=" + Properties.Settings.Default.LastGetEventsTime.ToString()));
         }
 
 
@@ -765,7 +763,7 @@ namespace TwoSafe.Controller
                     output = reader.ReadToEnd();
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 output = "";
             }

@@ -110,9 +110,9 @@ namespace TwoSafe.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("913989033028")]
-        public string RootId {
+        public long RootId {
             get {
-                return ((string)(this["RootId"]));
+                return ((long)(this["RootId"]));
             }
             set {
                 this["RootId"] = value;
