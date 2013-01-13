@@ -63,5 +63,10 @@ namespace TwoSafe.View
         {
             Controller.Synchronize.Start();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Controller.Synchronize.MonitorChanges();
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace TwoSafe.Controller
         /// <param name="e"></param>
         public static void Create(object sender, FileSystemEventArgs e)
         {
-            Model.Dir parent_dir = Model.Dir.FindParentByPath(e.Name);
+            Model.Dir parent_dir = Model.Dir.FindParentByPath(e.FullPath);
 
             if (parent_dir == null) Model.File.Upload(Properties.Settings.Default.RootId, e.FullPath);
             else Model.File.Upload(parent_dir.Id, e.FullPath);

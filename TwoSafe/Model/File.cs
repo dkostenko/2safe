@@ -140,7 +140,7 @@ namespace TwoSafe.Model
         public static void Upload(long parent_id, string fullPath)
         {
             Dictionary<string, dynamic> json = Controller.ApiTwoSafe.putFile(parent_id, fullPath, null)["response"]["file"];
-            File file = new Model.File(long.Parse(json["id"]), Properties.Settings.Default.RootId, json["name"], long.Parse(json["version_id"]), json["chksum"], json["size"], json["mtime"]);
+            File file = new Model.File(long.Parse(json["id"]), parent_id, json["name"], long.Parse(json["version_id"]), json["chksum"], json["size"], json["mtime"]);
             file.Save();
         }
 
@@ -148,18 +148,18 @@ namespace TwoSafe.Model
         /// Переименовывает файл на сервере
         /// </summary>
         /// <param name="newName">Полный путь до файла в локальной папке (включая имя файла и его расширение)</param>
-        public void RenameOnServer(String newName)
+        public void RenameOnServer(string newName)
         {
             this._oldName = this._name;
-            this._name = newName.Substring(Properties.Settings.Default.UserFolderPath.Length + 1);
+            this._name = Path.GetFileName(newName);
+
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.moveFile(this.Id, this.Parent_id, this.Name, null)["response"];
 
             SQLiteConnection connection = new SQLiteConnection(dbName);
             connection.Open();
-            SQLiteCommand command = new SQLiteCommand("UPDATE files SET name='" + this._name + "' WHERE id='" + this._id.ToString() + "'", connection);
+            SQLiteCommand command = new SQLiteCommand("UPDATE files SET id='" + json["id"] + "', name='" + this._name + "' WHERE id='" + this._id.ToString() + "'", connection);
             command.ExecuteNonQuery();
             connection.Close();
-
-            Controller.ApiTwoSafe.moveFile(this.Id, this.Parent_id, this.Name, null);
         }
 
         /// <summary>

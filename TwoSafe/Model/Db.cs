@@ -24,11 +24,21 @@ namespace TwoSafe.Model
             SQLiteConnection m_dbConnection = new SQLiteConnection(dbName);
 
             m_dbConnection.Open();
-            string sql = "CREATE TABLE dirs (id INTEGER PRIMARY KEY, parent_id INTEGER, name TEXT)";
+            string sql = "CREATE TABLE dirs" +
+                         "(id INTEGER PRIMARY KEY NOT NULL," +
+                         "parent_id INTEGER NOT NULL," +
+                         "name TEXT NOT NULL)";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection); 
             command.ExecuteNonQuery();
 
-            sql = "CREATE TABLE files (id INTEGER PRIMARY KEY, parent_id INTEGER, name TEXT, version_id INTEGER, chksum TEXT, size INTEGER, mtime INTEGER)";
+            sql = "CREATE TABLE files" +
+                  "(id INTEGER PRIMARY KEY," +
+                  "parent_id INTEGER," +
+                  "name TEXT," +
+                  "version_id INTEGER," +
+                  "chksum TEXT," +
+                  "size INTEGER," +
+                  "mtime INTEGER)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
             

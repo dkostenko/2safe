@@ -76,8 +76,8 @@ namespace TwoSafe.View
 
             //УДАЛИТЬ
             //Properties.Settings.Default.Save();
-            View.Test form = new View.Test();
-            form.Show();
+            //View.Test form = new View.Test();
+            //form.Show();
         }
 
 
