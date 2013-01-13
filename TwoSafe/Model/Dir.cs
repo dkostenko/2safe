@@ -53,7 +53,6 @@ namespace TwoSafe.Model
             try
             {
                 ExecuteNonQuery("INSERT into dirs(id, parent_id, name) values(" + values + ");");
-                this.SetPath();
             }
             catch
             {
@@ -116,11 +115,11 @@ namespace TwoSafe.Model
 
                 Dir parentDir = this;
 
-                while (parentDir != null)
+                while (parentDir.Id != Properties.Settings.Default.RootId)
                 {
                     path.Add(parentDir.Name);
                     parentDir = FindById(parentDir.Parent_id);
-                    if (parentDir == null) break;
+                    //if (parentDir == null) break;
                 }
 
                 for (int i = path.Count - 1; i >= 0; --i)
@@ -149,7 +148,7 @@ namespace TwoSafe.Model
         public static Dir FindById(long id)
         {
             Model.Dir dir = null;
-            if (id != 913989033028)
+            if (id != Properties.Settings.Default.RootId)
             {
                 SQLiteConnection connection = new SQLiteConnection(dbName);
                 connection.Open();
@@ -158,10 +157,14 @@ namespace TwoSafe.Model
                 reader.Read();
 
                 dir = new Model.Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2));
-                dir.SetPath();
+                //dir.SetPath();
 
                 reader.Close();
                 connection.Close();
+            }
+            else
+            {
+                dir = new Dir(Properties.Settings.Default.RootId, 0, "root");
             }
 
             return dir;
@@ -173,9 +176,11 @@ namespace TwoSafe.Model
         /// <param name="name">Имя папки</param>
         /// <param name="parent_id">ID родительской папки</param>
         /// <returns>Возвращает объект папки</returns>
-        public static Dir FindByNameAndParentId(string name, long parent_id, bool setPath)
+        public static Dir FindByNameAndParentId(string name, long parent_id)
         {
             Dir result = null;
+
+
             SQLiteConnection connection = new SQLiteConnection(dbName);
             connection.Open();
             SQLiteCommand command = new SQLiteCommand("SELECT * FROM dirs WHERE name='" + name + "' AND parent_id='" + parent_id.ToString() + "'", connection);
@@ -184,10 +189,6 @@ namespace TwoSafe.Model
             {
                 reader.Read();
                 result = new Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2));
-                if (setPath)
-                {
-                    result.SetPath();
-                }
             }
             catch
             {
@@ -195,6 +196,8 @@ namespace TwoSafe.Model
 
             reader.Close();
             connection.Close();
+
+            //result = new Dir(Properties.Settings.Default.RootId, 0, "root");
             return result;
         }
 
@@ -207,36 +210,37 @@ namespace TwoSafe.Model
         {
             Dir dir = null;
             string[] parts = path.Substring(Properties.Settings.Default.UserFolderPath.Length + 1).Split('\\');
-            if (parts.Length != 1)
+
+            dir = FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId);
+            for (int i = 1; i < parts.Length; ++i)
             {
-                dir = FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId, false);
-                for (int i = 1; i < parts.Length - 1; ++i)
-                {
-                    dir = FindByNameAndParentId(parts[i], dir.Id, false);
-                }
+                dir = FindByNameAndParentId(parts[i], dir.Id);
             }
-            else
-            {
-                dir = FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId, false);
-            }
-            dir.SetPath(path);
+
             return dir;
         }
 
         /// <summary>
-        /// Находит родительскую папку по относительному пути (от корневой папки)
+        /// Находит родительскую папку по полному пути
         /// </summary>
-        /// <param name="path">Относительный путь от корневой папки</param>
+        /// <param name="path">Полный путь до папки (включая саму папку)</param>
         /// <returns></returns>
-        public static Dir FindParentByPath(string path)
+        public static Dir FindParentByPath(String path)
         {
             Dir result;
-            string[] parts = path.Split('\\');
+            string[] parts = path.Substring(Properties.Settings.Default.UserFolderPath.Length + 1).Split('\\');
 
-            result = FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId, false);
-            for (int i = 1; i < parts.Length - 1; ++i)
+            if (parts.Length == 1)
             {
-                result = FindByNameAndParentId(parts[i], result.Id, false);
+                result = new Dir(Properties.Settings.Default.RootId, 0, "root");
+            }
+            else
+            {
+                result = FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId);
+                for (int i = 1; i < parts.Length - 1; ++i)
+                {
+                    result = FindByNameAndParentId(parts[i], result.Id);
+                }
             }
 
             return result;
@@ -277,6 +281,24 @@ namespace TwoSafe.Model
                 string oldPath = this.Path;
                 Directory.Move(oldPath, newPath);
             }
+        }
+
+        /// <summary>
+        /// Переименовывает папку на сервере и в БД
+        /// </summary>
+        /// <param name="newName">Новый полный путь до папки (включая саму папку)</param>
+        public void RenameOnServer(string newName)
+        {
+            this._oldName = this._name;
+            this._name = System.IO.Path.GetFileName(newName);
+
+            SQLiteConnection connection = new SQLiteConnection(dbName);
+            connection.Open();
+            SQLiteCommand command = new SQLiteCommand("UPDATE dirs SET name='" + this._name + "' WHERE id='" + this._id.ToString() + "'", connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+
+            Controller.ApiTwoSafe.moveDir(this.Parent_id, this.Id, this.Name, null);
         }
 
         /// <summary>

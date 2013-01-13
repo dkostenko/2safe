@@ -4,7 +4,7 @@ namespace TwoSafe.Controller
     class Files
     {
         /// <summary>
-        /// Обработчик события создания файла
+        /// Обработчик события создания файла в локальной папке
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -19,15 +19,29 @@ namespace TwoSafe.Controller
         }
 
         /// <summary>
-        /// Обработчик события переименования файла
+        /// Обработчик события удаления файла из локальной папки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public static void Delete(object sender, FileSystemEventArgs e)
+        {
+            Model.File file = Model.File.FindByPath(e.FullPath);
+            file.RemoveOnServer();
+
+            Helpers.ApplicationHelper.SetCurrentTimeToSettings();
+        }
+
+        /// <summary>
+        /// Обработчик события переименования файла в локальной папке
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public static void Rename(object sender, RenamedEventArgs e)
         {
             Model.File file = Model.File.FindByPath(e.OldFullPath);
-            //file.RenameOnServer();
-            //e.OldFullPath
+            file.RenameOnServer(e.FullPath);
+
+            Helpers.ApplicationHelper.SetCurrentTimeToSettings();
         }
     }
 }

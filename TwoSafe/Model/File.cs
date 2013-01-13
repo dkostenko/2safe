@@ -99,6 +99,26 @@ namespace TwoSafe.Model
         }
 
         /// <summary>
+        /// Удаляет файл на сервере и из базы данных
+        /// </summary>
+        /// <returns>Возвращает TRUE, если операция прошла успешно, иначе - FALSE</returns>
+        public bool RemoveOnServer()
+        {
+            bool result = true;
+            try
+            {
+                ExecuteNonQuery("DELETE FROM files where id='" + this.Id + "'");
+                Controller.ApiTwoSafe.removeFile(this.Id);
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Скачивает файл с сервера в локальную папку и сохраняет его в БД
         /// </summary>
         public void Download()
@@ -124,18 +144,22 @@ namespace TwoSafe.Model
             file.Save();
         }
 
-        public void RenameOnServer(string newName)
+        /// <summary>
+        /// Переименовывает файл на сервере
+        /// </summary>
+        /// <param name="newName">Полный путь до файла в локальной папке (включая имя файла и его расширение)</param>
+        public void RenameOnServer(String newName)
         {
-            if (this._oldName != null)
-            {
-                SQLiteConnection connection = new SQLiteConnection(dbName);
-                connection.Open();
-                SQLiteCommand command = new SQLiteCommand("UPDATE files SET name='" + this._name + "' WHERE id='" + this._id.ToString() + "'", connection);
-                command.ExecuteNonQuery();
-                connection.Close();
+            this._oldName = this._name;
+            this._name = newName.Substring(Properties.Settings.Default.UserFolderPath.Length + 1);
 
-                Controller.ApiTwoSafe.moveFile(this.Id, this.Parent_id, this.Name, null);
-            }
+            SQLiteConnection connection = new SQLiteConnection(dbName);
+            connection.Open();
+            SQLiteCommand command = new SQLiteCommand("UPDATE files SET name='" + this._name + "' WHERE id='" + this._id.ToString() + "'", connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+
+            Controller.ApiTwoSafe.moveFile(this.Id, this.Parent_id, this.Name, null);
         }
 
         /// <summary>
@@ -148,7 +172,7 @@ namespace TwoSafe.Model
 
             Dir parentDir = Model.Dir.FindById(this._parent_id);
 
-            while (parentDir != null)
+            while (parentDir.Id != Properties.Settings.Default.RootId)
             {
                 path.Add(parentDir.Name);
                 parentDir = Model.Dir.FindById(parentDir.Parent_id);
@@ -175,12 +199,15 @@ namespace TwoSafe.Model
             string[] parts = path.Substring(Properties.Settings.Default.UserFolderPath.Length + 1).Split('\\');
             if (parts.Length != 1)
             {
-                dir = Dir.FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId, false);
-                for (int i = 1; i < parts.Length - 1; ++i)
+                dir = Dir.FindByNameAndParentId(parts[0], Properties.Settings.Default.RootId);
+                if (dir != null)
                 {
-                    dir = Dir.FindByNameAndParentId(parts[i], file.Id, false);
+                    for (int i = 1; i < parts.Length - 1; ++i)
+                    {
+                        dir = Dir.FindByNameAndParentId(parts[i], dir.Id);
+                    }
+                    file = FindByNameAndParentId(parts[parts.Length - 1], dir.Id);
                 }
-                file = FindByNameAndParentId(parts[parts.Length - 1], dir.Id);
             }
             else
             {

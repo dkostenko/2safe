@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SQLite;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace TwoSafe.Controller
@@ -14,15 +12,38 @@ namespace TwoSafe.Controller
         /// <param name="e"></param>
         public static void Create(object sender, FileSystemEventArgs e)
         {
-            string[] dirs;
-            Queue<string> queue = new Queue<string>();
+            if (Model.Dir.FindByPath(e.FullPath) == null)
+            {
+                Queue<string> queue = new Queue<string>();
+                string[] dirs = Directory.GetDirectories(e.FullPath);
+                string[] files = Directory.GetFiles(e.FullPath);
+                foreach (string path in dirs)
+                    queue.Enqueue(path);
 
-            Model.Dir parent_dir = Model.Dir.FindParentByPath(e.Name);
-            if(parent_dir == null) Model.Dir.Upload(Properties.Settings.Default.RootId, e.FullPath);
-            else Model.Dir.Upload(parent_dir.Id, e.FullPath);
+                Model.Dir current_dir = Model.Dir.FindParentByPath(e.FullPath);
+
+                current_dir = Model.Dir.Upload(current_dir.Id, e.FullPath);
+                foreach (string one in files)
+                    Model.File.Upload(current_dir.Id, one);
 
 
-            Helpers.ApplicationHelper.SetCurrentTimeToSettings();
+                while (queue.Count != 0)
+                {
+                    current_dir = Model.Dir.FindParentByPath(queue.Peek());
+                    current_dir = Model.Dir.Upload(current_dir.Id, queue.Peek());
+
+                    dirs = Directory.GetDirectories(queue.Peek());
+                    files = Directory.GetFiles(queue.Dequeue());
+
+                    foreach (string one in files)
+                        Model.File.Upload(current_dir.Id, one);
+
+                    foreach (string path in dirs)
+                        queue.Enqueue(path);
+                }
+
+                Helpers.ApplicationHelper.SetCurrentTimeToSettings();
+            }
         }
 
         /// <summary>
@@ -45,8 +66,10 @@ namespace TwoSafe.Controller
         /// <param name="e"></param>
         public static void Rename(object sender, RenamedEventArgs e)
         {
-            int i = 0;
-            i++;
+            Model.Dir dir = Model.Dir.FindByPath(e.OldFullPath);
+            dir.RenameOnServer(e.FullPath);
+
+            Helpers.ApplicationHelper.SetCurrentTimeToSettings();
         }
     }
 }

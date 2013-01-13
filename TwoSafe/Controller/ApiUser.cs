@@ -345,15 +345,10 @@ namespace TwoSafe.Controller
         /// <param name="token">Токен</param>
         /// <param name="removeNow">Удалить, минуя корзину (аналог Shift+Del)</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> removeFile(string id, string token, bool removeNow)
+        public static Dictionary<string, dynamic> removeFile(long id)
         {
-            string optional = "";
-            if (removeNow)
-            {
-                optional = "&remove_now=true";
-            }
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "remove_file&token=" + token + "&id=" + id + optional));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "remove_file&token=" + Properties.Settings.Default.Token + "&id=" + id.ToString()));
         }
 
         /// <summary>
@@ -390,13 +385,17 @@ namespace TwoSafe.Controller
         /// </summary>
         /// <param name="id">ID папки, которую необходимо переместить</param>
         /// <param name="dirId">ID папки: в которую будет перемещаться</param>
-        /// <param name="token">токен</param>
+        /// <param name="newName">Новое имя папки (или null или имя)</param>
         /// <param name="optional">Опциональные параметры</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> moveDir(string dirId, string id, string token, Dictionary<string, string> optional)
+        public static Dictionary<string, dynamic> moveDir(long dirId, long id, string newName, Dictionary<string, string> optional)
         {
+            if (newName != null)
+                newName = "&dir_name=" + newName;
+            else
+                newName = "";
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "move_dir&token=" + token + "&dir_id=" + dirId + "&id=" + id + toQueryString(optional)));
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "move_dir&token=" + Properties.Settings.Default.Token + "&dir_id=" + dirId.ToString() + "&id=" + id.ToString() + newName + toQueryString(optional)));
         }
 
         /// <summary>

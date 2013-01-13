@@ -19,6 +19,7 @@ namespace TwoSafe.Controller
             dirWatcher.NotifyFilter = NotifyFilters.DirectoryName;
             dirWatcher.Created += new FileSystemEventHandler(Controller.Dirs.Create);
             dirWatcher.Deleted += new FileSystemEventHandler(Controller.Dirs.Delete);
+            //dirWatcher.Changed += new FileSystemEventHandler(Controller.Dirs.Change);
             dirWatcher.Renamed += new RenamedEventHandler(Controller.Dirs.Rename);
 
             fileWatcher.Path = Properties.Settings.Default.UserFolderPath;
@@ -26,7 +27,7 @@ namespace TwoSafe.Controller
             fileWatcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName;
             fileWatcher.Created += new FileSystemEventHandler(Controller.Files.Create);
             //fileWatcher.Changed += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            //fileWatcher.Deleted += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            fileWatcher.Deleted += new FileSystemEventHandler(Controller.Files.Delete);
             fileWatcher.Renamed += new RenamedEventHandler(Controller.Files.Rename);
         }
 
@@ -92,7 +93,7 @@ namespace TwoSafe.Controller
                     }
                     if (one["old_parent_id"] == one["new_parent_id"])
                     {
-                        s_dir_ren.Add(new Model.Dir(one["id"], one["old_parent_id"], one["new_name"], one["old_name"], null));
+                        s_dir_ren.Add(new Model.Dir(one["id"], one["old_parent_id"], one["new_name"], one["old_name"], "0"));
                         continue;
                     }
                     s_dir_mov.Add(new Model.Dir(one["id"], one["new_parent_id"], one["old_name"], null, one["old_parent_id"]));
@@ -207,7 +208,7 @@ namespace TwoSafe.Controller
             subDirs = Directory.GetDirectories(Properties.Settings.Default.UserFolderPath);
             foreach (string path in subDirs)
             {
-                dir = Model.Dir.FindByNameAndParentId(Path.GetFileName(path), Properties.Settings.Default.RootId, true);
+                dir = Model.Dir.FindByNameAndParentId(Path.GetFileName(path), Properties.Settings.Default.RootId);
                 if (dir == null)
                 {
                     dir = Model.Dir.Upload(Properties.Settings.Default.RootId, path);
@@ -245,7 +246,7 @@ namespace TwoSafe.Controller
                     LD_dir_del.InsertRange(0, Model.Dir.All(que[0].Id));
                     for (i = 0; i < subDirs.Length; ++i)
                     {
-                        dir = Model.Dir.FindByNameAndParentId(Path.GetFileName(subDirs[i]), que[0].Id, true);
+                        dir = Model.Dir.FindByNameAndParentId(Path.GetFileName(subDirs[i]), que[0].Id);
                         if (dir == null)
                         {
                             dir = Model.Dir.Upload(que[0].Id, subDirs[i]);
