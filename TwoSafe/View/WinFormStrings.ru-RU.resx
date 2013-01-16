@@ -399,4 +399,7 @@
   <data name="message008" xml:space="preserve">
     <value>Подтверждение выхода</value>
   </data>
+  <data name="message009" xml:space="preserve">
+    <value>Переключитесь в английскую раскладку клавиатуры</value>
+  </data>
 </root>

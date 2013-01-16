@@ -231,5 +231,19 @@ namespace TwoSafe.View
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
         }
 
+        private void textBoxesLogin_KeyPressed(object sender, KeyPressEventArgs e)
+        {
+            if (!(e.KeyChar < 'А') && !(e.KeyChar > 'ё') && !(e.KeyChar == (char)Keys.Back))
+            {
+                e.Handled = true;
+                labelErrorMessageLogin.Text = language.GetString("message009");
+            }
+            else
+            {
+                labelErrorMessageLogin.Text = "";
+            }
+
+        }
+
     }
 }

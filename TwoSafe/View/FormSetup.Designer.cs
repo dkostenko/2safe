@@ -147,6 +147,7 @@
             resources.ApplyResources(this.textBoxCaptchaLogin, "textBoxCaptchaLogin");
             this.textBoxCaptchaLogin.Name = "textBoxCaptchaLogin";
             this.textBoxCaptchaLogin.TextChanged += new System.EventHandler(this.textBoxesLogin_TextChanged);
+            this.textBoxCaptchaLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxesLogin_KeyPressed);
             // 
             // pictureBoxCaptchaLogin
             // 
@@ -175,6 +176,7 @@
             resources.ApplyResources(this.textBoxPasswordLogin, "textBoxPasswordLogin");
             this.textBoxPasswordLogin.Name = "textBoxPasswordLogin";
             this.textBoxPasswordLogin.TextChanged += new System.EventHandler(this.textBoxesLogin_TextChanged);
+            this.textBoxPasswordLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxesLogin_KeyPressed);
             // 
             // textBoxAccountLogin
             // 
@@ -182,6 +184,7 @@
             resources.ApplyResources(this.textBoxAccountLogin, "textBoxAccountLogin");
             this.textBoxAccountLogin.Name = "textBoxAccountLogin";
             this.textBoxAccountLogin.TextChanged += new System.EventHandler(this.textBoxesLogin_TextChanged);
+            this.textBoxAccountLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxesLogin_KeyPressed);
             // 
             // labelLogin
             // 
@@ -213,6 +216,7 @@
             this.textBoxRepeatPasswordSignup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.textBoxRepeatPasswordSignup, "textBoxRepeatPasswordSignup");
             this.textBoxRepeatPasswordSignup.Name = "textBoxRepeatPasswordSignup";
+            this.textBoxRepeatPasswordSignup.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxesSignup_KeyPressed);
             // 
             // labelRepeatPasswordSignup
             // 
@@ -245,6 +249,7 @@
             resources.ApplyResources(this.textBoxCaptchaSignup, "textBoxCaptchaSignup");
             this.textBoxCaptchaSignup.Name = "textBoxCaptchaSignup";
             this.textBoxCaptchaSignup.TextChanged += new System.EventHandler(this.textBoxesSignup_TextChanged);
+            this.textBoxCaptchaSignup.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxesSignup_KeyPressed);
             // 
             // labelSignUp
             // 
@@ -268,6 +273,7 @@
             resources.ApplyResources(this.textBoxEmailSignup, "textBoxEmailSignup");
             this.textBoxEmailSignup.Name = "textBoxEmailSignup";
             this.textBoxEmailSignup.TextChanged += new System.EventHandler(this.textBoxesSignup_TextChanged);
+            this.textBoxEmailSignup.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxesSignup_KeyPressed);
             // 
             // textBoxPasswordSignup
             // 
@@ -275,6 +281,7 @@
             resources.ApplyResources(this.textBoxPasswordSignup, "textBoxPasswordSignup");
             this.textBoxPasswordSignup.Name = "textBoxPasswordSignup";
             this.textBoxPasswordSignup.TextChanged += new System.EventHandler(this.textBoxesSignup_TextChanged);
+            this.textBoxPasswordSignup.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxesSignup_KeyPressed);
             // 
             // labelPasswordSignup
             // 
@@ -287,6 +294,7 @@
             resources.ApplyResources(this.textBoxAccountSignup, "textBoxAccountSignup");
             this.textBoxAccountSignup.Name = "textBoxAccountSignup";
             this.textBoxAccountSignup.TextChanged += new System.EventHandler(this.textBoxesSignup_TextChanged);
+            this.textBoxAccountSignup.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxesSignup_KeyPressed);
             // 
             // labelAccountSignup
             // 

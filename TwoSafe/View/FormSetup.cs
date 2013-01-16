@@ -52,10 +52,12 @@ namespace TwoSafe.View
         public FormSetup()
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+            
             language = new ResourceManager(typeof(TwoSafe.View.WinFormStrings));
             Properties.Settings.Default.PropertyChanged += Default_PropertyChanged;
             activePanel = "enter";
             InitializeComponent();
+            
         }
 
         /// <summary>
@@ -118,6 +120,7 @@ namespace TwoSafe.View
             panelCreateAccount.Visible = false;
             panelFullSetup.Visible = false;
             panelExit.Visible = false;
+            Application.CurrentInputLanguage = InputLanguage.FromCulture(new System.Globalization.CultureInfo("en"));
         }
 
         /// <summary>
@@ -512,5 +515,33 @@ namespace TwoSafe.View
         {
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
         }
+        
+        private void textBoxesLogin_KeyPressed(object sender, KeyPressEventArgs e)
+        {
+            if (!(e.KeyChar < 'А') && !(e.KeyChar > 'ё') && !(e.KeyChar == (char)Keys.Back))
+            {
+                e.Handled = true;
+                labelErrorMessageLogin.Text = language.GetString("message009");
+            }
+            else
+            {
+                labelErrorMessageLogin.Text = "";
+            }
+            
+        }
+
+        private void textBoxesSignup_KeyPressed(object sender, KeyPressEventArgs e)
+        {
+            if (!(e.KeyChar < 'А') && !(e.KeyChar > 'ё') && !(e.KeyChar == (char)Keys.Back))
+            {
+                e.Handled = true;
+                labelErrorMessageSignup.Text = language.GetString("message009");
+            }
+            else
+            {
+                labelErrorMessageSignup.Text = "";
+            }
+        }
+
     }
 }

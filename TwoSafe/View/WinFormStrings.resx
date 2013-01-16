@@ -399,4 +399,7 @@
   <data name="message008" xml:space="preserve">
     <value>Confirm closing setup</value>
   </data>
+  <data name="message009" xml:space="preserve">
+    <value>Cyrillic alphabet is not accepted. Switch to English keyboard.</value>
+  </data>
 </root>

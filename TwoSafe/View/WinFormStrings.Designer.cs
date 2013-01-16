@@ -905,5 +905,14 @@ namespace TwoSafe.View {
                 return ResourceManager.GetString("message008", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cyrillic alphabet is not accepted. Switch to English keyboard..
+        /// </summary>
+        internal static string message009 {
+            get {
+                return ResourceManager.GetString("message009", resourceCulture);
+            }
+        }
     }
 }

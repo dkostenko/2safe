@@ -120,9 +120,6 @@
   <data name="&gt;&gt;labelWarning.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Warning</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonMerge.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 99</value>
@@ -166,6 +163,9 @@
   <data name="labelWarning.Size" type="System.Drawing.Size, System.Drawing">
     <value>271, 66</value>
   </data>
+  <data name="buttonChooseAnother.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 99</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonMerge.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -179,14 +179,14 @@
   <data name="labelWarning.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 9</value>
   </data>
+  <data name="&gt;&gt;buttonChooseAnother.Name" xml:space="preserve">
+    <value>buttonChooseAnother</value>
+  </data>
   <data name="buttonMerge.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 28</value>
   </data>
   <data name="&gt;&gt;buttonMerge.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
   </data>
   <data name="&gt;&gt;buttonMerge.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -197,22 +197,19 @@
   <data name="&gt;&gt;buttonMerge.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonChooseAnother.Name" xml:space="preserve">
-    <value>buttonChooseAnother</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <data name="buttonChooseAnother.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="buttonChooseAnother.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 99</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Warning</value>
   </data>
   <data name="buttonChooseAnother.Text" xml:space="preserve">
     <value>Choose another folder</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ru-RU</value>
   </metadata>
 </root>

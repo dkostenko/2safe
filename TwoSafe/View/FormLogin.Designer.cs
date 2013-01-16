@@ -56,6 +56,7 @@
             this.tbAccount.Name = "tbAccount";
             this.tbAccount.ReadOnly = true;
             this.tbAccount.TextChanged += new System.EventHandler(this.textBoxes_TextChanged);
+            this.tbAccount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxesLogin_KeyPressed);
             // 
             // labelAccount
             // 
@@ -68,6 +69,7 @@
             resources.ApplyResources(this.tbPassword, "tbPassword");
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.TextChanged += new System.EventHandler(this.textBoxes_TextChanged);
+            this.tbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxesLogin_KeyPressed);
             // 
             // labelPassowrd
             // 
@@ -129,6 +131,7 @@
             resources.ApplyResources(this.textBoxCaptchaLogin, "textBoxCaptchaLogin");
             this.textBoxCaptchaLogin.Name = "textBoxCaptchaLogin";
             this.textBoxCaptchaLogin.TextChanged += new System.EventHandler(this.textBoxes_TextChanged);
+            this.textBoxCaptchaLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxesLogin_KeyPressed);
             // 
             // pictureBoxCaptchaLogin
             // 

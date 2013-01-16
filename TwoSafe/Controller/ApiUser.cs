@@ -95,7 +95,15 @@ namespace TwoSafe.Controller
         public static Dictionary<string, dynamic> auth(string login, string password, string captcha_id, string captcha)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "auth" + "&login=" + login + "&password=" + password + "&captcha_id=" + captcha_id + "&captcha=" + captcha));
+            string json = sendGET(baseUrl + "auth" + "&login=" + login + "&password=" + password + "&captcha_id=" + captcha_id + "&captcha=" + captcha);
+            try
+            {
+                return jss.Deserialize<Dictionary<string, dynamic>>(json);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         /// <summary>
