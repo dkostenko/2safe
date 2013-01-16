@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -47,23 +47,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(12, 198);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(240, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "1) синхронизировать папки с базой данных";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(104, 113);
+            this.button3.Location = new System.Drawing.Point(12, 113);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(90, 23);
+            this.button3.Size = new System.Drawing.Size(268, 23);
             this.button3.TabIndex = 2;
-            this.button3.Text = "синхр папки";
+            this.button3.Text = "Программа установлена или изменена папка";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -83,7 +73,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(240, 23);
             this.button5.TabIndex = 4;
-            this.button5.Text = "2) получить события с сервера";
+            this.button5.Text = "получить дату изменеия файла";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -97,27 +87,37 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button7
+            // button8
             // 
-            this.button7.Location = new System.Drawing.Point(13, 257);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(239, 23);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "3) Начать следить за изменениями";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button8.Location = new System.Drawing.Point(13, 338);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(239, 23);
+            this.button8.TabIndex = 7;
+            this.button8.Text = "синхронизация при включении программы";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(13, 160);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(268, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "следить за изменениями";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 419);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Test";
             this.Text = "Test";
@@ -128,11 +128,11 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button2;
     }
 }

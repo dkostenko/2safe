@@ -72,11 +72,11 @@ namespace TwoSafe.View
         {
             InitializeContext();
             // Проверки
-            runUserChecks();
 
-            //System.Diagnostics.Debug.Write(Properties.Settings.Default.Token);
+            //runUserChecks();
+
             //УДАЛИТЬ
-
+            //Properties.Settings.Default.Save();
             //View.Test form = new View.Test();
             //form.Show();
         }

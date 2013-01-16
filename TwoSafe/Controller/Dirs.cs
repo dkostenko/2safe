@@ -1,104 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SQLite;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace TwoSafe.Controller
 {
     class Dirs
     {
-
-        public static void CreateOnClient(string id, string parent_id, string name)
+        /// <summary>
+        /// Обработчик события создания папки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public static void Create(object sender, FileSystemEventArgs e)
         {
-            Model.Dir dir = new Model.Dir(id, parent_id, name, 0);
-            dir.Save();
-
-            string path = Properties.Settings.Default.UserFolderPath;
-
-            if (parent_id != "913989033028")
+            if (Model.Dir.FindByPath(e.FullPath) == null)
             {
-                Model.Dir parent_dir = Model.Dir.FindById(parent_id);
-                path = parent_dir.GetPath();
-            }
+                Queue<string> queue = new Queue<string>();
+                string[] dirs = Directory.GetDirectories(e.FullPath);
+                string[] files = Directory.GetFiles(e.FullPath);
+                foreach (string path in dirs)
+                    queue.Enqueue(path);
 
-            Directory.CreateDirectory(path + "\\" + name);
-            return;
-        }
+                Model.Dir current_dir = Model.Dir.FindParentByPath(e.FullPath);
 
-        public static void RemoveOnClient(string id)
-        {
-            Model.Dir dir = Model.Dir.FindById(id);
-            string path = dir.GetPath();
-            Directory.Delete(path, true);
-            dir.Remove();
-        }
+                current_dir = Model.Dir.Upload(current_dir.Id, e.FullPath);
+                foreach (string one in files)
+                    Model.File.Upload(current_dir.Id, one);
 
 
-        public static string getParentDirId(String path)
-        {
-            path = path.Substring(Properties.Settings.Default.UserFolderPath.Length + 1);
-            string[] nestedFolders = path.Split('\\');
-            string parent_id = "913989033028";
-
-            if (nestedFolders.Length != 1)
-            {
-                Model.Dir current_dir;
-                for (int i = 0; i < nestedFolders.Length-1; ++i)
+                while (queue.Count != 0)
                 {
-                    current_dir = Model.Dir.FindByNameAndParentId(nestedFolders[i], parent_id);
-                    parent_id = current_dir.Id.ToString();
+                    current_dir = Model.Dir.FindParentByPath(queue.Peek());
+                    current_dir = Model.Dir.Upload(current_dir.Id, queue.Peek());
+
+                    dirs = Directory.GetDirectories(queue.Peek());
+                    files = Directory.GetFiles(queue.Dequeue());
+
+                    foreach (string one in files)
+                        Model.File.Upload(current_dir.Id, one);
+
+                    foreach (string path in dirs)
+                        queue.Enqueue(path);
                 }
+
+                Helpers.ApplicationHelper.SetCurrentTimeToSettings();
             }
-            return parent_id;
         }
 
-        public static void syncDirsWithDb()
+        /// <summary>
+        /// Обработчик события удаления папки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public static void Delete(object sender, FileSystemEventArgs e)
         {
-            string path;
-            Model.Dir.All();
-            List<Model.Dir> dirs = Model.Dir.All();
-            foreach (var one in dirs)
-            {
-                path = one.GetPath();
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-            }
+            Model.Dir dir = Model.Dir.FindByPath(e.FullPath);
+            dir.RemoveOnServer();
+
+            Helpers.ApplicationHelper.SetCurrentTimeToSettings();
         }
 
-        public static void eventHendler(object sender, FileSystemEventArgs e)
+        /// <summary>
+        /// Обработчик события переименования папки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public static void Rename(object sender, RenamedEventArgs e)
         {
-            int i;
-            string[] dirs;
-            Queue<string> queue = new Queue<string>();
-            
-            switch (e.ChangeType.ToString())
-            {
-                case "Created":
-                    queue.Enqueue(e.FullPath);
-                    do
-                    {
-                        Controller.ApiTwoSafe.makeDir(Controller.Dirs.getParentDirId(queue.Peek()), Path.GetFileName(queue.Peek()), null);
-                        dirs = Directory.GetDirectories(queue.Peek());
-                        for (i = 0; i < dirs.Length; ++i)
-                        {
-                            queue.Enqueue(dirs[i]);
-                        }
-                        queue.Dequeue();
-                    }
-                    while (queue.Count != 0);
-                    break;
+            Model.Dir dir = Model.Dir.FindByPath(e.OldFullPath);
+            dir.RenameOnServer(e.FullPath);
 
-                case "Deleted":
-                    Model.Dir dir = Model.Dir.FindByPath(e.FullPath);
-                    Controller.ApiTwoSafe.removeDir(dir.Id.ToString(), null, false);
-                    dir.Remove();
-                    break;
-                default:
-                    break;
-            }
+            Helpers.ApplicationHelper.SetCurrentTimeToSettings();
         }
-
     }
 }

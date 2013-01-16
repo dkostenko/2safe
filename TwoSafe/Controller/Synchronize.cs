@@ -9,160 +9,355 @@ namespace TwoSafe.Controller
 {
     class Synchronize
     {
-        private static Queue queue;
+        private static FileSystemWatcher dirWatcher = new FileSystemWatcher();
+        private static FileSystemWatcher fileWatcher = new FileSystemWatcher();
 
         static Synchronize()
         {
-            queue = new Queue();
+            dirWatcher.Path = Properties.Settings.Default.UserFolderPath;
+            dirWatcher.IncludeSubdirectories = true;
+            dirWatcher.NotifyFilter = NotifyFilters.DirectoryName;
+            dirWatcher.Created += new FileSystemEventHandler(Controller.Dirs.Create);
+            dirWatcher.Deleted += new FileSystemEventHandler(Controller.Dirs.Delete);
+            //dirWatcher.Changed += new FileSystemEventHandler(Controller.Dirs.Change);
+            dirWatcher.Renamed += new RenamedEventHandler(Controller.Dirs.Rename);
+
+            fileWatcher.Path = Properties.Settings.Default.UserFolderPath;
+            fileWatcher.IncludeSubdirectories = true;
+            fileWatcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName;
+            fileWatcher.Created += new FileSystemEventHandler(Controller.Files.Create);
+            //fileWatcher.Changed += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
+            fileWatcher.Deleted += new FileSystemEventHandler(Controller.Files.Delete);
+            fileWatcher.Renamed += new RenamedEventHandler(Controller.Files.Rename);
         }
 
-
-        public static void fromServerToClient()
+        /// <summary>
+        /// Начинает следить за изменениями в локальной папке
+        /// </summary>
+        public static void MonitorChanges()
         {
-            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.getEvents((Properties.Settings.Default.LastGetEventsTime).ToString());
+            dirWatcher.EnableRaisingEvents = true;
+            fileWatcher.EnableRaisingEvents = true;
+        }
+
+        /// <summary>
+        /// Прекращает следить за изменениями в локальной папке
+        /// </summary>
+        public static void DoNotMonitorChanges()
+        {
+            dirWatcher.EnableRaisingEvents = false;
+            fileWatcher.EnableRaisingEvents = false;
+        }
+
+        /// <summary>
+        /// Полная синхронизация локальной папки с сервером при включении программы или при одиночном запросе на изменения
+        /// </summary>
+        public static void Start()
+        {
+            DoNotMonitorChanges();
+            int i, j;
+            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.getEvents();
+            System.Collections.ArrayList tempArray;
+            Model.Dir dir;
+            Model.File file;
+            string[] subDirs, filesInDir;
+            List<Model.Dir> que = new List<Model.Dir>();
+            List<Model.Dir> ImmuneDirs = new List<Model.Dir>();
+
+
+            List<Model.File> s_file_add = new List<Model.File>();
+            List<Model.File> s_file_del = new List<Model.File>();
+            List<Model.Dir> s_dir_add = new List<Model.Dir>();
+            List<Model.Dir> s_dir_del = new List<Model.Dir>();
+            List<Model.Dir> s_dir_ren = new List<Model.Dir>();
+            List<Model.Dir> s_dir_mov = new List<Model.Dir>();
+
+            List<Model.File> LD_file_add = new List<Model.File>();
+            List<Model.Dir> LD_dir_add = new List<Model.Dir>();
+            List<Model.Dir> LD_dir_del = new List<Model.Dir>();
+            List<Model.File> LD_file_del = new List<Model.File>();
+
             foreach (var one in json["response"]["events"])
             {
                 if (one["event"] == "dir_created")
                 {
-                    Controller.Dirs.CreateOnClient(one["id"], one["parent_id"], one["name"]);
+                    s_dir_add.Add(new Model.Dir(one["id"], one["parent_id"], one["name"]));
+                    continue;
                 }
                 if (one["event"] == "dir_moved")
                 {
-                    Controller.Dirs.RemoveOnClient(one["id"]);
+                    if (one["new_parent_id"] == Properties.Settings.Default.TrashId.ToString())
+                    {
+                        s_dir_del.Add(new Model.Dir(one["id"], one["old_parent_id"], one["old_name"]));
+                        continue;
+                    }
+                    if (one["old_parent_id"] == one["new_parent_id"])
+                    {
+                        s_dir_ren.Add(new Model.Dir(one["id"], one["old_parent_id"], one["new_name"], one["old_name"], "0"));
+                        continue;
+                    }
+                    s_dir_mov.Add(new Model.Dir(one["id"], one["new_parent_id"], one["old_name"], null, one["old_parent_id"]));
+                    continue;
                 }
-                if (one["event"] == "file_moved")
+                if (one["event"] == "file_uploaded" && one.ContainsKey("size"))
                 {
-                    Controller.Files.RemoveOnClient(one["old_name"], one["old_parent_id"]);
+                    s_file_add.Add(new Model.File(one["id"], one["parent_id"], one["name"]));
+                    continue;
                 }
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-        public static void start()
-        {
-            Dictionary<string, dynamic> json = Controller.ApiTwoSafe.listDir("");
-            if (json.ContainsKey("error_code"))
-            {
-                return;
-            }
-        }
-
-        public static void doSync()
-        {
-            Dictionary<string, dynamic> json = null;
-            for (int i = 0; i < queue.Count; ++i)
-            {
-                string[] item = (string[])queue.Dequeue();
-                Dictionary<string, string> postData;
-
-                switch (item[0])
+                if (one["event"] == "file_moved" && one["new_parent_id"] == Properties.Settings.Default.TrashId.ToString())
                 {
-                    case "changed":
-                        postData = new Dictionary<string, string>();
-                        postData.Add("overwrite", "true");
-                        Controller.ApiTwoSafe.putFile(Properties.Settings.Default.RootId, item[1], postData);
-                        break;
-                    case "created":
-                        postData = new Dictionary<string, string>();
-                        postData.Add("overwrite", "true");
-
-                        Model.Dir dir = Model.Dir.FindByPath(item[1]);
-                        if (dir == null)
-                        {
-                            json = Controller.ApiTwoSafe.putFile(Properties.Settings.Default.RootId, item[1], postData);
-                        }
-                        else
-                        {
-                            json = Controller.ApiTwoSafe.putFile(dir.Id.ToString(), item[1], postData);
-                        }
-                        
-                        if (!json.ContainsKey("error_code"))
-                        {
-                            new Model.File(json["response"]["file"]["id"], "913989033028", json["response"]["file"]["name"]).Save();
-                        }
-                        break;
-                    case "deleted":
-                        break;
-                    default:
-                        break;
+                    //s_file_del.Add(new Model.File(one["id"], one["new_parent_id"], one["new_name"], "0", "0", 0));
+                    continue;
                 }
             }
-        }
 
-
-
-        public static void eventRaised(object sender, FileSystemEventArgs e)
-        {
-            switch (e.ChangeType)
+            //создаем чистый список добавлений файлов на сервере
+            //Добавляем каждую папку и родительские папки в ImmuneDirs
+            for (i = 0; i < s_file_add.Count; ++i)
             {
-                case WatcherChangeTypes.Changed:
-                    queue.Enqueue(new string[] { "changed", e.FullPath });
-                    break;
-                case WatcherChangeTypes.Created:
-                    queue.Enqueue(new string[] { "created", e.FullPath });
-                    break;
-                case WatcherChangeTypes.Deleted:
-                    queue.Enqueue(new string[] { "deleted", e.FullPath });
-                    break;
-                default: // Another action
-                    break;
-            }
-            doSync();
-        }
-
-
-
-        public static void inception()
-        {
-            string current_id;
-            Dictionary<string, dynamic> json = new Dictionary<string, dynamic>();
-            ArrayList dirs, files, stek;
-
-            stek = new System.Collections.ArrayList();
-            stek.Add("");
-
-            while (stek.Count != 0)
-            {
-                json = Controller.ApiTwoSafe.listDir(stek[0].ToString());
-
-                if (json.ContainsKey("error_code"))
+                json = Controller.ApiTwoSafe.getProps(s_file_add[i].Id)["response"]["object"];
+                if (!json.ContainsKey("is_trash"))
                 {
-                    //TODO: Обработать ошибку
+                    if (json["dir_id"] == Properties.Settings.Default.RootId.ToString())
+                    {
+                        ImmuneDirs.Add(new Model.Dir(json["id"], json["dir_id"], json["name"]));
+                    }
+                    else
+                    {
+                        tempArray = Controller.ApiTwoSafe.getTreeParent(json["dir_id"])["response"]["tree"];
+                        for (j = 0; j < tempArray.Count - 1; ++j)
+                        {
+                            json = (Dictionary<string, dynamic>)tempArray[j];
+                            ImmuneDirs.Add(new Model.Dir(json["id"], json["parent_id"], json["name"]));
+                        }
+                    }
                 }
                 else
                 {
-                    current_id = json["response"]["root"]["id"];
-                    dirs = json["response"]["list_dirs"];
-
-                    for (int i = 0; i < json["response"]["list_dirs"].Count; ++i)
+                    for (j = 0; j < s_file_del.Count; ++j)
                     {
-                        new Model.Dir(json["response"]["list_dirs"][i]["id"], current_id, json["response"]["list_dirs"][i]["name"], 0);
-                        stek.Add(json["response"]["list_dirs"][i]["id"]);
+                        if (s_file_add[i].Id == s_file_del[j].Id)
+                        {
+                            s_file_del.RemoveAt(j);
+                        }
                     }
+                    s_file_add.RemoveAt(i);
+                }
+            }
 
 
-
-                    files = json["response"]["list_files"];
-                    for (int i = 0; i < files.Count; ++i)
+            //создаем чистый список добавлений папок на сервере
+            //Добавляем каждую папку и родительские папки в ImmuneDirs
+            for (i = 0; i < s_dir_add.Count; ++i)
+            {
+                json = Controller.ApiTwoSafe.getProps(s_dir_add[i].Id)["response"]["object"];
+                if (!json.ContainsKey("is_trash"))
+                {
+                    if (json["parent_id"] == Properties.Settings.Default.RootId.ToString())
                     {
-                        new Model.Dir(json["response"]["list_files"][i]["id"], current_id, json["response"]["list_files"][i]["name"], 0);
+                        ImmuneDirs.Add(new Model.Dir(json["id"], json["parent_id"], json["name"]));
+                    }
+                    else
+                    {
+                        tempArray = Controller.ApiTwoSafe.getTreeParent(json["parent_id"])["response"]["tree"];
+                        for (j = 0; j < tempArray.Count - 1; ++j)
+                        {
+                            json = (Dictionary<string, dynamic>)tempArray[j];
+                            ImmuneDirs.Add(new Model.Dir(json["id"], json["parent_id"], json["name"]));
+                        }
                     }
                 }
-
-                stek.RemoveAt(0);
+                else
+                {
+                    s_dir_add.RemoveAt(i);
+                }
             }
+
+
+            //создаем чистый список удалений папок на сервере
+            //Удаляем каждую папку из s_dir_del, которая содержится в ImmuneDirs
+            for (i = 0; i < s_dir_del.Count; ++i)
+            {
+                for (j = 0; j < ImmuneDirs.Count; ++j)
+                {
+                    if (s_dir_del[i].Id == ImmuneDirs[j].Id)
+                    {
+                        s_dir_del.Remove(s_dir_del[i]);
+                        break;
+                    }
+                }
+            }
+
+
+
+            //2) применим чистые добавления сервера к БД и LD
+            foreach (var one in s_dir_add)
+            {
+                one.Download();
+            }
+            foreach (var one in s_file_add)
+            {
+                one.Download();
+            }
+
+
+
+
+            //3) получить список изменений в LD
+            LD_dir_del.InsertRange(0, Model.Dir.All(Properties.Settings.Default.RootId));
+            subDirs = Directory.GetDirectories(Properties.Settings.Default.UserFolderPath);
+            foreach (string path in subDirs)
+            {
+                dir = Model.Dir.FindByNameAndParentId(Path.GetFileName(path), Properties.Settings.Default.RootId);
+                if (dir == null)
+                {
+                    dir = Model.Dir.Upload(Properties.Settings.Default.RootId, path);
+                }
+                else
+                {
+                    foreach (Model.Dir one in LD_dir_del)
+                    {
+                        if (one.Id == dir.Id)
+                        {
+                            LD_dir_del.Remove(one);
+                            break;
+                        }
+                    }
+                }
+                que.Add(dir);
+            }
+
+            filesInDir = Directory.GetFiles(Properties.Settings.Default.UserFolderPath);
+            for (i = 0; i < filesInDir.Length; ++i)
+            {
+                if (Model.File.FindByNameAndParentId(Path.GetFileName(filesInDir[i]), Properties.Settings.Default.RootId) == null)
+                {
+                    Model.File.Upload(Properties.Settings.Default.RootId, filesInDir[i]);
+                }
+            }
+
+
+
+            while (que.Count > 0)
+            {
+                if (Directory.Exists(que[0].Path))
+                {
+                    subDirs = Directory.GetDirectories(que[0].Path);
+                    LD_dir_del.InsertRange(0, Model.Dir.All(que[0].Id));
+                    for (i = 0; i < subDirs.Length; ++i)
+                    {
+                        dir = Model.Dir.FindByNameAndParentId(Path.GetFileName(subDirs[i]), que[0].Id);
+                        if (dir == null)
+                        {
+                            dir = Model.Dir.Upload(que[0].Id, subDirs[i]);
+                            LD_dir_add.Add(dir);
+                        }
+                        else
+                        {
+                            foreach (Model.Dir one in LD_dir_del)
+                            {
+                                if (one.Id == dir.Id)
+                                {
+                                    LD_dir_del.Remove(one);
+                                    break;
+                                }
+                            }
+                        }
+                        que.Add(dir);
+                    }
+
+
+                    filesInDir = Directory.GetFiles(que[0].Path);
+                    for (i = 0; i < filesInDir.Length; ++i)
+                    {
+                        file = Model.File.FindByNameAndParentId(Path.GetFileName(filesInDir[i]), que[0].Id);
+                        if (file == null)
+                        {
+                            Model.File.Upload(que[0].Id, filesInDir[i]);
+                        }
+                    }
+                }
+                que.RemoveAt(0);
+            }
+
+            //4) применим чистый список переименований на сервере
+            foreach (var one in s_dir_ren)
+            {
+                one.RenameOnClient();
+            }
+
+            //5) применим чистый список перемещений на сервере
+            foreach (var one in s_dir_mov)
+            {
+                one.MoveOnClient();
+            }
+
+            //6) применим чистый список удалений на сервере и в папке
+            foreach (var one in LD_dir_del)
+            {
+                one.RemoveOnServer();
+            }
+            foreach (var one in s_dir_del)
+            {
+                one.RemoveOnClient();
+            }
+
+            Helpers.ApplicationHelper.SetCurrentTimeToSettings();
+            MonitorChanges();
         }
+        
+        /// <summary>
+        /// Полностью клонирует сервер в локальную папку
+        /// </summary>
+        public static void CloneServer()
+        {
+            Dictionary<string, dynamic> json;
+            Model.Dir dir, current_dir;
+
+            Stack<Model.Dir> stack = new Stack<Model.Dir>();
+
+            //просматриваем корневую папку сервера и помещаем папки, содержащиеся в ней, в стек
+            json = Controller.ApiTwoSafe.listDir("");
+
+            foreach(var one in json["response"]["list_dirs"])
+            {
+                if (one["name"] != "Shared" && one["name"] != "Trash")
+                {
+                    dir = new Model.Dir(one["id"], Properties.Settings.Default.RootId, one["name"]);
+                    dir.Download();
+                    stack.Push(dir);
+                }
+            }
+
+            foreach (var one in json["response"]["list_files"])
+            {
+                new Model.File(one["id"], Properties.Settings.Default.RootId, one["name"]).Download();
+            }
+
+            //просматриваем все остальные папки с сервера и помещаем папки, содержащиеся в ней, в стек
+            while (stack.Count != 0)
+            {
+                current_dir = stack.Pop();
+
+                json = Controller.ApiTwoSafe.listDir(current_dir.Id.ToString());
+
+                foreach (var one in json["response"]["list_dirs"])
+                {
+                    dir = new Model.Dir(one["id"], current_dir.Id, one["name"]);
+                    dir.Download();
+                    stack.Push(dir);
+                }
+
+                foreach (var one in json["response"]["list_files"])
+                {
+                    new Model.File(one["id"], current_dir.Id, one["name"]).Download();
+                }
+            }
 
 
+            Helpers.ApplicationHelper.SetCurrentTimeToSettings();
+
+            Start();
+        }
     }
 }

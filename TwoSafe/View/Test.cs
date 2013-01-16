@@ -27,13 +27,12 @@ namespace TwoSafe.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Controller.Dirs.syncDirsWithDb();
         }
 
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Thread th = new Thread(Controller.Synchronize.inception);
+            Thread th = new Thread(Controller.Synchronize.CloneServer);
             th.Start();
         }
 
@@ -44,7 +43,8 @@ namespace TwoSafe.View
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Controller.Synchronize.fromServerToClient();
+            DateTime d = File.GetLastWriteTimeUtc(Properties.Settings.Default.UserFolderPath + "\\666555.txt");
+            DateTime r = File.GetLastWriteTime(Properties.Settings.Default.UserFolderPath + "\\666555.txt");
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -56,25 +56,17 @@ namespace TwoSafe.View
 
         private void button7_Click(object sender, EventArgs e)
         {
-            //события папки
-            FileSystemWatcher dirWatcher = new FileSystemWatcher();
-            dirWatcher.Path = Properties.Settings.Default.UserFolderPath;
-            dirWatcher.IncludeSubdirectories = true;
-            dirWatcher.NotifyFilter = NotifyFilters.DirectoryName;
-            dirWatcher.Created += new FileSystemEventHandler(Controller.Dirs.eventHendler);
-            dirWatcher.Deleted += new FileSystemEventHandler(Controller.Dirs.eventHendler);
-            dirWatcher.EnableRaisingEvents = true;
+            Controller.Synchronize.MonitorChanges();
+        }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Controller.Synchronize.Start();
+        }
 
-            //события файла
-            FileSystemWatcher fileWatcher = new FileSystemWatcher();
-            fileWatcher.Path = Properties.Settings.Default.UserFolderPath;
-            fileWatcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName;
-            fileWatcher.Created += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            //fileWatcher.Changed += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            //fileWatcher.Deleted += new FileSystemEventHandler(Controller.Synchronize.eventRaised);
-            //fileWatcher.Renamed += new RenamedEventHandler(Controller.Synchronize.eventRaised);
-            //fileWatcher.EnableRaisingEvents = true;
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Controller.Synchronize.MonitorChanges();
         }
     }
 }
