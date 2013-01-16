@@ -70,10 +70,13 @@ namespace TwoSafe.View
         /// </summary>
         public CustomApplicationContext()
         {
+            Properties.Settings.Default.Token = "";
+            Properties.Settings.Default.Save();
+            
             InitializeContext();
             // Проверки
 
-            //runUserChecks();
+            runUserChecks();
 
             //УДАЛИТЬ
             //Properties.Settings.Default.Save();

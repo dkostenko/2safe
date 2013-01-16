@@ -259,6 +259,7 @@ namespace TwoSafe.View
             }
             if (activePanel == "exit")
             {
+                Controller.Synchronize.CloneServer();
                 this.Close();
                 return;
             }
@@ -307,6 +308,13 @@ namespace TwoSafe.View
                     labelErrorMessageLogin.Text = language.GetString("message001");
                     Properties.Settings.Default.Token = logInResponse["response"]["token"];
                     Properties.Settings.Default.Account = account;
+
+                    Dictionary<string, dynamic> json = Controller.ApiTwoSafe.getProps("/");
+                    Properties.Settings.Default.RootId = long.Parse(json["response"]["object"]["id"]);
+
+                    json = Controller.ApiTwoSafe.getProps("/Trash/");
+                    Properties.Settings.Default.TrashId = long.Parse(json["response"]["object"]["id"]);
+
                     Properties.Settings.Default.Save();
 
                     activePanel = "fullSetup";

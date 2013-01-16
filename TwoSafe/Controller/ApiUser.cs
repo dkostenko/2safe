@@ -440,6 +440,18 @@ namespace TwoSafe.Controller
         }
 
         /// <summary>
+        /// Получение свойств объекта
+        /// </summary>
+        /// <param name="url">url до папки или файла на сервере</param>
+        /// <returns></returns>
+        public static Dictionary<string, dynamic> getProps(string url)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Deserialize<Dictionary<string, dynamic>>(sendGET(baseUrl + "get_props&token=" + Properties.Settings.Default.Token + "&url=" + url));
+        }
+
+
+        /// <summary>
         /// Получение родительского дерева каталогов
         /// </summary>
         /// <param name="dir_id">ID папки</param>
