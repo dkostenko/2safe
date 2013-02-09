@@ -70,18 +70,17 @@ namespace TwoSafe.View
         /// </summary>
         public CustomApplicationContext()
         {
-            Properties.Settings.Default.Token = "";
-            Properties.Settings.Default.Save();
+            //Properties.Settings.Default.Token = "";
+            //Properties.Settings.Default.Save();
             
             InitializeContext();
             // Проверки
 
-            runUserChecks();
+            //runUserChecks();
 
             //УДАЛИТЬ
-            //Properties.Settings.Default.Save();
-            //View.Test form = new View.Test();
-            //form.Show();
+            View.Test form = new View.Test();
+            form.Show();
         }
 
 

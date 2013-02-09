@@ -8,8 +8,8 @@ namespace TwoSafe.Model
 {
     class File : ActiveRecord
     {
-        private string _name, _chksum, _oldName;
-        private long _id, _parent_id, _version_id, _mtime, _old_parent_id;
+        private string _name, _chksum, _old_name, _path;
+        private long _id, _parent_id, _version_id, _mtime, _old_id, _old_parent_id;
         private int _size;
 
         public File(long id, long parent_id, string name)
@@ -33,14 +33,17 @@ namespace TwoSafe.Model
             this._name = name;
         }
 
-        public File(string id, string parent_id, string name, string oldName, string oldParentId)
+        public File(string newId, string newParentId, string newName, string oldId, string oldParentId, string oldName, string versionId)
         {
-            this._id = long.Parse(id);
-            this._parent_id = long.Parse(parent_id);
-            this._name = name;
-            this._oldName = oldName;
+            this._id = long.Parse(newId);
+            this._parent_id = long.Parse(newParentId);
+            this._name = newName;
             this._old_parent_id = long.Parse(oldParentId);
+            this._old_id = long.Parse(oldId);
+            this._old_name = oldName;
+            this._version_id = long.Parse(versionId);
         }
+
 
         public File(long id, long parent_id, string name, long version_id, string chksum, int size, long mtime)
         {
@@ -80,25 +83,6 @@ namespace TwoSafe.Model
         }
 
         /// <summary>
-        /// Удаляет файл из базы данных
-        /// </summary>
-        /// <returns>Возвращает TRUE, если операция прошла успешно, иначе - FALSE</returns>
-        public bool Remove()
-        {
-            bool result = true;
-            try
-            {
-                ExecuteNonQuery("DELETE from files where id='" + this.Id + "'");
-            }
-            catch
-            {
-                result = false;
-            }
-
-            return result;
-        }
-
-        /// <summary>
         /// Удаляет файл на сервере и из базы данных
         /// </summary>
         /// <returns>Возвращает TRUE, если операция прошла успешно, иначе - FALSE</returns>
@@ -119,11 +103,31 @@ namespace TwoSafe.Model
         }
 
         /// <summary>
+        /// Удаляет файл в локальной папке и из базы данных
+        /// </summary>
+        /// <returns>Возвращает TRUE, если операция прошла успешно, иначе - FALSE</returns>
+        public bool RemoveOnClient()
+        {
+            bool result = true;
+            try
+            {
+                System.IO.File.Delete(this.Path);
+                ExecuteNonQuery("DELETE FROM files WHERE id='" + this.Id + "'");
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Скачивает файл с сервера в локальную папку и сохраняет его в БД
         /// </summary>
         public void Download()
         {
-            Controller.ApiTwoSafe.getFile(this.Id.ToString(), null, this.GetPath());
+            Controller.ApiTwoSafe.getFile(this.Id.ToString(), null, this.Path);
             Dictionary<string, dynamic> json = Controller.ApiTwoSafe.getProps(this.Id)["response"]["object"];
             this._chksum = json["chksum"];
             this._version_id = long.Parse(json["current_version"]);
@@ -150,8 +154,8 @@ namespace TwoSafe.Model
         /// <param name="newName">Полный путь до файла в локальной папке (включая имя файла и его расширение)</param>
         public void RenameOnServer(string newName)
         {
-            this._oldName = this._name;
-            this._name = Path.GetFileName(newName);
+            this._old_name = this._name;
+            this._name = System.IO.Path.GetFileName(newName);
 
             Dictionary<string, dynamic> json = Controller.ApiTwoSafe.moveFile(this.Id, this.Parent_id, this.Name, null)["response"];
 
@@ -163,9 +167,52 @@ namespace TwoSafe.Model
         }
 
         /// <summary>
-        /// Находит полный путь до файла в синхронизируемой папке
+        /// Переименовывает файл в локальной папке и в базе данных
         /// </summary>
-        public string GetPath()
+        /// <param name="newName">Новое имя файла (не включая путь).</param>
+        public void RenameOnClient()
+        {
+            if (_old_name != null)
+            {
+                SQLiteConnection connection = new SQLiteConnection(dbName);
+                connection.Open();
+                SQLiteCommand command = new SQLiteCommand("UPDATE files SET name='" + this._name + "', id='" + this._id + "' WHERE id='" + this._old_id + "'", connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+
+                string newPath = this.Path;
+                this._name = _old_name;
+                this._path = null;
+                string oldPath = this.Path;
+                System.IO.File.Move(oldPath, newPath);
+            }
+        }
+
+        /// <summary>
+        /// Перемещает файл в локальной папке и в базе данных
+        /// </summary>
+        public void MoveOnClient()
+        {
+            if (_old_parent_id != null)
+            {
+                SQLiteConnection connection = new SQLiteConnection(dbName);
+                connection.Open();
+                SQLiteCommand command = new SQLiteCommand("UPDATE files SET parent_id='" + this.Parent_id + "', id='" + this._id + "' WHERE id='" + this._old_id.ToString() + "'", connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+
+                string newPath = this.Path;
+                this._parent_id = _old_parent_id;
+                this._path = null;
+                string oldPath = this.Path;
+                System.IO.File.Move(oldPath, newPath);
+            }
+        }
+
+        /// <summary>
+        /// Находит полный путь до файла (включая имя файла) в синхронизируемой папке
+        /// </summary>
+        private void SetPath()
         {
             string result = "";
             List<string> path = new List<string>();
@@ -184,7 +231,7 @@ namespace TwoSafe.Model
                 result += "\\" + path[i];
             }
 
-            return Properties.Settings.Default.UserFolderPath + result + "\\" + this.Name;
+            _path = Properties.Settings.Default.UserFolderPath + result + "\\" + this.Name;
         }
 
         /// <summary>
@@ -216,7 +263,6 @@ namespace TwoSafe.Model
 
             return file;
         }
-
 
         /// <summary>
         /// Находит файл в базе данных по ID
@@ -263,6 +309,7 @@ namespace TwoSafe.Model
             return result;
         }
 
+
         public long Id
         {
             get { return _id; }
@@ -296,6 +343,18 @@ namespace TwoSafe.Model
         public int Size
         {
             get { return _size; }
+        }
+
+        public string Path
+        {
+            get
+            {
+                if (_path == null)
+                {
+                    this.SetPath();
+                }
+                return _path;
+            }
         }
     }
 }
