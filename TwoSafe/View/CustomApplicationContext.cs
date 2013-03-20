@@ -17,6 +17,15 @@ namespace TwoSafe.View
 {   
     public class CustomApplicationContext : ApplicationContext
     {
+
+        public static System.Threading.Timer timer;
+        
+        public static void DoSomething(object obj)
+        {
+            System.Console.WriteLine("timer ticked");
+            Controller.Synchronize.Start();
+        }
+
         /// <summary>
         /// Менеджер языковых ресурсов
         /// </summary>
@@ -63,7 +72,7 @@ namespace TwoSafe.View
         View.FormLogin loginForm;
 
         Thread userChecks;
-        FormSetup setupForm;
+        static FormSetup setupForm;
 
         /// <summary>
         /// Конструктор CustomApplicationContext без параметров
@@ -71,17 +80,16 @@ namespace TwoSafe.View
         public CustomApplicationContext()
         {
 
-            Properties.Settings.Default.Token = "";
-            Properties.Settings.Default.Save();
-            Model.Db.create();
-
+            //Properties.Settings.Default.Token = "";
+            //Properties.Settings.Default.Save();
+            //Model.Db.create();
+            
             InitializeContext();
-
-            ShowMessageInABubble();
+            
+            //ShowMessageInABubble();
             // Проверки
 
-            //runUserChecks();
-
+            runUserChecks();
             //УДАЛИТЬ
             //View.Test form = new View.Test();
             //form.Show();
@@ -91,9 +99,9 @@ namespace TwoSafe.View
         /// <summary>
         /// Запуск проверок условий необходимых для запуска программы
         /// наличие интернета не является одной из них
-        /// 
         /// </summary>
-        private void runUserChecks()
+        
+        public static void runUserChecks()
         {
             if (Properties.Settings.Default.Token == "" ||
                 Properties.Settings.Default.UserFolderPath == "" ||
@@ -113,6 +121,11 @@ namespace TwoSafe.View
                 {
                     FormLogin loginForm = new FormLogin();
                     loginForm.Show();
+                }
+                else // Все норм, можно запускать таймер и синхронизироваться
+                {
+                    timer = new System.Threading.Timer(new TimerCallback(DoSomething), null, 0, 30000);
+                    timer.Change(0, 30000);
                 }
             }
             
