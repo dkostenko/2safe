@@ -72,7 +72,7 @@ namespace TwoSafe.View
         {
             Properties.Settings.Default.Token = "";
             Properties.Settings.Default.Save();
-            
+            Model.Db.create();
             InitializeContext();
             // Проверки
 

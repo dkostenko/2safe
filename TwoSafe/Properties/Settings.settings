@@ -24,7 +24,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="RootId" Type="System.Int64" Scope="User">
-      <Value Profile="(Default)">913989033028</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Email" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -33,7 +33,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="TrashId" Type="System.Int64" Scope="User">
-      <Value Profile="(Default)">913990033028</Value>
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

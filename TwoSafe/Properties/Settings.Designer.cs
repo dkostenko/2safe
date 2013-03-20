@@ -109,7 +109,6 @@ namespace TwoSafe.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("913989033028")]
         public long RootId {
             get {
                 return ((long)(this["RootId"]));
@@ -145,7 +144,6 @@ namespace TwoSafe.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("913990033028")]
         public long TrashId {
             get {
                 return ((long)(this["TrashId"]));
