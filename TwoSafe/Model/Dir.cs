@@ -92,7 +92,6 @@ namespace TwoSafe.Model
             try
             {
                 ExecuteNonQuery("DELETE from dirs where id='" + this.Id + "'");
-                this.SetPath();
                 Directory.Delete(this.Path, true);
             }
             catch
@@ -354,33 +353,6 @@ namespace TwoSafe.Model
             return result;
         }
 
-        /// <summary>
-        /// Возвращает все папки из базы данных
-        /// </summary>
-        /// <returns>Возвращает список папок: упорядоченных по возрастанию level.</returns>
-        /*public static List<Dir> All()
-        {
-            List<Dir> dirs = new List<Dir>();
-            Dir temp;
-
-            SQLiteConnection connection = new SQLiteConnection(dbName);
-            connection.Open();
-            SQLiteCommand command = new SQLiteCommand("SELECT * FROM dirs", connection); // ORDER BY parent_id ASC
-            SQLiteDataReader reader = command.ExecuteReader();
-
-
-            while (reader.Read())
-            {
-                temp = new Dir(reader.GetInt64(0), reader.GetInt64(1), reader.GetString(2));
-                temp.SetPath();
-                dirs.Add(temp);
-            }
-
-            reader.Close();
-            connection.Close();
-
-            return dirs;
-        }*/
 
         public long Id
         {

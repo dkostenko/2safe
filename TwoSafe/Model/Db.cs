@@ -26,14 +26,14 @@ namespace TwoSafe.Model
             m_dbConnection.Open();
             string sql = "CREATE TABLE dirs" +
                          "(id INTEGER PRIMARY KEY NOT NULL," +
-                         "parent_id INTEGER NOT NULL," +
+                         "parent_id INTEGER NOT NULL REFERENCES dirs(id) ON UPDATE CASCADE ON DELETE CASCADE," +
                          "name TEXT NOT NULL)";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection); 
             command.ExecuteNonQuery();
 
             sql = "CREATE TABLE files" +
                   "(id INTEGER PRIMARY KEY," +
-                  "parent_id INTEGER," +
+                  "parent_id INTEGER REFERENCES dirs(id) ON UPDATE CASCADE ON DELETE CASCADE," +
                   "name TEXT," +
                   "version_id INTEGER," +
                   "chksum TEXT," +

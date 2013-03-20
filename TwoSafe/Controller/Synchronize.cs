@@ -67,6 +67,8 @@ namespace TwoSafe.Controller
 
             List<Model.File> s_file_add = new List<Model.File>();
             List<Model.File> s_file_del = new List<Model.File>();
+            List<Model.File> s_file_ren = new List<Model.File>();
+            List<Model.File> s_file_mov = new List<Model.File>();
             List<Model.Dir> s_dir_add = new List<Model.Dir>();
             List<Model.Dir> s_dir_del = new List<Model.Dir>();
             List<Model.Dir> s_dir_ren = new List<Model.Dir>();
@@ -104,9 +106,22 @@ namespace TwoSafe.Controller
                     s_file_add.Add(new Model.File(one["id"], one["parent_id"], one["name"]));
                     continue;
                 }
-                if (one["event"] == "file_moved" && one["new_parent_id"] == Properties.Settings.Default.TrashId.ToString())
+                if (one["event"] == "file_moved")
                 {
-                    //s_file_del.Add(new Model.File(one["id"], one["new_parent_id"], one["new_name"], "0", "0", 0));
+                    if (one["new_parent_id"] == Properties.Settings.Default.TrashId.ToString())
+                    {
+                        //удалить файл
+                        s_file_del.Add(new Model.File(one["new_id"], one["old_parent_id"], one["new_name"], one["old_id"], one["old_parent_id"], one["old_name"], "0"));
+                        continue;
+                    }
+                    if (one["old_parent_id"] == one["new_parent_id"])
+                    {
+                        //переименовать файл
+                        s_file_ren.Add(new Model.File(one["new_id"], one["new_parent_id"], one["new_name"], one["old_id"], one["old_parent_id"], one["old_name"], one["version_id"]));
+                        continue;
+                    }
+                    //переместить файл
+                    s_file_mov.Add(new Model.File(one["new_id"], one["new_parent_id"], one["new_name"], one["old_id"], one["old_parent_id"], one["old_name"], one["version_id"]));
                     continue;
                 }
             }
@@ -286,8 +301,18 @@ namespace TwoSafe.Controller
                 one.RenameOnClient();
             }
 
+            foreach (var one in s_file_ren)
+            {
+                one.RenameOnClient();
+            }
+
             //5) применим чистый список перемещений на сервере
             foreach (var one in s_dir_mov)
+            {
+                one.MoveOnClient();
+            }
+
+            foreach (var one in s_file_mov)
             {
                 one.MoveOnClient();
             }
@@ -298,6 +323,10 @@ namespace TwoSafe.Controller
                 one.RemoveOnServer();
             }
             foreach (var one in s_dir_del)
+            {
+                one.RemoveOnClient();
+            }
+            foreach (var one in s_file_del)
             {
                 one.RemoveOnClient();
             }
