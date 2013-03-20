@@ -402,4 +402,10 @@
   <data name="message009" xml:space="preserve">
     <value>Cyrillic alphabet is not accepted. Switch to English keyboard.</value>
   </data>
+  <data name="message010" xml:space="preserve">
+    <value>Conflicts</value>
+  </data>
+  <data name="message011" xml:space="preserve">
+    <value>Conflicts while merging files with the server</value>
+  </data>
 </root>

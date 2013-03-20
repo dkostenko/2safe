@@ -20,7 +20,7 @@ namespace TwoSafe.View
         /// <summary>
         /// Менеджер языковых ресурсов
         /// </summary>
-        ResourceManager language;
+        static ResourceManager language;
 
         /// <summary>
         /// Список компонентов подлежащих уничтожению при закрытии приложения
@@ -30,7 +30,7 @@ namespace TwoSafe.View
         /// <summary>
         /// Иконка приложения в трее
         /// </summary>
-        private NotifyIcon notifyIcon;
+        public static NotifyIcon notifyIcon;
         
         /// <summary>
         /// Текст всплывающей подсказки по умолчанию
@@ -75,15 +75,16 @@ namespace TwoSafe.View
             Properties.Settings.Default.Save();
             Model.Db.create();
 
-
             InitializeContext();
+
+            ShowMessageInABubble();
             // Проверки
 
             //runUserChecks();
 
             //УДАЛИТЬ
-            View.Test form = new View.Test();
-            form.Show();
+            //View.Test form = new View.Test();
+            //form.Show();
         }
 
 
@@ -122,6 +123,9 @@ namespace TwoSafe.View
         /// </summary>
         private void InitializeContext()
         {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+            language = new ResourceManager(typeof(TwoSafe.View.WinFormStrings));
+            
             // Определение компонентов подлежащих уничтожению при закрытии приложения
             components = new System.ComponentModel.Container();
 
@@ -247,6 +251,14 @@ namespace TwoSafe.View
         public void makeIconInvisible()
         {
             notifyIcon.Visible = false;
+        }
+
+        public static void ShowMessageInABubble()
+        {
+
+            notifyIcon.BalloonTipText = language.GetString("message011");
+            notifyIcon.BalloonTipTitle = language.GetString("message010");
+            notifyIcon.ShowBalloonTip(5);
         }
     }
 }

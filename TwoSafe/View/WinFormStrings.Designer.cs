@@ -914,5 +914,23 @@ namespace TwoSafe.View {
                 return ResourceManager.GetString("message009", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conflicts.
+        /// </summary>
+        internal static string message010 {
+            get {
+                return ResourceManager.GetString("message010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conflicts while merging files with the server.
+        /// </summary>
+        internal static string message011 {
+            get {
+                return ResourceManager.GetString("message011", resourceCulture);
+            }
+        }
     }
 }

@@ -14,5 +14,6 @@ namespace TwoSafe.Helpers
             Properties.Settings.Default.LastGetEventsTime = (uint)span.TotalSeconds;
             Properties.Settings.Default.Save();
         }
+
     }
 }

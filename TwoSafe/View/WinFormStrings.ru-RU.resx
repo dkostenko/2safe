@@ -402,4 +402,10 @@
   <data name="message009" xml:space="preserve">
     <value>Переключитесь в английскую раскладку клавиатуры</value>
   </data>
+  <data name="message010" xml:space="preserve">
+    <value>Конфликты</value>
+  </data>
+  <data name="message011" xml:space="preserve">
+    <value>Были обнаружены конфликты</value>
+  </data>
 </root>
