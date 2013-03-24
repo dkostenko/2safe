@@ -260,6 +260,7 @@ namespace TwoSafe.View
             if (activePanel == "exit")
             {
                 Controller.Synchronize.CloneServer();
+                CustomApplicationContext.runUserChecks();
                 this.Close();
                 return;
             }

@@ -86,6 +86,7 @@ namespace TwoSafe.View
                     labelErrorMessageLogin.Text = language.GetString("message001");
                     Properties.Settings.Default.Token = logInResponse["response"]["token"];
                     Properties.Settings.Default.Save();
+                    CustomApplicationContext.runUserChecks();
                 }
             }
             ValidateLoginTextBoxes();
